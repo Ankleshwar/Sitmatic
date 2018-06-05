@@ -1,0 +1,583 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3B01AAE020C6D7E900291522 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B01AADF20C6D7E900291522 /* AppDelegate.swift */; };
+		3B01AAE220C6D7E900291522 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B01AAE120C6D7E900291522 /* ViewController.swift */; };
+		3B01AAE520C6D7E900291522 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B01AAE320C6D7E900291522 /* Main.storyboard */; };
+		3B01AAE720C6D7EC00291522 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B01AAE620C6D7EC00291522 /* Assets.xcassets */; };
+		3B01AAEA20C6D7EC00291522 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B01AAE820C6D7EC00291522 /* LaunchScreen.storyboard */; };
+		3B01AAF520C6D7EC00291522 /* SitmaticTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B01AAF420C6D7EC00291522 /* SitmaticTests.swift */; };
+		3B01AB0020C6D7EC00291522 /* SitmaticUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B01AAFF20C6D7EC00291522 /* SitmaticUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3B01AAF120C6D7EC00291522 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3B01AAD420C6D7E900291522 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3B01AADB20C6D7E900291522;
+			remoteInfo = Sitmatic;
+		};
+		3B01AAFC20C6D7EC00291522 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3B01AAD420C6D7E900291522 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3B01AADB20C6D7E900291522;
+			remoteInfo = Sitmatic;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3B01AADC20C6D7E900291522 /* Sitmatic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sitmatic.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B01AADF20C6D7E900291522 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3B01AAE120C6D7E900291522 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3B01AAE420C6D7E900291522 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3B01AAE620C6D7EC00291522 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3B01AAE920C6D7EC00291522 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3B01AAEB20C6D7EC00291522 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B01AAF020C6D7EC00291522 /* SitmaticTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SitmaticTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B01AAF420C6D7EC00291522 /* SitmaticTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SitmaticTests.swift; sourceTree = "<group>"; };
+		3B01AAF620C6D7EC00291522 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B01AAFB20C6D7EC00291522 /* SitmaticUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SitmaticUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B01AAFF20C6D7EC00291522 /* SitmaticUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SitmaticUITests.swift; sourceTree = "<group>"; };
+		3B01AB0120C6D7EC00291522 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3B01AAD920C6D7E900291522 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B01AAED20C6D7EC00291522 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B01AAF820C6D7EC00291522 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3B01AAD320C6D7E900291522 = {
+			isa = PBXGroup;
+			children = (
+				3B01AADE20C6D7E900291522 /* Sitmatic */,
+				3B01AAF320C6D7EC00291522 /* SitmaticTests */,
+				3B01AAFE20C6D7EC00291522 /* SitmaticUITests */,
+				3B01AADD20C6D7E900291522 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3B01AADD20C6D7E900291522 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3B01AADC20C6D7E900291522 /* Sitmatic.app */,
+				3B01AAF020C6D7EC00291522 /* SitmaticTests.xctest */,
+				3B01AAFB20C6D7EC00291522 /* SitmaticUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3B01AADE20C6D7E900291522 /* Sitmatic */ = {
+			isa = PBXGroup;
+			children = (
+				3B01AADF20C6D7E900291522 /* AppDelegate.swift */,
+				3B01AAE120C6D7E900291522 /* ViewController.swift */,
+				3B01AAE320C6D7E900291522 /* Main.storyboard */,
+				3B01AAE620C6D7EC00291522 /* Assets.xcassets */,
+				3B01AAE820C6D7EC00291522 /* LaunchScreen.storyboard */,
+				3B01AAEB20C6D7EC00291522 /* Info.plist */,
+			);
+			path = Sitmatic;
+			sourceTree = "<group>";
+		};
+		3B01AAF320C6D7EC00291522 /* SitmaticTests */ = {
+			isa = PBXGroup;
+			children = (
+				3B01AAF420C6D7EC00291522 /* SitmaticTests.swift */,
+				3B01AAF620C6D7EC00291522 /* Info.plist */,
+			);
+			path = SitmaticTests;
+			sourceTree = "<group>";
+		};
+		3B01AAFE20C6D7EC00291522 /* SitmaticUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3B01AAFF20C6D7EC00291522 /* SitmaticUITests.swift */,
+				3B01AB0120C6D7EC00291522 /* Info.plist */,
+			);
+			path = SitmaticUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3B01AADB20C6D7E900291522 /* Sitmatic */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B01AB0420C6D7EC00291522 /* Build configuration list for PBXNativeTarget "Sitmatic" */;
+			buildPhases = (
+				3B01AAD820C6D7E900291522 /* Sources */,
+				3B01AAD920C6D7E900291522 /* Frameworks */,
+				3B01AADA20C6D7E900291522 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Sitmatic;
+			productName = Sitmatic;
+			productReference = 3B01AADC20C6D7E900291522 /* Sitmatic.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3B01AAEF20C6D7EC00291522 /* SitmaticTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B01AB0720C6D7EC00291522 /* Build configuration list for PBXNativeTarget "SitmaticTests" */;
+			buildPhases = (
+				3B01AAEC20C6D7EC00291522 /* Sources */,
+				3B01AAED20C6D7EC00291522 /* Frameworks */,
+				3B01AAEE20C6D7EC00291522 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3B01AAF220C6D7EC00291522 /* PBXTargetDependency */,
+			);
+			name = SitmaticTests;
+			productName = SitmaticTests;
+			productReference = 3B01AAF020C6D7EC00291522 /* SitmaticTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3B01AAFA20C6D7EC00291522 /* SitmaticUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B01AB0A20C6D7EC00291522 /* Build configuration list for PBXNativeTarget "SitmaticUITests" */;
+			buildPhases = (
+				3B01AAF720C6D7EC00291522 /* Sources */,
+				3B01AAF820C6D7EC00291522 /* Frameworks */,
+				3B01AAF920C6D7EC00291522 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3B01AAFD20C6D7EC00291522 /* PBXTargetDependency */,
+			);
+			name = SitmaticUITests;
+			productName = SitmaticUITests;
+			productReference = 3B01AAFB20C6D7EC00291522 /* SitmaticUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3B01AAD420C6D7E900291522 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = Ankleshwar;
+				TargetAttributes = {
+					3B01AADB20C6D7E900291522 = {
+						CreatedOnToolsVersion = 9.3.1;
+					};
+					3B01AAEF20C6D7EC00291522 = {
+						CreatedOnToolsVersion = 9.3.1;
+						TestTargetID = 3B01AADB20C6D7E900291522;
+					};
+					3B01AAFA20C6D7EC00291522 = {
+						CreatedOnToolsVersion = 9.3.1;
+						TestTargetID = 3B01AADB20C6D7E900291522;
+					};
+				};
+			};
+			buildConfigurationList = 3B01AAD720C6D7E900291522 /* Build configuration list for PBXProject "Sitmatic" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3B01AAD320C6D7E900291522;
+			productRefGroup = 3B01AADD20C6D7E900291522 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3B01AADB20C6D7E900291522 /* Sitmatic */,
+				3B01AAEF20C6D7EC00291522 /* SitmaticTests */,
+				3B01AAFA20C6D7EC00291522 /* SitmaticUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3B01AADA20C6D7E900291522 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B01AAEA20C6D7EC00291522 /* LaunchScreen.storyboard in Resources */,
+				3B01AAE720C6D7EC00291522 /* Assets.xcassets in Resources */,
+				3B01AAE520C6D7E900291522 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B01AAEE20C6D7EC00291522 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B01AAF920C6D7EC00291522 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3B01AAD820C6D7E900291522 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B01AAE220C6D7E900291522 /* ViewController.swift in Sources */,
+				3B01AAE020C6D7E900291522 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B01AAEC20C6D7EC00291522 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B01AAF520C6D7EC00291522 /* SitmaticTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B01AAF720C6D7EC00291522 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B01AB0020C6D7EC00291522 /* SitmaticUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3B01AAF220C6D7EC00291522 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3B01AADB20C6D7E900291522 /* Sitmatic */;
+			targetProxy = 3B01AAF120C6D7EC00291522 /* PBXContainerItemProxy */;
+		};
+		3B01AAFD20C6D7EC00291522 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3B01AADB20C6D7E900291522 /* Sitmatic */;
+			targetProxy = 3B01AAFC20C6D7EC00291522 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3B01AAE320C6D7E900291522 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3B01AAE420C6D7E900291522 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3B01AAE820C6D7EC00291522 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3B01AAE920C6D7EC00291522 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3B01AB0220C6D7EC00291522 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3B01AB0320C6D7EC00291522 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3B01AB0520C6D7EC00291522 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Sitmatic/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.opiant.Sitmatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3B01AB0620C6D7EC00291522 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Sitmatic/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.opiant.Sitmatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3B01AB0820C6D7EC00291522 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SitmaticTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.opiant.SitmaticTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sitmatic.app/Sitmatic";
+			};
+			name = Debug;
+		};
+		3B01AB0920C6D7EC00291522 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SitmaticTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.opiant.SitmaticTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sitmatic.app/Sitmatic";
+			};
+			name = Release;
+		};
+		3B01AB0B20C6D7EC00291522 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SitmaticUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.opiant.SitmaticUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Sitmatic;
+			};
+			name = Debug;
+		};
+		3B01AB0C20C6D7EC00291522 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SitmaticUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.opiant.SitmaticUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Sitmatic;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3B01AAD720C6D7E900291522 /* Build configuration list for PBXProject "Sitmatic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B01AB0220C6D7EC00291522 /* Debug */,
+				3B01AB0320C6D7EC00291522 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3B01AB0420C6D7EC00291522 /* Build configuration list for PBXNativeTarget "Sitmatic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B01AB0520C6D7EC00291522 /* Debug */,
+				3B01AB0620C6D7EC00291522 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3B01AB0720C6D7EC00291522 /* Build configuration list for PBXNativeTarget "SitmaticTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B01AB0820C6D7EC00291522 /* Debug */,
+				3B01AB0920C6D7EC00291522 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3B01AB0A20C6D7EC00291522 /* Build configuration list for PBXNativeTarget "SitmaticUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B01AB0B20C6D7EC00291522 /* Debug */,
+				3B01AB0C20C6D7EC00291522 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3B01AAD420C6D7E900291522 /* Project object */;
+}
