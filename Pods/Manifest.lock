@@ -1,0 +1,36 @@
+PODS:
+  - Alamofire (4.7.0)
+  - JWTDecode (2.1.1)
+  - ObjectMapper (3.1.0)
+  - SVProgressHUD (2.2.5)
+  - SwiftKeychainWrapper (3.0.1)
+  - SwiftyJSON (4.0.0)
+  - TextFieldEffects (1.4.0)
+  - Toast-Swift (3.0.1)
+  - YALSideMenu (2.0.1)
+
+DEPENDENCIES:
+  - Alamofire
+  - JWTDecode
+  - ObjectMapper
+  - SVProgressHUD
+  - SwiftKeychainWrapper
+  - SwiftyJSON
+  - TextFieldEffects
+  - Toast-Swift
+  - YALSideMenu
+
+SPEC CHECKSUMS:
+  Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
+  JWTDecode: 83e8b381aafe27158d9f692cbdca2b12d61d460c
+  ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
+  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
+  TextFieldEffects: 4ee41b5216e674d55fb6ac25107bf1af7629176f
+  Toast-Swift: ba0b01b095aada709d915f9beb1d38184a2721c3
+  YALSideMenu: 4d6b90ea44dcdded18a99e46b676e4ad51d9c6bb
+
+PODFILE CHECKSUM: 37e912587d547bcd88e8c3b52ca544ba6d7b5ccc
+
+COCOAPODS: 1.4.0

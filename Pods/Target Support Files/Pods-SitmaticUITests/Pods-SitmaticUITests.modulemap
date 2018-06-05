@@ -1,0 +1,6 @@
+framework module Pods_SitmaticUITests {
+  umbrella header "Pods-SitmaticUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
