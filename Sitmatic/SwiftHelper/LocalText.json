@@ -1,12 +1,9 @@
 {
-    "LandingVC":[
-               {"name": "Jaipur","img":"jaipur.jpg"},
-                 {"name": "Mumbai","img":"mumbai.JPG"},
-               {"name": "Kerala","img":"kerala.jpg"},
-                {"name": "Kolkata","img":"kolkata.jpg"},
-                
-               
-               ],
+    "StartOrderd":[
+                   {"queId": "1","queText": "Please Select your Gander", "option1":"Male","option2":"Female"},
+                   {"queId": "2","queText": "Do you wear reading glasses?", "option1":"Yes","option2":"No"},
+                   {"queId": "3","queText": "Which is your dominant eye?", "option1":"Left","option2":"Right"},
+                ],
     
     "LeftDrawer":[
                  {"name": "Home"},

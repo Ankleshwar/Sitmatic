@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHomeVC" customModule="Sitmatic" customModuleProvider="target">
             <connections>
+                <outlet property="collectionView" destination="ZXt-3B-qTc" id="wDG-zT-101"/>
                 <outlet property="pageController" destination="zhP-DV-z46" id="Yho-kc-m4S"/>
                 <outlet property="scrollViewForSlider" destination="g9M-6s-dM8" id="1Sn-PF-YWJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -62,39 +63,70 @@
                         <constraint firstAttribute="height" constant="46" id="pmu-Pv-Fx6"/>
                     </constraints>
                 </view>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jbB-7W-Ors">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbB-7W-Ors">
                     <rect key="frame" x="0.0" y="66" width="414" height="670"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NxB-8g-P6a">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="670"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="720"/>
                             <subviews>
                                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g9M-6s-dM8">
-                                    <rect key="frame" x="10" y="10" width="394" height="135"/>
+                                    <rect key="frame" x="15" y="15" width="384" height="135"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="135" id="xOT-VN-xKB"/>
                                     </constraints>
                                 </scrollView>
                                 <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="zhP-DV-z46">
-                                    <rect key="frame" x="10" y="113" width="394" height="37"/>
+                                    <rect key="frame" x="15" y="118" width="384" height="37"/>
                                     <color key="pageIndicatorTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="currentPageIndicatorTintColor" red="1" green="0.0" blue="0.14836193389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </pageControl>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eZQ-u4-pna">
+                                    <rect key="frame" x="12" y="165" width="390" height="75"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="75" id="num-a4-8Py"/>
+                                    </constraints>
+                                    <state key="normal" image="orderbtn.png"/>
+                                    <connections>
+                                        <action selector="clickToStartOrder:" destination="-1" eventType="touchUpInside" id="tIQ-b1-d1q"/>
+                                    </connections>
+                                </button>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ZXt-3B-qTc">
+                                    <rect key="frame" x="15" y="255" width="384" height="450"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="A8n-1K-ZM6">
+                                        <size key="itemSize" width="50" height="50"/>
+                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </collectionViewFlowLayout>
+                                    <connections>
+                                        <outlet property="dataSource" destination="-1" id="rA2-oi-HLI"/>
+                                        <outlet property="delegate" destination="-1" id="qhx-47-1SD"/>
+                                    </connections>
+                                </collectionView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="zhP-DV-z46" firstAttribute="centerX" secondItem="g9M-6s-dM8" secondAttribute="centerX" id="5an-vt-78X"/>
-                                <constraint firstItem="g9M-6s-dM8" firstAttribute="top" secondItem="NxB-8g-P6a" secondAttribute="top" constant="10" id="CNY-aL-d5X"/>
-                                <constraint firstAttribute="trailing" secondItem="g9M-6s-dM8" secondAttribute="trailing" constant="10" id="V78-gi-FOZ"/>
+                                <constraint firstItem="ZXt-3B-qTc" firstAttribute="top" secondItem="eZQ-u4-pna" secondAttribute="bottom" constant="15" id="8Og-8o-yOS"/>
+                                <constraint firstItem="g9M-6s-dM8" firstAttribute="top" secondItem="NxB-8g-P6a" secondAttribute="top" constant="15" id="CNY-aL-d5X"/>
+                                <constraint firstAttribute="trailing" secondItem="eZQ-u4-pna" secondAttribute="trailing" constant="12" id="I7i-Cb-kS0"/>
+                                <constraint firstItem="eZQ-u4-pna" firstAttribute="top" secondItem="zhP-DV-z46" secondAttribute="bottom" constant="10" id="P6y-3R-Iot"/>
+                                <constraint firstItem="eZQ-u4-pna" firstAttribute="leading" secondItem="NxB-8g-P6a" secondAttribute="leading" constant="12" id="PU6-2T-7me"/>
+                                <constraint firstAttribute="trailing" secondItem="g9M-6s-dM8" secondAttribute="trailing" constant="15" id="V78-gi-FOZ"/>
+                                <constraint firstAttribute="bottom" secondItem="ZXt-3B-qTc" secondAttribute="bottom" constant="15" id="b2U-Km-NwI"/>
                                 <constraint firstItem="zhP-DV-z46" firstAttribute="bottom" secondItem="g9M-6s-dM8" secondAttribute="bottom" constant="5" id="dma-fT-iee"/>
                                 <constraint firstItem="zhP-DV-z46" firstAttribute="leading" secondItem="g9M-6s-dM8" secondAttribute="leading" id="exy-no-ALJ"/>
-                                <constraint firstItem="g9M-6s-dM8" firstAttribute="leading" secondItem="NxB-8g-P6a" secondAttribute="leading" constant="10" id="m5l-zS-bNB"/>
+                                <constraint firstItem="g9M-6s-dM8" firstAttribute="leading" secondItem="NxB-8g-P6a" secondAttribute="leading" constant="15" id="m5l-zS-bNB"/>
+                                <constraint firstItem="ZXt-3B-qTc" firstAttribute="leading" secondItem="NxB-8g-P6a" secondAttribute="leading" constant="15" id="tQA-y3-Xp2"/>
+                                <constraint firstAttribute="trailing" secondItem="ZXt-3B-qTc" secondAttribute="trailing" constant="15" id="xWt-BF-5SL"/>
                                 <constraint firstItem="zhP-DV-z46" firstAttribute="trailing" secondItem="g9M-6s-dM8" secondAttribute="trailing" id="zuI-XX-jOr"/>
                             </constraints>
                         </view>
                     </subviews>
                     <constraints>
                         <constraint firstItem="NxB-8g-P6a" firstAttribute="leading" secondItem="jbB-7W-Ors" secondAttribute="leading" id="2xF-Mf-YjD"/>
-                        <constraint firstItem="NxB-8g-P6a" firstAttribute="height" secondItem="jbB-7W-Ors" secondAttribute="height" id="AhK-AP-pvF"/>
+                        <constraint firstItem="NxB-8g-P6a" firstAttribute="height" secondItem="jbB-7W-Ors" secondAttribute="height" constant="50" id="AhK-AP-pvF"/>
                         <constraint firstAttribute="bottom" secondItem="NxB-8g-P6a" secondAttribute="bottom" id="BnT-wk-qoE"/>
                         <constraint firstItem="NxB-8g-P6a" firstAttribute="centerX" secondItem="jbB-7W-Ors" secondAttribute="centerX" id="FiH-u7-dLH"/>
                         <constraint firstItem="NxB-8g-P6a" firstAttribute="top" secondItem="jbB-7W-Ors" secondAttribute="top" id="aSm-ge-Eb2"/>
@@ -128,6 +160,7 @@
     <resources>
         <image name="background.jpg" width="2410" height="4100"/>
         <image name="male.png" width="24" height="24"/>
+        <image name="orderbtn.png" width="500" height="116"/>
         <image name="sitmaticlogo.png" width="224" height="50"/>
     </resources>
 </document>
