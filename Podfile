@@ -14,7 +14,7 @@ pod "SwiftKeychainWrapper"
 pod "JWTDecode"
 pod 'YALSideMenu'
 pod 'SVProgressHUD'
-
+pod 'CHIPageControl/Aleppo'
   # Pods for Sitmatic
 
   target 'SitmaticTests' do

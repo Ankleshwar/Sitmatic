@@ -17,12 +17,12 @@ class SSignupVC: BaseViewController {
 
     @IBOutlet weak var txtConfirmPassword: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
-    @IBOutlet weak var imgButtonLogin: UIImageView!
+    //@IBOutlet weak var imgButtonLogin: UIImageView!
     @IBOutlet weak var btnSignup: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.imgButtonLogin.image = UIImage(named: "login.png")
+       // self.imgButtonLogin.image = UIImage(named: "login.png")
         
     }
 

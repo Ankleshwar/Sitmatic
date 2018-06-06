@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.7.0)
+  - CHIPageControl/Aleppo (0.1.5)
   - JWTDecode (2.1.1)
   - ObjectMapper (3.1.0)
   - SVProgressHUD (2.2.5)
@@ -11,6 +12,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - CHIPageControl/Aleppo
   - JWTDecode
   - ObjectMapper
   - SVProgressHUD
@@ -20,8 +22,22 @@ DEPENDENCIES:
   - Toast-Swift
   - YALSideMenu
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - CHIPageControl
+    - JWTDecode
+    - ObjectMapper
+    - SVProgressHUD
+    - SwiftKeychainWrapper
+    - SwiftyJSON
+    - TextFieldEffects
+    - Toast-Swift
+    - YALSideMenu
+
 SPEC CHECKSUMS:
   Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
+  CHIPageControl: 79d19a8ee2e35fa3c1da6533adb5364c77b5cfea
   JWTDecode: 83e8b381aafe27158d9f692cbdca2b12d61d460c
   ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
@@ -31,6 +47,6 @@ SPEC CHECKSUMS:
   Toast-Swift: ba0b01b095aada709d915f9beb1d38184a2721c3
   YALSideMenu: 4d6b90ea44dcdded18a99e46b676e4ad51d9c6bb
 
-PODFILE CHECKSUM: 37e912587d547bcd88e8c3b52ca544ba6d7b5ccc
+PODFILE CHECKSUM: 2fa3873263d722697f77b950aa088ba613d6492f
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.0

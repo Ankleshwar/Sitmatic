@@ -9,14 +9,14 @@
 import UIKit
 
 class SSLoginVC: BaseViewController {
-    @IBOutlet weak var imgButtonLogin: UIImageView!
+   // @IBOutlet weak var imgButtonLogin: UIImageView!
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
     
     @IBOutlet weak var btnLogin: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.imgButtonLogin.image = UIImage(named: "login.png")
+//        self.imgButtonLogin.image = UIImage(named: "login.png")
         
     }
 
@@ -38,6 +38,12 @@ class SSLoginVC: BaseViewController {
         self.btnLogin.layer.borderColor = UIColor.white.cgColor
        
        
+    }
+ 
+    @IBAction func clickToLogin(_ sender: Any) {
+        
+        let vc = SHomeVC(nibName: "SHomeVC", bundle: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 
