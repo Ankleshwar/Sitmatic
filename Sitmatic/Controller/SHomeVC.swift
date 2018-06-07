@@ -74,7 +74,7 @@ class SHomeVC: UIViewController {
     }
     
     @IBAction func clickToStartOrder(_ sender: Any) {
-        let vc = StartOrderd(nibName: "StartOrderd", bundle: nil)
+        let vc = OrderProccessing(nibName: "OrderProccessing", bundle: nil)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

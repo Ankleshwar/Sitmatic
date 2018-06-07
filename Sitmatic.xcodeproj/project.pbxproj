@@ -38,6 +38,10 @@
 		1B6DF8FB20C7F2A400280E84 /* StartOrderd.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B6DF8F920C7F2A400280E84 /* StartOrderd.xib */; };
 		1B6DF8FE20C8102900280E84 /* on.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B6DF8FC20C8102700280E84 /* on.png */; };
 		1B6DF8FF20C8102900280E84 /* off.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B6DF8FD20C8102800280E84 /* off.png */; };
+		1BB9C4C020C8F8E10028A48A /* OrderProccessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9C4BE20C8F8E10028A48A /* OrderProccessing.swift */; };
+		1BB9C4C120C8F8E10028A48A /* OrderProccessing.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BB9C4BF20C8F8E10028A48A /* OrderProccessing.xib */; };
+		1BB9C4C420C8FA620028A48A /* orderProcell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9C4C220C8FA620028A48A /* orderProcell.swift */; };
+		1BB9C4C520C8FA620028A48A /* orderProcell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BB9C4C320C8FA620028A48A /* orderProcell.xib */; };
 		3B01AAE020C6D7E900291522 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B01AADF20C6D7E900291522 /* AppDelegate.swift */; };
 		3B01AAE220C6D7E900291522 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B01AAE120C6D7E900291522 /* ViewController.swift */; };
 		3B01AAE720C6D7EC00291522 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B01AAE620C6D7EC00291522 /* Assets.xcassets */; };
@@ -121,6 +125,10 @@
 		1B6DF8F920C7F2A400280E84 /* StartOrderd.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartOrderd.xib; sourceTree = "<group>"; };
 		1B6DF8FC20C8102700280E84 /* on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = on.png; sourceTree = "<group>"; };
 		1B6DF8FD20C8102800280E84 /* off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = off.png; sourceTree = "<group>"; };
+		1BB9C4BE20C8F8E10028A48A /* OrderProccessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderProccessing.swift; sourceTree = "<group>"; };
+		1BB9C4BF20C8F8E10028A48A /* OrderProccessing.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderProccessing.xib; sourceTree = "<group>"; };
+		1BB9C4C220C8FA620028A48A /* orderProcell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = orderProcell.swift; sourceTree = "<group>"; };
+		1BB9C4C320C8FA620028A48A /* orderProcell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = orderProcell.xib; sourceTree = "<group>"; };
 		2F0CCBF4C24C3822FF13BE5D /* Pods_SitmaticTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SitmaticTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B01AADC20C6D7E900291522 /* Sitmatic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sitmatic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B01AADF20C6D7E900291522 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -203,6 +211,8 @@
 				1B6DF8F420C7F26700280E84 /* QuestionPartOne.swift */,
 				1B6DF8F520C7F26700280E84 /* QuestionPartOne.xib */,
 				1B6DF8E920C7E38200280E84 /* HomeCell.xib */,
+				1BB9C4C220C8FA620028A48A /* orderProcell.swift */,
+				1BB9C4C320C8FA620028A48A /* orderProcell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -291,6 +301,7 @@
 		3B01AB3120C6D98F00291522 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1BB9C4BE20C8F8E10028A48A /* OrderProccessing.swift */,
 				1B2E011C20C79ED400B34645 /* SProfileVC.swift */,
 				3B01AB4520C6F06000291522 /* SSignupVC.swift */,
 				3B01AB0D20C6D87300291522 /* SSLoginVC.swift */,
@@ -304,6 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				1B6DF8F920C7F2A400280E84 /* StartOrderd.xib */,
+				1BB9C4BF20C8F8E10028A48A /* OrderProccessing.xib */,
 				1B2E012120C79EFD00B34645 /* SHomeVC.xib */,
 				3B01AB4720C6F06B00291522 /* SSignupVC.xib */,
 				1B2E011D20C79ED400B34645 /* SProfileVC.xib */,
@@ -479,6 +491,7 @@
 				1B2E011F20C79ED400B34645 /* SProfileVC.xib in Resources */,
 				1B6DF8F720C7F26700280E84 /* QuestionPartOne.xib in Resources */,
 				1B6DF8DF20C7DB2900280E84 /* slider2.jpg in Resources */,
+				1BB9C4C520C8FA620028A48A /* orderProcell.xib in Resources */,
 				1B6DF8EB20C7E38200280E84 /* HomeCell.xib in Resources */,
 				3B01AAEA20C6D7EC00291522 /* LaunchScreen.storyboard in Resources */,
 				3B01AB4420C6E7B400291522 /* login.png in Resources */,
@@ -505,6 +518,7 @@
 				1B2E012B20C7AED800B34645 /* edit.png in Resources */,
 				1B2E012720C7AAE900B34645 /* male.png in Resources */,
 				1B2E012320C79EFD00B34645 /* SHomeVC.xib in Resources */,
+				1BB9C4C120C8F8E10028A48A /* OrderProccessing.xib in Resources */,
 				1B6DF8F320C7E4BC00280E84 /* chair7.jpg in Resources */,
 				1B6DF8FF20C8102900280E84 /* off.png in Resources */,
 				1B6DF8E020C7DB2900280E84 /* slider3.jpg in Resources */,
@@ -643,8 +657,10 @@
 				1B2E012220C79EFD00B34645 /* SHomeVC.swift in Sources */,
 				3B01AB3920C6DAB900291522 /* AppUserObject.m in Sources */,
 				3B01AB0F20C6D87300291522 /* SSLoginVC.swift in Sources */,
+				1BB9C4C020C8F8E10028A48A /* OrderProccessing.swift in Sources */,
 				3B01AB4620C6F06000291522 /* SSignupVC.swift in Sources */,
 				1B6DF8FA20C7F2A400280E84 /* StartOrderd.swift in Sources */,
+				1BB9C4C420C8FA620028A48A /* orderProcell.swift in Sources */,
 				3B01AB2A20C6D98400291522 /* UIExtentions.swift in Sources */,
 				3B01AB2F20C6D98400291522 /* Constaint.swift in Sources */,
 				1B6DF8EA20C7E38200280E84 /* HomeCell.swift in Sources */,

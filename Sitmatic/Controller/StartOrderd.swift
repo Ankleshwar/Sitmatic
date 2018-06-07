@@ -24,11 +24,10 @@ class StartOrderd: BaseViewController, QuestionPartOneDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         arrQuestion = setDataWithLocalJson("StartOrderd") as NSArray as? Array<Dictionary<String, Any>>
         
+         arrQuestion = setDataWithLocalJson("StartOrderd") as NSArray as? Array<Dictionary<String, Any>>
         self.collectionView.register(UINib(nibName: "QuestionPartOne", bundle: Bundle.main), forCellWithReuseIdentifier: "Cell")
-        self.collectionView.isPagingEnabled = true
-       self.collectionView.bounces = false
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -53,8 +52,23 @@ class StartOrderd: BaseViewController, QuestionPartOneDelegate {
     
 
     @IBAction func clickToNext(_ sender: Any) {
-        let index: NSInteger = NSInteger(self.collectionView.contentOffset.x / self.collectionView.frame.size.width)
-        print(index)
+        
+//        self.collectionView.dataSource = self
+//        self.collectionView.delegate = self
+//        let indexpath =  IndexPath(item: 2, section: 0)
+//        self.collectionView.reloadItems(at: [indexpath])
+       
+        
+//        var indexPaths: [NSIndexPath] = []
+//        for i in 0..<collectionView!.numberOfItems(inSection: 0) {
+//            indexPaths.append(NSIndexPath(item: i, section: 0))
+//        }
+//        collectionView?.reloadItems(at: indexPaths as [IndexPath])
+        
+        let numberOfItems = collectionView.numberOfItems(inSection: 0)
+        let indexPaths = [Int](0..<numberOfItems).map{ IndexPath(row: $0, section: 0) }
+        collectionView.reloadItems(at: indexPaths)
+        
     }
     
     @IBAction func clickToPrevious(_ sender: Any) {
@@ -70,9 +84,15 @@ class StartOrderd: BaseViewController, QuestionPartOneDelegate {
     }
     
     func didTapbtnNo(_ sender: UIButton) {
+        
+          print(sender.tag)
      
     }
     
+    
+ 
+    
+
     
 }
 
@@ -80,10 +100,10 @@ class StartOrderd: BaseViewController, QuestionPartOneDelegate {
 extension StartOrderd: UICollectionViewDelegate,UICollectionViewDataSource{
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return self.arrQuestion!.count
+        return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return (self.arrQuestion?.count)!
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -93,10 +113,7 @@ extension StartOrderd: UICollectionViewDelegate,UICollectionViewDataSource{
         cell.lblAnswerOne.text = arrQuestion?[indexPath.row]["option1"] as? String
         cell.lblAnswerTwo.text = arrQuestion?[indexPath.row]["option2"] as? String
         self.lblQuestion.text  =  arrQuestion?[indexPath.row]["queText"] as? String
-        
-        
-        
-        
+
         return cell
     }
     
@@ -110,7 +127,7 @@ extension StartOrderd : UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let collectionViewWidth = collectionView.bounds.width
-        return CGSize(width: collectionViewWidth, height: 120)
+        return CGSize(width: collectionViewWidth, height: collectionView.bounds.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

@@ -27,18 +27,24 @@ class QuestionPartOne: UICollectionViewCell {
     
     @IBOutlet weak var btnNo: UIButton!
     override func awakeFromNib() {
+        self.btnYes.setButtonImage("off.png")
+        self.btnNo.setButtonImage("off.png")
         super.awakeFromNib()
         
     }
     
     @IBAction func clickToBtnYes(_ sender: Any) {
         btnYes.tag = 100
+        self.btnYes.setButtonImage("on.png")
+        self.btnNo.setButtonImage("off.png")
         delegate?.didTapbtnYes(sender as! UIButton)
     }
     
 
     @IBAction func clickToBtnNo(_ sender: Any) {
         btnNo.tag = 200
+        self.btnYes.setButtonImage("off.png")
+        self.btnNo.setButtonImage("on.png")
          delegate?.didTapbtnNo(sender as! UIButton)
     }
     
