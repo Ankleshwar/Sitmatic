@@ -10,11 +10,12 @@ import UIKit
 
 class StartOrderd: BaseViewController, QuestionPartOneDelegate {
 
+    @IBOutlet weak var btnNext: UIButton!
     
     @IBOutlet weak var btnCancle: UIButton!
     @IBOutlet weak var btnPrevious: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var btnNext: UIButton!
+
     @IBOutlet weak var lblQuestion: UILabel!
     
    var arrQuestion: Array<Dictionary<String,Any>>?

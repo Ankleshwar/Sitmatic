@@ -24,7 +24,8 @@ class OrderProccessing: BaseViewController {
     @IBOutlet weak var btnprevious: UIButton!
     var arrayPersnonID: [String] = []
     
-    
+    @IBOutlet weak var btnNext: UIButton!
+     var isPreviousClick : Bool!
     
     var  value: Int = 0
     
@@ -56,6 +57,7 @@ class OrderProccessing: BaseViewController {
         self.isYesbtnTap = false
         self.arrayPersnonID.append("1")
         self.arrayPersnonID.append("2")
+        self.arrayPersnonID.append("3")
         self.btnprevious.isHidden = true
     }
     
@@ -81,7 +83,7 @@ class OrderProccessing: BaseViewController {
             dicNext["option2"] = arrQuestion?[value]["option2"] as? String
             dicNext["queText"] = arrQuestion?[value]["queText"] as? String
             dicNext["queId"] = arrQuestion?[value]["queId"] as? String
-        
+
            self.arrNext.insert(dicNext, at: 0)
            
             
@@ -91,7 +93,7 @@ class OrderProccessing: BaseViewController {
            
             setPreviousData(valueindex: value)
             self.arrAnswer.removeObject(at: value)
-           
+             self.isPreviousClick = true
             
             
         }
@@ -101,15 +103,18 @@ class OrderProccessing: BaseViewController {
     
     func setValuenext(){
         
-        var dicdata  = arrNext[0] as! [String: String]
-        self.lblYes.text = dicdata["option1"]
-        self.lblNo.text = dicdata["option2"]
-        let strID = dicdata["queId"]
-        let quename = dicdata["queText"]
-        self.lblQuestion.text  = strID! + quename!
-        self.btnYes.setButtonImage("off.png")
-        self.btnNo.setButtonImage("off.png")
-        
+//        var dicdata  = arrNext[0] as! [String: String]
+//
+//        
+//        self.lblYes.text = dicdata["option1"]
+//        self.lblNo.text = dicdata["option2"]
+//        let strID = dicdata["queId"]
+//        let quename = dicdata["queText"]
+//        self.lblQuestion.text  = strID! + quename!
+//        self.btnYes.setButtonImage("off.png")
+//        self.btnNo.setButtonImage("off.png")
+//        self.arrQuestion?.append(dicdata)
+//        print(arrQuestion)
     }
     
     
@@ -121,14 +126,11 @@ class OrderProccessing: BaseViewController {
     
     @IBAction func clickToNext(_ sender: Any) {
      
-        if isYesbtnTap == false{
-            ECSAlert().showAlert(message: "Please Select Value", controller: self)
+        if  self.isPreviousClick == true {
+            ECSAlert().showAlert(message: "Please Reselect your data ", controller: self)
         }
-        else{
-                let strId = arrayPersnonID[value]
-            print(strId)
-            print(arrNext)
-           setValuenext()
+        else if self.isYesbtnTap == false  {
+            ECSAlert().showAlert(message: "Please select value ", controller: self)
         }
     }
     
@@ -155,8 +157,14 @@ class OrderProccessing: BaseViewController {
                 ECSAlert().showAlert(message: "Que overThanku", controller: self)
             }
             else{
+                if self.isPreviousClick == true{
+                     setData(value: value)
+                }else{
                     value += 1
                     setData(value: value)
+                }
+                
+                
                 
                 
                 
@@ -179,18 +187,18 @@ class OrderProccessing: BaseViewController {
         self.isYesbtnTap = true
         self.strSelected = "Yes"
         let strId = arrQuestion?[value]["queId"] as? String
-        
+         self.isPreviousClick = false
         
        if strId == "5Y"{
             
             goToNext()
         }
             
-        else if strId == "3"{
+        else if strId == "4"{
             goToNext()
         }
        else{
-        if strId == "2"{
+        if strId == "3"{
             
             if let index = self.arrayPersnonID.index(of: "3Y") {
                 print(index)
@@ -255,11 +263,12 @@ class OrderProccessing: BaseViewController {
         self.btnYes.setButtonImage("off.png")
         self.btnNo.setButtonImage("on.png")
          self.isYesbtnTap = true
+        self.isPreviousClick = false
          self.strSelected = "No"
         let strId = arrQuestion?[value]["queId"] as? String
         
             
-            if strId == "3"{
+            if strId == "4"{
                     goToNext()
             }
             else if strId == "5Y"{
@@ -267,15 +276,15 @@ class OrderProccessing: BaseViewController {
                 goToNext()
             }
             else{
-                if let index = self.arrayPersnonID.index(of: "3") {
+                if let index = self.arrayPersnonID.index(of: "4") {
                     print(index)
                     
                 }
                     
                 else{
-                    self.arrQuestion?.append(["queId": "3","queText": "Which is your dominant eye?", "option1":"Left","option2":"Right"])
+                    self.arrQuestion?.append(["queId": "4","queText": "Which is your dominant eye?", "option1":"Left","option2":"Right"])
                     
-                    self.arrayPersnonID.append("3")
+                    self.arrayPersnonID.append("4")
                 }
                 nextQues()
         }
@@ -303,7 +312,7 @@ class OrderProccessing: BaseViewController {
     func setPreviousData(valueindex : Int){
         
         
-    
+
         
         var dicdata  = arrAnswer[valueindex] as! [String: String]
         
@@ -314,6 +323,10 @@ class OrderProccessing: BaseViewController {
         self.lblQuestion.text  = strID! + quename!
         
         let selctedValue = dicdata["selected"]
+        
+        self.btnYes.setButtonImage("off.png")
+        self.btnNo.setButtonImage("off.png")
+        
         
         if selctedValue == "Yes"{
             self.btnYes.setButtonImage("on.png")
@@ -333,15 +346,16 @@ class OrderProccessing: BaseViewController {
             value = 0
             self.arrayPersnonID.append("1")
             self.arrayPersnonID.append("2")
+             self.arrayPersnonID.append("3")
             arrQuestion = setDataWithLocalJson("StartOrderd") as NSArray as? Array<Dictionary<String, Any>>
             
         }
         
   
         
-        
+        self.isPreviousClick = true
   
-        self.isYesbtnTap = true
+        self.isYesbtnTap = false
     }
     
     
