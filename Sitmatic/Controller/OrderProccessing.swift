@@ -19,7 +19,8 @@ class OrderProccessing: BaseViewController {
     var strSelected : String!
     var dicData = Dictionary<String, String>()
     @IBOutlet weak var lblNo: UILabel!
-    
+    var arrNext = [[:]]
+    var dicNext  = Dictionary<String, String>()
     @IBOutlet weak var btnprevious: UIButton!
     var arrayPersnonID: [String] = []
     
@@ -73,14 +74,45 @@ class OrderProccessing: BaseViewController {
             ECSAlert().showAlert(message: "Thanku", controller: self)
         }
         else{
+            
+            
+            dicNext["selected"] = strSelected
+            dicNext["option1"] = arrQuestion?[value]["option1"] as? String
+            dicNext["option2"] = arrQuestion?[value]["option2"] as? String
+            dicNext["queText"] = arrQuestion?[value]["queText"] as? String
+            dicNext["queId"] = arrQuestion?[value]["queId"] as? String
+        
+           self.arrNext.insert(dicNext, at: 0)
+           
+            
+            self.arrQuestion?.remove(at: value)
+            self.arrayPersnonID.remove(at: value)
             value -= 1
            
             setPreviousData(valueindex: value)
             self.arrAnswer.removeObject(at: value)
-            self.arrayPersnonID.remove(at: value)
+           
+            
+            
         }
         
     }
+    
+    
+    func setValuenext(){
+        
+        var dicdata  = arrNext[0] as! [String: String]
+        self.lblYes.text = dicdata["option1"]
+        self.lblNo.text = dicdata["option2"]
+        let strID = dicdata["queId"]
+        let quename = dicdata["queText"]
+        self.lblQuestion.text  = strID! + quename!
+        self.btnYes.setButtonImage("off.png")
+        self.btnNo.setButtonImage("off.png")
+        
+    }
+    
+    
     
     @IBAction func clickToCancel(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -88,13 +120,16 @@ class OrderProccessing: BaseViewController {
     
     
     @IBAction func clickToNext(_ sender: Any) {
-        
-      
-        nextQues()
-        
-    
-       
-      
+     
+        if isYesbtnTap == false{
+            ECSAlert().showAlert(message: "Please Select Value", controller: self)
+        }
+        else{
+                let strId = arrayPersnonID[value]
+            print(strId)
+            print(arrNext)
+           setValuenext()
+        }
     }
     
     
@@ -114,14 +149,14 @@ class OrderProccessing: BaseViewController {
             
             self.arrAnswer.add(dicData)
             self.btnprevious.isHidden = false
-                value += 1
+            
             
             if (self.arrQuestion?.count == value){
                 ECSAlert().showAlert(message: "Que overThanku", controller: self)
             }
             else{
-                
-                setData(value: value)
+                    value += 1
+                    setData(value: value)
                 
                 
                 
@@ -144,7 +179,17 @@ class OrderProccessing: BaseViewController {
         self.isYesbtnTap = true
         self.strSelected = "Yes"
         let strId = arrQuestion?[value]["queId"] as? String
-      
+        
+        
+       if strId == "5Y"{
+            
+            goToNext()
+        }
+            
+        else if strId == "3"{
+            goToNext()
+        }
+       else{
         if strId == "2"{
             
             if let index = self.arrayPersnonID.index(of: "3Y") {
@@ -157,43 +202,46 @@ class OrderProccessing: BaseViewController {
             
             
         }
-         if strId == "3Y"{
+        if strId == "3Y"{
             
             if let index = self.arrayPersnonID.index(of: "4Y") {
                 print(index)
             }
             else{
-                   self.arrQuestion?.append(["queId": "4Y","queText": "Was it monovision correction? (Was one eye corrected for reading and the other corrected for distance?", "option1":"Yes","option2":"No"])
+                self.arrQuestion?.append(["queId": "4Y","queText": "Was it monovision correction? (Was one eye corrected for reading and the other corrected for distance?", "option1":"Yes","option2":"No"])
                 self.arrayPersnonID.append("4Y")
             }
             
-       
+            
         }
         else if strId == "4Y"{
             
             if let index = self.arrayPersnonID.index(of: "5Y") {
                 print(index)
-               
+                
             }
             else{
-                 self.arrQuestion?.append(["queId": "5Y","queText": "Which eye was corrected for reading?", "option1":"Left","option2":"Right"])
-             
+                self.arrQuestion?.append(["queId": "5Y","queText": "Which eye was corrected for reading?", "option1":"Left","option2":"Right"])
+                
                 self.arrayPersnonID.append("5Y")
-               
+                
             }
-           
-        }
-        
-         else if strId == "5Y"{
             
-            goToNext()
         }
-    
-       else if strId == "3"{
-           goToNext()
-        }
+            
+            
+       
+            nextQues()
         
-     
+        
+    }
+        
+        
+        
+        
+      
+        
+        
     }
     
     
@@ -213,21 +261,32 @@ class OrderProccessing: BaseViewController {
             
             if strId == "3"{
                     goToNext()
-                }   else if let index = self.arrayPersnonID.index(of: "3") {
-                        print(index)
-        
             }
-            
+            else if strId == "5Y"{
+                
+                goToNext()
+            }
             else{
-                self.arrQuestion?.append(["queId": "3","queText": "Which is your dominant eye?", "option1":"Left","option2":"Right"])
-         
-             self.arrayPersnonID.append("3")
+                if let index = self.arrayPersnonID.index(of: "3") {
+                    print(index)
+                    
+                }
+                    
+                else{
+                    self.arrQuestion?.append(["queId": "3","queText": "Which is your dominant eye?", "option1":"Left","option2":"Right"])
+                    
+                    self.arrayPersnonID.append("3")
+                }
+                nextQues()
         }
+        
         
     }
     
     
     func setData(value : Int){
+        
+        
         self.lblYes.text = arrQuestion?[value]["option1"] as? String
         self.lblNo.text = arrQuestion?[value]["option2"] as? String
         let strID = arrQuestion?[value]["queId"] as! String
@@ -267,7 +326,13 @@ class OrderProccessing: BaseViewController {
         
         if strID == "1"{
             self.btnprevious.isHidden = true
+            
+          
+            
+            self.arrayPersnonID.removeAll()
             value = 0
+            self.arrayPersnonID.append("1")
+            self.arrayPersnonID.append("2")
             arrQuestion = setDataWithLocalJson("StartOrderd") as NSArray as? Array<Dictionary<String, Any>>
             
         }
