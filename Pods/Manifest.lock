@@ -8,6 +8,7 @@ PODS:
   - SwiftyJSON (4.0.0)
   - TextFieldEffects (1.4.0)
   - Toast-Swift (3.0.1)
+  - Toaster (2.1.1)
   - YALSideMenu (2.0.1)
 
 DEPENDENCIES:
@@ -20,6 +21,7 @@ DEPENDENCIES:
   - SwiftyJSON
   - TextFieldEffects
   - Toast-Swift
+  - Toaster
   - YALSideMenu
 
 SPEC REPOS:
@@ -33,6 +35,7 @@ SPEC REPOS:
     - SwiftyJSON
     - TextFieldEffects
     - Toast-Swift
+    - Toaster
     - YALSideMenu
 
 SPEC CHECKSUMS:
@@ -45,8 +48,9 @@ SPEC CHECKSUMS:
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   TextFieldEffects: 4ee41b5216e674d55fb6ac25107bf1af7629176f
   Toast-Swift: ba0b01b095aada709d915f9beb1d38184a2721c3
+  Toaster: a6c9532de1ded8105e77376f7dffeb2e12b46dbb
   YALSideMenu: 4d6b90ea44dcdded18a99e46b676e4ad51d9c6bb
 
-PODFILE CHECKSUM: 2fa3873263d722697f77b950aa088ba613d6492f
+PODFILE CHECKSUM: 596196763dfe43efba3a6068d301f4817b1f7113
 
 COCOAPODS: 1.5.0

@@ -25,6 +25,18 @@ class UIExtensions: NSObject {
 
 }
 
+extension UIColor {
+    
+    static var lightBlue: UIColor {
+        return UIColor(red: 76.0 / 255.0, green: 152.0 / 255.0, blue: 213.0 / 255.0, alpha: 1.0)
+    }
+    
+    static var darkBlue: UIColor {
+        return UIColor(red: 62.0 / 255.0, green: 128.0 / 255.0, blue: 180.0 / 255.0, alpha: 1.0)
+    }
+    
+}
+
 extension UITextField {
     func setLeftPaddingPoints(_ amount:CGFloat){
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))

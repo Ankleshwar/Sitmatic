@@ -15,6 +15,8 @@ pod "JWTDecode"
 pod 'YALSideMenu'
 pod 'SVProgressHUD'
 pod 'CHIPageControl/Aleppo'
+pod 'Toaster'
+
   # Pods for Sitmatic
 
   target 'SitmaticTests' do

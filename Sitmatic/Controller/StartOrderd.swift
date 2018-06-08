@@ -8,37 +8,79 @@
 
 import UIKit
 
-class StartOrderd: BaseViewController, QuestionPartOneDelegate {
-
-    @IBOutlet weak var btnNext: UIButton!
+class StartOrderd: BaseViewController {
     
+    
+    
+    @IBOutlet weak var lblQuestionValueCount: UILabel!
+    
+     var strInce: String!
+    @IBOutlet var pickerView: UIPickerView!
+    @IBOutlet weak var btnNext: UIButton!
+    var count = 0
     @IBOutlet weak var btnCancle: UIButton!
     @IBOutlet weak var btnPrevious: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
-
+    @IBOutlet weak var txtField: UITextField!
+    @IBOutlet weak var txtSecondField: UITextField!
+    var arrIteam :Array<Any>?
     @IBOutlet weak var lblQuestion: UILabel!
+    var strValue: String!
+    var arrQuestion = [[String: Any]]()
+    var arrHeightft = [[:]]
+     var arrAnswer = NSMutableArray()
+     var dicData = Dictionary<String, Any>()
+    var arrInch :Array<Any>?
     
-   var arrQuestion: Array<Dictionary<String,Any>>?
+    var isFirstQuestion: Bool!
     
-    
-    
-    
+    @IBOutlet weak var tostView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-         arrQuestion = setDataWithLocalJson("StartOrderd") as NSArray as? Array<Dictionary<String, Any>>
-        self.collectionView.register(UINib(nibName: "QuestionPartOne", bundle: Bundle.main), forCellWithReuseIdentifier: "Cell")
-
+        arrQuestion = (setDataWithLocalJson("NextVersion") as NSArray as? Array<Dictionary<String, Any>>)!
+        lblQuestion.text = arrQuestion[0]["questionText"] as? String
+        self.arrIteam = arrQuestion[0]["value"] as? Array
+        let id : Int = (arrQuestion[count]["questionId"] as? Int)!
+        self.arrInch = arrQuestion[0]["inch"] as? Array
+        self.isFirstQuestion = true
+        self.lblQuestionValueCount.text = String(id) + " " + "of 24 Questions"
+        
+        
+        
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
+        self.pickerView.translatesAutoresizingMaskIntoConstraints = false
+        showPicker()
+         self.btnPrevious.isHidden = true
         
-        
-        
-        setShadow(self.btnPrevious)
-        self.setShadow(self.btnCancle)
-        self.setShadow(self.btnNext)
     }
+    
+    
+    func showPicker(){
+        
+        self.txtField.inputView = self.pickerView
+        
+        let toolBar = UIToolbar().ToolbarPiker(mySelect: #selector(self.donedatePicker))
+        
+        txtField.inputAccessoryView = toolBar
+        
+        
+    }
+    
+    @objc func donedatePicker(){
+        
+        if(self.isFirstQuestion == true){
+            self.txtField.text = strValue + "ft" + " "  + strInce + "in"
+        }
+        else{
+             self.txtField.text = strValue
+        }
+        self.view.endEditing(true)
+    }
+    
+    
     
     func setShadow(_ view: UIButton){
         
@@ -48,93 +90,190 @@ class StartOrderd: BaseViewController, QuestionPartOneDelegate {
     }
     
     @IBAction func clickToBack(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        
     }
     
-
+    
     @IBAction func clickToNext(_ sender: Any) {
         
-//        self.collectionView.dataSource = self
-//        self.collectionView.delegate = self
-//        let indexpath =  IndexPath(item: 2, section: 0)
-//        self.collectionView.reloadItems(at: [indexpath])
        
         
-//        var indexPaths: [NSIndexPath] = []
-//        for i in 0..<collectionView!.numberOfItems(inSection: 0) {
-//            indexPaths.append(NSIndexPath(item: i, section: 0))
-//        }
-//        collectionView?.reloadItems(at: indexPaths as [IndexPath])
+        if self.txtField.text?.count == 0 {
+            
+            
+            self.showToast(message: "Please Pick A Valid Option")
+            
+        }else{
+           
+            self.btnPrevious.isHidden = false
+            if (self.arrQuestion.count == count){
+                self.showToast(message: "Thanku")
+            }
+            else{
+                
+                if(self.isFirstQuestion == true){
+                    dicData["selected"] = strValue + "ft" + " "  + strInce + "in"
+                }
+                else{
+                    dicData["selected"] = strValue
+                }
+                
+                
+                let id : Int = (arrQuestion[count]["questionId"] as? Int)!
+                let arr : Array<Any>? = arrQuestion[count]["value"] as? Array
+                dicData["questionId"] = String(id)
+              
+                dicData["questionText"] = arrQuestion[count]["questionText"] as? String
+              
+            
+                self.isFirstQuestion = false
+                dicData["value"] = arr
+                self.arrAnswer.add(dicData)
+                
+                if id == 12{
+                     self.showToast(message: "Thanku")
+                }
+                else{
+                    count += 1
+                     self.txtField.text = ""
+                    lblQuestion.text = arrQuestion[count]["questionText"] as? String
+                    let id : Int = (arrQuestion[count]["questionId"] as? Int)!
+                    self.lblQuestionValueCount.text = String(id) + " " + "of 24 Questions"
+                    self.arrIteam?.removeAll()
+                    self.arrIteam = arrQuestion[count]["value"] as? Array
+                }
+               
+                
+            }
+            
+            
+        }
+            
         
-        let numberOfItems = collectionView.numberOfItems(inSection: 0)
-        let indexPaths = [Int](0..<numberOfItems).map{ IndexPath(row: $0, section: 0) }
-        collectionView.reloadItems(at: indexPaths)
+        
         
     }
     
     @IBAction func clickToPrevious(_ sender: Any) {
+         count -= 1
+        
+        if (self.arrQuestion.count == 0){
+            ECSAlert().showAlert(message: "Que overThanku", controller: self)
+        }
+        else{
+           
+   
+            var dicdata  = arrAnswer[count] as! [String : Any]
+            let id: String! = dicdata["questionId"] as? String
+            self.lblQuestionValueCount.text = id + " " + "of 24 Questions"
+            if id == "5"{
+                self.btnPrevious.isHidden = true
+                self.isFirstQuestion = true
+            }
+            lblQuestion.text = dicdata["questionText"] as? String
+            self.txtField.text = dicdata["selected"] as? String
+            self.arrIteam = dicdata["value"] as? Array<Any>
+            
+            self.arrAnswer.removeObject(at: count)
+
+        }
+        
     }
     @IBAction func clickToCancle(_ sender: Any) {
+        //self.navigationController?.popViewController(animated: true)
+        
+        _ = SweetAlert().showAlert("Are you sure?", subTitle: "You Order Processing is delete!", style: AlertStyle.warning, buttonTitle:"No", buttonColor:UIColor.colorFromRGB(0xD0D0D0) , otherButtonTitle:  "Yes", otherButtonColor: UIColor.colorFromRGB(0xDD6B55)) { (isOtherButton) -> Void in
+            if isOtherButton == true {
+                
+                _ = SweetAlert().showAlert("Cancelled!", subTitle: "Your Order Processing is safe", style: AlertStyle.error)
+            }
+            else {
+                _ = SweetAlert().showAlert("Deleted!", subTitle: "Your Order Processing has been deleted!", style: AlertStyle.success)
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
     }
     
     
-    func didTapbtnYes(_ sender: UIButton) {
-        
-        print(sender.tag)
-        
-    }
-    
-    func didTapbtnNo(_ sender: UIButton) {
-        
-          print(sender.tag)
-     
-    }
     
     
- 
+    //{"questionId":5.1,"questionText":"Select Your Height in Ic.","value":["1","2","3","4","5","6","7","8","9","10","11"]}
     
-
+    
+    
     
 }
-
-
-extension StartOrderd: UICollectionViewDelegate,UICollectionViewDataSource{
+extension StartOrderd : UIPickerViewDelegate,UIPickerViewDataSource{
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (self.arrQuestion?.count)!
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! QuestionPartOne
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
        
-        cell.delegate = self
-        cell.lblAnswerOne.text = arrQuestion?[indexPath.row]["option1"] as? String
-        cell.lblAnswerTwo.text = arrQuestion?[indexPath.row]["option2"] as? String
-        self.lblQuestion.text  =  arrQuestion?[indexPath.row]["queText"] as? String
+        if self.isFirstQuestion ==  true {
+            return 2
+        }
+        else{
+                 return 1
+        }
+        
+       
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+   
+        if self.isFirstQuestion ==  true {
+            if component == 0{
+                return arrIteam!.count
+            }
+            else{
+                return arrInch!.count
+            }
+        }
+        else{
+             return arrIteam!.count
+        }
+        
+        
+        
+       
+    }
+    
+   
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        
+        if self.isFirstQuestion ==  true {
+            if component == 0{
+                return arrIteam?[row] as? String
+            }
+            else{
+                return arrInch?[row] as? String
+            }
+        }
+        else{
+            return arrIteam?[row] as? String
+        }
+        
+        
+  
+        
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        
+        if self.isFirstQuestion ==  true {
+            if component == 0{
+               self.strValue = arrIteam?[row] as? String
+            }
+            else{
+               self.strInce = arrInch?[row] as? String
+            }
+        }
+        else{
+           self.strValue = arrIteam?[row] as? String
+        }
+        
+        
+    }
+}
 
-        return cell
-    }
-    
-    
-}
-extension StartOrderd : UICollectionViewDelegateFlowLayout{
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let collectionViewWidth = collectionView.bounds.width
-        return CGSize(width: collectionViewWidth, height: collectionView.bounds.height)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-}
+

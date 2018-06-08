@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreLocation
-
+import Toast_Swift
 
 
 
@@ -20,7 +20,7 @@ class BaseViewController: UIViewController {
     var appUserObject: AppUserObject?
     var appDelegate: AppDelegate?
    
-    
+  
  
     
     override func viewDidLoad() {
@@ -33,8 +33,23 @@ class BaseViewController: UIViewController {
         appUserObject = AppUserObject.getFromUserDefault()
      //   appDelegate?.getLocation()
         
+        
+        
     }
 
+    func showToast(view : UIView , msg: String){
+        var style = ToastStyle()
+        style.maxWidthPercentage = 1.0
+        style.messageFont = UIFont(name: "Roboto", size: 15.0)!
+        style.messageColor = UIColor.white
+        style.messageAlignment = .center
+        style.backgroundColor = UIColor.darkBlue
+        view.makeToast(msg, duration: 2.0, position: .top, style: style )
+        
+        
+    }
+    
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
