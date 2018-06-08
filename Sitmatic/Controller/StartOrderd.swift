@@ -189,7 +189,8 @@ class StartOrderd: BaseViewController {
             }
             else {
                 _ = SweetAlert().showAlert("Deleted!", subTitle: "Your Order Processing has been deleted!", style: AlertStyle.success)
-                self.navigationController?.popViewController(animated: true)
+                let vc = SHomeVC(nibName: "SHomeVC", bundle: nil)
+                        self.navigationController?.pushViewController(vc, animated: true)
             }
         }
     }
@@ -275,5 +276,16 @@ extension StartOrderd : UIPickerViewDelegate,UIPickerViewDataSource{
         
     }
 }
+extension StartOrderd: UITextFieldDelegate{
+    
+    
 
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.setLeftPaddingPoints(20)
+    }
+    
+
+    
+}
 
