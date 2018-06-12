@@ -20,7 +20,7 @@ class SHomeVC: UIViewController {
         
          self.collectionView.register(UINib(nibName: "HomeCell", bundle: Bundle.main), forCellWithReuseIdentifier: "Cell")
         self.collectionView.backgroundColor = UIColor.clear
-       // self.collectionView.isScrollEnabled = false
+      
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -34,24 +34,23 @@ class SHomeVC: UIViewController {
     }
     
     func setImageSlider(){
+        
         let scrollViewWidth:CGFloat = self.scrollViewForSlider.frame.width
         let scrollViewHeight:CGFloat = self.scrollViewForSlider.frame.height
         
         let imgOne = UIImageView(frame: CGRect(x:0, y:0,width:scrollViewWidth, height:scrollViewHeight))
         imgOne.image = UIImage(named: "slider1.png")
-        let imgTwo = UIImageView(frame: CGRect(x:scrollViewWidth+5, y:0,width:scrollViewWidth, height:scrollViewHeight))
+        let imgTwo = UIImageView(frame: CGRect(x:scrollViewWidth, y:0,width:scrollViewWidth, height:scrollViewHeight))
         imgTwo.image = UIImage(named: "slider2.jpg")
-        let imgThree = UIImageView(frame: CGRect(x:scrollViewWidth*2+10, y:0,width:scrollViewWidth, height:scrollViewHeight))
+        let imgThree = UIImageView(frame: CGRect(x:scrollViewWidth*2, y:0,width:scrollViewWidth, height:scrollViewHeight))
         imgThree.image = UIImage(named: "slider3.jpg")
-//        let imgFour = UIImageView(frame: CGRect(x:scrollViewWidth*3, y:0,width:scrollViewWidth, height:scrollViewHeight))
-//        imgFour.image = UIImage(named: "Slide 4")
+
         
         self.scrollViewForSlider.addSubview(imgOne)
         self.scrollViewForSlider.addSubview(imgTwo)
         self.scrollViewForSlider.addSubview(imgThree)
-        //self.scrollViewForSlider.addSubview(imgFour)
-        //4
-        self.scrollViewForSlider.contentSize = CGSize(width:self.scrollViewForSlider.frame.width * 3, height:self.scrollViewForSlider.frame.height)
+         self.scrollViewForSlider.contentInset = UIEdgeInsets.zero
+        self.scrollViewForSlider.contentSize = CGSize.init(width:self.scrollViewForSlider.frame.width * 3 + 10, height:self.scrollViewForSlider.frame.height)
         self.scrollViewForSlider.delegate = self
         self.pageController.currentPage = 0
         
@@ -76,8 +75,7 @@ class SHomeVC: UIViewController {
     @IBAction func clickToStartOrder(_ sender: Any) {
         let vc = OrderProccessing(nibName: "OrderProccessing", bundle: nil)
         self.navigationController?.pushViewController(vc, animated: true)
-//        let vc = StartOrderd(nibName: "StartOrderd", bundle: nil)
-//        self.navigationController?.pushViewController(vc, animated: true)
+
         
     }
     
@@ -91,12 +89,12 @@ class SHomeVC: UIViewController {
 
 extension SHomeVC: UIScrollViewDelegate{
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView){
-        // Test the offset and calculate the current page after scrolling ends
+ 
         let pageWidth:CGFloat = scrollView.frame.width
         let currentPage:CGFloat = floor((scrollView.contentOffset.x-pageWidth/2)/pageWidth)+1
-        // Change the indicator
+    
         self.pageController.currentPage = Int(currentPage);
-        // Change the text accordingly
+      
      
     }
 }

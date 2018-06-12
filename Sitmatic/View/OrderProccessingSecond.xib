@@ -14,7 +14,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OrderProccessing" customModule="Sitmatic" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OrderProccessingSecond" customModule="Sitmatic" customModuleProvider="target">
             <connections>
                 <outlet property="btnNext" destination="6xX-0B-v2p" id="7cl-N8-fVc"/>
                 <outlet property="btnNo" destination="i3k-x0-zLe" id="z7Z-fO-yeP"/>

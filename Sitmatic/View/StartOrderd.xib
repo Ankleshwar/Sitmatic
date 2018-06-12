@@ -24,7 +24,6 @@
                 <outlet property="pickerView" destination="1g3-2D-eBI" id="fHR-4X-hBm"/>
                 <outlet property="tostView" destination="pFw-vo-yXW" id="Cgk-5G-lXA"/>
                 <outlet property="txtField" destination="jHd-iL-OwF" id="SXb-Ph-PP3"/>
-                <outlet property="txtSecondField" destination="c6S-Sm-xAf" id="Y2G-OL-fMC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -113,15 +112,15 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Zj-TK-W8c">
                     <rect key="frame" x="20" y="262" width="335" height="345"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Di2-ZO-R4z">
-                            <rect key="frame" x="0.0" y="10" width="335" height="22"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Di2-ZO-R4z">
+                            <rect key="frame" x="11" y="10" width="313" height="22"/>
                             <constraints>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="I4J-4y-HD4"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="  Please Select " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jHd-iL-OwF">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder=" Please Select " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jHd-iL-OwF">
                             <rect key="frame" x="10" y="57" width="315" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="cq7-av-4uh"/>
@@ -133,27 +132,15 @@
                                 <outlet property="delegate" destination="-1" id="Aa7-gF-MIp"/>
                             </connections>
                         </textField>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c6S-Sm-xAf">
-                            <rect key="frame" x="10" y="112" width="315" height="40"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="40" id="w5H-yI-s0O"/>
-                            </constraints>
-                            <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="jHd-iL-OwF" firstAttribute="top" secondItem="Di2-ZO-R4z" secondAttribute="bottom" constant="25" id="0MB-Y1-5aC"/>
                         <constraint firstItem="jHd-iL-OwF" firstAttribute="leading" secondItem="1Zj-TK-W8c" secondAttribute="leading" constant="10" id="EGB-gJ-0Wp"/>
-                        <constraint firstItem="c6S-Sm-xAf" firstAttribute="top" secondItem="jHd-iL-OwF" secondAttribute="bottom" constant="15" id="Khg-rf-OX1"/>
                         <constraint firstItem="Di2-ZO-R4z" firstAttribute="top" secondItem="1Zj-TK-W8c" secondAttribute="top" constant="10" id="YSL-Du-PeI"/>
-                        <constraint firstItem="c6S-Sm-xAf" firstAttribute="leading" secondItem="1Zj-TK-W8c" secondAttribute="leading" constant="10" id="YdU-p9-0EF"/>
-                        <constraint firstAttribute="trailing" secondItem="c6S-Sm-xAf" secondAttribute="trailing" constant="10" id="bdz-c1-B5u"/>
-                        <constraint firstAttribute="trailing" secondItem="Di2-ZO-R4z" secondAttribute="trailing" id="l3h-wq-nRI"/>
+                        <constraint firstAttribute="trailing" secondItem="Di2-ZO-R4z" secondAttribute="trailing" constant="11" id="l3h-wq-nRI"/>
                         <constraint firstAttribute="trailing" secondItem="jHd-iL-OwF" secondAttribute="trailing" constant="10" id="trB-ic-Z5E"/>
-                        <constraint firstItem="Di2-ZO-R4z" firstAttribute="leading" secondItem="1Zj-TK-W8c" secondAttribute="leading" id="xqk-Pb-Yl5"/>
+                        <constraint firstItem="Di2-ZO-R4z" firstAttribute="leading" secondItem="1Zj-TK-W8c" secondAttribute="leading" constant="11" id="xqk-Pb-Yl5"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5JO-ee-oOE">

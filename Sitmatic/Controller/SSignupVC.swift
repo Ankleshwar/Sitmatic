@@ -72,6 +72,8 @@ class SSignupVC: BaseViewController {
     }
     
     @IBAction func clickToSignUp(_ sender: Any) {
+        let vc = SHomeVC(nibName: "SHomeVC", bundle: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 

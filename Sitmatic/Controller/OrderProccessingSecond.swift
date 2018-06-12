@@ -10,14 +10,14 @@ import UIKit
 import Toast_Swift
 
 
-class OrderProccessing: BaseViewController {
+class OrderProccessingSecond: BaseViewController {
     
     @IBOutlet weak var tostView: UIView!
     @IBOutlet weak var tostLable: UILabel!
     
     
     
-    
+    var isFirstQue: Bool!
     @IBOutlet weak var tableView: UITableView!
     var arrQuestion: Array<Dictionary<String,Any>>?
     var arrAnswer = NSMutableArray()
@@ -44,7 +44,7 @@ class OrderProccessing: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        arrQuestion = setDataWithLocalJson("StartOrderd") as NSArray as? Array<Dictionary<String, Any>>
+        arrQuestion = setDataWithLocalJson("OrderProccessingSecond") as NSArray as? Array<Dictionary<String, Any>>
         setInitial()
         
     }
@@ -61,6 +61,7 @@ class OrderProccessing: BaseViewController {
         let quename = arrQuestion?[value]["queText"] as! String
         //self.lblQuestion.text  = strID + " " + quename
         self.lblQuestion.text  =   quename
+         self.lblQuestionValueCount.text = strID + " " + "of 24 Questions"
         
         self.btnYes.setButtonImage("off.png")
         self.btnNo.setButtonImage("off.png")
@@ -68,7 +69,8 @@ class OrderProccessing: BaseViewController {
         self.arrayPersnonID.append("1")
         self.arrayPersnonID.append("2")
         self.arrayPersnonID.append("3")
-        self.btnprevious.isHidden = true
+        //self.btnprevious.isHidden = true
+        self.isFirstQue =  true
     }
     
     
@@ -81,32 +83,40 @@ class OrderProccessing: BaseViewController {
     @IBAction func clickToPrivious(_ sender: Any) {
         print(value)
         
-        if (value == 0){
-            self.btnprevious.isHidden = true
-            ECSAlert().showAlert(message: "Thanku", controller: self)
+        
+        if isFirstQue == true {
+            self.navigationController?.popViewController(animated: true)
         }
         else{
-            
-            
-            dicNext["selected"] = strSelected
-            dicNext["option1"] = arrQuestion?[value]["option1"] as? String
-            dicNext["option2"] = arrQuestion?[value]["option2"] as? String
-            dicNext["queText"] = arrQuestion?[value]["queText"] as? String
-            dicNext["queId"] = arrQuestion?[value]["queId"] as? String
-            
-            self.arrNext.insert(dicNext, at: 0)
-            
-            
-            self.arrQuestion?.remove(at: value)
-            self.arrayPersnonID.remove(at: value)
-            value -= 1
-            
-            setPreviousData(valueindex: value)
-            self.arrAnswer.removeObject(at: value)
-            self.isPreviousClick = true
-            
+            if (value == 0){
+                self.btnprevious.isHidden = true
+                ECSAlert().showAlert(message: "Thanku", controller: self)
+            }
+            else{
+                
+                
+                dicNext["selected"] = strSelected
+                dicNext["option1"] = arrQuestion?[value]["option1"] as? String
+                dicNext["option2"] = arrQuestion?[value]["option2"] as? String
+                dicNext["queText"] = arrQuestion?[value]["queText"] as? String
+                dicNext["queId"] = arrQuestion?[value]["queId"] as? String
+                
+                self.arrNext.insert(dicNext, at: 0)
+                
+                
+                self.arrQuestion?.remove(at: value)
+                self.arrayPersnonID.remove(at: value)
+                value -= 1
+                
+                setPreviousData(valueindex: value)
+                self.arrAnswer.removeObject(at: value)
+                self.isPreviousClick = true
+                
+                
+            }
             
         }
+        
         
     }
     
@@ -140,10 +150,12 @@ class OrderProccessing: BaseViewController {
                 // _ = SweetAlert().showAlert("Cancelled!", subTitle: "Your Order Processing is safe", style: AlertStyle.error)
             }
             else {
-               // _ = SweetAlert().showAlert("Deleted!", subTitle: "Your Order Processing has been deleted!", style: AlertStyle.success)
-                self.navigationController?.popViewController(animated: true)
+                //_ = SweetAlert().showAlert("Deleted!", subTitle: "Your Order Processing has been deleted!", style: AlertStyle.success)
+                let vc = SHomeVC(nibName: "SHomeVC", bundle: nil)
+               self.navigationController?.pushViewController(vc, animated: true)
             }
         }
+        
         
     }
     
@@ -159,8 +171,7 @@ class OrderProccessing: BaseViewController {
         else{
             
             nextQues()
-           // self.btnNext.isHidden = true
-             self.btnNext.isEnabled = false
+            self.btnNext.isEnabled = false
         }
         
     }
@@ -168,7 +179,7 @@ class OrderProccessing: BaseViewController {
     
     func nextQues(){
         
-        
+        self.isFirstQue = false
         
         if isYesbtnTap == false{
             self.showToast(message: "Please select option")
@@ -222,75 +233,19 @@ class OrderProccessing: BaseViewController {
         let strId = arrQuestion?[value]["queId"] as? String
         self.isPreviousClick = false
         
-        if strId == "5Y"{
+        if strId == "15"{
             
             goToNext()
+        }else{
+                 nextQues()
         }
-            
-        else if strId == "4"{
-            goToNext()
-        }
-        else{
-            
-            if strId == "2"{
-                if let index = self.arrayPersnonID.index(of: "3") {
-                    print(index)
-                    
-                }
-                    
-                else{
-                    self.arrQuestion?.append(["queId": "3","queText": "Do you like a chair with armrests?", "option1":"Left","option2":"Right"])
-                    
-                    self.arrayPersnonID.append("3")
-                }
-            }
-                
-                
-            else if strId == "3"{
-                
-                if let index = self.arrayPersnonID.index(of: "3Y") {
-                    print(index)
-                }
-                else{
-                    self.arrQuestion?.append(["queId": "3Y","queText": "Did you have corrective eye surgery?", "option1":"Yes","option2":"No"])
-                    self.arrayPersnonID.append("3Y")
-                }
-                
-                
-            }
-            if strId == "3Y"{
-                
-                if let index = self.arrayPersnonID.index(of: "4Y") {
-                    print(index)
-                }
-                else{
-                    self.arrQuestion?.append(["queId": "4Y","queText": "Was it monovision correction? (Was one eye corrected for reading and the other corrected for distance?", "option1":"Yes","option2":"No"])
-                    self.arrayPersnonID.append("4Y")
-                }
-                
-                
-            }
-            else if strId == "4Y"{
-                
-                if let index = self.arrayPersnonID.index(of: "5Y") {
-                    print(index)
-                    
-                }
-                else{
-                    self.arrQuestion?.append(["queId": "5Y","queText": "Which eye was corrected for reading?", "option1":"Left","option2":"Right"])
-                    
-                    self.arrayPersnonID.append("5Y")
-                    
-                }
-                
-            }
+     
             
             
             
-            nextQues()
+        
             
-            
-        }
+}
         
         
         
@@ -298,17 +253,17 @@ class OrderProccessing: BaseViewController {
         
         
         
-    }
+    
     
     
     func goToNext(){
-        let vc = StartOrderd(nibName: "StartOrderd", bundle: nil)
-        self.navigationController?.pushViewController(vc, animated: true)
+
+        
     }
     
     
     @IBAction func clickToBtnNo(_ sender: Any) {
-         self.btnNext.isEnabled = false
+        self.btnNext.isEnabled = false
         self.btnYes.setButtonImage("off.png")
         self.btnNo.setButtonImage("on.png")
         self.isYesbtnTap = true
@@ -317,42 +272,10 @@ class OrderProccessing: BaseViewController {
         let strId = arrQuestion?[value]["queId"] as? String
         
         
-        if strId == "4"{
-            goToNext()
-        }
-        else if strId == "5Y"{
-            
+        if strId == "15"{
             goToNext()
         }
         else{
-            
-            if strId == "2"{
-                if let index = self.arrayPersnonID.index(of: "3") {
-                    print(index)
-                    
-                }
-                    
-                else{
-                    self.arrQuestion?.append(["queId": "3","queText": "Do you like a chair with armrests?", "option1":"Left","option2":"Right"])
-                    
-                    self.arrayPersnonID.append("3")
-                }
-            }
-            else{
-                if let index = self.arrayPersnonID.index(of: "4") {
-                    print(index)
-                    
-                }
-                    
-                else{
-                    self.arrQuestion?.append(["queId": "4","queText": "Which is your dominant eye?", "option1":"Left","option2":"Right"])
-                    
-                    self.arrayPersnonID.append("4")
-                }
-            }
-            
-            
-            
             nextQues()
         }
         
@@ -367,7 +290,10 @@ class OrderProccessing: BaseViewController {
         self.lblNo.text = arrQuestion?[value]["option2"] as? String
         let strID = arrQuestion?[value]["queId"] as! String
         let quename = arrQuestion?[value]["queText"] as! String
-        //self.lblQuestion.text  = strID + " " + quename
+        
+        
+        
+        
         self.lblQuestion.text  =   quename
         
         self.lblQuestionValueCount.text = strID + " " + "of 24 Questions"
@@ -406,16 +332,15 @@ class OrderProccessing: BaseViewController {
             self.btnNo.setButtonImage("on.png")
         }
         
-        if strID == "1"{
-            self.btnprevious.isHidden = true
+        if strID == "13"{
+            
             
             self.btnNext.isEnabled = true
-            
+            self.isFirstQue = true
             self.arrayPersnonID.removeAll()
             value = 0
-            self.arrayPersnonID.append("1")
-            self.arrayPersnonID.append("2")
-            self.arrayPersnonID.append("3")
+            self.arrayPersnonID.append("13")
+         
             arrQuestion = setDataWithLocalJson("StartOrderd") as NSArray as? Array<Dictionary<String, Any>>
             
         }

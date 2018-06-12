@@ -45,15 +45,15 @@ class StartOrderd: BaseViewController {
         self.arrInch = arrQuestion[0]["inch"] as? Array
         self.isFirstQuestion = true
         self.lblQuestionValueCount.text = String(id) + " " + "of 24 Questions"
-        
-        
+        self.strInce = "0"
+        self.strValue = "3"
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.pickerView.translatesAutoresizingMaskIntoConstraints = false
         showPicker()
-         self.btnPrevious.isHidden = true
+         self.btnPrevious.isHidden = false
         
     }
     
@@ -72,12 +72,24 @@ class StartOrderd: BaseViewController {
     @objc func donedatePicker(){
         
         if(self.isFirstQuestion == true){
-            self.txtField.text = strValue + "ft" + " "  + strInce + "in"
+            if strValue == "ft"{
+                self.showToast(message: "Please select a valid value")
+            }else if strInce == "in" {
+                self.showToast(message: "Please select a valid value")
+            }
+            else{
+                 self.txtField.text = strValue + "ft" + " "  + strInce + "in"
+            }
+                
+                
+           
         }
         else{
              self.txtField.text = strValue
         }
         self.view.endEditing(true)
+       
+        
     }
     
     
@@ -101,18 +113,18 @@ class StartOrderd: BaseViewController {
         if self.txtField.text?.count == 0 {
             
             
-            self.showToast(message: "Please Pick A Valid Option")
+            self.showToast(message: "Please select a valid option")
             
         }else{
            
             self.btnPrevious.isHidden = false
             if (self.arrQuestion.count == count){
-                self.showToast(message: "Thanku")
+                //self.showToast(message: "Thanku")
             }
             else{
                 
                 if(self.isFirstQuestion == true){
-                    dicData["selected"] = strValue + "ft" + " "  + strInce + "in"
+                    dicData["selected"] = self.txtField.text
                 }
                 else{
                     dicData["selected"] = strValue
@@ -130,8 +142,13 @@ class StartOrderd: BaseViewController {
                 dicData["value"] = arr
                 self.arrAnswer.add(dicData)
                 
+                
+                
                 if id == 12{
-                     self.showToast(message: "Thanku")
+                    
+                    
+                    let vc = OrderProccessingSecond(nibName: "OrderProccessingSecond", bundle: nil)
+                    self.navigationController?.pushViewController(vc, animated: true)
                 }
                 else{
                     count += 1
@@ -155,44 +172,70 @@ class StartOrderd: BaseViewController {
     }
     
     @IBAction func clickToPrevious(_ sender: Any) {
-         count -= 1
         
-        if (self.arrQuestion.count == 0){
-            ECSAlert().showAlert(message: "Que overThanku", controller: self)
-        }
-        else{
-           
-   
-            var dicdata  = arrAnswer[count] as! [String : Any]
-            let id: String! = dicdata["questionId"] as? String
-            self.lblQuestionValueCount.text = id + " " + "of 24 Questions"
-            if id == "5"{
-                self.btnPrevious.isHidden = true
-                self.isFirstQuestion = true
-            }
-            lblQuestion.text = dicdata["questionText"] as? String
-            self.txtField.text = dicdata["selected"] as? String
-            self.arrIteam = dicdata["value"] as? Array<Any>
+        
+       
+        if isFirstQuestion ==  true{
+            self.navigationController?.popViewController(animated: true)
+        }else{
+            count -= 1
             
-            self.arrAnswer.removeObject(at: count)
-
+            if (self.arrQuestion.count == 0){
+                
+            }
+            else{
+                
+                
+                var dicdata  = arrAnswer[count] as! [String : Any]
+                let id: String! = dicdata["questionId"] as? String
+                self.lblQuestionValueCount.text = id + " " + "of 24 Questions"
+                if id == "5"{
+                    self.btnPrevious.isHidden =  false
+                    self.isFirstQuestion = true
+                    
+                }
+                lblQuestion.text = dicdata["questionText"] as? String
+                self.txtField.text = dicdata["selected"] as? String
+                self.arrIteam = dicdata["value"] as? Array<Any>
+                
+             
+                if self.isFirstQuestion == true{
+                    let strMain = dicdata["selected"] as! String
+                    let fullNameArr = strMain.components(separatedBy: " ")
+                    self.strValue =  fullNameArr[0]
+                    self.strInce = fullNameArr[1]
+                }
+                else{
+                    self.strValue = self.txtField.text
+                }
+                
+                
+           
+                
+                self.arrAnswer.removeObject(at: count)
+                
+            }
         }
+        
+        
+
         
     }
     @IBAction func clickToCancle(_ sender: Any) {
-        //self.navigationController?.popViewController(animated: true)
+      
         
-        _ = SweetAlert().showAlert("Are you sure?", subTitle: "You Order Processing is delete!", style: AlertStyle.warning, buttonTitle:"No", buttonColor:UIColor.colorFromRGB(0xD0D0D0) , otherButtonTitle:  "Yes", otherButtonColor: UIColor.colorFromRGB(0xDD6B55)) { (isOtherButton) -> Void in
+        _ = SweetAlert().showAlert("Confirm Cancellation", subTitle: "Are you sure you want to cancel this order?", style: AlertStyle.warning, buttonTitle:"No", buttonColor:UIColor.darkBlue , otherButtonTitle:  "Yes", otherButtonColor: UIColor.colorFromRGB(0xDD6B55)) { (isOtherButton) -> Void in
             if isOtherButton == true {
                 
-                _ = SweetAlert().showAlert("Cancelled!", subTitle: "Your Order Processing is safe", style: AlertStyle.error)
+                // _ = SweetAlert().showAlert("Cancelled!", subTitle: "Your Order Processing is safe", style: AlertStyle.error)
             }
             else {
-                _ = SweetAlert().showAlert("Deleted!", subTitle: "Your Order Processing has been deleted!", style: AlertStyle.success)
+               // _ = SweetAlert().showAlert("Deleted!", subTitle: "Your Order Processing has been deleted!", style: AlertStyle.success)
                 let vc = SHomeVC(nibName: "SHomeVC", bundle: nil)
-                        self.navigationController?.pushViewController(vc, animated: true)
+                self.navigationController?.pushViewController(vc, animated: true)
             }
         }
+        
     }
     
     
@@ -282,7 +325,8 @@ extension StartOrderd: UITextFieldDelegate{
 
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.setLeftPaddingPoints(20)
+        textField.setLeftPaddingPoints(5)
+        self.pickerView.reloadAllComponents()
     }
     
 

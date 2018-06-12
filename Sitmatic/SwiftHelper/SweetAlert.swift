@@ -65,16 +65,16 @@ open class SweetAlert: UIViewController {
 
     fileprivate func setupTitleLabel() {
         titleLabel.text = ""
-        titleLabel.numberOfLines = 1
+        titleLabel.numberOfLines = 0
         titleLabel.textAlignment = .center
-        titleLabel.font = UIFont(name: kFont, size:25)
+        titleLabel.font = UIFont(name: kFont, size:20)
         titleLabel.textColor = UIColor.colorFromRGB(0x575757)
     }
     
     fileprivate func setupSubtitleTextView() {
         subTitleTextView.text = ""
         subTitleTextView.textAlignment = .center
-        subTitleTextView.font = UIFont(name: kFont, size:16)
+        subTitleTextView.font = UIFont(name: kFont, size:14)
         subTitleTextView.textColor = UIColor.colorFromRGB(0x797979)
         subTitleTextView.isEditable = false
     }
@@ -110,7 +110,7 @@ open class SweetAlert: UIViewController {
             let subtitleString = subTitleTextView.text! as NSString
             let rect = subtitleString.boundingRect(with: CGSize(width: width, height: 0.0), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: nil, context: nil)
             textViewHeight = ceil(rect.size.height) + 10.0
-            subTitleTextView.frame = CGRect(x: x, y: y, width: width, height: textViewHeight)
+            subTitleTextView.frame = CGRect(x: x - 5, y: y, width: width + 20, height: textViewHeight)
             contentView.addSubview(subTitleTextView)
             y += textViewHeight + kHeightMargin
         }
@@ -274,7 +274,7 @@ open class SweetAlert: UIViewController {
             if buttonTitle.isEmpty == false {
                 let button: UIButton = UIButton(type: UIButtonType.custom)
                 button.setTitle(buttonTitle, for: UIControlState())
-                button.backgroundColor = buttonColor
+                button.setTitleColor(buttonColor, for: .normal)
                 button.isUserInteractionEnabled = true
                 button.tag = 0
                 buttons.append(button)
@@ -283,7 +283,7 @@ open class SweetAlert: UIViewController {
             if otherButtonTitle != nil && otherButtonTitle!.isEmpty == false {
                 let button: UIButton = UIButton(type: UIButtonType.custom)
                 button.setTitle(otherButtonTitle, for: UIControlState())
-                button.backgroundColor = otherButtonColor
+                button.setTitleColor(otherButtonColor, for: .normal)
                 button.addTarget(self, action: #selector(SweetAlert.pressed(_:)), for: UIControlEvents.touchUpInside)
                 button.tag = 1
                 buttons.append(button)
