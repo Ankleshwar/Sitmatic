@@ -126,7 +126,7 @@ extension UITextField {
                 text = ""
 }
     @objc func doneWithNumberPad() {
-      
+       resignFirstResponder()
     }
     
  
@@ -221,7 +221,11 @@ extension UITextView {
     
     
     
-    
+extension String {
+    func isEqualToString(find: String) -> Bool {
+        return String(format: self) == find
+    }
+}
     
     
 

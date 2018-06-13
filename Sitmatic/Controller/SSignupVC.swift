@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class SSignupVC: BaseViewController {
 
@@ -27,11 +28,9 @@ class SSignupVC: BaseViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-//         print( btnLogin.frame.size.width - (imgButtonLogin.frame.size.width + 15.0))
-//
-//        btnLogin.imageEdgeInsets = UIEdgeInsetsMake(15, btnLogin.frame.size.width - (imgButtonLogin.frame.size.width + 15.0), 0.0, 0.0);
-//        btnLogin.titleEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, 0.0, imgButtonLogin.frame.size.width);
+
         
+         self.txtMobile.setNumberKeybord(self, withLeftTitle: "Cancel", andRightTitle: "Done")
         setCorveTextField()
         
     }
@@ -72,10 +71,80 @@ class SSignupVC: BaseViewController {
     }
     
     @IBAction func clickToSignUp(_ sender: Any) {
-        let vc = SHomeVC(nibName: "SHomeVC", bundle: nil)
-        self.navigationController?.pushViewController(vc, animated: true)
+        let strname = self.txtEmail.text
+        let isValid = self.isValidEmail(testStr: strname!)
+        
+        let firstPassword = self.txtPassword.text
+        let secondPassword = self.txtConfirmPassword.text
+
+        if self.txtName.text?.count == 0 {
+            self.showToast(message: "Please enter your name")
+        }else if self.txtEmail.text?.count == 0{
+             self.showToast(message: "Please enter your email address")
+        }
+        else if isValid == false{
+            self.showToast(message: "Please enter valid email address")
+        }else if self.txtPassword.text?.count == 0{
+            self.showToast(message: "Please enter your password address")
+        }
+        else if self.txtConfirmPassword.text?.count == 0{
+            self.showToast(message: "Please enter your confirm password address")
+        }else if  (firstPassword!.isEqualToString(find: secondPassword!)) == false {
+             self.showToast(message: "Please enter same password address")
+        }else{
+//            let vc = SHomeVC(nibName: "SHomeVC", bundle: nil)
+//            self.navigationController?.pushViewController(vc, animated: true)
+            callSignUpApi()
+        }
+        
+        
+        
     }
     
+//    func isValidEmail(testStr:String) -> Bool {
+//        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+//
+//        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+//        return emailTest.evaluate(with: testStr)
+//    }
+    
+    
+   func callSignUpApi(){
+    let dic = ["name": self.txtName.text,
+               "email" : self.txtEmail.text,
+               "password" : self.txtPassword.text,
+               "mobile": self.txtMobile.text]
+    
+    SVProgressHUD.show()
+    
+    ServiceClass().signUpDetails(strUrl: "register", param: dic as! [String : String]) { error, dicdata in
+        
+        if error != nil{
+            print(dicdata)
+        
+            let vc = SHomeVC(nibName: "SHomeVC", bundle: nil)
+            self.navigationController?.pushViewController(vc, animated: true)
+            SVProgressHUD.dismiss()
+        }else{
+                print(dicdata)
+            
+      
+            _ = SweetAlert().showAlert("Registration Status", subTitle: "Please verify the email address and login again", style: AlertStyle.success, buttonTitle:"", buttonColor:UIColor.darkBlue , otherButtonTitle:  "Ok", otherButtonColor: UIColor.colorFromRGB(0xDD6B55)) { (isOtherButton) -> Void in
+                if isOtherButton == true {
+                     self.navigationController?.popViewController(animated: true)
+                   
+                }
+                else {
+                   
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+            
+            SVProgressHUD.dismiss()
+        }
+        
+    }
+}
 
 }
 
@@ -90,10 +159,12 @@ extension SSignupVC: UITextFieldDelegate{
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.setLeftPaddingPoints(20)
+        textField.setLeftPaddingPoints(15)
+        self.moveTextField(textField: textField, moveDistance: -10, up: true)
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        self.moveTextField(textField: textField, moveDistance: -10, up: true)
        
     }
     

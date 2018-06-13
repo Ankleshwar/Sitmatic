@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class SSLoginVC: BaseViewController {
    // @IBOutlet weak var imgButtonLogin: UIImageView!
@@ -25,6 +26,9 @@ class SSLoginVC: BaseViewController {
 //
 //        btnLogin.imageEdgeInsets = UIEdgeInsetsMake(15, btnLogin.frame.size.width - (imgButtonLogin.frame.size.width + 15.0), 0.0, 0.0);
 //        btnLogin.titleEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, 0.0, imgButtonLogin.frame.size.width);
+        
+        UserDefaults.standard.set(false, forKey: "isLogin")
+        UserDefaults.standard.synchronize()
     }
     
     override func viewDidLayoutSubviews() {
@@ -41,15 +45,85 @@ class SSLoginVC: BaseViewController {
     }
  
     @IBAction func clickToLogin(_ sender: Any) {
+        let strname = self.txtEmail.text
+        let isValid = self.isValidEmail(testStr: strname!)
+        if self.txtEmail.text?.count == 0{
+            self.showToast(message: "Please enter email address")
+        }else if self.txtPassword.text?.count == 0 {
+            
+            self.showToast(message: "Please enter password address")
+            
+        }else if isValid == false{
+            self.showToast(message: "Please enter valid email address")
+        }else{
+           
+            callLoginApi()
+        }
         
-        let vc = SHomeVC(nibName: "SHomeVC", bundle: nil)
-        self.navigationController?.pushViewController(vc, animated: true)
+        
+        
+   
     }
     
 
     @IBAction func clickToSignUp(_ sender: Any) {
         let vc = SSignupVC(nibName: "SSignupVC", bundle: nil)
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
+    
+    func callLoginApi(){
+        let dic = [
+                   "email" : self.txtEmail.text,
+                   "password" : self.txtPassword.text,
+                   ]
+        
+        SVProgressHUD.show()
+        
+        ServiceClass().getLoginDetails(strUrl: "login", param: dic as! [String : String]) { error, dicdata in
+            
+            if error != nil{
+                print(dicdata)
+                
+              
+                SVProgressHUD.dismiss()
+            }else{
+              
+                
+                if dicdata["status"] as! String == "Ok"{
+                      print(dicdata)
+                    
+                    if let user = dicdata["successData"] as? [String : Any] {
+                        self.appUserObject = AppUserObject.instance(from: dicdata)
+                        self.appUserObject?.userName = user["name"] as! String
+                        self.appUserObject?.access_token = user["token"] as! String
+                        self.appUserObject?.email = user["email"] as! String
+                        self.appUserObject?.mobile = user["mobile"] as! String
+                        UserDefaults.standard.set(true, forKey: "isLogin")
+                        UserDefaults.standard.synchronize()
+                        let vc = SHomeVC(nibName: "SHomeVC", bundle: nil)
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                    
+                
+                }
+                else{
+                    
+                      print(dicdata)
+                    
+                    self.showToast(message: dicdata["errorData"] as! String)
+                }
+                
+                
+                
+              
+                }
+                
+                SVProgressHUD.dismiss()
+            }
+            
+        
     }
     
 

@@ -27,7 +27,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func setRootController(){
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        viewController = SSLoginVC(nibName: "SSLoginVC", bundle: nil)
+        
+        let islogin = UserDefaults.standard.bool(forKey: "isLogin")
+        if islogin == true{
+            viewController = SHomeVC(nibName: "SHomeVC", bundle: nil)
+        }else{
+            viewController = SSLoginVC(nibName: "SSLoginVC", bundle: nil)
+        }
+        
+        
         navigationController = UINavigationController(rootViewController: (viewController)!)
         self.window?.rootViewController = self.navigationController
         navigationController?.navigationBar.isHidden = true
