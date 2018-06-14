@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             viewController = SSLoginVC(nibName: "SSLoginVC", bundle: nil)
         }
         
-        
+        // viewController = SSLoginVC(nibName: "SSLoginVC", bundle: nil)
         navigationController = UINavigationController(rootViewController: (viewController)!)
         self.window?.rootViewController = self.navigationController
         navigationController?.navigationBar.isHidden = true

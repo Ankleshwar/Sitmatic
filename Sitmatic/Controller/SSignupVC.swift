@@ -14,6 +14,7 @@ class SSignupVC: BaseViewController {
     @IBOutlet weak var txtName: UITextField!
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtMobile: UITextField!
+    @IBOutlet weak var scrollView: UIScrollView!
     
 
     @IBOutlet weak var txtConfirmPassword: UITextField!
@@ -92,8 +93,7 @@ class SSignupVC: BaseViewController {
         }else if  (firstPassword!.isEqualToString(find: secondPassword!)) == false {
              self.showToast(message: "Please enter same password address")
         }else{
-//            let vc = SHomeVC(nibName: "SHomeVC", bundle: nil)
-//            self.navigationController?.pushViewController(vc, animated: true)
+
             callSignUpApi()
         }
         
@@ -101,12 +101,7 @@ class SSignupVC: BaseViewController {
         
     }
     
-//    func isValidEmail(testStr:String) -> Bool {
-//        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-//
-//        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-//        return emailTest.evaluate(with: testStr)
-//    }
+
     
     
    func callSignUpApi(){
@@ -128,17 +123,29 @@ class SSignupVC: BaseViewController {
         }else{
                 print(dicdata)
             
-      
-            _ = SweetAlert().showAlert("Registration Status", subTitle: "Please verify the email address and login again", style: AlertStyle.success, buttonTitle:"", buttonColor:UIColor.darkBlue , otherButtonTitle:  "Ok", otherButtonColor: UIColor.colorFromRGB(0xDD6B55)) { (isOtherButton) -> Void in
-                if isOtherButton == true {
-                     self.navigationController?.popViewController(animated: true)
-                   
+            if dicdata["status"] as! String == "Ok"{
+                _ = SweetAlert().showAlert("Registration Status", subTitle: "Please verify the email address and login again", style: AlertStyle.success, buttonTitle:"", buttonColor:UIColor.darkBlue , otherButtonTitle:  "Ok", otherButtonColor: UIColor.colorFromRGB(0xDD6B55)) { (isOtherButton) -> Void in
+                    if isOtherButton == true {
+                        self.navigationController?.popViewController(animated: true)
+                        
+                    }
+                    else {
+                        
+                        self.navigationController?.popViewController(animated: true)
+                    }
                 }
-                else {
-                   
-                    self.navigationController?.popViewController(animated: true)
-                }
+            }else{
+                let dicDataError = dicdata["errorData"] as? [String : Any]
+                
+                let arry: NSArray = dicDataError!["email"] as! NSArray
+                let strName = arry[0] as! String
+                print(strName)
+                self.showToast(message: strName)
+                
             }
+            
+      
+   
             
             SVProgressHUD.dismiss()
         }
@@ -160,11 +167,12 @@ extension SSignupVC: UITextFieldDelegate{
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.setLeftPaddingPoints(15)
-        self.moveTextField(textField: textField, moveDistance: -10, up: true)
+      //  self.moveTextField(textField: textField, moveDistance: -10, up: true)
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        self.moveTextField(textField: textField, moveDistance: -10, up: true)
+        //self.moveTextField(textField: textField, moveDistance: -10, up: true)
+        self.scrollView.scrollToBottom(animated: true)
        
     }
     

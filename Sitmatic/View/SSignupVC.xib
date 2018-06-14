@@ -17,6 +17,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SSignupVC" customModule="Sitmatic" customModuleProvider="target">
             <connections>
                 <outlet property="btnSignup" destination="K7I-j6-PTe" id="HXI-Oa-22J"/>
+                <outlet property="scrollView" destination="p4F-h5-JFK" id="JZf-x6-5IS"/>
                 <outlet property="txtConfirmPassword" destination="3ey-d8-4wn" id="jPE-Bi-SVW"/>
                 <outlet property="txtEmail" destination="Mb7-pg-7Wy" id="P4k-5t-o3z"/>
                 <outlet property="txtMobile" destination="Thl-f4-TlD" id="1zj-YF-Goh"/>
@@ -188,7 +189,7 @@
                 <constraint firstItem="p4F-h5-JFK" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="ynC-Rv-ydY"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="-12" y="-177"/>
+            <point key="canvasLocation" x="-105" y="-406"/>
         </view>
     </objects>
     <resources>

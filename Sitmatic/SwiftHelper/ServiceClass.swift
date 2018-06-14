@@ -97,68 +97,67 @@ class ServiceClass: NSObject {
     
     
     
-    
-    
-    
-    
-    
-    
-    public func getDataForSearchCity(strUrl:String,prama:[String:String],completion: @escaping (arrayBlock)){
-      
+    public func logoutUser(strUrl:String,param:[String:String],completion:@escaping (dictionaryBlock)){
         
-        requestGETURL(baseURL+strUrl, params: nil, headers: nil, success: {
-                    (JSONResponse) -> Void in
-                    print(JSONResponse)
-  
-   
-//
-//            for rootdic  in JSONResponse.arrayObject! {
-//                if let obj = rootdic as? [String: Any] {
-//                   // let object = PlaceObject(JSON: obj)
-//                  //  self.arrIteam.append(object)
-//                }
-//
-//            }
-//
-          
-            completion(nil,self.arrIteam)
-           
-     
+        print(param)
+        
+         requestGETURL(baseURL+strUrl, params: param as [String : AnyObject], headers: nil, success: {
+            (JSONResponse) -> Void in
+            print(JSONResponse)
             
-            }){
+            
+            
+            
+            
+            
+            completion(nil,JSONResponse.dictionaryObject!)
+            
+            
+            
+        }) {
             (error) -> Void in
-                
-                completion(error,[])
-                       
+            
+            completion(error,[:])
+            
         }
-        
-        //            for responseDic  in    JSONResponse["wsResponse"]{
-        //                print(responseDic)
-        //                if "0" == (responseDic.0){
-        //                    for rootdic  in JSONResponse.dictionaryObject! {
-        //                        print(rootdic)
-        //                        if rootdic is [String: Any] {
-        //
-        //                              print(rootdic)
-        //
-        //                        }
-        //
-        //                    }
-        //
-        //
-        //
-        //                completion(nil,self.arrIteam)
-        //            }
-        //
-        //
-        //            }
-        //
-
-       
-        
-        
     }
     
+    
+    
+    
+    public func verifieEmail(strUrl:String,param:[String:String],completion:@escaping (dictionaryBlock)){
+        
+        print(param)
+        
+        requestPOSTURL(baseURL+strUrl, params: param as [String : AnyObject], headers: nil, success: {
+            (JSONResponse) -> Void in
+            print(JSONResponse)
+            
+            
+            
+            
+            
+            
+            completion(nil,JSONResponse.dictionaryObject!)
+            
+            
+            
+        }) {
+            (error) -> Void in
+            
+            completion(error,[:])
+            
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+
     
     
     public func getDataBusList(strUrl:String,prama:[String: AnyObject],completion: @escaping (arrayBlock)){

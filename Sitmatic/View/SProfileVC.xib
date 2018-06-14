@@ -17,6 +17,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SProfileVC" customModule="Sitmatic" customModuleProvider="target">
             <connections>
                 <outlet property="btnLogOut" destination="JhG-ZN-bfF" id="RBB-bR-zKd"/>
+                <outlet property="lblUserEmail" destination="udZ-R9-uLU" id="T9S-e7-xZg"/>
+                <outlet property="lblUserName" destination="drC-nU-kJC" id="3q8-nh-pRB"/>
+                <outlet property="txtAddress" destination="eAv-eQ-6ES" id="OU6-DE-qEi"/>
+                <outlet property="txtMobile" destination="DPf-YB-Dav" id="5YC-9M-Pav"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewProfile" destination="Ag2-E8-dKJ" id="vQU-2d-1HO"/>
             </connections>
@@ -117,6 +121,9 @@
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                             <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="-1" id="7nV-vV-NZ6"/>
+                                            </connections>
                                         </textField>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zIW-FD-fEo">
                                             <rect key="frame" x="4" y="201" width="327" height="1"/>
@@ -131,6 +138,9 @@
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                                             <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="-1" id="BIe-Df-Uic"/>
+                                            </connections>
                                         </textField>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -171,6 +181,9 @@
                                     <state key="normal" title="Logout">
                                         <color key="titleColor" red="1" green="0.0" blue="0.14836193389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
+                                    <connections>
+                                        <action selector="clickToLogOut:" destination="-1" eventType="touchUpInside" id="A0d-DR-t1x"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -222,7 +235,7 @@
                 <constraint firstItem="fXR-Im-ACq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="zLL-f6-NzV"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="486.5" y="39.5"/>
+            <point key="canvasLocation" x="270" y="21"/>
         </view>
     </objects>
     <resources>

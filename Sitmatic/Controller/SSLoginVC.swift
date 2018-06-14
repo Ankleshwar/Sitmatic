@@ -65,7 +65,12 @@ class SSLoginVC: BaseViewController {
    
     }
     
-
+    @IBAction func clickToForgot(_ sender: Any) {
+        let vc = SForgotPass(nibName: "SForgotPass", bundle: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    
     @IBAction func clickToSignUp(_ sender: Any) {
         let vc = SSignupVC(nibName: "SSignupVC", bundle: nil)
         self.navigationController?.pushViewController(vc, animated: true)
@@ -102,6 +107,7 @@ class SSLoginVC: BaseViewController {
                         self.appUserObject?.mobile = user["mobile"] as! String
                         UserDefaults.standard.set(true, forKey: "isLogin")
                         UserDefaults.standard.synchronize()
+                        self.appUserObject?.saveToUserDefault()
                         let vc = SHomeVC(nibName: "SHomeVC", bundle: nil)
                         self.navigationController?.pushViewController(vc, animated: true)
                     }

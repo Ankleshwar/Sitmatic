@@ -91,6 +91,9 @@
                                     <state key="normal" title="Forgot Password?">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
+                                    <connections>
+                                        <action selector="clickToForgot:" destination="-1" eventType="touchUpInside" id="rLe-cf-8In"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="56I-85-jMD">
                                     <rect key="frame" x="38" y="475" width="346" height="30"/>

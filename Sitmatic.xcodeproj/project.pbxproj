@@ -52,6 +52,8 @@
 		1BB9C4C920C960B10028A48A /* chair.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BB9C4C720C960B00028A48A /* chair.png */; };
 		1BE313B520CE6ABD004F1931 /* OrderProccessingSecond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE313B420CE6ABD004F1931 /* OrderProccessingSecond.swift */; };
 		1BE313B720CE6B17004F1931 /* OrderProccessingSecond.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BE313B620CE6B17004F1931 /* OrderProccessingSecond.xib */; };
+		1BECAEFD20D24DF50050AE31 /* SForgotPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BECAEFB20D24DF50050AE31 /* SForgotPass.swift */; };
+		1BECAEFE20D24DF50050AE31 /* SForgotPass.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BECAEFC20D24DF50050AE31 /* SForgotPass.xib */; };
 		1BEFEAA620CA46DD00400AF1 /* watermark.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BEFEAA520CA46DC00400AF1 /* watermark.png */; };
 		3B01AAE020C6D7E900291522 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B01AADF20C6D7E900291522 /* AppDelegate.swift */; };
 		3B01AAE220C6D7E900291522 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B01AAE120C6D7E900291522 /* ViewController.swift */; };
@@ -150,6 +152,8 @@
 		1BB9C4C720C960B00028A48A /* chair.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chair.png; sourceTree = "<group>"; };
 		1BE313B420CE6ABD004F1931 /* OrderProccessingSecond.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderProccessingSecond.swift; sourceTree = "<group>"; };
 		1BE313B620CE6B17004F1931 /* OrderProccessingSecond.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderProccessingSecond.xib; sourceTree = "<group>"; };
+		1BECAEFB20D24DF50050AE31 /* SForgotPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SForgotPass.swift; sourceTree = "<group>"; };
+		1BECAEFC20D24DF50050AE31 /* SForgotPass.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SForgotPass.xib; sourceTree = "<group>"; };
 		1BEFEAA520CA46DC00400AF1 /* watermark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = watermark.png; sourceTree = "<group>"; };
 		2F0CCBF4C24C3822FF13BE5D /* Pods_SitmaticTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SitmaticTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B01AADC20C6D7E900291522 /* Sitmatic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sitmatic.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -333,6 +337,8 @@
 				3B01AB0D20C6D87300291522 /* SSLoginVC.swift */,
 				1B2E012020C79EFD00B34645 /* SHomeVC.swift */,
 				1B6DF8F820C7F2A400280E84 /* StartOrderd.swift */,
+				1BECAEFB20D24DF50050AE31 /* SForgotPass.swift */,
+				1BECAEFC20D24DF50050AE31 /* SForgotPass.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -560,6 +566,7 @@
 				1B2E012720C7AAE900B34645 /* male.png in Resources */,
 				1B2E012320C79EFD00B34645 /* SHomeVC.xib in Resources */,
 				1BB9C4C120C8F8E10028A48A /* OrderProccessing.xib in Resources */,
+				1BECAEFE20D24DF50050AE31 /* SForgotPass.xib in Resources */,
 				1B6DF8F320C7E4BC00280E84 /* chair7.jpg in Resources */,
 				1B6DF8FF20C8102900280E84 /* off.png in Resources */,
 				1B6DF8E020C7DB2900280E84 /* slider3.jpg in Resources */,
@@ -710,6 +717,7 @@
 				3B01AB2F20C6D98400291522 /* Constaint.swift in Sources */,
 				1BE313B520CE6ABD004F1931 /* OrderProccessingSecond.swift in Sources */,
 				1B6DF8EA20C7E38200280E84 /* HomeCell.swift in Sources */,
+				1BECAEFD20D24DF50050AE31 /* SForgotPass.swift in Sources */,
 				1B6DF8F620C7F26700280E84 /* QuestionPartOne.swift in Sources */,
 				3B01AB2520C6D98300291522 /* BaseViewController.swift in Sources */,
 			);
