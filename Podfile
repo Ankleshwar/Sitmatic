@@ -16,6 +16,8 @@ pod 'YALSideMenu'
 pod 'SVProgressHUD'
 pod 'CHIPageControl/Aleppo'
 pod 'Toaster'
+pod 'Kingfisher'
+
 
   # Pods for Sitmatic
 

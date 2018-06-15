@@ -174,7 +174,7 @@
                     </constraints>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                    <textInputTraits key="textInputTraits" keyboardType="emailAddress" secureTextEntry="YES"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="QE5-tw-8mb"/>
                     </connections>
@@ -200,7 +200,7 @@
                     </constraints>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                    <textInputTraits key="textInputTraits" keyboardType="emailAddress" secureTextEntry="YES"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="mTG-9a-EEd"/>
                     </connections>

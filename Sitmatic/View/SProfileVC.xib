@@ -16,7 +16,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SProfileVC" customModule="Sitmatic" customModuleProvider="target">
             <connections>
+                <outlet property="btnEdit" destination="GBd-ZE-syv" id="6sg-sC-bd9"/>
                 <outlet property="btnLogOut" destination="JhG-ZN-bfF" id="RBB-bR-zKd"/>
+                <outlet property="btnPhoto" destination="D9u-3a-Uur" id="gf3-TB-dgc"/>
+                <outlet property="imgView" destination="ORq-dX-ETz" id="AD2-ht-acm"/>
                 <outlet property="lblUserEmail" destination="udZ-R9-uLU" id="T9S-e7-xZg"/>
                 <outlet property="lblUserName" destination="drC-nU-kJC" id="3q8-nh-pRB"/>
                 <outlet property="txtAddress" destination="eAv-eQ-6ES" id="OU6-DE-qEi"/>
@@ -30,6 +33,10 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fXR-Im-ACq">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
+                    <color key="backgroundColor" red="0.1960784314" green="0.65098039220000004" blue="0.88235294119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1aa-in-zBg">
                     <rect key="frame" x="0.0" y="20" width="375" height="46"/>
                     <subviews>
@@ -61,6 +68,9 @@
                                 <constraint firstAttribute="width" constant="30" id="fh9-yi-XtH"/>
                             </constraints>
                             <state key="normal" image="edit.png"/>
+                            <connections>
+                                <action selector="clickToEdit:" destination="-1" eventType="touchUpInside" id="zR3-9G-8oL"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.1960784314" green="0.65098039220000004" blue="0.88235294119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -185,6 +195,16 @@
                                         <action selector="clickToLogOut:" destination="-1" eventType="touchUpInside" id="A0d-DR-t1x"/>
                                     </connections>
                                 </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D9u-3a-Uur">
+                                    <rect key="frame" x="137" y="95" width="100" height="100"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="100" id="8lU-BS-htT"/>
+                                        <constraint firstAttribute="width" constant="100" id="gPH-8x-Ln6"/>
+                                    </constraints>
+                                    <connections>
+                                        <action selector="clickToSelectImg:" destination="-1" eventType="touchUpInside" id="aA5-lS-QuU"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -196,7 +216,9 @@
                                 <constraint firstAttribute="trailing" secondItem="Ag2-E8-dKJ" secondAttribute="trailing" constant="20" id="ap2-ho-uc4"/>
                                 <constraint firstItem="JhG-ZN-bfF" firstAttribute="leading" secondItem="A6I-PU-Oq3" secondAttribute="leading" constant="20" id="b25-0d-8Lu"/>
                                 <constraint firstItem="Ag2-E8-dKJ" firstAttribute="leading" secondItem="A6I-PU-Oq3" secondAttribute="leading" constant="20" id="lqK-v8-NBr"/>
+                                <constraint firstItem="D9u-3a-Uur" firstAttribute="centerX" secondItem="A6I-PU-Oq3" secondAttribute="centerX" id="pMe-Kg-RRw"/>
                                 <constraint firstItem="JhG-ZN-bfF" firstAttribute="top" secondItem="Ag2-E8-dKJ" secondAttribute="bottom" constant="40" id="pbc-VC-u2Y"/>
+                                <constraint firstItem="D9u-3a-Uur" firstAttribute="top" secondItem="A6I-PU-Oq3" secondAttribute="top" constant="95" id="qxX-aP-23P"/>
                                 <constraint firstItem="ORq-dX-ETz" firstAttribute="top" secondItem="A6I-PU-Oq3" secondAttribute="top" constant="95" id="vr2-Y9-J9L"/>
                             </constraints>
                         </view>
@@ -210,10 +232,6 @@
                         <constraint firstAttribute="bottom" secondItem="A6I-PU-Oq3" secondAttribute="bottom" id="yjS-ea-jPl"/>
                     </constraints>
                 </scrollView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fXR-Im-ACq">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
-                    <color key="backgroundColor" red="0.1960784314" green="0.65098039220000004" blue="0.88235294119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -235,7 +253,7 @@
                 <constraint firstItem="fXR-Im-ACq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="zLL-f6-NzV"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="270" y="21"/>
+            <point key="canvasLocation" x="269.5" y="20.5"/>
         </view>
     </objects>
     <resources>

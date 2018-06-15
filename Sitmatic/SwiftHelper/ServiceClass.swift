@@ -151,6 +151,45 @@ class ServiceClass: NSObject {
     }
     
     
+    public func profileUpdate(strUrl:String,param:[String:String],img : UIImage,completion:@escaping (dictionaryBlock)){
+        
+        print(param)
+        
+        Alamofire.upload(multipartFormData:
+            {
+                (multipartFormData) in
+                multipartFormData.append(UIImageJPEGRepresentation(img, 0.1)!, withName: "image", fileName: "file.jpeg", mimeType: "image/jpeg")
+                for (key, value) in param
+                {
+                    multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key)
+                }
+        }, to:baseURL+strUrl,headers:nil)
+        { (result) in
+            switch result {
+            case .success(let upload,_,_ ):
+                upload.uploadProgress(closure: { (progress) in
+                  
+                })
+                upload.responseJSON
+                    { response in
+                        
+                        if response.result.value != nil
+                        {
+                            let dict :NSDictionary = response.result.value! as! [String : Any] as NSDictionary
+                            completion(nil, dict as! [String : Any])
+                        }
+                        else{
+                            let error : Error = response.result.error!
+                            completion(error, [:])
+                        }
+                }
+            case .failure(let encodingError):
+          
+                completion(encodingError, [:])
+                break
+            }
+        }
+    }
     
     
     

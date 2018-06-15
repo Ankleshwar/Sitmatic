@@ -2,6 +2,7 @@ PODS:
   - Alamofire (4.7.0)
   - CHIPageControl/Aleppo (0.1.5)
   - JWTDecode (2.1.1)
+  - Kingfisher (4.7.0)
   - ObjectMapper (3.1.0)
   - SVProgressHUD (2.2.5)
   - SwiftKeychainWrapper (3.0.1)
@@ -15,6 +16,7 @@ DEPENDENCIES:
   - Alamofire
   - CHIPageControl/Aleppo
   - JWTDecode
+  - Kingfisher
   - ObjectMapper
   - SVProgressHUD
   - SwiftKeychainWrapper
@@ -29,6 +31,7 @@ SPEC REPOS:
     - Alamofire
     - CHIPageControl
     - JWTDecode
+    - Kingfisher
     - ObjectMapper
     - SVProgressHUD
     - SwiftKeychainWrapper
@@ -42,6 +45,7 @@ SPEC CHECKSUMS:
   Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
   CHIPageControl: 79d19a8ee2e35fa3c1da6533adb5364c77b5cfea
   JWTDecode: 83e8b381aafe27158d9f692cbdca2b12d61d460c
+  Kingfisher: da6b005aa96d37698e3e4f1ccfe96a5b9bbf27d6
   ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
@@ -51,6 +55,6 @@ SPEC CHECKSUMS:
   Toaster: a6c9532de1ded8105e77376f7dffeb2e12b46dbb
   YALSideMenu: 4d6b90ea44dcdded18a99e46b676e4ad51d9c6bb
 
-PODFILE CHECKSUM: 596196763dfe43efba3a6068d301f4817b1f7113
+PODFILE CHECKSUM: ce379b28b7db9d2d1e6bcd32fec271b9bf41c46f
 
 COCOAPODS: 1.5.0

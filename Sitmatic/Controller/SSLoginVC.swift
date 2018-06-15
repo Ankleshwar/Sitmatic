@@ -17,15 +17,12 @@ class SSLoginVC: BaseViewController {
     @IBOutlet weak var btnLogin: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.imgButtonLogin.image = UIImage(named: "login.png")
+
         
     }
 
     override func viewWillAppear(_ animated: Bool) {
-//         print( btnLogin.frame.size.width - (imgButtonLogin.frame.size.width + 15.0))
-//
-//        btnLogin.imageEdgeInsets = UIEdgeInsetsMake(15, btnLogin.frame.size.width - (imgButtonLogin.frame.size.width + 15.0), 0.0, 0.0);
-//        btnLogin.titleEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, 0.0, imgButtonLogin.frame.size.width);
+
         
         UserDefaults.standard.set(false, forKey: "isLogin")
         UserDefaults.standard.synchronize()
@@ -105,6 +102,10 @@ class SSLoginVC: BaseViewController {
                         self.appUserObject?.access_token = user["token"] as! String
                         self.appUserObject?.email = user["email"] as! String
                         self.appUserObject?.mobile = user["mobile"] as! String
+                        self.appUserObject?.userImageUrl = user["image"] as! String
+                        let id = user["id"] as! Int
+                        self.appUserObject?.address = user["address"] as! String
+                        self.appUserObject?.userId = String(id)
                         UserDefaults.standard.set(true, forKey: "isLogin")
                         UserDefaults.standard.synchronize()
                         self.appUserObject?.saveToUserDefault()
