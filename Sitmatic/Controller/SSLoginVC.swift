@@ -65,7 +65,7 @@ class SSLoginVC: BaseViewController {
     
     @IBAction func clickToForgot(_ sender: Any) {
         
-        if (sender as AnyObject).currentTitle == "Resend Verification Code" {
+        if (sender as AnyObject).currentTitle == "Resend Verification Link" {
             callResendVerificationApi()
             
         }else{
@@ -185,7 +185,7 @@ class SSLoginVC: BaseViewController {
                     let strError = dicdata["errorData"] as! String
                     if strError == "Your account is not verified!!!"{
                         self.showToast(message: dicdata["errorData"] as! String)
-                        self.btnForgot.setButtonTitle("Resend Verification Code")
+                        self.btnForgot.setButtonTitle("Resend Verification Link")
                     }else{
                         self.showToast(message: dicdata["errorData"] as! String)
                     }
