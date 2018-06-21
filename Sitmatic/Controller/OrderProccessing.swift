@@ -67,7 +67,7 @@ class OrderProccessing: BaseViewController {
         self.isYesbtnTap = false
         self.arrayPersnonID.append("1")
         self.arrayPersnonID.append("2")
-        self.arrayPersnonID.append("3")
+        
         self.btnprevious.isHidden = true
     }
     
@@ -227,26 +227,15 @@ class OrderProccessing: BaseViewController {
             goToNext()
         }
             
-        else if strId == "4"{
+        else if strId == "3"{
             goToNext()
         }
         else{
             
-            if strId == "2"{
-                if let index = self.arrayPersnonID.index(of: "3") {
-                    print(index)
-                    
-                }
-                    
-                else{
-                    self.arrQuestion?.append(["queId": "3","queText": "Do you like a chair with armrests?", "option1":"Left","option2":"Right"])
-                    
-                    self.arrayPersnonID.append("3")
-                }
-            }
+    
                 
                 
-            else if strId == "3"{
+         if strId == "2" {
                 
                 if let index = self.arrayPersnonID.index(of: "3Y") {
                     print(index)
@@ -317,7 +306,7 @@ class OrderProccessing: BaseViewController {
         let strId = arrQuestion?[value]["queId"] as? String
         
         
-        if strId == "4"{
+        if strId == "3"{
             goToNext()
         }
         else if strId == "5Y"{
@@ -326,30 +315,21 @@ class OrderProccessing: BaseViewController {
         }
         else{
             
-            if strId == "2"{
+         
                 if let index = self.arrayPersnonID.index(of: "3") {
                     print(index)
                     
                 }
                     
                 else{
-                    self.arrQuestion?.append(["queId": "3","queText": "Do you like a chair with armrests?", "option1":"Left","option2":"Right"])
+                    self.arrQuestion?.append(["queId": "3","queText": "Which is your dominant eye?", "option1":"Left","option2":"Right"])
                     
                     self.arrayPersnonID.append("3")
                 }
-            }
-            else{
-                if let index = self.arrayPersnonID.index(of: "4") {
-                    print(index)
-                    
-                }
-                    
-                else{
-                    self.arrQuestion?.append(["queId": "4","queText": "Which is your dominant eye?", "option1":"Left","option2":"Right"])
-                    
-                    self.arrayPersnonID.append("4")
-                }
-            }
+                
+            
+        
+         
             
             
             
@@ -415,7 +395,7 @@ class OrderProccessing: BaseViewController {
             value = 0
             self.arrayPersnonID.append("1")
             self.arrayPersnonID.append("2")
-            self.arrayPersnonID.append("3")
+           
             arrQuestion = setDataWithLocalJson("StartOrderd") as NSArray as? Array<Dictionary<String, Any>>
             
         }

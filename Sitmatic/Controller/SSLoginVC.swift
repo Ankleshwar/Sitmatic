@@ -13,6 +13,7 @@ class SSLoginVC: BaseViewController {
    // @IBOutlet weak var imgButtonLogin: UIImageView!
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
+    @IBOutlet weak var btnForgot: UIButton!
     
     @IBOutlet weak var btnLogin: UIButton!
     override func viewDidLoad() {
@@ -63,8 +64,16 @@ class SSLoginVC: BaseViewController {
     }
     
     @IBAction func clickToForgot(_ sender: Any) {
-        let vc = SForgotPass(nibName: "SForgotPass", bundle: nil)
-        self.navigationController?.pushViewController(vc, animated: true)
+        
+        if (sender as AnyObject).currentTitle == "Resend Verification Code" {
+            callResendVerificationApi()
+            
+        }else{
+            let vc = SForgotPass(nibName: "SForgotPass", bundle: nil)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
+       
         
     }
     
@@ -119,7 +128,16 @@ class SSLoginVC: BaseViewController {
                     
                       print(dicdata)
                     
-                    self.showToast(message: dicdata["errorData"] as! String)
+                    let strError = dicdata["errorData"] as! String
+                    if strError == "Your account is not verified!!!"{
+                        self.showToast(message: dicdata["errorData"] as! String)
+                        self.btnForgot.setButtonTitle("Resend Verification Code")
+                    }else{
+                        self.showToast(message: dicdata["errorData"] as! String)
+                    }
+                    
+                  
+                    
                 }
                 
                 
@@ -132,6 +150,63 @@ class SSLoginVC: BaseViewController {
             
         
     }
+    
+    
+    
+    func callResendVerificationApi(){
+        let dic = [
+            "email" : self.txtEmail.text,
+            
+            ]
+        
+        SVProgressHUD.show()
+        
+        ServiceClass().getLoginDetails(strUrl: "resendemailverificationlink", param: dic as! [String : String]) { error, dicdata in
+            
+            if error != nil{
+                print(dicdata)
+                
+                
+                SVProgressHUD.dismiss()
+            }else{
+                
+                
+                if dicdata["status"] as! String == "Ok"{
+                    print(dicdata)
+                    
+                    self.btnForgot.setButtonTitle("Forgot Password?")
+                    self.showToast(message: dicdata["successData"] as! String)
+                    
+                }
+                else{
+                    
+                    print(dicdata)
+                    
+                    let strError = dicdata["errorData"] as! String
+                    if strError == "Your account is not verified!!!"{
+                        self.showToast(message: dicdata["errorData"] as! String)
+                        self.btnForgot.setButtonTitle("Resend Verification Code")
+                    }else{
+                        self.showToast(message: dicdata["errorData"] as! String)
+                    }
+                    
+                    
+                    
+                }
+                
+                
+                
+                
+            }
+            
+            SVProgressHUD.dismiss()
+        }
+        
+        
+    }
+    
+    
+    
     
 
 }

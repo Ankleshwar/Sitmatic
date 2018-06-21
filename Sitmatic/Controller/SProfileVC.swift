@@ -12,16 +12,19 @@ import Kingfisher
 
 
 
-class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINavigationControllerDelegate {
+class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINavigationControllerDelegate ,UITextViewDelegate {
     @IBOutlet weak var viewProfile: UIView!
     @IBOutlet weak var btnLogOut: UIButton!
     @IBOutlet weak var lblUserEmail: UILabel!
     @IBOutlet weak var txtMobile: UITextField!
-    @IBOutlet weak var txtAddress: UITextField!
+    @IBOutlet weak var txtAddress: UITextView!
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var btnEdit: UIButton!
     @IBOutlet weak var btnPhoto: UIButton!
-    var image = UIImage()
+    
+    var imageUser = UIImage()
+    var objeHome = SHomeVC()
+    
     @IBOutlet weak var lblUserName: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,34 +34,60 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
         self.lblUserName.text = self.appUserObject?.userName
         self.lblUserEmail.text = self.appUserObject?.email
         let strname = self.appUserObject?.mobile
+         let strAddress = self.appUserObject?.address
         self.txtMobile.text = "Mobile : \(strname!)"
-        self.txtAddress.text = self.appUserObject?.address
+        
         
         self.txtMobile.isEnabled = false
-        self.txtAddress.isEnabled = false
+        self.txtAddress.isEditable = false
         imgView.clipsToBounds = true
         imgView.layer.cornerRadius = (imgView.frame.size.height)/2
         self.btnPhoto.isEnabled = false
         
         if    (self.appUserObject?.userImageUrl)! == "" {
             self.imgView.image = UIImage(named: "nouser.png")
+            self.imageUser = UIImage(named: "nouser.png")!
         }
         else{
             let url = URL(string: (self.appUserObject?.userImageUrl)!)
             imgView.kf.setImage(with: url)
+            KingfisherManager.shared.retrieveImage(with: url!, options: nil, progressBlock: nil, completionHandler: { image, error, cacheType, imageURL in
+                self.imageUser = image!
+            })
+           
         }
+        
+        if    (self.appUserObject?.address)! == "" {
+             self.txtAddress.text = "Delivery Address: Please Select Address"
+        }
+        else{
+                self.txtAddress.text = strAddress!
+        }
+        
+ 
+
+       // print(  objeHome.setValueOpen(strValue: "ValueNewVAAAAA"))
+
         
     }
     @IBAction func clickToEdit(_ sender: Any) {
         
         if btnEdit.isSelected {
-            self.txtAddress.isEnabled = false
+            self.txtAddress.isEditable = false
             self.btnPhoto.isEnabled = false
              self.btnEdit.setButtonImage("edit.png")
             self.btnEdit.isSelected = false
-            callServiceEditProfile()
+            
+            if self.txtAddress.text.count == 18 {
+                self.showToast(message: "Please fill the address")
+            }else{
+                 callServiceEditProfile()
+            }
+            
+            
+           
         }else{
-            self.txtAddress.isEnabled = true
+            self.txtAddress.isEditable = true
             self.btnPhoto.isEnabled = true
             self.btnEdit.setButtonImage("ic_check_white")
             self.btnEdit.isSelected = true
@@ -85,7 +114,11 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
         let dic = ["id": (self.appUserObject?.userId)!,
                    "address": self.txtAddress.text] as [String : Any]
         
-        ServiceClass().profileUpdate(strUrl: strName, param: dic as! [String : String], img: image, completion: { err, dicdata in
+
+        
+        
+        
+        ServiceClass().profileUpdate(strUrl: strName, param: dic as! [String : String], img: imageUser, completion: { err, dicdata in
             
             if dicdata["status"] as! String == "Ok"{
                 print(dicdata)
@@ -126,12 +159,13 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
     
     
     @IBAction func clickToBack(_ sender: Any) {
+      
         
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func clickToLogOut(_ sender: Any) {
-        callLoginApi()
+        callLogOutApi()
     }
     
     
@@ -166,7 +200,7 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         self.imgView.image = image
-        self.image = image
+        self.imageUser = image
         picker.dismiss(animated: true, completion: nil)
     }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -178,7 +212,7 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
     
     
     
-    func callLoginApi(){
+    func callLogOutApi(){
         let dic = ["":""]
         let strToken = self.appUserObject?.access_token
         let srtUrl = "logout?token=\(strToken!)"
@@ -221,6 +255,29 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
         
         
     }
+    
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+      
+        let strNew : NSString = (textView.text as NSString).replacingCharacters(in: range, with: text) as NSString
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }else if strNew.length < 18{
+            return false
+        }
+        
+        return true
+    }
+    
+
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+  
+        
+        self.txtAddress.text =  (textView.text)
+    }
+    
     
     
 }

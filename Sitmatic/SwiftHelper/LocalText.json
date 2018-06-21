@@ -1,8 +1,8 @@
 {
     "StartOrderd":[
                    {"queId": "1","queText": "Please Select your Gender", "option1":"Male","option2":"Female"},
-                   {"queId": "2","queText": "Do you like a chair with armrests?", "option1":"Yes","option2":"No"},
-                   {"queId": "3","queText": "Do you wear reading glasses?", "option1":"Yes","option2":"No"},
+                  
+                   {"queId": "2","queText": "Do you wear reading glasses?", "option1":"Yes","option2":"No"},
                    
                 ],
     
@@ -16,6 +16,8 @@
                    ],
     
     
+    
+ 
     
     
     

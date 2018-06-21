@@ -9,9 +9,16 @@
 import UIKit
 
 class SHomeVC: UIViewController {
+
     @IBOutlet weak var pageController: UIPageControl!
     @IBOutlet weak var scrollViewForSlider: UIScrollView!
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    private var strNamePrivate: String = "private"
+    public var strNamePublic: String = "public"
+    fileprivate var strNameFileprivate: String = "fileprivate"
+    open var strNameOpen: String = "open"
+    static var strNameStatic : String = "static"
     
     var arrImages = ["Chair1.jpg","Chair2.jpg","chair3.jpg","chair7.jpg"]
     
@@ -20,8 +27,31 @@ class SHomeVC: UIViewController {
         
          self.collectionView.register(UINib(nibName: "HomeCell", bundle: Bundle.main), forCellWithReuseIdentifier: "Cell")
         self.collectionView.backgroundColor = UIColor.clear
+        self.strNamePrivate = "NewPrivate"
+        self.strNameFileprivate = "Newfileprivate"
+       
+        print(SHomeVC.strNameStatic)
+         SHomeVC.strNameStatic = "strStatic"
+         print(SHomeVC.strNameStatic)
       
     }
+    
+    func setValue(strPrivate: String, strFilePrivate: String, strStatic: String) {
+        self.strNamePrivate = strPrivate
+        self.strNameFileprivate = strFilePrivate
+        SHomeVC.strNameStatic = strStatic
+          print(SHomeVC.strNameStatic)
+          print(self.strNamePrivate)
+          print(self.strNameFileprivate)
+    }
+    
+    
+    open func setValueOpen(strValue:String){
+        
+        self.strNameOpen = strValue
+        
+    }
+    
 
     override func viewWillAppear(_ animated: Bool) {
         setImageSlider()
@@ -30,6 +60,7 @@ class SHomeVC: UIViewController {
     @IBAction func clickToProfile(_ sender: Any) {
         
         let vc = SProfileVC(nibName: "SProfileVC", bundle: nil)
+  
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -80,7 +111,7 @@ class SHomeVC: UIViewController {
     }
     
     
-    
+
     
     
     

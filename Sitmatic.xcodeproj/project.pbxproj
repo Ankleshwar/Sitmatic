@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B1D285420D914D9008FACEE /* UIButtonX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1D284A20D914D8008FACEE /* UIButtonX.swift */; };
+		1B1D285520D914D9008FACEE /* UIImageViewX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1D284B20D914D8008FACEE /* UIImageViewX.swift */; };
+		1B1D285620D914D9008FACEE /* UILabelX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1D284C20D914D8008FACEE /* UILabelX.swift */; };
+		1B1D285720D914D9008FACEE /* UISliderX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1D284D20D914D8008FACEE /* UISliderX.swift */; };
+		1B1D285820D914D9008FACEE /* UITextFieldX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1D284E20D914D8008FACEE /* UITextFieldX.swift */; };
+		1B1D285920D914D9008FACEE /* UIViewAnchorPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1D284F20D914D8008FACEE /* UIViewAnchorPoint.swift */; };
+		1B1D285A20D914D9008FACEE /* UIViewControllerX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1D285020D914D8008FACEE /* UIViewControllerX.swift */; };
+		1B1D285B20D914D9008FACEE /* UIViewX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1D285120D914D8008FACEE /* UIViewX.swift */; };
+		1B1D285C20D914D9008FACEE /* UIViewXRadialGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1D285220D914D8008FACEE /* UIViewXRadialGradient.swift */; };
+		1B1D285D20D914D9008FACEE /* UIVisualEffectViewX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1D285320D914D8008FACEE /* UIVisualEffectViewX.swift */; };
 		1B2E011E20C79ED400B34645 /* SProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2E011C20C79ED400B34645 /* SProfileVC.swift */; };
 		1B2E011F20C79ED400B34645 /* SProfileVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B2E011D20C79ED400B34645 /* SProfileVC.xib */; };
 		1B2E012220C79EFD00B34645 /* SHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2E012020C79EFD00B34645 /* SHomeVC.swift */; };
@@ -106,6 +116,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B1D284A20D914D8008FACEE /* UIButtonX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonX.swift; sourceTree = "<group>"; };
+		1B1D284B20D914D8008FACEE /* UIImageViewX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewX.swift; sourceTree = "<group>"; };
+		1B1D284C20D914D8008FACEE /* UILabelX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelX.swift; sourceTree = "<group>"; };
+		1B1D284D20D914D8008FACEE /* UISliderX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISliderX.swift; sourceTree = "<group>"; };
+		1B1D284E20D914D8008FACEE /* UITextFieldX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldX.swift; sourceTree = "<group>"; };
+		1B1D284F20D914D8008FACEE /* UIViewAnchorPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewAnchorPoint.swift; sourceTree = "<group>"; };
+		1B1D285020D914D8008FACEE /* UIViewControllerX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerX.swift; sourceTree = "<group>"; };
+		1B1D285120D914D8008FACEE /* UIViewX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewX.swift; sourceTree = "<group>"; };
+		1B1D285220D914D8008FACEE /* UIViewXRadialGradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewXRadialGradient.swift; sourceTree = "<group>"; };
+		1B1D285320D914D8008FACEE /* UIVisualEffectViewX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIVisualEffectViewX.swift; sourceTree = "<group>"; };
 		1B2E011C20C79ED400B34645 /* SProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SProfileVC.swift; sourceTree = "<group>"; };
 		1B2E011D20C79ED400B34645 /* SProfileVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SProfileVC.xib; sourceTree = "<group>"; };
 		1B2E012020C79EFD00B34645 /* SHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHomeVC.swift; sourceTree = "<group>"; };
@@ -231,6 +251,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B1D284920D914D8008FACEE /* DesignableX */ = {
+			isa = PBXGroup;
+			children = (
+				1B1D284A20D914D8008FACEE /* UIButtonX.swift */,
+				1B1D284B20D914D8008FACEE /* UIImageViewX.swift */,
+				1B1D284C20D914D8008FACEE /* UILabelX.swift */,
+				1B1D284D20D914D8008FACEE /* UISliderX.swift */,
+				1B1D284E20D914D8008FACEE /* UITextFieldX.swift */,
+				1B1D284F20D914D8008FACEE /* UIViewAnchorPoint.swift */,
+				1B1D285020D914D8008FACEE /* UIViewControllerX.swift */,
+				1B1D285120D914D8008FACEE /* UIViewX.swift */,
+				1B1D285220D914D8008FACEE /* UIViewXRadialGradient.swift */,
+				1B1D285320D914D8008FACEE /* UIVisualEffectViewX.swift */,
+			);
+			name = DesignableX;
+			path = Sitmatic/DesignableX;
+			sourceTree = "<group>";
+		};
 		1B6DF8E320C7E32E00280E84 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				1B2E012420C7A4E500B34645 /* Roboto-Regular.ttf */,
+				1B1D284920D914D8008FACEE /* DesignableX */,
 				3B01AADE20C6D7E900291522 /* Sitmatic */,
 				3B01AAF320C6D7EC00291522 /* SitmaticTests */,
 				3B01AAFE20C6D7EC00291522 /* SitmaticUITests */,
@@ -697,29 +736,39 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B01AB2E20C6D98400291522 /* ServiceHelper.swift in Sources */,
+				1B1D285620D914D9008FACEE /* UILabelX.swift in Sources */,
+				1B1D285D20D914D9008FACEE /* UIVisualEffectViewX.swift in Sources */,
 				3B01AB2320C6D98300291522 /* Extentions.swift in Sources */,
+				1B1D285C20D914D9008FACEE /* UIViewXRadialGradient.swift in Sources */,
 				3B01AAE220C6D7E900291522 /* ViewController.swift in Sources */,
 				3B01AB2D20C6D98400291522 /* UIWindow.swift in Sources */,
 				3B01AB2920C6D98400291522 /* ServiceConstants.swift in Sources */,
+				1B1D285A20D914D9008FACEE /* UIViewControllerX.swift in Sources */,
 				3B01AB2B20C6D98400291522 /* TopBar.swift in Sources */,
 				3B01AAE020C6D7E900291522 /* AppDelegate.swift in Sources */,
 				3B01AB2420C6D98300291522 /* ServiceClass.swift in Sources */,
 				1B2E011E20C79ED400B34645 /* SProfileVC.swift in Sources */,
+				1B1D285B20D914D9008FACEE /* UIViewX.swift in Sources */,
 				1B48805620CA5C3D008AC3DD /* QuestionDataSecond.swift in Sources */,
 				3B01AB2820C6D98400291522 /* ECSHelper.swift in Sources */,
 				1B48805A20CA797C008AC3DD /* SweetAlert.swift in Sources */,
 				1B2E012220C79EFD00B34645 /* SHomeVC.swift in Sources */,
 				3B01AB3920C6DAB900291522 /* AppUserObject.m in Sources */,
 				3B01AB0F20C6D87300291522 /* SSLoginVC.swift in Sources */,
+				1B1D285920D914D9008FACEE /* UIViewAnchorPoint.swift in Sources */,
 				1BB9C4C020C8F8E10028A48A /* OrderProccessing.swift in Sources */,
+				1B1D285820D914D9008FACEE /* UITextFieldX.swift in Sources */,
 				3B01AB4620C6F06000291522 /* SSignupVC.swift in Sources */,
 				1B6DF8FA20C7F2A400280E84 /* StartOrderd.swift in Sources */,
 				1BB9C4C420C8FA620028A48A /* orderProcell.swift in Sources */,
 				3B01AB2A20C6D98400291522 /* UIExtentions.swift in Sources */,
+				1B1D285720D914D9008FACEE /* UISliderX.swift in Sources */,
 				3B01AB2F20C6D98400291522 /* Constaint.swift in Sources */,
 				1BE313B520CE6ABD004F1931 /* OrderProccessingSecond.swift in Sources */,
 				1B6DF8EA20C7E38200280E84 /* HomeCell.swift in Sources */,
+				1B1D285420D914D9008FACEE /* UIButtonX.swift in Sources */,
 				1BECAEFD20D24DF50050AE31 /* SForgotPass.swift in Sources */,
+				1B1D285520D914D9008FACEE /* UIImageViewX.swift in Sources */,
 				1B6DF8F620C7F26700280E84 /* QuestionPartOne.swift in Sources */,
 				3B01AB2520C6D98300291522 /* BaseViewController.swift in Sources */,
 			);
@@ -894,7 +943,10 @@
 				DEVELOPMENT_TEAM = 577N9MGWW6;
 				INFOPLIST_FILE = Sitmatic/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.opiant.Sitmatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -917,7 +969,10 @@
 				DEVELOPMENT_TEAM = 577N9MGWW6;
 				INFOPLIST_FILE = Sitmatic/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.opiant.Sitmatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -935,7 +990,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SitmaticTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.opiant.SitmaticTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -952,7 +1011,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SitmaticTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.opiant.SitmaticTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -968,7 +1031,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SitmaticUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.opiant.SitmaticUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -984,7 +1051,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SitmaticUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.opiant.SitmaticUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
