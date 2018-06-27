@@ -17,6 +17,11 @@ class SForgotPass: BaseViewController {
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var btnCheck: UIButton!
     @IBOutlet weak var txtEmail: UITextField!
+    @IBOutlet weak var txtVerification: UITextField!
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,6 +37,10 @@ class SForgotPass: BaseViewController {
     override func viewDidLayoutSubviews() {
         self.txtEmail.layer.masksToBounds = true;
         self.txtEmail.layer.cornerRadius = 20.0
+        
+        self.txtVerification.layer.masksToBounds = true;
+        self.txtVerification.layer.cornerRadius = 20.0
+        
         
         self.txtPassword.layer.masksToBounds = true;
         self.txtPassword.layer.cornerRadius = 20.0
@@ -137,7 +146,8 @@ class SForgotPass: BaseViewController {
     
     func callPassSave(){
         let dic = ["email": self.strEmail,
-                   "password":self.txtPassword.text]
+                   "password":self.txtPassword.text,
+                   "reset_token":self.txtVerification.text]
         
         
         

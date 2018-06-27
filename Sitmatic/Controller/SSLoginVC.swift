@@ -14,6 +14,7 @@ class SSLoginVC: BaseViewController {
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var btnForgot: UIButton!
+    @IBOutlet weak var lblShowError: UILabel!
     
     @IBOutlet weak var btnLogin: UIButton!
     override func viewDidLoad() {
@@ -27,6 +28,9 @@ class SSLoginVC: BaseViewController {
         
         UserDefaults.standard.set(false, forKey: "isLogin")
         UserDefaults.standard.synchronize()
+        self.txtEmail.text = ""
+        self.txtPassword.text = ""
+        self.lblShowError.isHidden = true
     }
     
     override func viewDidLayoutSubviews() {
@@ -131,7 +135,10 @@ class SSLoginVC: BaseViewController {
                     let strError = dicdata["errorData"] as! String
                     if strError == "Your account is not verified!!!"{
                         self.showToast(message: dicdata["errorData"] as! String)
-                        self.btnForgot.setButtonTitle("Resend Verification Code")
+                        self.btnForgot.setButtonTitle("Resend Verification Link")
+                        self.btnForgot.setTitleColor(UIColor.red, for: .normal)
+                        self.lblShowError.isHidden = false
+                        self.lblShowError.text = dicdata["errorData"] as? String
                     }else{
                         self.showToast(message: dicdata["errorData"] as! String)
                     }
@@ -175,6 +182,8 @@ class SSLoginVC: BaseViewController {
                     print(dicdata)
                     
                     self.btnForgot.setButtonTitle("Forgot Password?")
+                     self.lblShowError.isHidden = true
+                    self.btnForgot.setTitleColor(UIColor.white, for: .normal)
                     self.showToast(message: dicdata["successData"] as! String)
                     
                 }
@@ -186,6 +195,7 @@ class SSLoginVC: BaseViewController {
                     if strError == "Your account is not verified!!!"{
                         self.showToast(message: dicdata["errorData"] as! String)
                         self.btnForgot.setButtonTitle("Resend Verification Link")
+                        self.btnForgot.setTitleColor(UIColor.red, for: .normal)
                     }else{
                         self.showToast(message: dicdata["errorData"] as! String)
                     }

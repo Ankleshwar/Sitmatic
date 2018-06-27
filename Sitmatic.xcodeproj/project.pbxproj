@@ -377,7 +377,6 @@
 				1B2E012020C79EFD00B34645 /* SHomeVC.swift */,
 				1B6DF8F820C7F2A400280E84 /* StartOrderd.swift */,
 				1BECAEFB20D24DF50050AE31 /* SForgotPass.swift */,
-				1BECAEFC20D24DF50050AE31 /* SForgotPass.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -385,6 +384,7 @@
 		3B01AB3220C6D9A900291522 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1BECAEFC20D24DF50050AE31 /* SForgotPass.xib */,
 				1BE313B620CE6B17004F1931 /* OrderProccessingSecond.xib */,
 				1B6DF8F920C7F2A400280E84 /* StartOrderd.xib */,
 				1BB9C4BF20C8F8E10028A48A /* OrderProccessing.xib */,
@@ -942,13 +942,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 577N9MGWW6;
 				INFOPLIST_FILE = Sitmatic/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.opiant.Sitmatic;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pegasusone.sitmatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Sitmatic/SwiftHelper/Sitmatic-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -968,13 +969,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 577N9MGWW6;
 				INFOPLIST_FILE = Sitmatic/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.opiant.Sitmatic;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pegasusone.sitmatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Sitmatic/SwiftHelper/Sitmatic-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
