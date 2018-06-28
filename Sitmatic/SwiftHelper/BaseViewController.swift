@@ -87,6 +87,16 @@ class BaseViewController: UIViewController {
     }
     
     
+    
+    func json(from object:Any) -> String? {
+        guard let data = try? JSONSerialization.data(withJSONObject: object, options: []) else {
+            return nil
+        }
+        return String(data: data, encoding: String.Encoding.utf8)
+    }
+    
+    
+    
     func setDataWithLocalJson(_ key: String) -> Array<Any> {
         let filePath: String? = Bundle.main.path(forResource: "LocalText", ofType: "json")
         let data = NSData(contentsOfFile: filePath ?? "") as Data?

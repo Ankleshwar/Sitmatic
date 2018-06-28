@@ -11,7 +11,7 @@
                               {"queId": "13","queText": "Do you like a chair with armrests?  (Arms are strongly recommended to take the weight of your arms off your neck and shoulders)", "option1":"Yes","option2":"No"},
                               
                    {"queId": "14","queText": "What type of floor will your chair be on?", "option1":"Hard Floor","option2":"Carpet"},
-                              {"queId": "15","queText": "We’re almost done! Need to make a change or add something?:", "option1":"Yes","option2":"No"},
+                             
                    
                    ],
     
@@ -75,4 +75,7 @@
    
     
 }
+
+
+
 

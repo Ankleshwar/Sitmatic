@@ -167,3 +167,19 @@ internal extension UIViewController {
     }
     
 }
+
+
+
+class Car{
+    var color = "Red"
+    static let singletonCar = Car()
+}
+
+
+
+
+
+
+
+
+

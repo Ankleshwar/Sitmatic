@@ -8,7 +8,7 @@
 
 import UIKit
 import Toast_Swift
-
+import SVProgressHUD
 
 class OrderProccessingSecond: BaseViewController {
     
@@ -16,11 +16,12 @@ class OrderProccessingSecond: BaseViewController {
     @IBOutlet weak var tostLable: UILabel!
     
     
-    
+     var dicAnsData = Dictionary<String, String>()
     var isFirstQue: Bool!
     @IBOutlet weak var tableView: UITableView!
     var arrQuestion: Array<Dictionary<String,Any>>?
     var arrAnswer = NSMutableArray()
+    var arrPreviousControllerData = NSMutableArray()
     @IBOutlet weak var btnYes: UIButton!
     @IBOutlet weak var lblYes: UILabel!
     @IBOutlet weak var btnNo: UIButton!
@@ -32,10 +33,10 @@ class OrderProccessingSecond: BaseViewController {
     var dicNext  = Dictionary<String, String>()
     @IBOutlet weak var btnprevious: UIButton!
     var arrayPersnonID: [String] = []
-      var customViewAlert: UIView!
+    var customViewAlert: UIView!
     @IBOutlet weak var btnNext: UIButton!
      var isPreviousClick : Bool!
-    
+     var serverArrayThid = NSMutableArray()
     var  value: Int = 0
     
     @IBOutlet weak var lblQuestionValueCount: UILabel!
@@ -110,6 +111,7 @@ class OrderProccessingSecond: BaseViewController {
                 
                 setPreviousData(valueindex: value)
                 self.arrAnswer.removeObject(at: value)
+                 serverArrayThid.removeObject(at: value)
                 self.isPreviousClick = true
                 
                 
@@ -194,6 +196,10 @@ class OrderProccessingSecond: BaseViewController {
             self.arrAnswer.add(dicData)
             self.btnprevious.isHidden = false
             
+            dicAnsData["id"] = arrQuestion?[value]["queId"] as? String
+            dicAnsData["ans"] = strSelected
+            self.serverArrayThid.add(dicAnsData)
+            
             
             if (self.arrQuestion?.count == value){
                 ECSAlert().showAlert(message: "Que overThanku", controller: self)
@@ -233,7 +239,7 @@ class OrderProccessingSecond: BaseViewController {
         let strId = arrQuestion?[value]["queId"] as? String
         self.isPreviousClick = false
         
-        if strId == "15"{
+        if strId == "14"{
             
             goToNext()
         }else{
@@ -258,8 +264,63 @@ class OrderProccessingSecond: BaseViewController {
     
     func goToNext(){
 
+     print(serverArrayThid)
+        
+        let strJson = self.json(from: serverArrayThid)
+        print(strJson)
+        
+        self.callGenrateModelApi(strData :strJson!)
         
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    func callGenrateModelApi(strData : String){
+        
+        let dic = ["data": strData]
+
+        
+        
+        SVProgressHUD.show()
+        
+        ServiceClass().getModel(strUrl: "savebasicquestions", param: dic as [String : AnyObject] ) { error, dicdata in
+            
+            if error != nil{
+                print(dicdata)
+                
+                
+                SVProgressHUD.dismiss()
+            }else{
+
+                
+                 SVProgressHUD.dismiss()
+                
+            }
+            
+            SVProgressHUD.dismiss()
+        }
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     @IBAction func clickToBtnNo(_ sender: Any) {
@@ -272,7 +333,7 @@ class OrderProccessingSecond: BaseViewController {
         let strId = arrQuestion?[value]["queId"] as? String
         
         
-        if strId == "15"{
+        if strId == "14"{
             goToNext()
         }
         else{

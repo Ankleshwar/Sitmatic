@@ -35,11 +35,11 @@ class SSLoginVC: BaseViewController {
     
     override func viewDidLayoutSubviews() {
         self.txtEmail.layer.masksToBounds = true;
-        self.txtEmail.layer.cornerRadius = 20.0
+        self.txtEmail.layer.cornerRadius = self.txtEmail.frame.height / 2.0
         self.txtPassword.layer.masksToBounds = true;
-        self.txtPassword.layer.cornerRadius = 20.0
+        self.txtPassword.layer.cornerRadius = self.txtPassword.frame.height / 2.0
         self.btnLogin.layer.masksToBounds = true;
-        self.btnLogin.layer.cornerRadius = 20.0
+        self.btnLogin.layer.cornerRadius = self.btnLogin.frame.height / 2.0
         self.btnLogin.layer.borderWidth = 1.0
         self.btnLogin.layer.borderColor = UIColor.white.cgColor
        

@@ -21,6 +21,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setRootController()
         UIApplication.shared.statusBarStyle = .lightContent
         UINavigationBar.appearance().barStyle = .blackTranslucent
+    
+        let myCar = Car.singletonCar
+        myCar.color = "Blue"
+        print(myCar.color)
+        
+        let yourCar = Car()
+        
+        yourCar.color = "Blue"
+        print(yourCar.color)
+        
+        
         return true
     }
 

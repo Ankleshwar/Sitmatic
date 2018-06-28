@@ -13,7 +13,7 @@ class StartOrderd: BaseViewController {
     
     
     @IBOutlet weak var lblQuestionValueCount: UILabel!
-    
+      var dicAnsData = Dictionary<String, String>()
      var strInce: String!
     @IBOutlet var pickerView: UIPickerView!
     @IBOutlet weak var btnNext: UIButton!
@@ -29,6 +29,7 @@ class StartOrderd: BaseViewController {
     var arrQuestion = [[String: Any]]()
     var arrHeightft = [[:]]
      var arrAnswer = NSMutableArray()
+    var serverArraySecond = NSMutableArray()
      var dicData = Dictionary<String, Any>()
     var arrInch :Array<Any>?
     
@@ -105,6 +106,15 @@ class StartOrderd: BaseViewController {
         
     }
     
+  
+        
+        
+        
+        
+    
+        
+    
+    
     
     @IBAction func clickToNext(_ sender: Any) {
         
@@ -141,13 +151,18 @@ class StartOrderd: BaseViewController {
                 self.isFirstQuestion = false
                 dicData["value"] = arr
                 self.arrAnswer.add(dicData)
-                
+                dicAnsData["id"] = String(id)
+                dicAnsData["ans"] = dicData["selected"] as? String
+                self.serverArraySecond.add(dicAnsData)
+               
                 
                 
                 if id == 12{
                     
-                    
+                
                     let vc = OrderProccessingSecond(nibName: "OrderProccessingSecond", bundle: nil)
+                    vc.serverArrayThid = serverArraySecond
+                   
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
                 else{
@@ -193,6 +208,7 @@ class StartOrderd: BaseViewController {
                     self.btnPrevious.isHidden =  false
                     self.isFirstQuestion = true
                     
+                    
                 }
                 lblQuestion.text = dicdata["questionText"] as? String
                 self.txtField.text = dicdata["selected"] as? String
@@ -213,6 +229,7 @@ class StartOrderd: BaseViewController {
            
                 
                 self.arrAnswer.removeObject(at: count)
+                serverArraySecond.removeObject(at: count)
                 
             }
         }

@@ -36,7 +36,30 @@ class ServiceClass: NSObject {
     
     
     
-    
+    public func getModel(strUrl:String,param:[String:AnyObject],completion:@escaping (arrayBlock)){
+        
+        print(param)
+        
+        requestPOSTURL(baseURL+strUrl, params: param as [String : AnyObject], headers: nil, success: {
+            (JSONResponse) -> Void in
+            print(JSONResponse)
+            
+            
+            
+            
+            
+            
+            completion(nil,JSONResponse.array!)
+            
+            
+            
+        }) {
+            (error) -> Void in
+            
+            completion(error,[])
+            
+        }
+    }
     
     
     
