@@ -29,10 +29,10 @@ class StartOrderd: BaseViewController {
     var arrQuestion = [[String: Any]]()
     var arrHeightft = [[:]]
      var arrAnswer = NSMutableArray()
-    var serverArraySecond = NSMutableArray()
+    var serverArraySecond: [[String: String]]  = Array()
      var dicData = Dictionary<String, Any>()
     var arrInch :Array<Any>?
-    
+    var ansStrIn: String!
     var isFirstQuestion: Bool!
     
     @IBOutlet weak var tostView: UIView!
@@ -48,6 +48,7 @@ class StartOrderd: BaseViewController {
         self.lblQuestionValueCount.text = String(id) + " " + "of 24 Questions"
         self.strInce = "0"
         self.strValue = "3"
+        self.ansStrIn = "36"
         
     }
     
@@ -135,9 +136,12 @@ class StartOrderd: BaseViewController {
                 
                 if(self.isFirstQuestion == true){
                     dicData["selected"] = self.txtField.text
+                    self.ansStrIn = String(Int(strValue)!*12 + Int(strInce)!)
+                    dicAnsData["ans"] = self.ansStrIn
                 }
                 else{
                     dicData["selected"] = strValue
+                    dicAnsData["ans"] = dicData["selected"] as? String
                 }
                 
                 
@@ -151,11 +155,14 @@ class StartOrderd: BaseViewController {
                 self.isFirstQuestion = false
                 dicData["value"] = arr
                 self.arrAnswer.add(dicData)
-                dicAnsData["id"] = String(id)
-                dicAnsData["ans"] = dicData["selected"] as? String
-                self.serverArraySecond.add(dicAnsData)
-               
+                //var strId = String(id)
+                self.serverArraySecond = self.serverArraySecond.filter { !$0.values.contains(String(id)) }
                 
+                dicAnsData["id"] = String(id)
+              //  dicAnsData["ans"] = dicData["selected"] as? String
+                self.serverArraySecond.append(dicAnsData)
+               
+                print(self.serverArraySecond)
                 
                 if id == 12{
                     
@@ -229,7 +236,7 @@ class StartOrderd: BaseViewController {
            
                 
                 self.arrAnswer.removeObject(at: count)
-                serverArraySecond.removeObject(at: count)
+                serverArraySecond.remove(at: count)
                 
             }
         }

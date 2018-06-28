@@ -36,7 +36,7 @@ class OrderProccessingSecond: BaseViewController {
     var customViewAlert: UIView!
     @IBOutlet weak var btnNext: UIButton!
      var isPreviousClick : Bool!
-     var serverArrayThid = NSMutableArray()
+     var serverArrayThid: [[String: String]]  = Array()
     var  value: Int = 0
     
     @IBOutlet weak var lblQuestionValueCount: UILabel!
@@ -111,7 +111,7 @@ class OrderProccessingSecond: BaseViewController {
                 
                 setPreviousData(valueindex: value)
                 self.arrAnswer.removeObject(at: value)
-                 serverArrayThid.removeObject(at: value)
+                 serverArrayThid.remove(at: value)
                 self.isPreviousClick = true
                 
                 
@@ -198,7 +198,7 @@ class OrderProccessingSecond: BaseViewController {
             
             dicAnsData["id"] = arrQuestion?[value]["queId"] as? String
             dicAnsData["ans"] = strSelected
-            self.serverArrayThid.add(dicAnsData)
+            self.serverArrayThid.append(dicAnsData)
             
             
             if (self.arrQuestion?.count == value){

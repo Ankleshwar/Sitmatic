@@ -36,7 +36,7 @@ class OrderProccessing: BaseViewController {
     @IBOutlet weak var btnNext: UIButton!
     var isPreviousClick : Bool!
      var dicAnsData = Dictionary<String, String>()
-    var serverArray = NSMutableArray()
+    var serverArray: [[String: String]]  = Array()
     
     
     var  value: Int = 0
@@ -103,7 +103,7 @@ class OrderProccessing: BaseViewController {
             self.arrQuestion?.remove(at: value)
             self.arrayPersnonID.remove(at: value)
             value -= 1
-           serverArray.removeObject(at: value)
+           serverArray.remove(at: value)
             setPreviousData(valueindex: value)
             self.arrAnswer.removeObject(at: value)
             
@@ -226,9 +226,11 @@ class OrderProccessing: BaseViewController {
         
         
 
-        let predicate = NSPredicate(format: "SELF CONTAINS %@", strId)
+   
+        
+         self.serverArray = self.serverArray.filter { !$0.values.contains(strId) }
 
-    
+   
         
         
         
@@ -237,7 +239,7 @@ class OrderProccessing: BaseViewController {
   
         dicAnsData["id"] = arrQuestion?[value]["queId"] as? String
         dicAnsData["ans"] = strSelected
-        self.serverArray.add(dicAnsData)
+        self.serverArray.append(dicAnsData)
         
     }
     
@@ -331,6 +333,8 @@ class OrderProccessing: BaseViewController {
        
          print(self.serverArray)
      
+        var arrMutable = NSMutableArray()
+        arrMutable.add(serverArray)
       
 
         let vc = StartOrderd(nibName: "StartOrderd", bundle: nil)
@@ -440,7 +444,7 @@ class OrderProccessing: BaseViewController {
             self.btnprevious.isHidden = true
             
             self.btnNext.isEnabled = true
-            self.serverArray.removeAllObjects()
+            self.serverArray.removeAll()
             self.arrayPersnonID.removeAll()
             value = 0
             self.arrayPersnonID.append("1")

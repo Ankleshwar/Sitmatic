@@ -26,21 +26,6 @@ DEPENDENCIES:
   - Toaster
   - YALSideMenu
 
-SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
-    - Alamofire
-    - CHIPageControl
-    - JWTDecode
-    - Kingfisher
-    - ObjectMapper
-    - SVProgressHUD
-    - SwiftKeychainWrapper
-    - SwiftyJSON
-    - TextFieldEffects
-    - Toast-Swift
-    - Toaster
-    - YALSideMenu
-
 SPEC CHECKSUMS:
   Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
   CHIPageControl: 79d19a8ee2e35fa3c1da6533adb5364c77b5cfea
@@ -57,4 +42,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: ce379b28b7db9d2d1e6bcd32fec271b9bf41c46f
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.4.0
