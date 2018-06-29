@@ -127,7 +127,7 @@ class StartOrderd: BaseViewController {
             self.showToast(message: "Please select a valid option")
             
         }else{
-           
+            let id : Int = (arrQuestion[count]["questionId"] as? Int)!
             self.btnPrevious.isHidden = false
             if (self.arrQuestion.count == count){
                 //self.showToast(message: "Thanku")
@@ -137,15 +137,15 @@ class StartOrderd: BaseViewController {
                 if(self.isFirstQuestion == true){
                     dicData["selected"] = self.txtField.text
                     self.ansStrIn = String(Int(strValue)!*12 + Int(strInce)!)
-                    dicAnsData["ans"] = self.ansStrIn
+                    dicAnsData[String(id)] = self.ansStrIn
                 }
                 else{
                     dicData["selected"] = strValue
-                    dicAnsData["ans"] = dicData["selected"] as? String
+                    dicAnsData[String(id)] = dicData["selected"] as? String
                 }
                 
                 
-                let id : Int = (arrQuestion[count]["questionId"] as? Int)!
+               
                 let arr : Array<Any>? = arrQuestion[count]["value"] as? Array
                 dicData["questionId"] = String(id)
               
@@ -158,7 +158,7 @@ class StartOrderd: BaseViewController {
                 //var strId = String(id)
                 self.serverArraySecond = self.serverArraySecond.filter { !$0.values.contains(String(id)) }
                 
-                dicAnsData["id"] = String(id)
+               // dicAnsData["id"] = String(id)
               //  dicAnsData["ans"] = dicData["selected"] as? String
                 self.serverArraySecond.append(dicAnsData)
                

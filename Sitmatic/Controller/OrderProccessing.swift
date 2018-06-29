@@ -36,8 +36,8 @@ class OrderProccessing: BaseViewController {
     @IBOutlet weak var btnNext: UIButton!
     var isPreviousClick : Bool!
      var dicAnsData = Dictionary<String, String>()
+   // var serverArray: [[String: String]]  = Array()
     var serverArray: [[String: String]]  = Array()
-    
     
     var  value: Int = 0
     
@@ -237,8 +237,8 @@ class OrderProccessing: BaseViewController {
         
         
   
-        dicAnsData["id"] = arrQuestion?[value]["queId"] as? String
-        dicAnsData["ans"] = strSelected
+       // dicAnsData["id"] = arrQuestion?[value]["queId"] as? String
+        dicAnsData[strId] = strSelected
         self.serverArray.append(dicAnsData)
         
     }
@@ -329,12 +329,11 @@ class OrderProccessing: BaseViewController {
     
     func goToNext(){
         
-        
+        self.serverArray = serverArray.compactMap { $0 }
        
          print(self.serverArray)
      
-        var arrMutable = NSMutableArray()
-        arrMutable.add(serverArray)
+       
       
 
         let vc = StartOrderd(nibName: "StartOrderd", bundle: nil)

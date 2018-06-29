@@ -196,8 +196,10 @@ class OrderProccessingSecond: BaseViewController {
             self.arrAnswer.add(dicData)
             self.btnprevious.isHidden = false
             
-            dicAnsData["id"] = arrQuestion?[value]["queId"] as? String
-            dicAnsData["ans"] = strSelected
+            let strId = arrQuestion?[value]["queId"] as! String
+            
+           // dicAnsData["id"] = arrQuestion?[value]["queId"] as? String
+            dicAnsData[strId] = strSelected
             self.serverArrayThid.append(dicAnsData)
             
             
@@ -263,17 +265,25 @@ class OrderProccessingSecond: BaseViewController {
     
     
     func goToNext(){
-
+        
+     
+        self.serverArrayThid = serverArrayThid.compactMap { $0 }
+        
      print(serverArrayThid)
         
+        
+        
+        
+        
         let strJson = self.json(from: serverArrayThid)
-        print(strJson)
+        print(strJson ?? "")
         
         self.callGenrateModelApi(strData :strJson!)
         
     }
     
     
+
     
     
     
@@ -416,3 +426,17 @@ class OrderProccessingSecond: BaseViewController {
     
 }
 
+
+extension Array where Element:Equatable {
+    func removeDuplicates() -> [Element] {
+        var result = [Element]()
+        
+        for value in self {
+            if result.contains(value) == false {
+                result.append(value)
+            }
+        }
+        
+        return result
+    }
+}
