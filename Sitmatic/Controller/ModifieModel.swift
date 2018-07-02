@@ -12,7 +12,12 @@ class ModifieModel: BaseViewController {
     
     @IBOutlet weak var lblSeatSize: UILabel!
     @IBOutlet weak var lblBackrestPosition: UILabel!
+    @IBOutlet weak var lblArmrests: UILabel!
+    @IBOutlet weak var lblArmcap: UILabel!
+    @IBOutlet weak var lblBase: UILabel!
+    @IBOutlet weak var lblCasters: UILabel!
     
+    @IBOutlet weak var lblSeatHieght: UILabel!
     @IBOutlet weak var lblSeatOption: UILabel!
     
    var textField : UITextField!
@@ -99,6 +104,16 @@ class ModifieModel: BaseViewController {
             self.lblBackrestPosition.text  = strValue
         }else if index == 3{
             self.lblSeatOption.text  = strValue
+        }else if index == 4{
+            self.lblSeatHieght.text  = strValue
+        }else if index == 5{
+            self.lblArmrests.text  = strValue
+        }else if index == 6{
+            self.lblArmcap.text  = strValue
+        }else if index == 7{
+            self.lblBase.text  = strValue
+        }else if index == 8{
+            self.lblCasters.text  = strValue
         }
   
         
