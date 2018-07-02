@@ -51,6 +51,11 @@ class ModifieModel: BaseViewController {
     
     
     
+    @IBAction func clickToDone(_ sender: Any) {
+        
+        let vc = OrderProccessingThird(nibName: "OrderProccessingThird", bundle: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
     
     
