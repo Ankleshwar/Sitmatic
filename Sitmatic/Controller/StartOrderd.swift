@@ -137,11 +137,11 @@ class StartOrderd: BaseViewController {
                 if(self.isFirstQuestion == true){
                     dicData["selected"] = self.txtField.text
                     self.ansStrIn = String(Int(strValue)!*12 + Int(strInce)!)
-                    dicAnsData[String(id)] = self.ansStrIn
+                    dicAnsData["ans"] = self.ansStrIn
                 }
                 else{
                     dicData["selected"] = strValue
-                    dicAnsData[String(id)] = dicData["selected"] as? String
+                    dicAnsData["ans"] = dicData["selected"] as? String
                 }
                 
                 
@@ -158,8 +158,8 @@ class StartOrderd: BaseViewController {
                 //var strId = String(id)
                 self.serverArraySecond = self.serverArraySecond.filter { !$0.values.contains(String(id)) }
                 
-               // dicAnsData["id"] = String(id)
-              //  dicAnsData["ans"] = dicData["selected"] as? String
+                dicAnsData["id"] = String(id)
+              
                 self.serverArraySecond.append(dicAnsData)
                
                 print(self.serverArraySecond)

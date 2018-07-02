@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let islogin = UserDefaults.standard.bool(forKey: "isLogin")
         if islogin == true{
-            viewController = ModifieModel(nibName: "ModifieModel", bundle: nil)
+            viewController = SHomeVC(nibName: "SHomeVC", bundle: nil)
         }else{
             viewController = SSLoginVC(nibName: "SSLoginVC", bundle: nil)
         }

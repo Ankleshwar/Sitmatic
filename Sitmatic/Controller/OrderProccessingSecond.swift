@@ -196,10 +196,10 @@ class OrderProccessingSecond: BaseViewController {
             self.arrAnswer.add(dicData)
             self.btnprevious.isHidden = false
             
-            let strId = arrQuestion?[value]["queId"] as! String
+            _ = arrQuestion?[value]["queId"] as! String
             
-           // dicAnsData["id"] = arrQuestion?[value]["queId"] as? String
-            dicAnsData[strId] = strSelected
+            dicAnsData["id"] = arrQuestion?[value]["queId"] as? String
+            dicAnsData["ans"] = strSelected
             self.serverArrayThid.append(dicAnsData)
             
             
@@ -243,7 +243,9 @@ class OrderProccessingSecond: BaseViewController {
         
         if strId == "14"{
             
-            goToNext()
+            callApi()
+        } else if strId == "15"{
+            setNextData()
         }else{
                  nextQues()
         }
@@ -255,7 +257,11 @@ class OrderProccessingSecond: BaseViewController {
             
 }
         
+    func setNextData(){
+        let vc = ModifieModel(nibName: "ModifieModel", bundle: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
         
+    }
         
         
         
@@ -264,10 +270,10 @@ class OrderProccessingSecond: BaseViewController {
     
     
     
-    func goToNext(){
+    func callApi(){
         
      
-        self.serverArrayThid = serverArrayThid.compactMap { $0 }
+     
         
      print(serverArrayThid)
         
@@ -303,10 +309,15 @@ class OrderProccessingSecond: BaseViewController {
             if error != nil{
                 print(dicdata)
                 
+        
                 
                 SVProgressHUD.dismiss()
             }else{
 
+                let strMessage = "We’re almost done! Your ideal chair model is:" + "Model Number :3&&&&" + "Need to make a change or add something?"
+                
+                self.arrQuestion?.append(["queId": "15","queText": strMessage , "option1":"Yes","option2":"No"])
+                self.nextQues()
                 
                  SVProgressHUD.dismiss()
                 
@@ -344,13 +355,20 @@ class OrderProccessingSecond: BaseViewController {
         
         
         if strId == "14"{
-            goToNext()
+            callApi()
+        }else    if strId == "15"{
+           setNoNextScreen()
         }
         else{
             nextQues()
         }
         
         
+    }
+    
+    func setNoNextScreen(){
+       let vc = OrderProccessingThird(nibName: "OrderProccessingThird", bundle: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     
@@ -412,7 +430,7 @@ class OrderProccessingSecond: BaseViewController {
             value = 0
             self.arrayPersnonID.append("13")
          
-            arrQuestion = setDataWithLocalJson("StartOrderd") as NSArray as? Array<Dictionary<String, Any>>
+            arrQuestion = setDataWithLocalJson("OrderProccessingSecond") as NSArray as? Array<Dictionary<String, Any>>
             
         }
         

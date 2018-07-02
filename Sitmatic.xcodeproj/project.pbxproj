@@ -20,6 +20,9 @@
 		1B2E013220C7B3F600B34645 /* 750_1334.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B2E012E20C7B3F400B34645 /* 750_1334.png */; };
 		1B2E013320C7B3F600B34645 /* 640_960.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B2E012F20C7B3F500B34645 /* 640_960.png */; };
 		1B2E013520C7B68900B34645 /* 1125_2436.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B2E013420C7B68900B34645 /* 1125_2436.png */; };
+		1B46480C20E9F1D1003854DC /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B46480B20E9F1D0003854DC /* info.png */; };
+		1B46480E20EA2E75003854DC /* OrderProccessingThird.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B46480D20EA2E75003854DC /* OrderProccessingThird.xib */; };
+		1B46481020EA385C003854DC /* OrderProccessingThird.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B46480F20EA385C003854DC /* OrderProccessingThird.swift */; };
 		1B48805620CA5C3D008AC3DD /* QuestionDataSecond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B48805520CA5C3D008AC3DD /* QuestionDataSecond.swift */; };
 		1B48805820CA794D008AC3DD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B48805720CA794D008AC3DD /* QuartzCore.framework */; };
 		1B48805A20CA797C008AC3DD /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B48805920CA797C008AC3DD /* SweetAlert.swift */; };
@@ -124,6 +127,9 @@
 		1B2E012E20C7B3F400B34645 /* 750_1334.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 750_1334.png; sourceTree = "<group>"; };
 		1B2E012F20C7B3F500B34645 /* 640_960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 640_960.png; sourceTree = "<group>"; };
 		1B2E013420C7B68900B34645 /* 1125_2436.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1125_2436.png; sourceTree = "<group>"; };
+		1B46480B20E9F1D0003854DC /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info.png; sourceTree = "<group>"; };
+		1B46480D20EA2E75003854DC /* OrderProccessingThird.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderProccessingThird.xib; sourceTree = "<group>"; };
+		1B46480F20EA385C003854DC /* OrderProccessingThird.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderProccessingThird.swift; sourceTree = "<group>"; };
 		1B48805520CA5C3D008AC3DD /* QuestionDataSecond.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionDataSecond.swift; sourceTree = "<group>"; };
 		1B48805720CA794D008AC3DD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1B48805920CA797C008AC3DD /* SweetAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SweetAlert.swift; sourceTree = "<group>"; };
@@ -343,6 +349,7 @@
 		3B01AB3120C6D98F00291522 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1B46480F20EA385C003854DC /* OrderProccessingThird.swift */,
 				1BE313B420CE6ABD004F1931 /* OrderProccessingSecond.swift */,
 				1BB9C4BE20C8F8E10028A48A /* OrderProccessing.swift */,
 				1BF27F3C20E608740014B84E /* ModifieModel.swift */,
@@ -359,6 +366,7 @@
 		3B01AB3220C6D9A900291522 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1B46480D20EA2E75003854DC /* OrderProccessingThird.xib */,
 				1BF27F4020E60B5E0014B84E /* ModifieModel.xib */,
 				1BECAEFC20D24DF50050AE31 /* SForgotPass.xib */,
 				1BE313B620CE6B17004F1931 /* OrderProccessingSecond.xib */,
@@ -375,6 +383,7 @@
 		3B01AB3A20C6DD7700291522 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1B46480B20E9F1D0003854DC /* info.png */,
 				1B48805D20CA8CD3008AC3DD /* cancel.png */,
 				1B48805B20CA8CD2008AC3DD /* next.png */,
 				1B48805C20CA8CD2008AC3DD /* previous.png */,
@@ -581,6 +590,7 @@
 				1B48805F20CA8CD3008AC3DD /* previous.png in Resources */,
 				1B2E012520C7A4E500B34645 /* Roboto-Regular.ttf in Resources */,
 				1BF27F4120E60B5E0014B84E /* ModifieModel.xib in Resources */,
+				1B46480E20EA2E75003854DC /* OrderProccessingThird.xib in Resources */,
 				3B01AB4020C6DE3400291522 /* background.jpg in Resources */,
 				3B01AB4220C6E18400291522 /* sitmaticlogo.png in Resources */,
 				1B2E012B20C7AED800B34645 /* edit.png in Resources */,
@@ -589,6 +599,7 @@
 				1B2E012320C79EFD00B34645 /* SHomeVC.xib in Resources */,
 				1BB9C4C120C8F8E10028A48A /* OrderProccessing.xib in Resources */,
 				1BECAEFE20D24DF50050AE31 /* SForgotPass.xib in Resources */,
+				1B46480C20E9F1D1003854DC /* info.png in Resources */,
 				1B6DF8F320C7E4BC00280E84 /* chair7.jpg in Resources */,
 				1B6DF8FF20C8102900280E84 /* off.png in Resources */,
 				1B6DF8E020C7DB2900280E84 /* slider3.jpg in Resources */,
@@ -794,6 +805,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B01AB2E20C6D98400291522 /* ServiceHelper.swift in Sources */,
+				1B46481020EA385C003854DC /* OrderProccessingThird.swift in Sources */,
 				3B01AB2320C6D98300291522 /* Extentions.swift in Sources */,
 				3B01AAE220C6D7E900291522 /* ViewController.swift in Sources */,
 				3B01AB2D20C6D98400291522 /* UIWindow.swift in Sources */,

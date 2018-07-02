@@ -237,8 +237,8 @@ class OrderProccessing: BaseViewController {
         
         
   
-       // dicAnsData["id"] = arrQuestion?[value]["queId"] as? String
-        dicAnsData[strId] = strSelected
+        dicAnsData["id"] = arrQuestion?[value]["queId"] as? String
+        dicAnsData["ans"] = strSelected
         self.serverArray.append(dicAnsData)
         
     }

@@ -99,7 +99,7 @@ extension UIViewController {
     
     func showToast(message : String) {
         
-        let toastLabel = UILabel(frame: CGRect(x: 0, y: 66, width: self.view.frame.size.width, height: 40))
+        let toastLabel = UILabel(frame: CGRect(x: 0, y: 80, width: self.view.frame.size.width, height: 40))
         toastLabel.backgroundColor = UIColor.darkBlue
         toastLabel.textColor = UIColor.white
         toastLabel.textAlignment = .center;

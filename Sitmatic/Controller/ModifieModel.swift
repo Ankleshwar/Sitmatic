@@ -35,7 +35,7 @@ class ModifieModel: BaseViewController {
 
     var arrIteam :Array<Any>?
     @IBOutlet weak var lblQuestion: UILabel!
-    var strValue: String!
+    var strValue: String = ""
    
  
     var arrAnswer = NSMutableArray()
@@ -60,8 +60,8 @@ class ModifieModel: BaseViewController {
        
         arrQuestion = (setDataWithLocalJson("ModifiModel") as NSArray as? Array<Dictionary<String, Any>>)!
       
-        self.arrIteam = arrQuestion![0]["value"] as? Array
-       
+       self.arrIteam = arrQuestion![0]["value"] as? Array
+       self.showToast(message: "Please Select Options from picker")
         
     }
     
@@ -71,6 +71,14 @@ class ModifieModel: BaseViewController {
         
         
     }
+    
+    
+    @IBAction func clickToinfo(_ sender: Any) {
+        self.showToast(message: "Please Select Options from picker")
+    }
+    
+    
+    
     
     
     
@@ -89,7 +97,7 @@ class ModifieModel: BaseViewController {
         let toolBar = UIToolbar().ToolbarPiker(mySelect: #selector(self.donedatePicker))
         
         textField.inputAccessoryView = toolBar
-         textField.becomeFirstResponder()
+        textField.becomeFirstResponder()
         
         
     }
@@ -97,9 +105,21 @@ class ModifieModel: BaseViewController {
     @objc func donedatePicker(){
         
         if index == 0{
-             self.lblbackRestSize.text   = strValue
+            
+            if strValue == ""{
+                 self.lblbackRestSize.text   = "Mid Size"
+                
+            }else{
+                 self.lblbackRestSize.text   = strValue
+            }
+            
         }else if index == 1{
+            if strValue == ""{
+                self.lblSeatSize.text   = "Mid Size"
+                
+            }else{
             self.lblSeatSize.text  = strValue
+            }
         }else if index == 2{
             self.lblBackrestPosition.text  = strValue
         }else if index == 3{
@@ -146,9 +166,10 @@ class ModifieModel: BaseViewController {
     
     
     @IBAction func clickToPickerOpen(_ sender: Any) {
+     
         index = (sender as AnyObject).tag
-        print(index)
-         self.arrIteam = arrQuestion![index]["value"] as? Array
+        
+        self.arrIteam = arrQuestion![index]["value"] as? Array
          showPicker()
     }
     
@@ -245,7 +266,7 @@ extension ModifieModel : UIPickerViewDelegate,UIPickerViewDataSource{
         
         
   
-            self.strValue = arrIteam?[row] as? String
+        self.strValue = (arrIteam?[row] as? String)!
         
         
         
