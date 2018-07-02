@@ -10,9 +10,12 @@ import UIKit
 
 class ModifieModel: BaseViewController {
     
-  
-   
-    @IBOutlet weak var txtBackrestSize: UITextField!
+    @IBOutlet weak var lblSeatSize: UILabel!
+    @IBOutlet weak var lblBackrestPosition: UILabel!
+    
+    @IBOutlet weak var lblSeatOption: UILabel!
+    
+   var textField : UITextField!
     
     @IBOutlet weak var lblQuestionValueCount: UILabel!
     var dicAnsData = Dictionary<String, String>()
@@ -38,7 +41,8 @@ class ModifieModel: BaseViewController {
     var isFirstQuestion: Bool!
     
      var arrSections = [Section]()
-    
+    var index = 100
+    var arrQuestion: Array<Dictionary<String,Any>>?
     
     
     
@@ -48,10 +52,10 @@ class ModifieModel: BaseViewController {
     @IBOutlet weak var tostView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setData()
-       self.dicAnsData["selected"] = ""
-       self.arrIteam = ["Low Back","Mid Back","High Back","High & Wide Back"]
+       
+        arrQuestion = (setDataWithLocalJson("ModifiModel") as NSArray as? Array<Dictionary<String, Any>>)!
+      
+        self.arrIteam = arrQuestion![0]["value"] as? Array
        
         
     }
@@ -59,7 +63,7 @@ class ModifieModel: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
     
         self.pickerView.translatesAutoresizingMaskIntoConstraints = false
-        showPicker()
+        
         
     }
     
@@ -67,19 +71,37 @@ class ModifieModel: BaseViewController {
     
     func showPicker(){
         
-       txtBackrestSize.inputView = pickerView
+        if  textField == nil {
+            
+            self.textField = UITextField(frame:.zero)
+            textField.inputView = self.pickerView
+            self.view.addSubview(textField)
+            
+        }
+        
+       
         
         let toolBar = UIToolbar().ToolbarPiker(mySelect: #selector(self.donedatePicker))
         
-        txtBackrestSize.inputAccessoryView = toolBar
+        textField.inputAccessoryView = toolBar
+         textField.becomeFirstResponder()
         
         
     }
     
     @objc func donedatePicker(){
         
+        if index == 0{
+             self.lblbackRestSize.text   = strValue
+        }else if index == 1{
+            self.lblSeatSize.text  = strValue
+        }else if index == 2{
+            self.lblBackrestPosition.text  = strValue
+        }else if index == 3{
+            self.lblSeatOption.text  = strValue
+        }
   
-          self.txtBackrestSize.text   = strValue
+        
         
         self.view.endEditing(true)
         
@@ -91,9 +113,7 @@ class ModifieModel: BaseViewController {
     
     
     
-    func setData(){
-        
-    }
+ 
    
     
     
@@ -111,6 +131,9 @@ class ModifieModel: BaseViewController {
     
     
     @IBAction func clickToPickerOpen(_ sender: Any) {
+        index = (sender as AnyObject).tag
+        print(index)
+         self.arrIteam = arrQuestion![index]["value"] as? Array
          showPicker()
     }
     

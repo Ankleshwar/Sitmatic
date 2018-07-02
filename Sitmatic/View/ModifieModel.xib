@@ -16,9 +16,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ModifieModel" customModule="Sitmatic" customModuleProvider="target">
             <connections>
+                <outlet property="lblBackrestPosition" destination="9zC-Tz-B8l" id="GZJ-1s-5If"/>
                 <outlet property="lblQuestionValueCount" destination="zHO-GQ-H0U" id="AMf-Nq-3nf"/>
+                <outlet property="lblSeatOption" destination="zzM-zT-OZi" id="nVk-dG-AKg"/>
+                <outlet property="lblSeatSize" destination="Ze4-zv-C8D" id="Ujj-gL-U9E"/>
+                <outlet property="lblbackRestSize" destination="hvB-7N-d2k" id="XsN-i1-gAj"/>
                 <outlet property="pickerView" destination="1g3-2D-eBI" id="mF5-Ae-kWO"/>
-                <outlet property="txtBackrestSize" destination="1Hb-I1-NkN" id="lXf-b5-t2s"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -131,15 +134,15 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Mid Back" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Hb-I1-NkN">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mid Back" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hvB-7N-d2k">
                                                             <rect key="frame" x="169.66666666666669" y="0.0" width="169.66666666666669" height="40"/>
+                                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                             <color key="textColor" red="0.2274509804" green="0.68627450980000004" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                            <textInputTraits key="textInputTraits"/>
-                                                        </textField>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                 </stackView>
-                                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q0c-Fp-4HV">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q0c-Fp-4HV">
                                                     <rect key="frame" x="349.33333333333331" y="5" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="65j-vN-dBS"/>
@@ -181,12 +184,15 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
-                                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wig-ti-5Q1">
+                                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wig-ti-5Q1">
                                                     <rect key="frame" x="349.33333333333331" y="5" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="Fqh-E0-ukW"/>
                                                         <constraint firstAttribute="height" constant="30" id="dcB-Jw-R3W"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <action selector="clickToPickerOpen:" destination="-1" eventType="touchUpInside" id="GPs-Ul-P3p"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -220,12 +226,15 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
-                                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SVI-tw-KJR">
+                                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SVI-tw-KJR">
                                                     <rect key="frame" x="349.33333333333331" y="5" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="3oY-Of-rqj"/>
                                                         <constraint firstAttribute="height" constant="30" id="Nhv-qf-3RX"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <action selector="clickToPickerOpen:" destination="-1" eventType="touchUpInside" id="mQD-uH-P2D"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -259,12 +268,15 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
-                                                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="skg-HO-yXi">
+                                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="skg-HO-yXi">
                                                     <rect key="frame" x="349.33333333333331" y="5" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="10R-Ql-g8y"/>
                                                         <constraint firstAttribute="height" constant="30" id="YMk-33-NY8"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <action selector="clickToPickerOpen:" destination="-1" eventType="touchUpInside" id="wh7-pZ-uBl"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
