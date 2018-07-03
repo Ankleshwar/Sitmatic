@@ -45,7 +45,7 @@ class StartOrderd: BaseViewController {
         let id : Int = (arrQuestion[count]["questionId"] as? Int)!
         self.arrInch = arrQuestion[0]["inch"] as? Array
         self.isFirstQuestion = true
-        self.lblQuestionValueCount.text = String(id) + " " + "of 24 Questions"
+        self.lblQuestionValueCount.text = String(id) + " " + "of 19 Questions"
         self.strInce = "0"
         self.strValue = "3"
         self.ansStrIn = "36"
@@ -177,7 +177,7 @@ class StartOrderd: BaseViewController {
                      self.txtField.text = ""
                     lblQuestion.text = arrQuestion[count]["questionText"] as? String
                     let id : Int = (arrQuestion[count]["questionId"] as? Int)!
-                    self.lblQuestionValueCount.text = String(id) + " " + "of 24 Questions"
+                    self.lblQuestionValueCount.text = String(id) + " " + "of 19 Questions"
                     self.arrIteam?.removeAll()
                     self.arrIteam = arrQuestion[count]["value"] as? Array
                 }
@@ -210,7 +210,7 @@ class StartOrderd: BaseViewController {
                 
                 var dicdata  = arrAnswer[count] as! [String : Any]
                 let id: String! = dicdata["questionId"] as? String
-                self.lblQuestionValueCount.text = id + " " + "of 24 Questions"
+                self.lblQuestionValueCount.text = id + " " + "of 19 Questions"
                 if id == "5"{
                     self.btnPrevious.isHidden =  false
                     self.isFirstQuestion = true

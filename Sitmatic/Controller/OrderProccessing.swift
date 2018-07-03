@@ -402,7 +402,7 @@ class OrderProccessing: BaseViewController {
         //self.lblQuestion.text  = strID + " " + quename
         self.lblQuestion.text  =   quename
         
-        self.lblQuestionValueCount.text = strID + " " + "of 24 Questions"
+        self.lblQuestionValueCount.text = strID + " " + "of 19 Questions"
         
         self.btnYes.setButtonImage("off.png")
         self.btnNo.setButtonImage("off.png")
@@ -423,7 +423,7 @@ class OrderProccessing: BaseViewController {
         let quename = dicdata["queText"]
         //self.lblQuestion.text  = strID! + " " + quename!
         self.lblQuestion.text  =   quename!
-        self.lblQuestionValueCount.text = strID! + " " + "of 24 Questions"
+        self.lblQuestionValueCount.text = strID! + " " + "of 19 Questions"
         let selctedValue = dicdata["selected"]
         
         self.btnYes.setButtonImage("off.png")

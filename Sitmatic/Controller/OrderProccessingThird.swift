@@ -10,13 +10,15 @@ import UIKit
 import Toast_Swift
 import SVProgressHUD
 
-class OrderProccessingSecond: BaseViewController {
+class OrderProccessingThird: BaseViewController {
     
     @IBOutlet weak var tostView: UIView!
     @IBOutlet weak var tostLable: UILabel!
     
+    @IBOutlet var viewShowModel: UIView!
     
-     var dicAnsData = Dictionary<String, String>()
+    @IBOutlet weak var lblModel: UILabel!
+    var dicAnsData = Dictionary<String, String>()
     var isFirstQue: Bool!
     @IBOutlet weak var tableView: UITableView!
     var arrQuestion: Array<Dictionary<String,Any>>?
@@ -45,7 +47,7 @@ class OrderProccessingSecond: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        arrQuestion = setDataWithLocalJson("OrderProccessingSecond") as NSArray as? Array<Dictionary<String, Any>>
+        arrQuestion = setDataWithLocalJson("OrderProccessingThird") as NSArray as? Array<Dictionary<String, Any>>
         setInitial()
         
     }
@@ -63,14 +65,12 @@ class OrderProccessingSecond: BaseViewController {
         //self.lblQuestion.text  = strID + " " + quename
         self.lblQuestion.text  =   quename
          self.lblQuestionValueCount.text = strID + " " + "of 19 Questions"
-        
+        self.arrayPersnonID.append("17")
         self.btnYes.setButtonImage("off.png")
         self.btnNo.setButtonImage("off.png")
         self.isYesbtnTap = false
-        self.arrayPersnonID.append("1")
-        self.arrayPersnonID.append("2")
-        self.arrayPersnonID.append("3")
-        //self.btnprevious.isHidden = true
+       
+        self.btnprevious.isHidden = false
         self.isFirstQue =  true
     }
     
@@ -91,7 +91,7 @@ class OrderProccessingSecond: BaseViewController {
         else{
             if (value == 0){
                 self.btnprevious.isHidden = true
-                ECSAlert().showAlert(message: "Thanku", controller: self)
+                
             }
             else{
                 
@@ -179,14 +179,6 @@ class OrderProccessingSecond: BaseViewController {
     }
     
     
-    fileprivate func serverSideData() {
-        let strId = arrQuestion?[value]["queId"] as! String
-        self.serverArrayThid = self.serverArrayThid.filter { !$0.values.contains(strId) }
-        dicAnsData["id"] = arrQuestion?[value]["queId"] as? String
-        dicAnsData["ans"] = strSelected
-        self.serverArrayThid.append(dicAnsData)
-    }
-    
     func nextQues(){
         
         self.isFirstQue = false
@@ -204,7 +196,11 @@ class OrderProccessingSecond: BaseViewController {
             self.arrAnswer.add(dicData)
             self.btnprevious.isHidden = false
             
-            serverSideData()
+            let strId = arrQuestion?[value]["queId"] as! String
+            
+           // dicAnsData["id"] = arrQuestion?[value]["queId"] as? String
+            dicAnsData[strId] = strSelected
+            self.serverArrayThid.append(dicAnsData)
             
             
             if (self.arrQuestion?.count == value){
@@ -245,17 +241,37 @@ class OrderProccessingSecond: BaseViewController {
         let strId = arrQuestion?[value]["queId"] as? String
         self.isPreviousClick = false
         
-        if strId == "14"{
-            serverSideData()
-            callApi()
-        } else if strId == "15"{
-            setNextData()
-        }else{
-                 nextQues()
+        if strId == "17"{
+            if let index = self.arrayPersnonID.index(of: "18") {
+                print(index)
+            }
+            else{
+                self.arrQuestion?.append(["queId": "18","queText": "Please select fabric category", "option1":"Category 2/Flexx","option2":"Category 4/Dreamweave"])
+                self.arrayPersnonID.append("18")
+            }
+             nextQues()
+        }  else if strId == "17N"{
+            if let index = self.arrayPersnonID.index(of: "18") {
+                print(index)
+            }
+            else{
+                self.arrQuestion?.append(["queId": "18","queText": "Please select fabric category", "option1":"Category 2/Flexx","option2":"Category 4/Dreamweave"])
+                self.arrayPersnonID.append("18")
+            }
+             nextQues()
         }
+        
+        
+         else if strId == "18" {
+            callApi()
+        }else{
+            nextQues()
+        }
+            
+        
      
             
-            
+        
             
         
             
@@ -277,7 +293,7 @@ class OrderProccessingSecond: BaseViewController {
     func callApi(){
         
      
-     
+        self.serverArrayThid = serverArrayThid.compactMap { $0 }
         
      print(serverArrayThid)
         
@@ -313,15 +329,18 @@ class OrderProccessingSecond: BaseViewController {
             if error != nil{
                 print(dicdata)
                 
-        
+                let strMessage = "We’re  done! Your ideal chair model is:" + "Model Number :#####"
+                self.lblModel.text = strMessage
+                self.viewShowModel.frame = self.view.bounds
+                self.view.addSubview(self.viewShowModel)
                 
                 SVProgressHUD.dismiss()
             }else{
 
-                let strMessage = "We’re almost done! Your ideal chair model is:" + "Model Number :3&&&&" + "Need to make a change or add something?"
-                
-                self.arrQuestion?.append(["queId": "15","queText": strMessage , "option1":"Yes","option2":"No"])
-                self.nextQues()
+                let strMessage = "We’re  done! Your ideal chair model is:" + "Model Number :#####"
+                self.lblModel.text = strMessage
+                self.viewShowModel.frame = self.view.bounds
+                self.view.addSubview(self.viewShowModel)
                 
                  SVProgressHUD.dismiss()
                 
@@ -358,22 +377,26 @@ class OrderProccessingSecond: BaseViewController {
         let strId = arrQuestion?[value]["queId"] as? String
         
         
-        if strId == "14"{
-            serverSideData()
+        if strId == "17N"{
             callApi()
-        }else    if strId == "15"{
-           setNoNextScreen()
+        }else if strId == "18"{
+            callApi()
+        }
+        else    if strId == "17"{
+            if let index = self.arrayPersnonID.index(of: "17N") {
+                print(index)
+            }
+            else{
+                self.arrQuestion?.append(["queId": "17N","queText": "Are you ready to make an upholstery selection?", "option1":"Yes","option2":"No"])
+                self.arrayPersnonID.append("17N")
+            }
+            nextQues()
         }
         else{
             nextQues()
         }
         
         
-    }
-    
-    func setNoNextScreen(){
-       let vc = OrderProccessingThird(nibName: "OrderProccessingThird", bundle: nil)
-        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     
@@ -426,16 +449,16 @@ class OrderProccessingSecond: BaseViewController {
             self.btnNo.setButtonImage("on.png")
         }
         
-        if strID == "13"{
+        if strID == "17"{
             
             
             self.btnNext.isEnabled = true
             self.isFirstQue = true
             self.arrayPersnonID.removeAll()
             value = 0
-            self.arrayPersnonID.append("13")
+            self.arrayPersnonID.append("17")
          
-            arrQuestion = setDataWithLocalJson("OrderProccessingSecond") as NSArray as? Array<Dictionary<String, Any>>
+            arrQuestion = setDataWithLocalJson("OrderProccessingThird") as NSArray as? Array<Dictionary<String, Any>>
             
         }
         
@@ -450,16 +473,4 @@ class OrderProccessingSecond: BaseViewController {
 }
 
 
-extension Array where Element:Equatable {
-    func removeDuplicates() -> [Element] {
-        var result = [Element]()
-        
-        for value in self {
-            if result.contains(value) == false {
-                result.append(value)
-            }
-        }
-        
-        return result
-    }
-}
+

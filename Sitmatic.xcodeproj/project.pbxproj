@@ -44,12 +44,15 @@
 		1B6DF8FB20C7F2A400280E84 /* StartOrderd.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B6DF8F920C7F2A400280E84 /* StartOrderd.xib */; };
 		1B6DF8FE20C8102900280E84 /* on.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B6DF8FC20C8102700280E84 /* on.png */; };
 		1B6DF8FF20C8102900280E84 /* off.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B6DF8FD20C8102800280E84 /* off.png */; };
+		1B7289E820EB6BCB00C5D395 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B7289E720EB6BCA00C5D395 /* info.png */; };
 		1BB9C4C020C8F8E10028A48A /* OrderProccessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9C4BE20C8F8E10028A48A /* OrderProccessing.swift */; };
 		1BB9C4C120C8F8E10028A48A /* OrderProccessing.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BB9C4BF20C8F8E10028A48A /* OrderProccessing.xib */; };
 		1BB9C4C420C8FA620028A48A /* orderProcell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9C4C220C8FA620028A48A /* orderProcell.swift */; };
 		1BB9C4C520C8FA620028A48A /* orderProcell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BB9C4C320C8FA620028A48A /* orderProcell.xib */; };
 		1BB9C4C820C960B10028A48A /* banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BB9C4C620C960AF0028A48A /* banner.png */; };
 		1BB9C4C920C960B10028A48A /* chair.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BB9C4C720C960B00028A48A /* chair.png */; };
+		1BCC0A4220EB419300196F69 /* OrderProccessingThird.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCC0A4120EB419300196F69 /* OrderProccessingThird.swift */; };
+		1BCC0A4420EB419D00196F69 /* OrderProccessingThird.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BCC0A4320EB419D00196F69 /* OrderProccessingThird.xib */; };
 		1BE313B520CE6ABD004F1931 /* OrderProccessingSecond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE313B420CE6ABD004F1931 /* OrderProccessingSecond.swift */; };
 		1BE313B720CE6B17004F1931 /* OrderProccessingSecond.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BE313B620CE6B17004F1931 /* OrderProccessingSecond.xib */; };
 		1BECAEFD20D24DF50050AE31 /* SForgotPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BECAEFB20D24DF50050AE31 /* SForgotPass.swift */; };
@@ -149,12 +152,15 @@
 		1B6DF8F920C7F2A400280E84 /* StartOrderd.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartOrderd.xib; sourceTree = "<group>"; };
 		1B6DF8FC20C8102700280E84 /* on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = on.png; sourceTree = "<group>"; };
 		1B6DF8FD20C8102800280E84 /* off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = off.png; sourceTree = "<group>"; };
+		1B7289E720EB6BCA00C5D395 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info.png; sourceTree = "<group>"; };
 		1BB9C4BE20C8F8E10028A48A /* OrderProccessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderProccessing.swift; sourceTree = "<group>"; };
 		1BB9C4BF20C8F8E10028A48A /* OrderProccessing.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderProccessing.xib; sourceTree = "<group>"; };
 		1BB9C4C220C8FA620028A48A /* orderProcell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = orderProcell.swift; sourceTree = "<group>"; };
 		1BB9C4C320C8FA620028A48A /* orderProcell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = orderProcell.xib; sourceTree = "<group>"; };
 		1BB9C4C620C960AF0028A48A /* banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner.png; sourceTree = "<group>"; };
 		1BB9C4C720C960B00028A48A /* chair.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chair.png; sourceTree = "<group>"; };
+		1BCC0A4120EB419300196F69 /* OrderProccessingThird.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderProccessingThird.swift; sourceTree = "<group>"; };
+		1BCC0A4320EB419D00196F69 /* OrderProccessingThird.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderProccessingThird.xib; sourceTree = "<group>"; };
 		1BE313B420CE6ABD004F1931 /* OrderProccessingSecond.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderProccessingSecond.swift; sourceTree = "<group>"; };
 		1BE313B620CE6B17004F1931 /* OrderProccessingSecond.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderProccessingSecond.xib; sourceTree = "<group>"; };
 		1BECAEFB20D24DF50050AE31 /* SForgotPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SForgotPass.swift; sourceTree = "<group>"; };
@@ -343,6 +349,7 @@
 		3B01AB3120C6D98F00291522 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1BCC0A4120EB419300196F69 /* OrderProccessingThird.swift */,
 				1BE313B420CE6ABD004F1931 /* OrderProccessingSecond.swift */,
 				1BB9C4BE20C8F8E10028A48A /* OrderProccessing.swift */,
 				1BF27F3C20E608740014B84E /* ModifieModel.swift */,
@@ -359,6 +366,7 @@
 		3B01AB3220C6D9A900291522 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1BCC0A4320EB419D00196F69 /* OrderProccessingThird.xib */,
 				1BF27F4020E60B5E0014B84E /* ModifieModel.xib */,
 				1BECAEFC20D24DF50050AE31 /* SForgotPass.xib */,
 				1BE313B620CE6B17004F1931 /* OrderProccessingSecond.xib */,
@@ -375,6 +383,7 @@
 		3B01AB3A20C6DD7700291522 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1B7289E720EB6BCA00C5D395 /* info.png */,
 				1B48805D20CA8CD3008AC3DD /* cancel.png */,
 				1B48805B20CA8CD2008AC3DD /* next.png */,
 				1B48805C20CA8CD2008AC3DD /* previous.png */,
@@ -555,6 +564,7 @@
 				1BB9C4C520C8FA620028A48A /* orderProcell.xib in Resources */,
 				1B6DF8EB20C7E38200280E84 /* HomeCell.xib in Resources */,
 				3B01AAEA20C6D7EC00291522 /* LaunchScreen.storyboard in Resources */,
+				1BCC0A4420EB419D00196F69 /* OrderProccessingThird.xib in Resources */,
 				3B01AB4420C6E7B400291522 /* login.png in Resources */,
 				3B01AAE720C6D7EC00291522 /* Assets.xcassets in Resources */,
 				1B2E013020C7B3F600B34645 /* 1242_2208.png in Resources */,
@@ -570,6 +580,7 @@
 				3B01AB3F20C6DE3400291522 /* sitmaticsplash.png in Resources */,
 				1B6DF8E220C7E05C00280E84 /* orderbtn.png in Resources */,
 				3B01AB3E20C6DE3400291522 /* lbackground.jpg in Resources */,
+				1B7289E820EB6BCB00C5D395 /* info.png in Resources */,
 				1BB9C4C920C960B10028A48A /* chair.png in Resources */,
 				1B2E013120C7B3F600B34645 /* 640_1136.png in Resources */,
 				1BB9C4C820C960B10028A48A /* banner.png in Resources */,
@@ -794,6 +805,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B01AB2E20C6D98400291522 /* ServiceHelper.swift in Sources */,
+				1BCC0A4220EB419300196F69 /* OrderProccessingThird.swift in Sources */,
 				3B01AB2320C6D98300291522 /* Extentions.swift in Sources */,
 				3B01AAE220C6D7E900291522 /* ViewController.swift in Sources */,
 				3B01AB2D20C6D98400291522 /* UIWindow.swift in Sources */,
