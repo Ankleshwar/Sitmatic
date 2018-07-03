@@ -86,7 +86,7 @@ class OrderProccessing: BaseViewController {
         
         if (value == 0){
             self.btnprevious.isHidden = true
-            ECSAlert().showAlert(message: "Thanku", controller: self)
+            
         }
         else{
             
@@ -121,17 +121,7 @@ class OrderProccessing: BaseViewController {
     }
     
     
-    func showToast(){
-        var style = ToastStyle()
-        style.activitySize = CGSize(width: CGFloat(self.screenWidth), height: 40.0)
-        style.messageFont = UIFont(name: "Roboto", size: 15.0)!
-        style.messageColor = UIColor.white
-        style.messageAlignment = .center
-        style.backgroundColor = UIColor.darkBlue
-        self.tostView.makeToast(" Please select a valid option for start order   ", duration: 2.0, position: .top, style: style )
-        
-        
-    }
+
     
     
     @IBAction func clickToCancel(_ sender: Any) {
@@ -156,26 +146,38 @@ class OrderProccessing: BaseViewController {
         
         
         if self.isYesbtnTap == false  {
-            
-            self.showToast(message: " Please select a valid option for start order ")
-            //showToast()
+            self.showToast(message: "Please select option")
+           
+           
         }
         else{
             
-            nextQues()
-            // self.btnNext.isHidden = true
+           
+            
+            Timer.scheduledTimer(timeInterval: 0.5,
+                                 target: self,
+                                 selector: #selector(nextQues),
+                                 userInfo: nil,
+                                 repeats: false)
+            
+            
+            
+            
+            
+           
             self.btnNext.isEnabled = false
         }
         
     }
     
     
-    func nextQues(){
+    @objc func nextQues(){
         
         
         
         if isYesbtnTap == false{
             self.showToast(message: "Please select option")
+           
         }else{
             
             dicData["selected"] = strSelected
@@ -313,7 +315,11 @@ class OrderProccessing: BaseViewController {
             
             
             
-            nextQues()
+            Timer.scheduledTimer(timeInterval: 0.5,
+                                 target: self,
+                                 selector: #selector(nextQues),
+                                 userInfo: nil,
+                                 repeats: false)
             
             
         }
@@ -383,9 +389,13 @@ class OrderProccessing: BaseViewController {
             }
             
             
+            Timer.scheduledTimer(timeInterval: 0.5,
+                                                   target: self,
+                                                   selector: #selector(nextQues),
+                                                   userInfo: nil,
+                                                   repeats: false)
             
             
-            nextQues()
         }
         
         

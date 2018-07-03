@@ -132,7 +132,7 @@ class OrderProccessingThird: BaseViewController {
     func showToast(){
         var style = ToastStyle()
         style.activitySize = CGSize(width: CGFloat(self.screenWidth), height: 40.0)
-        style.messageFont = UIFont(name: "Roboto", size: 15.0)!
+        style.messageFont = UIFont(name: "Roboto", size: 18.0)!
         style.messageColor = UIColor.white
         style.messageAlignment = .center
         style.backgroundColor = UIColor.darkBlue
@@ -179,7 +179,7 @@ class OrderProccessingThird: BaseViewController {
     }
     
     
-    func nextQues(){
+    @objc func nextQues(){
         
         self.isFirstQue = false
         
@@ -249,7 +249,11 @@ class OrderProccessingThird: BaseViewController {
                 self.arrQuestion?.append(["queId": "18","queText": "Please select fabric category", "option1":"Category 2/Flexx","option2":"Category 4/Dreamweave"])
                 self.arrayPersnonID.append("18")
             }
-             nextQues()
+            Timer.scheduledTimer(timeInterval: 0.5,
+                                 target: self,
+                                 selector: #selector(nextQues),
+                                 userInfo: nil,
+                                 repeats: false)
         }  else if strId == "17N"{
             if let index = self.arrayPersnonID.index(of: "18") {
                 print(index)
@@ -258,14 +262,22 @@ class OrderProccessingThird: BaseViewController {
                 self.arrQuestion?.append(["queId": "18","queText": "Please select fabric category", "option1":"Category 2/Flexx","option2":"Category 4/Dreamweave"])
                 self.arrayPersnonID.append("18")
             }
-             nextQues()
+            Timer.scheduledTimer(timeInterval: 0.5,
+                                 target: self,
+                                 selector: #selector(nextQues),
+                                 userInfo: nil,
+                                 repeats: false)
         }
         
         
          else if strId == "18" {
             callApi()
         }else{
-            nextQues()
+            Timer.scheduledTimer(timeInterval: 0.5,
+                                 target: self,
+                                 selector: #selector(nextQues),
+                                 userInfo: nil,
+                                 repeats: false)
         }
             
         
@@ -390,10 +402,18 @@ class OrderProccessingThird: BaseViewController {
                 self.arrQuestion?.append(["queId": "17N","queText": "Are you ready to make an upholstery selection?", "option1":"Yes","option2":"No"])
                 self.arrayPersnonID.append("17N")
             }
-            nextQues()
+            Timer.scheduledTimer(timeInterval: 0.5,
+                                 target: self,
+                                 selector: #selector(nextQues),
+                                 userInfo: nil,
+                                 repeats: false)
         }
         else{
-            nextQues()
+            Timer.scheduledTimer(timeInterval: 0.5,
+                                 target: self,
+                                 selector: #selector(nextQues),
+                                 userInfo: nil,
+                                 repeats: false)
         }
         
         

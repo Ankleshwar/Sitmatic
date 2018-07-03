@@ -76,11 +76,17 @@ class StartOrderd: BaseViewController {
         if(self.isFirstQuestion == true){
             if strValue == "ft"{
                 self.showToast(message: "Please select a valid value")
+                self.txtField.text = ""
+            
+                self.btnNext.isEnabled = false
             }else if strInce == "in" {
                 self.showToast(message: "Please select a valid value")
+                self.txtField.text = ""
+                self.btnNext.isEnabled = false
             }
             else{
                  self.txtField.text = strValue + "ft" + " "  + strInce + "in"
+                self.btnNext.isEnabled = true
             }
                 
                 
@@ -180,6 +186,7 @@ class StartOrderd: BaseViewController {
                     self.lblQuestionValueCount.text = String(id) + " " + "of 19 Questions"
                     self.arrIteam?.removeAll()
                     self.arrIteam = arrQuestion[count]["value"] as? Array
+                    self.strValue = arrIteam?[0] as? String
                 }
                
                 

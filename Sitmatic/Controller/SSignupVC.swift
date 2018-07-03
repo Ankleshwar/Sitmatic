@@ -86,12 +86,12 @@ class SSignupVC: BaseViewController {
         else if isValid == false{
             self.showToast(message: "Please enter valid email address")
         }else if self.txtPassword.text?.count == 0{
-            self.showToast(message: "Please enter your password address")
+            self.showToast(message: "Please enter your password ")
         }
         else if self.txtConfirmPassword.text?.count == 0{
-            self.showToast(message: "Please enter your confirm password address")
+            self.showToast(message: "Please enter your confirm password ")
         }else if  (firstPassword!.isEqualToString(find: secondPassword!)) == false {
-             self.showToast(message: "Please enter same password address")
+             self.showToast(message: "Password mismatch  ")
         }else{
 
             callSignUpApi()

@@ -132,7 +132,7 @@ class OrderProccessingSecond: BaseViewController {
     func showToast(){
         var style = ToastStyle()
         style.activitySize = CGSize(width: CGFloat(self.screenWidth), height: 40.0)
-        style.messageFont = UIFont(name: "Roboto", size: 15.0)!
+        style.messageFont = UIFont(name: "Roboto", size: 18.0)!
         style.messageColor = UIColor.white
         style.messageAlignment = .center
         style.backgroundColor = UIColor.darkBlue
@@ -167,7 +167,7 @@ class OrderProccessingSecond: BaseViewController {
     
         if self.isYesbtnTap == false  {
            
-            self.showToast(message: " Please select a valid option for start order ")
+            self.showToast(message: " Please select a valid option  ")
            //showToast()
         }
         else{
@@ -187,7 +187,7 @@ class OrderProccessingSecond: BaseViewController {
         self.serverArrayThid.append(dicAnsData)
     }
     
-    func nextQues(){
+    @objc func nextQues(){
         
         self.isFirstQue = false
         
@@ -251,7 +251,12 @@ class OrderProccessingSecond: BaseViewController {
         } else if strId == "15"{
             setNextData()
         }else{
-                 nextQues()
+            Timer.scheduledTimer(timeInterval: 0.5,
+                                 target: self,
+                                 selector: #selector(self.setNoNextScreen),
+                                 userInfo: nil,
+                                 repeats: false)
+            
         }
      
             
@@ -321,7 +326,11 @@ class OrderProccessingSecond: BaseViewController {
                 let strMessage = "We’re almost done! Your ideal chair model is:" + "Model Number :3&&&&" + "Need to make a change or add something?"
                 
                 self.arrQuestion?.append(["queId": "15","queText": strMessage , "option1":"Yes","option2":"No"])
-                self.nextQues()
+                Timer.scheduledTimer(timeInterval: 0.5,
+                                     target: self,
+                                     selector: #selector(self.nextQues),
+                                     userInfo: nil,
+                                     repeats: false)
                 
                  SVProgressHUD.dismiss()
                 
@@ -362,16 +371,26 @@ class OrderProccessingSecond: BaseViewController {
             serverSideData()
             callApi()
         }else    if strId == "15"{
-           setNoNextScreen()
+            Timer.scheduledTimer(timeInterval: 0.5,
+                                 target: self,
+                                 selector: #selector(self.setNoNextScreen),
+                                 userInfo: nil,
+                                 repeats: false)
+            
+           
         }
         else{
-            nextQues()
+            Timer.scheduledTimer(timeInterval: 0.5,
+                                 target: self,
+                                 selector: #selector(nextQues),
+                                 userInfo: nil,
+                                 repeats: false)
         }
         
         
     }
     
-    func setNoNextScreen(){
+  @objc  func setNoNextScreen(){
        let vc = OrderProccessingThird(nibName: "OrderProccessingThird", bundle: nil)
         self.navigationController?.pushViewController(vc, animated: true)
     }

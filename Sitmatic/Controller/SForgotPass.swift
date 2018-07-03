@@ -67,9 +67,9 @@ class SForgotPass: BaseViewController {
         let isValid = self.isValidEmail(testStr: strname!)
       
         if self.txtEmail.text?.count == 0 {
-            self.showToast(message: "Please enter email Address")
+            self.showToast(message: "Please enter Email Address")
         }  else if isValid == false{
-            self.showToast(message: "Please enter valid email address")
+            self.showToast(message: "Please enter valid Email address")
         }
         else{
             callLoginApi()

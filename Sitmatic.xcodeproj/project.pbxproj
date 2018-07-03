@@ -45,6 +45,9 @@
 		1B6DF8FE20C8102900280E84 /* on.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B6DF8FC20C8102700280E84 /* on.png */; };
 		1B6DF8FF20C8102900280E84 /* off.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B6DF8FD20C8102800280E84 /* off.png */; };
 		1B7289E820EB6BCB00C5D395 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B7289E720EB6BCA00C5D395 /* info.png */; };
+		1B7289EB20EB724F00C5D395 /* SDocumentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7289E920EB724F00C5D395 /* SDocumentVC.swift */; };
+		1B7289EC20EB724F00C5D395 /* SDocumentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B7289EA20EB724F00C5D395 /* SDocumentVC.xib */; };
+		1B7289EE20EB757700C5D395 /* Sitmatic App Storyboard.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 1B7289ED20EB757700C5D395 /* Sitmatic App Storyboard.pdf */; };
 		1BB9C4C020C8F8E10028A48A /* OrderProccessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9C4BE20C8F8E10028A48A /* OrderProccessing.swift */; };
 		1BB9C4C120C8F8E10028A48A /* OrderProccessing.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BB9C4BF20C8F8E10028A48A /* OrderProccessing.xib */; };
 		1BB9C4C420C8FA620028A48A /* orderProcell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9C4C220C8FA620028A48A /* orderProcell.swift */; };
@@ -153,6 +156,9 @@
 		1B6DF8FC20C8102700280E84 /* on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = on.png; sourceTree = "<group>"; };
 		1B6DF8FD20C8102800280E84 /* off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = off.png; sourceTree = "<group>"; };
 		1B7289E720EB6BCA00C5D395 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info.png; sourceTree = "<group>"; };
+		1B7289E920EB724F00C5D395 /* SDocumentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDocumentVC.swift; sourceTree = "<group>"; };
+		1B7289EA20EB724F00C5D395 /* SDocumentVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SDocumentVC.xib; sourceTree = "<group>"; };
+		1B7289ED20EB757700C5D395 /* Sitmatic App Storyboard.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Sitmatic App Storyboard.pdf"; sourceTree = "<group>"; };
 		1BB9C4BE20C8F8E10028A48A /* OrderProccessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderProccessing.swift; sourceTree = "<group>"; };
 		1BB9C4BF20C8F8E10028A48A /* OrderProccessing.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderProccessing.xib; sourceTree = "<group>"; };
 		1BB9C4C220C8FA620028A48A /* orderProcell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = orderProcell.swift; sourceTree = "<group>"; };
@@ -265,6 +271,7 @@
 		3B01AAD320C6D7E900291522 = {
 			isa = PBXGroup;
 			children = (
+				1B7289ED20EB757700C5D395 /* Sitmatic App Storyboard.pdf */,
 				1B2E012420C7A4E500B34645 /* Roboto-Regular.ttf */,
 				3B01AADE20C6D7E900291522 /* Sitmatic */,
 				3B01AAF320C6D7EC00291522 /* SitmaticTests */,
@@ -359,6 +366,7 @@
 				1B2E012020C79EFD00B34645 /* SHomeVC.swift */,
 				1B6DF8F820C7F2A400280E84 /* StartOrderd.swift */,
 				1BECAEFB20D24DF50050AE31 /* SForgotPass.swift */,
+				1B7289E920EB724F00C5D395 /* SDocumentVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -367,6 +375,7 @@
 			isa = PBXGroup;
 			children = (
 				1BCC0A4320EB419D00196F69 /* OrderProccessingThird.xib */,
+				1B7289EA20EB724F00C5D395 /* SDocumentVC.xib */,
 				1BF27F4020E60B5E0014B84E /* ModifieModel.xib */,
 				1BECAEFC20D24DF50050AE31 /* SForgotPass.xib */,
 				1BE313B620CE6B17004F1931 /* OrderProccessingSecond.xib */,
@@ -584,6 +593,7 @@
 				1BB9C4C920C960B10028A48A /* chair.png in Resources */,
 				1B2E013120C7B3F600B34645 /* 640_1136.png in Resources */,
 				1BB9C4C820C960B10028A48A /* banner.png in Resources */,
+				1B7289EC20EB724F00C5D395 /* SDocumentVC.xib in Resources */,
 				3B01AB4820C6F06B00291522 /* SSignupVC.xib in Resources */,
 				1B6DF8D820C7BF6E00280E84 /* nouser.png in Resources */,
 				1B6DF8F120C7E4BC00280E84 /* Chair1.jpg in Resources */,
@@ -604,6 +614,7 @@
 				1B6DF8FF20C8102900280E84 /* off.png in Resources */,
 				1B6DF8E020C7DB2900280E84 /* slider3.jpg in Resources */,
 				1B6DF8FB20C7F2A400280E84 /* StartOrderd.xib in Resources */,
+				1B7289EE20EB757700C5D395 /* Sitmatic App Storyboard.pdf in Resources */,
 				1B2E013520C7B68900B34645 /* 1125_2436.png in Resources */,
 				3B01AB1020C6D87300291522 /* SSLoginVC.xib in Resources */,
 				3B01AB2720C6D98400291522 /* TopBar.xib in Resources */,
@@ -833,6 +844,7 @@
 				1BECAEFD20D24DF50050AE31 /* SForgotPass.swift in Sources */,
 				1BF27F4620E635820014B84E /* HeaderCell.swift in Sources */,
 				1B6DF8F620C7F26700280E84 /* QuestionPartOne.swift in Sources */,
+				1B7289EB20EB724F00C5D395 /* SDocumentVC.swift in Sources */,
 				3B01AB2520C6D98300291522 /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

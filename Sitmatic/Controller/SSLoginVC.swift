@@ -50,13 +50,13 @@ class SSLoginVC: BaseViewController {
         let strname = self.txtEmail.text
         let isValid = self.isValidEmail(testStr: strname!)
         if self.txtEmail.text?.count == 0{
-            self.showToast(message: "Please enter email address")
+            self.showToast(message: "Please enter Email address")
         }else if self.txtPassword.text?.count == 0 {
             
-            self.showToast(message: "Please enter password address")
+            self.showToast(message: "Please enter password ")
             
         }else if isValid == false{
-            self.showToast(message: "Please enter valid email address")
+            self.showToast(message: "Please enter valid Email address")
         }else{
            
             callLoginApi()
