@@ -145,6 +145,8 @@ class SForgotPass: BaseViewController {
     
     
     func callPassSave(){
+        self.txtConfirmPass.resignFirstResponder()
+        
         let dic = ["email": self.strEmail,
                    "password":self.txtPassword.text,
                    "reset_token":self.txtVerification.text]

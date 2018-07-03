@@ -105,6 +105,9 @@ class SSignupVC: BaseViewController {
     
     
    func callSignUpApi(){
+    
+     self.txtConfirmPassword.resignFirstResponder()
+    
     let dic = ["name": self.txtName.text,
                "email" : self.txtEmail.text,
                "password" : self.txtPassword.text,

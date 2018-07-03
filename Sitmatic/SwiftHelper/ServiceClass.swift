@@ -36,7 +36,7 @@ class ServiceClass: NSObject {
     
     
     
-    public func getModel(strUrl:String,param:[String:AnyObject],completion:@escaping (arrayBlock)){
+    public func getModel(strUrl:String,param:[String:AnyObject],completion:@escaping (dictionaryBlock)){
         
         print(param)
         
@@ -49,14 +49,14 @@ class ServiceClass: NSObject {
             
             
             
-            completion(nil,JSONResponse.array!)
+            completion(nil,JSONResponse.dictionaryObject!)
             
             
             
         }) {
             (error) -> Void in
             
-            completion(error,[])
+            completion(error,[:])
             
         }
     }

@@ -89,6 +89,7 @@ class SSLoginVC: BaseViewController {
     
     
     func callLoginApi(){
+         self.txtPassword.resignFirstResponder()
         let dic = [
                    "email" : self.txtEmail.text,
                    "password" : self.txtPassword.text,

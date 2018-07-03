@@ -179,6 +179,14 @@ class OrderProccessingSecond: BaseViewController {
     }
     
     
+    fileprivate func serverSideData() {
+        let strId = arrQuestion?[value]["queId"] as! String
+        self.serverArrayThid = self.serverArrayThid.filter { !$0.values.contains(strId) }
+        dicAnsData["id"] = arrQuestion?[value]["queId"] as? String
+        dicAnsData["ans"] = strSelected
+        self.serverArrayThid.append(dicAnsData)
+    }
+    
     func nextQues(){
         
         self.isFirstQue = false
@@ -196,11 +204,7 @@ class OrderProccessingSecond: BaseViewController {
             self.arrAnswer.add(dicData)
             self.btnprevious.isHidden = false
             
-            _ = arrQuestion?[value]["queId"] as! String
-            
-            dicAnsData["id"] = arrQuestion?[value]["queId"] as? String
-            dicAnsData["ans"] = strSelected
-            self.serverArrayThid.append(dicAnsData)
+            serverSideData()
             
             
             if (self.arrQuestion?.count == value){
@@ -242,7 +246,7 @@ class OrderProccessingSecond: BaseViewController {
         self.isPreviousClick = false
         
         if strId == "14"{
-            
+            serverSideData()
             callApi()
         } else if strId == "15"{
             setNextData()
@@ -355,6 +359,7 @@ class OrderProccessingSecond: BaseViewController {
         
         
         if strId == "14"{
+            serverSideData()
             callApi()
         }else    if strId == "15"{
            setNoNextScreen()
@@ -367,8 +372,8 @@ class OrderProccessingSecond: BaseViewController {
     }
     
     func setNoNextScreen(){
-       let vc = OrderProccessingThird(nibName: "OrderProccessingThird", bundle: nil)
-        self.navigationController?.pushViewController(vc, animated: true)
+//       let vc = OrderProccessingThird(nibName: "OrderProccessingThird", bundle: nil)
+//        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     
