@@ -74,13 +74,11 @@ class OrderProccessingThird: BaseViewController {
         self.isFirstQue =  true
     }
     
-    
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func clickToConfirmModel(_ sender: Any) {
     }
+    
+    
+
     @IBAction func clickToPrivious(_ sender: Any) {
         print(value)
         

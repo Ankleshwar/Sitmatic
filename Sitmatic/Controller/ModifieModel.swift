@@ -66,7 +66,7 @@ class ModifieModel: BaseViewController {
         arrQuestion = (setDataWithLocalJson("ModifiModel") as NSArray as? Array<Dictionary<String, Any>>)!
       
        self.arrIteam = arrQuestion![0]["value"] as? Array
-       self.showToast(message: "Please Select Options from picker")
+       //self.showToast(message: "Please Select Options from picker")
         
     }
     

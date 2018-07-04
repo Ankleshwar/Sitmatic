@@ -401,7 +401,7 @@
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <connections>
-                                <action selector="clickToNext:" destination="-1" eventType="touchUpInside" id="HTT-MD-7mh"/>
+                                <action selector="clickToConfirmModel:" destination="-1" eventType="touchUpInside" id="1sU-ZB-zmm"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y6F-yQ-XWq">

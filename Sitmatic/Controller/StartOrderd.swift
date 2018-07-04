@@ -85,8 +85,20 @@ class StartOrderd: BaseViewController {
                
             }
             else{
-                 self.txtField.text = strValue + "ft" + " "  + strInce + "in"
                 
+                if NSString(string: strValue).contains("ft") {
+                    
+                    strValue = String(strValue.dropLast(2))
+                    print(strValue)
+                }
+                 if NSString(string: strInce).contains("in") {
+                    
+                    strInce = String(strInce.dropLast(2))
+                    print(strInce)
+                }
+                
+                 self.txtField.text = strValue + "ft" + " "  + strInce + "in"
+                     textField(color:UIColor.lightGray)
             }
                 
                 
@@ -94,6 +106,7 @@ class StartOrderd: BaseViewController {
         }
         else{
              self.txtField.text = strValue
+            textField(color:UIColor.lightGray)
         }
         self.view.endEditing(true)
        
@@ -123,6 +136,12 @@ class StartOrderd: BaseViewController {
     
     
     
+    fileprivate func textField(color:UIColor) {
+        self.txtField.layer.borderWidth = 1.0
+        self.txtField.layer.borderColor = color.cgColor
+        self.txtField.layer.cornerRadius = 5.0
+    }
+    
     @IBAction func clickToNext(_ sender: Any) {
         
        
@@ -131,6 +150,8 @@ class StartOrderd: BaseViewController {
             
             
             self.showToast(message: "Please select a valid option")
+            textField(color:UIColor.red)
+            
             
         }else{
             let id : Int = (arrQuestion[count]["questionId"] as? Int)!
@@ -142,6 +163,19 @@ class StartOrderd: BaseViewController {
                 
                 if(self.isFirstQuestion == true){
                     dicData["selected"] = self.txtField.text
+                  
+                    
+                    if NSString(string: strValue).contains("ft") {
+                        
+                        strValue = String(strValue.dropLast(2))
+                        print(strValue)
+                    }
+                    if NSString(string: strInce).contains("in") {
+                        
+                        strInce = String(strInce.dropLast(2))
+                        print(strInce)
+                    }
+
                     self.ansStrIn = String(Int(strValue)!*12 + Int(strInce)!)
                     dicAnsData["ans"] = self.ansStrIn
                 }
@@ -186,7 +220,9 @@ class StartOrderd: BaseViewController {
                     self.lblQuestionValueCount.text = String(id) + " " + "of 19 Questions"
                     self.arrIteam?.removeAll()
                     self.arrIteam = arrQuestion[count]["value"] as? Array
-                    self.strValue = arrIteam?[0] as? String
+                    self.strValue = ""
+                    self.pickerView.selectRow(0, inComponent: 0, animated: true)
+                    self.pickerView(pickerView, didSelectRow: 0, inComponent: 0)
                 }
                
                 

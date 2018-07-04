@@ -168,12 +168,21 @@ class OrderProccessingSecond: BaseViewController {
         if self.isYesbtnTap == false  {
            
             self.showToast(message: " Please select a valid option  ")
-           //showToast()
+           
         }
         else{
             
             nextQues()
+            
+//            if arrQuestion?[value]["queId"] as? String == "15" {
+//                 self.btnNext.isEnabled = true
+//
+//            }else{
+//                self.btnNext.isEnabled = false
+//            }
+            
             self.btnNext.isEnabled = false
+            
         }
         
     }
@@ -202,7 +211,14 @@ class OrderProccessingSecond: BaseViewController {
             dicData["queId"] = arrQuestion?[value]["queId"] as? String
             
             self.arrAnswer.add(dicData)
-            self.btnprevious.isHidden = false
+            if arrQuestion?[value]["queId"] as? String == "14" {
+                  self.btnprevious.isHidden = true
+                
+            }else{
+                  self.btnprevious.isHidden = false
+            }
+            
+          
             
             serverSideData()
             
@@ -249,7 +265,11 @@ class OrderProccessingSecond: BaseViewController {
             serverSideData()
             callApi()
         } else if strId == "15"{
-            setNextData()
+            Timer.scheduledTimer(timeInterval: 0.3,
+                                 target: self,
+                                 selector: #selector(self.setNextData),
+                                 userInfo: nil,
+                                 repeats: false)
         }else{
             Timer.scheduledTimer(timeInterval: 0.3,
                                  target: self,
@@ -259,14 +279,14 @@ class OrderProccessingSecond: BaseViewController {
             
         }
      
-            
+             
             
             
         
             
 }
         
-    func setNextData(){
+    @objc func setNextData(){
         let vc = ModifieModel(nibName: "ModifieModel", bundle: nil)
         self.navigationController?.pushViewController(vc, animated: true)
         
@@ -294,7 +314,7 @@ class OrderProccessingSecond: BaseViewController {
         print(strJson ?? "")
         
         self.callGenrateModelApi(strData :strJson!)
-        
+        self.btnprevious.isHidden =  true
     }
     
     
@@ -318,7 +338,14 @@ class OrderProccessingSecond: BaseViewController {
             if error != nil{
                 print(dicdata)
                 
-        
+                let strMessage = "We’re almost done! Your ideal chair model is:" + "Model Number :3&&&&" + "Need to make a change or add something?"
+                
+                self.arrQuestion?.append(["queId": "15","queText": strMessage , "option1":"Yes","option2":"No"])
+                Timer.scheduledTimer(timeInterval: 0.3,
+                                     target: self,
+                                     selector: #selector(self.nextQues),
+                                     userInfo: nil,
+                                     repeats: false)
                 
                 SVProgressHUD.dismiss()
             }else{
