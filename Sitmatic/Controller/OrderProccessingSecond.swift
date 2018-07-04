@@ -10,18 +10,28 @@ import UIKit
 import Toast_Swift
 import SVProgressHUD
 
+
+protocol OrderProccessingSecondDelegate {
+    func setData(arrData:[[String: Any]],isbackValue:Bool)
+}
+
+
+
 class OrderProccessingSecond: BaseViewController {
     
     @IBOutlet weak var tostView: UIView!
     @IBOutlet weak var tostLable: UILabel!
     
-    
-     var dicAnsData = Dictionary<String, String>()
+    var delegate : OrderProccessingSecondDelegate?
+    var dicAnsData = Dictionary<String, String>()
     var isFirstQue: Bool!
     @IBOutlet weak var tableView: UITableView!
     var arrQuestion: Array<Dictionary<String,Any>>?
     var arrAnswer = NSMutableArray()
-    var arrPreviousControllerData = NSMutableArray()
+    
+    
+     var arrPreviousControllerData: [[String: Any]]  = Array()
+    
     @IBOutlet weak var btnYes: UIButton!
     @IBOutlet weak var lblYes: UILabel!
     @IBOutlet weak var btnNo: UIButton!
@@ -86,7 +96,9 @@ class OrderProccessingSecond: BaseViewController {
         
         
         if isFirstQue == true {
+            self.delegate?.setData(arrData: arrPreviousControllerData,isbackValue: true)
             self.navigationController?.popViewController(animated: true)
+            
         }
         else{
             if (value == 0){

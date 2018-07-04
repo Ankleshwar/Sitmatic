@@ -8,10 +8,12 @@
 
 import UIKit
 
-class StartOrderd: BaseViewController {
+class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
+ 
     
     
-    
+    var isBack = false
+    var isButtonCheck = false
     @IBOutlet weak var lblQuestionValueCount: UILabel!
       var dicAnsData = Dictionary<String, String>()
      var strInce: String!
@@ -28,7 +30,7 @@ class StartOrderd: BaseViewController {
     var strValue: String!
     var arrQuestion = [[String: Any]]()
     var arrHeightft = [[:]]
-     var arrAnswer = NSMutableArray()
+     var arrAnswer: [[String: Any]]  = Array()
     var serverArraySecond: [[String: String]]  = Array()
      var dicData = Dictionary<String, Any>()
     var arrInch :Array<Any>?
@@ -69,6 +71,12 @@ class StartOrderd: BaseViewController {
         txtField.inputAccessoryView = toolBar
         
         
+    }
+    
+    func setData(arrData:[[String: Any]],isbackValue:Bool){
+        arrAnswer = arrData
+        isBack = isbackValue
+        self.isButtonCheck = true
     }
     
     @objc func donedatePicker(){
@@ -160,6 +168,15 @@ class StartOrderd: BaseViewController {
                 //self.showToast(message: "Thanku")
             }
             else{
+               
+                if isButtonCheck == true{
+                    arrAnswer.removeLast()
+                    serverArraySecond.removeLast()
+                    isButtonCheck = false
+                }
+                
+                
+
                 
                 if(self.isFirstQuestion == true){
                     dicData["selected"] = self.txtField.text
@@ -194,21 +211,35 @@ class StartOrderd: BaseViewController {
             
                 self.isFirstQuestion = false
                 dicData["value"] = arr
-                self.arrAnswer.add(dicData)
-                //var strId = String(id)
+          
+
+             
+
+                
+                self.arrAnswer.append(dicData)
+                
+                
+    
+                
+                
+                
+               
                 self.serverArraySecond = self.serverArraySecond.filter { !$0.values.contains(String(id)) }
                 
                 dicAnsData["id"] = String(id)
               
                 self.serverArraySecond.append(dicAnsData)
                
-                print(self.serverArraySecond)
+             
                 
                 if id == 12{
                     
-                
+                 print(self.arrAnswer)
+                     self.isButtonCheck = true
                     let vc = OrderProccessingSecond(nibName: "OrderProccessingSecond", bundle: nil)
                     vc.serverArrayThid = serverArraySecond
+                    vc.delegate = self
+                    vc.arrPreviousControllerData = arrAnswer
                    
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
@@ -237,21 +268,30 @@ class StartOrderd: BaseViewController {
     }
     
     @IBAction func clickToPrevious(_ sender: Any) {
-        
+        self.isButtonCheck = false
         
        
         if isFirstQuestion ==  true{
             self.navigationController?.popViewController(animated: true)
         }else{
+            
+            if isBack == true{
+                arrAnswer.removeLast()
+                serverArraySecond.removeLast()
+                isBack = false
+            }
+            
             count -= 1
             
             if (self.arrQuestion.count == 0){
                 
             }
+                
             else{
+               
                 
                 
-                var dicdata  = arrAnswer[count] as! [String : Any]
+                var dicdata  = arrAnswer[count]
                 let id: String! = dicdata["questionId"] as? String
                 self.lblQuestionValueCount.text = id + " " + "of 19 Questions"
                 if id == "5"{
@@ -270,6 +310,7 @@ class StartOrderd: BaseViewController {
                     let fullNameArr = strMain.components(separatedBy: " ")
                     self.strValue =  fullNameArr[0]
                     self.strInce = fullNameArr[1]
+                     arrQuestion = (setDataWithLocalJson("NextVersion") as NSArray as? Array<Dictionary<String, Any>>)!
                 }
                 else{
                     self.strValue = self.txtField.text
@@ -278,7 +319,7 @@ class StartOrderd: BaseViewController {
                 
            
                 
-                self.arrAnswer.removeObject(at: count)
+                self.arrAnswer.remove(at: count)
                 serverArraySecond.remove(at: count)
                 
             }

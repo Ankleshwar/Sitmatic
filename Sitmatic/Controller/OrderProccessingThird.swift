@@ -490,5 +490,9 @@ class OrderProccessingThird: BaseViewController {
     
 }
 
-
+//let orderSet = NSOrderedSet(array: self.arrAnswer as! [Any])
+//let arrayShort = orderSet.array
+//self.arrAnswer.removeAllObjects()
+//self.arrAnswer.add(ar)
+//print(self.arrAnswer)
 
