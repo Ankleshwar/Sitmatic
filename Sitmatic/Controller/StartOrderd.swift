@@ -75,18 +75,18 @@ class StartOrderd: BaseViewController {
         
         if(self.isFirstQuestion == true){
             if strValue == "ft"{
-                self.showToast(message: "Please select a valid value")
-                self.txtField.text = ""
+                //self.showToast(message: "Please select a valid value")
+                strValue = "0"
             
-                self.btnNext.isEnabled = false
+                
             }else if strInce == "in" {
-                self.showToast(message: "Please select a valid value")
-                self.txtField.text = ""
-                self.btnNext.isEnabled = false
+               // self.showToast(message: "Please select a valid value")
+                strInce = "0"
+               
             }
             else{
                  self.txtField.text = strValue + "ft" + " "  + strInce + "in"
-                self.btnNext.isEnabled = true
+                
             }
                 
                 

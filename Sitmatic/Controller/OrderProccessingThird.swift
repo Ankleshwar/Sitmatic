@@ -249,7 +249,7 @@ class OrderProccessingThird: BaseViewController {
                 self.arrQuestion?.append(["queId": "18","queText": "Please select fabric category", "option1":"Category 2/Flexx","option2":"Category 4/Dreamweave"])
                 self.arrayPersnonID.append("18")
             }
-            Timer.scheduledTimer(timeInterval: 0.5,
+            Timer.scheduledTimer(timeInterval: 0.3,
                                  target: self,
                                  selector: #selector(nextQues),
                                  userInfo: nil,
@@ -262,7 +262,7 @@ class OrderProccessingThird: BaseViewController {
                 self.arrQuestion?.append(["queId": "18","queText": "Please select fabric category", "option1":"Category 2/Flexx","option2":"Category 4/Dreamweave"])
                 self.arrayPersnonID.append("18")
             }
-            Timer.scheduledTimer(timeInterval: 0.5,
+            Timer.scheduledTimer(timeInterval: 0.3,
                                  target: self,
                                  selector: #selector(nextQues),
                                  userInfo: nil,
@@ -273,7 +273,7 @@ class OrderProccessingThird: BaseViewController {
          else if strId == "18" {
             callApi()
         }else{
-            Timer.scheduledTimer(timeInterval: 0.5,
+            Timer.scheduledTimer(timeInterval: 0.3,
                                  target: self,
                                  selector: #selector(nextQues),
                                  userInfo: nil,
@@ -402,14 +402,14 @@ class OrderProccessingThird: BaseViewController {
                 self.arrQuestion?.append(["queId": "17N","queText": "Are you ready to make an upholstery selection?", "option1":"Yes","option2":"No"])
                 self.arrayPersnonID.append("17N")
             }
-            Timer.scheduledTimer(timeInterval: 0.5,
+            Timer.scheduledTimer(timeInterval: 0.3,
                                  target: self,
                                  selector: #selector(nextQues),
                                  userInfo: nil,
                                  repeats: false)
         }
         else{
-            Timer.scheduledTimer(timeInterval: 0.5,
+            Timer.scheduledTimer(timeInterval: 0.3,
                                  target: self,
                                  selector: #selector(nextQues),
                                  userInfo: nil,

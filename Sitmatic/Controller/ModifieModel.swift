@@ -178,6 +178,7 @@ class ModifieModel: BaseViewController {
         index = (sender as AnyObject).tag
         
         self.arrIteam = arrQuestion![index]["value"] as? Array
+         self.strValue = (arrIteam?[0] as? String)!
          showPicker()
     }
     

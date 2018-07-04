@@ -251,9 +251,9 @@ class OrderProccessingSecond: BaseViewController {
         } else if strId == "15"{
             setNextData()
         }else{
-            Timer.scheduledTimer(timeInterval: 0.5,
+            Timer.scheduledTimer(timeInterval: 0.3,
                                  target: self,
-                                 selector: #selector(self.setNoNextScreen),
+                                 selector: #selector(self.nextQues),
                                  userInfo: nil,
                                  repeats: false)
             
@@ -326,7 +326,7 @@ class OrderProccessingSecond: BaseViewController {
                 let strMessage = "We’re almost done! Your ideal chair model is:" + "Model Number :3&&&&" + "Need to make a change or add something?"
                 
                 self.arrQuestion?.append(["queId": "15","queText": strMessage , "option1":"Yes","option2":"No"])
-                Timer.scheduledTimer(timeInterval: 0.5,
+                Timer.scheduledTimer(timeInterval: 0.3,
                                      target: self,
                                      selector: #selector(self.nextQues),
                                      userInfo: nil,
@@ -371,7 +371,7 @@ class OrderProccessingSecond: BaseViewController {
             serverSideData()
             callApi()
         }else    if strId == "15"{
-            Timer.scheduledTimer(timeInterval: 0.5,
+            Timer.scheduledTimer(timeInterval: 0.3,
                                  target: self,
                                  selector: #selector(self.setNoNextScreen),
                                  userInfo: nil,
@@ -380,7 +380,7 @@ class OrderProccessingSecond: BaseViewController {
            
         }
         else{
-            Timer.scheduledTimer(timeInterval: 0.5,
+            Timer.scheduledTimer(timeInterval: 0.3,
                                  target: self,
                                  selector: #selector(nextQues),
                                  userInfo: nil,
