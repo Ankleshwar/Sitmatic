@@ -10,13 +10,15 @@ import UIKit
 import Toast_Swift
 
 
-class OrderProccessing: BaseViewController {
+class OrderProccessing: BaseViewController , StartOrderdDelegate {
+ 
+    
     
     @IBOutlet weak var tostView: UIView!
     @IBOutlet weak var tostLable: UILabel!
     
     
-    
+    var isback = false
     
     @IBOutlet weak var tableView: UITableView!
     var arrQuestion: Array<Dictionary<String,Any>>?
@@ -142,6 +144,13 @@ class OrderProccessing: BaseViewController {
     }
     
     
+    func setDataOnBack(isBack: Bool) {
+        self.isback = isBack
+         self.btnNext.isEnabled = true
+    }
+    
+    
+    
     @IBAction func clickToNext(_ sender: Any) {
         
         
@@ -149,6 +158,10 @@ class OrderProccessing: BaseViewController {
             self.showToast(message: "Please select option")
            
            
+        } else if isback == true{
+           goToNext()
+            self.isback = false
+            self.btnNext.isEnabled = false
         }
         else{
             
@@ -167,6 +180,7 @@ class OrderProccessing: BaseViewController {
            
             self.btnNext.isEnabled = false
         }
+        
         
     }
     
@@ -345,8 +359,9 @@ class OrderProccessing: BaseViewController {
         let vc = StartOrderd(nibName: "StartOrderd", bundle: nil)
 
         vc.serverArraySecond = serverArray
-        
+        vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)
+        self.btnNext.isEnabled = false
     }
     
     
@@ -424,7 +439,8 @@ class OrderProccessing: BaseViewController {
     print(serverArray)
 //        print(arrAnswer)
         
-        
+        self.btnNext.isEnabled = false
+        isback = false
         var dicdata  = arrAnswer[valueindex] as! [String: String]
         
         self.lblYes.text = dicdata["option1"]
