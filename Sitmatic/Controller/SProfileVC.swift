@@ -43,16 +43,18 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
         imgView.clipsToBounds = true
         imgView.layer.cornerRadius = (imgView.frame.size.height)/2
         self.btnPhoto.isEnabled = false
-        
+        self.imgView.image = UIImage(named: "nouser.png")
+        self.imageUser = UIImage(named: "nouser.png")!
         if    (self.appUserObject?.userImageUrl)! == "" {
-            self.imgView.image = UIImage(named: "nouser.png")
-            self.imageUser = UIImage(named: "nouser.png")!
+                self.imgView.image = UIImage(named: "nouser.png")
+                self.imageUser = UIImage(named: "nouser.png")!
+           
         }
         else{
             let url = URL(string: (self.appUserObject?.userImageUrl)!)
             imgView.kf.setImage(with: url)
             KingfisherManager.shared.retrieveImage(with: url!, options: nil, progressBlock: nil, completionHandler: { image, error, cacheType, imageURL in
-                self.imageUser = image!
+                //self.imageUser = image!
             })
            
         }
@@ -84,7 +86,7 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
         if btnEdit.isSelected {
     
             
-            if self.txtAddress.text.count == 9 {
+            if self.txtAddress.text == "" {
                self.showToastForQue(message: "Please select your address", y: 75)
                  self.btnEdit.setButtonImage("ic_check_white")
             }else{
@@ -276,9 +278,12 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
             textView.resignFirstResponder()
             return false
         }
-            else if strNew.length < 9{
-            return false
-        }
+//            else if strNew.length < 8{
+//            textView.becomeFirstResponder()
+//            return false
+//        }else if strNew.length < 0{
+//            return false
+//        }
         
         return true
     }
@@ -291,8 +296,11 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
     {
         if (textView.text == "Please select your address")
         {
-            textView.text = "Address:"
+           textView.text = ""
             textView.textColor = .black
+        }else if (textView.text == "")
+        {
+           
         }
         textView.becomeFirstResponder() //Optional
     }

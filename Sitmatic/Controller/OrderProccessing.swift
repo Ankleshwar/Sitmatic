@@ -161,11 +161,63 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         } else if isback == true{
            goToNext()
             self.isback = false
-            self.btnNext.isEnabled = false
+            //self.btnNext.isEnabled = false
         }
         else{
             
+           print(strSelected)
+            
+            self.setNextButtonData(strId: (arrQuestion?[value]["queId"] as? String)!)
            
+//            Timer.scheduledTimer(timeInterval: 0.5,
+//                                 target: self,
+//                                 selector: #selector(nextQues),
+//                                 userInfo: nil,
+//                                 repeats: false)
+            
+            
+            
+            
+            
+           
+           
+        }
+        
+        
+    }
+    
+    
+    
+    
+    fileprivate func dataForNo(_ strId: String) {
+        if strId == "3"{
+            serverSideData()
+            
+            goToNext()
+        }
+        else if strId == "5Y"{
+            serverSideData()
+            
+            
+            goToNext()
+        }
+        else{
+            
+            if strId == "2" || strId == "3Y" || strId == "4Y"{
+                if let index = self.arrayPersnonID.index(of: "3") {
+                    print(index)
+                    
+                }
+                    
+                else{
+                    self.arrQuestion?.append(["queId": "3","queText": "Which is your dominant eye?", "option1":"Left","option2":"Right"])
+                    
+                    self.arrayPersnonID.append("3")
+                }
+                
+                
+            }
+            
             
             Timer.scheduledTimer(timeInterval: 0.5,
                                  target: self,
@@ -174,15 +226,99 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
                                  repeats: false)
             
             
-            
-            
-            
-           
-            self.btnNext.isEnabled = false
         }
-        
-        
     }
+    
+    fileprivate func dataForYes(_ strId: String) {
+        if strId == "5Y"{
+            serverSideData()
+            
+            
+            
+            goToNext()
+        }
+            
+        else if strId == "3"{
+            serverSideData()
+            
+            
+            goToNext()
+        }
+        else{
+            
+            
+            
+            
+            if strId == "2" {
+                
+                if let index = self.arrayPersnonID.index(of: "3Y") {
+                    print(index)
+                }
+                else{
+                    self.arrQuestion?.append(["queId": "3Y","queText": "Did you have corrective eye surgery?", "option1":"Yes","option2":"No"])
+                    self.arrayPersnonID.append("3Y")
+                }
+                
+                
+            }
+            if strId == "3Y"{
+                
+                if let index = self.arrayPersnonID.index(of: "4Y") {
+                    print(index)
+                }
+                else{
+                    self.arrQuestion?.append(["queId": "4Y","queText": "Was it monovision correction? (Was one eye corrected for reading and the other corrected for distance?", "option1":"Yes","option2":"No"])
+                    self.arrayPersnonID.append("4Y")
+                }
+                
+                
+            }
+            else if strId == "4Y"{
+                
+                if let index = self.arrayPersnonID.index(of: "5Y") {
+                    print(index)
+                    
+                }
+                else{
+                    self.arrQuestion?.append(["queId": "5Y","queText": "Which eye was corrected for reading?", "option1":"Left","option2":"Right"])
+                    
+                    self.arrayPersnonID.append("5Y")
+                    
+                }
+                
+            }
+            
+            
+            
+            Timer.scheduledTimer(timeInterval: 0.5,
+                                 target: self,
+                                 selector: #selector(nextQues),
+                                 userInfo: nil,
+                                 repeats: false)
+            
+            
+        }
+    }
+    
+    func setNextButtonData(strId:String){
+    
+            if strSelected == "No" {
+                
+                dataForNo(strId)
+                
+                
+            }else{
+                dataForYes(strId)
+            }
+    
+    }
+    
+    
+    
+    
+    
+    
+    
     
     
     @objc func nextQues(){
@@ -262,81 +398,81 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
     @IBAction func clickToBtnYes(_ sender: Any) {
         self.btnYes.setButtonImage("on.png")
         self.btnNo.setButtonImage("off.png")
-        self.btnNext.isEnabled = false
+      //  self.btnNext.isEnabled = false
         self.isYesbtnTap = true
         self.strSelected = "Yes"
         let strId = arrQuestion?[value]["queId"] as? String
         
         self.isPreviousClick = false
-        
-        if strId == "5Y"{
-            serverSideData()
-
-            
-            
-            goToNext()
-        }
-            
-        else if strId == "3"{
-           serverSideData()
-
-            
-            goToNext()
-        }
-        else{
-            
-            
-            
-            
-            if strId == "2" {
-                
-                if let index = self.arrayPersnonID.index(of: "3Y") {
-                    print(index)
-                }
-                else{
-                    self.arrQuestion?.append(["queId": "3Y","queText": "Did you have corrective eye surgery?", "option1":"Yes","option2":"No"])
-                    self.arrayPersnonID.append("3Y")
-                }
-                
-                
-            }
-            if strId == "3Y"{
-                
-                if let index = self.arrayPersnonID.index(of: "4Y") {
-                    print(index)
-                }
-                else{
-                    self.arrQuestion?.append(["queId": "4Y","queText": "Was it monovision correction? (Was one eye corrected for reading and the other corrected for distance?", "option1":"Yes","option2":"No"])
-                    self.arrayPersnonID.append("4Y")
-                }
-                
-                
-            }
-            else if strId == "4Y"{
-                
-                if let index = self.arrayPersnonID.index(of: "5Y") {
-                    print(index)
-                    
-                }
-                else{
-                    self.arrQuestion?.append(["queId": "5Y","queText": "Which eye was corrected for reading?", "option1":"Left","option2":"Right"])
-                    
-                    self.arrayPersnonID.append("5Y")
-                    
-                }
-                
-            }
-            
-            
-            
-            Timer.scheduledTimer(timeInterval: 0.5,
-                                 target: self,
-                                 selector: #selector(nextQues),
-                                 userInfo: nil,
-                                 repeats: false)
-            
-            
-        }
+        dataForYes(strId!)
+//        if strId == "5Y"{
+//            serverSideData()
+//
+//
+//
+//            goToNext()
+//        }
+//
+//        else if strId == "3"{
+//           serverSideData()
+//
+//
+//            goToNext()
+//        }
+//        else{
+//
+//
+//
+//
+//            if strId == "2" {
+//
+//                if let index = self.arrayPersnonID.index(of: "3Y") {
+//                    print(index)
+//                }
+//                else{
+//                    self.arrQuestion?.append(["queId": "3Y","queText": "Did you have corrective eye surgery?", "option1":"Yes","option2":"No"])
+//                    self.arrayPersnonID.append("3Y")
+//                }
+//
+//
+//            }
+//            if strId == "3Y"{
+//
+//                if let index = self.arrayPersnonID.index(of: "4Y") {
+//                    print(index)
+//                }
+//                else{
+//                    self.arrQuestion?.append(["queId": "4Y","queText": "Was it monovision correction? (Was one eye corrected for reading and the other corrected for distance?", "option1":"Yes","option2":"No"])
+//                    self.arrayPersnonID.append("4Y")
+//                }
+//
+//
+//            }
+//            else if strId == "4Y"{
+//
+//                if let index = self.arrayPersnonID.index(of: "5Y") {
+//                    print(index)
+//
+//                }
+//                else{
+//                    self.arrQuestion?.append(["queId": "5Y","queText": "Which eye was corrected for reading?", "option1":"Left","option2":"Right"])
+//
+//                    self.arrayPersnonID.append("5Y")
+//
+//                }
+//
+//            }
+//
+//
+//
+//            Timer.scheduledTimer(timeInterval: 0.5,
+//                                 target: self,
+//                                 selector: #selector(nextQues),
+//                                 userInfo: nil,
+//                                 repeats: false)
+//
+//
+//        }
         
         
         
@@ -361,57 +497,57 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         vc.serverArraySecond = serverArray
         vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)
-        self.btnNext.isEnabled = false
+//        self.btnNext.isEnabled = false
     }
     
     
     @IBAction func clickToBtnNo(_ sender: Any) {
-        self.btnNext.isEnabled = false
+      //  self.btnNext.isEnabled = false
         self.btnYes.setButtonImage("off.png")
         self.btnNo.setButtonImage("on.png")
         self.isYesbtnTap = true
         self.isPreviousClick = false
         self.strSelected = "No"
         let strId = arrQuestion?[value]["queId"] as? String
+        dataForNo(strId!)
         
-        
-        if strId == "3"{
-           serverSideData()
-
-            goToNext()
-        }
-        else if strId == "5Y"{
-            serverSideData()
-
-            
-            goToNext()
-        }
-        else{
-            
-             if strId == "2" || strId == "3Y" || strId == "4Y"{
-            if let index = self.arrayPersnonID.index(of: "3") {
-                print(index)
-                
-            }
-                
-            else{
-                self.arrQuestion?.append(["queId": "3","queText": "Which is your dominant eye?", "option1":"Left","option2":"Right"])
-                
-                self.arrayPersnonID.append("3")
-            }
-            
-            
-            }
-            
-            
-            Timer.scheduledTimer(timeInterval: 0.5,
-                                                   target: self,
-                                                   selector: #selector(nextQues),
-                                                   userInfo: nil,
-                                                   repeats: false)
-            
-            
-        }
+//        if strId == "3"{
+//           serverSideData()
+//
+//            goToNext()
+//        }
+//        else if strId == "5Y"{
+//            serverSideData()
+//
+//
+//            goToNext()
+//        }
+//        else{
+//
+//             if strId == "2" || strId == "3Y" || strId == "4Y"{
+//            if let index = self.arrayPersnonID.index(of: "3") {
+//                print(index)
+//
+//            }
+//
+//            else{
+//                self.arrQuestion?.append(["queId": "3","queText": "Which is your dominant eye?", "option1":"Left","option2":"Right"])
+//
+//                self.arrayPersnonID.append("3")
+//            }
+//
+//
+//            }
+//
+//
+//            Timer.scheduledTimer(timeInterval: 0.5,
+//                                                   target: self,
+//                                                   selector: #selector(nextQues),
+//                                                   userInfo: nil,
+//                                                   repeats: false)
+//
+//
+//        }
         
         
     }
@@ -439,7 +575,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
     print(serverArray)
 //        print(arrAnswer)
         
-        self.btnNext.isEnabled = false
+       // self.btnNext.isEnabled = false
         isback = false
         var dicdata  = arrAnswer[valueindex] as! [String: String]
         

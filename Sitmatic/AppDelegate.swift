@@ -27,13 +27,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    
+    //163fe1bb71e8983f744fddae8e3d57d05c3a0e0c
+    
     func setRootController(){
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
         let islogin = UserDefaults.standard.bool(forKey: "isLogin")
         if islogin == true{
-            viewController = OrderProccessingThird(nibName: "OrderProccessingThird", bundle: nil)
+            viewController = SHomeVC(nibName: "SHomeVC", bundle: nil)
         }else{
             viewController = SSLoginVC(nibName: "SSLoginVC", bundle: nil)
         }

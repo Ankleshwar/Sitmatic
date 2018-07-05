@@ -137,7 +137,7 @@ class OrderProccessingThird: BaseViewController {
         style.messageColor = UIColor.white
         style.messageAlignment = .center
         style.backgroundColor = UIColor.darkBlue
-        self.tostView.makeToast(" Please select a valid option for start order   ", duration: 2.0, position: .top, style: style )
+        self.tostView.makeToast(" Please select a valid option ", duration: 2.0, position: .top, style: style )
 
         
     }
@@ -163,37 +163,97 @@ class OrderProccessingThird: BaseViewController {
     }
     
     
+    fileprivate func setdataYes(strId:String) {
+        if strId == "17"{
+            if let index = self.arrayPersnonID.index(of: "18") {
+                print(index)
+            }
+            else{
+                self.arrQuestion?.append(["queId": "18","queText": "Please select fabric category", "option1":"Category 2/Flexx","option2":"Category 4/Dreamweave"])
+                self.arrayPersnonID.append("18")
+            }
+            Timer.scheduledTimer(timeInterval: 0.3,
+                                 target: self,
+                                 selector: #selector(nextQues),
+                                 userInfo: nil,
+                                 repeats: false)
+        }  else if strId == "17N"{
+            if let index = self.arrayPersnonID.index(of: "18") {
+                print(index)
+            }
+            else{
+                self.arrQuestion?.append(["queId": "18","queText": "Please select fabric category", "option1":"Category 2/Flexx","option2":"Category 4/Dreamweave"])
+                self.arrayPersnonID.append("18")
+            }
+            Timer.scheduledTimer(timeInterval: 0.3,
+                                 target: self,
+                                 selector: #selector(nextQues),
+                                 userInfo: nil,
+                                 repeats: false)
+        }
+            
+            
+        else if strId == "18" {
+            callApi()
+        }else{
+            Timer.scheduledTimer(timeInterval: 0.3,
+                                 target: self,
+                                 selector: #selector(nextQues),
+                                 userInfo: nil,
+                                 repeats: false)
+        }
+    }
+    
+    fileprivate func setDataNo(strId:String) {
+        if strId == "17N"{
+            callApi()
+        }else if strId == "18"{
+            callApi()
+        }
+        else    if strId == "17"{
+            if let index = self.arrayPersnonID.index(of: "17N") {
+                print(index)
+            }
+            else{
+                self.arrQuestion?.append(["queId": "17N","queText": "Are you ready to make an upholstery selection?", "option1":"Yes","option2":"No"])
+                self.arrayPersnonID.append("17N")
+            }
+            Timer.scheduledTimer(timeInterval: 0.3,
+                                 target: self,
+                                 selector: #selector(nextQues),
+                                 userInfo: nil,
+                                 repeats: false)
+        }
+        else{
+            Timer.scheduledTimer(timeInterval: 0.3,
+                                 target: self,
+                                 selector: #selector(nextQues),
+                                 userInfo: nil,
+                                 repeats: false)
+        }
+    }
+    
     @IBAction func clickToNext(_ sender: Any) {
         
     
         if self.isYesbtnTap == false  {
            
-            self.showToast(message: " Please select a valid option for start order ")
-           //showToast()
+            self.showToast(message: " Please select a valid option  ")
+          
         }
         else{
             print(strSelected)
             
             if strSelected == "No"{
-                if let index = self.arrayPersnonID.index(of: "17N") {
-                    print(index)
-                }
-                else{
-                    self.arrQuestion?.append(["queId": "17N","queText": "Are you ready to make an upholstery selection?", "option1":"Yes","option2":"No"])
-                    self.arrayPersnonID.append("17N")
-                }
-            }else{
-                if let index = self.arrayPersnonID.index(of: "18") {
-                    print(index)
-                }
-                else{
-                    self.arrQuestion?.append(["queId": "18","queText": "Please select fabric category", "option1":"Category 2/Flexx","option2":"Category 4/Dreamweave"])
-                    self.arrayPersnonID.append("18")
-                }
+                setDataNo(strId: (arrQuestion?[value]["queId"] as? String)!)
+            }
+            
+            else{
+                setdataYes(strId: (arrQuestion?[value]["queId"] as? String)!)
             }
             
             nextQues()
-            self.btnNext.isEnabled = false
+            self.btnNext.isEnabled = true
         }
         
     }
@@ -204,7 +264,7 @@ class OrderProccessingThird: BaseViewController {
         self.isFirstQue = false
         
         if isYesbtnTap == false{
-            self.showToast(message: "Please select option")
+            //self.showToast(message: "Please select option")
         }else{
             
             dicData["selected"] = strSelected
@@ -255,51 +315,53 @@ class OrderProccessingThird: BaseViewController {
     @IBAction func clickToBtnYes(_ sender: Any) {
         self.btnYes.setButtonImage("on.png")
         self.btnNo.setButtonImage("off.png")
-        self.btnNext.isEnabled = false
+        self.btnNext.isEnabled = true
         self.isYesbtnTap = true
         self.strSelected = "Yes"
         let strId = arrQuestion?[value]["queId"] as? String
         self.isPreviousClick = false
         
-        if strId == "17"{
-            if let index = self.arrayPersnonID.index(of: "18") {
-                print(index)
-            }
-            else{
-                self.arrQuestion?.append(["queId": "18","queText": "Please select fabric category", "option1":"Category 2/Flexx","option2":"Category 4/Dreamweave"])
-                self.arrayPersnonID.append("18")
-            }
-            Timer.scheduledTimer(timeInterval: 0.3,
-                                 target: self,
-                                 selector: #selector(nextQues),
-                                 userInfo: nil,
-                                 repeats: false)
-        }  else if strId == "17N"{
-            if let index = self.arrayPersnonID.index(of: "18") {
-                print(index)
-            }
-            else{
-                self.arrQuestion?.append(["queId": "18","queText": "Please select fabric category", "option1":"Category 2/Flexx","option2":"Category 4/Dreamweave"])
-                self.arrayPersnonID.append("18")
-            }
-            Timer.scheduledTimer(timeInterval: 0.3,
-                                 target: self,
-                                 selector: #selector(nextQues),
-                                 userInfo: nil,
-                                 repeats: false)
-        }
+        setdataYes(strId: strId!)
         
+//        if strId == "17"{
+//            if let index = self.arrayPersnonID.index(of: "18") {
+//                print(index)
+//            }
+//            else{
+//                self.arrQuestion?.append(["queId": "18","queText": "Please select fabric category", "option1":"Category 2/Flexx","option2":"Category 4/Dreamweave"])
+//                self.arrayPersnonID.append("18")
+//            }
+//            Timer.scheduledTimer(timeInterval: 0.3,
+//                                 target: self,
+//                                 selector: #selector(nextQues),
+//                                 userInfo: nil,
+//                                 repeats: false)
+//        }  else if strId == "17N"{
+//            if let index = self.arrayPersnonID.index(of: "18") {
+//                print(index)
+//            }
+//            else{
+//                self.arrQuestion?.append(["queId": "18","queText": "Please select fabric category", "option1":"Category 2/Flexx","option2":"Category 4/Dreamweave"])
+//                self.arrayPersnonID.append("18")
+//            }
+//            Timer.scheduledTimer(timeInterval: 0.3,
+//                                 target: self,
+//                                 selector: #selector(nextQues),
+//                                 userInfo: nil,
+//                                 repeats: false)
+//        }
+//
+//
+//         else if strId == "18" {
+//            callApi()
+//        }else{
+//            Timer.scheduledTimer(timeInterval: 0.3,
+//                                 target: self,
+//                                 selector: #selector(nextQues),
+//                                 userInfo: nil,
+//                                 repeats: false)
+//        }
         
-         else if strId == "18" {
-            callApi()
-        }else{
-            Timer.scheduledTimer(timeInterval: 0.3,
-                                 target: self,
-                                 selector: #selector(nextQues),
-                                 userInfo: nil,
-                                 repeats: false)
-        }
-            
         
      
             
@@ -400,7 +462,7 @@ class OrderProccessingThird: BaseViewController {
     
     
     @IBAction func clickToBtnNo(_ sender: Any) {
-        self.btnNext.isEnabled = false
+        self.btnNext.isEnabled = true
         self.btnYes.setButtonImage("off.png")
         self.btnNo.setButtonImage("on.png")
         self.isYesbtnTap = true
@@ -408,33 +470,33 @@ class OrderProccessingThird: BaseViewController {
         self.strSelected = "No"
         let strId = arrQuestion?[value]["queId"] as? String
         
-        
-        if strId == "17N"{
-            callApi()
-        }else if strId == "18"{
-            callApi()
-        }
-        else    if strId == "17"{
-            if let index = self.arrayPersnonID.index(of: "17N") {
-                print(index)
-            }
-            else{
-                self.arrQuestion?.append(["queId": "17N","queText": "Are you ready to make an upholstery selection?", "option1":"Yes","option2":"No"])
-                self.arrayPersnonID.append("17N")
-            }
-            Timer.scheduledTimer(timeInterval: 0.3,
-                                 target: self,
-                                 selector: #selector(nextQues),
-                                 userInfo: nil,
-                                 repeats: false)
-        }
-        else{
-            Timer.scheduledTimer(timeInterval: 0.3,
-                                 target: self,
-                                 selector: #selector(nextQues),
-                                 userInfo: nil,
-                                 repeats: false)
-        }
+         setDataNo(strId: strId!)
+//        if strId == "17N"{
+//            callApi()
+//        }else if strId == "18"{
+//            callApi()
+//        }
+//        else    if strId == "17"{
+//            if let index = self.arrayPersnonID.index(of: "17N") {
+//                print(index)
+//            }
+//            else{
+//                self.arrQuestion?.append(["queId": "17N","queText": "Are you ready to make an upholstery selection?", "option1":"Yes","option2":"No"])
+//                self.arrayPersnonID.append("17N")
+//            }
+//            Timer.scheduledTimer(timeInterval: 0.3,
+//                                 target: self,
+//                                 selector: #selector(nextQues),
+//                                 userInfo: nil,
+//                                 repeats: false)
+//        }
+//        else{
+//            Timer.scheduledTimer(timeInterval: 0.3,
+//                                 target: self,
+//                                 selector: #selector(nextQues),
+//                                 userInfo: nil,
+//                                 repeats: false)
+//        }
         
         
     }
@@ -458,6 +520,8 @@ class OrderProccessingThird: BaseViewController {
         self.btnYes.setButtonImage("off.png")
         self.btnNo.setButtonImage("off.png")
         self.isYesbtnTap = false
+        
+        
     }
     
     func setPreviousData(valueindex : Int){
@@ -474,17 +538,17 @@ class OrderProccessingThird: BaseViewController {
         //self.lblQuestion.text  = strID! + " " + quename!
         self.lblQuestion.text  =   quename!
         self.lblQuestionValueCount.text = strID! + " " + "of 19 Questions"
-        let selctedValue = dicdata["selected"]
+         strSelected = dicdata["selected"]
         
         self.btnYes.setButtonImage("off.png")
         self.btnNo.setButtonImage("off.png")
         
         
-        if selctedValue == "Yes"{
+        if strSelected == "Yes"{
             self.btnYes.setButtonImage("on.png")
             self.btnNo.setButtonImage("off.png")
         }
-        else if selctedValue == "No"{
+        else if strSelected == "No"{
             self.btnYes.setButtonImage("off.png")
             self.btnNo.setButtonImage("on.png")
         }
