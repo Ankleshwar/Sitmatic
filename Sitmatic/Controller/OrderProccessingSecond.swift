@@ -77,9 +77,10 @@ class OrderProccessingSecond: BaseViewController {
         self.btnYes.setButtonImage("off.png")
         self.btnNo.setButtonImage("off.png")
         self.isYesbtnTap = false
-        self.arrayPersnonID.append("1")
-        self.arrayPersnonID.append("2")
-        self.arrayPersnonID.append("3")
+     
+        
+        //self.arrayPersnonID.append("13")
+    
         //self.btnprevious.isHidden = true
         self.isFirstQue =  true
     }
@@ -118,7 +119,7 @@ class OrderProccessingSecond: BaseViewController {
                 
                 
                 self.arrQuestion?.remove(at: value)
-                self.arrayPersnonID.remove(at: value)
+                //self.arrayPersnonID.remove(at: value)
                 value -= 1
                 
                 setPreviousData(valueindex: value)
@@ -489,9 +490,9 @@ class OrderProccessingSecond: BaseViewController {
             
             self.btnNext.isEnabled = true
             self.isFirstQue = true
-            self.arrayPersnonID.removeAll()
+           // self.arrayPersnonID.removeAll()
             value = 0
-            self.arrayPersnonID.append("13")
+          //  self.arrayPersnonID.append("13")
          
             arrQuestion = setDataWithLocalJson("OrderProccessingSecond") as NSArray as? Array<Dictionary<String, Any>>
             

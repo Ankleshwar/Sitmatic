@@ -35,7 +35,7 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
         self.lblUserEmail.text = self.appUserObject?.email
         let strname = self.appUserObject?.mobile
          let strAddress = self.appUserObject?.address
-        self.txtMobile.text = "Mobile : \(strname!)"
+        self.txtMobile.text = " Mobile : \(strname!)"
         
         
         self.txtMobile.isEnabled = false
@@ -58,7 +58,7 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
         }
         
         if    (self.appUserObject?.address)! == "" {
-             self.txtAddress.text = "Delivery Address: Please Select Address"
+             self.txtAddress.text = "Please select your address"
         }
         else{
                 self.txtAddress.text = strAddress!
@@ -66,21 +66,33 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
         
  
 
-       // print(  objeHome.setValueOpen(strValue: "ValueNewVAAAAA"))
+       
 
         
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     @IBAction func clickToEdit(_ sender: Any) {
         
         if btnEdit.isSelected {
-            self.txtAddress.isEditable = false
-            self.btnPhoto.isEnabled = false
-             self.btnEdit.setButtonImage("edit.png")
-            self.btnEdit.isSelected = false
+    
             
-            if self.txtAddress.text.count == 18 {
-                self.showToast(message: "Please fill the address")
+            if self.txtAddress.text.count == 9 {
+               self.showToastForQue(message: "Please select your address", y: 75)
+                 self.btnEdit.setButtonImage("ic_check_white")
             }else{
+                self.btnEdit.setButtonImage("edit.png")
+                self.txtAddress.isEditable = false
+                self.btnPhoto.isEnabled = false
+                
+                self.btnEdit.isSelected = false
                  callServiceEditProfile()
             }
             
@@ -144,7 +156,7 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
                 
                 print(dicdata)
                 
-                self.showToast(message: dicdata["errorData"] as! String)
+                self.showToastForQue(message: dicdata["errorData"] as! String, y: 75)
                  SVProgressHUD.dismiss()
             }
             
@@ -242,7 +254,7 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
                     
                     print(dicdata)
                     
-                    self.showToast(message: dicdata["errorData"] as! String)
+                    self.showToastForQue(message: dicdata["errorData"] as! String, y: 75)
                 }
                 
                 
@@ -263,7 +275,8 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
         if(text == "\n") {
             textView.resignFirstResponder()
             return false
-        }else if strNew.length < 18{
+        }
+            else if strNew.length < 9{
             return false
         }
         
@@ -272,12 +285,27 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
     
 
 
-    func textViewDidEndEditing(_ textView: UITextView) {
-  
-        
-        self.txtAddress.text =  (textView.text)
+
+    
+    func textViewDidBeginEditing(_ textView: UITextView)
+    {
+        if (textView.text == "Please select your address")
+        {
+            textView.text = "Address:"
+            textView.textColor = .black
+        }
+        textView.becomeFirstResponder() //Optional
     }
     
+    func textViewDidEndEditing(_ textView: UITextView)
+    {
+        if (textView.text == "")
+        {
+            textView.text = "Please select your address"
+            textView.textColor = .lightGray
+        }
+        textView.resignFirstResponder()
+    }
     
     
 }

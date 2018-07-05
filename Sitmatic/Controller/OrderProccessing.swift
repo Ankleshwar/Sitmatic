@@ -333,7 +333,7 @@ class OrderProccessing: BaseViewController {
     }
     
     
-    func goToNext(){
+    func goToNext() {
         
         self.serverArray = serverArray.compactMap { $0 }
        

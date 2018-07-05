@@ -8,6 +8,12 @@
 
 import UIKit
 
+protocol  StartOrderdDelegate {
+    func setDataOnBack(isBack:Bool)
+}
+
+
+
 class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
  
     
@@ -15,8 +21,9 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
     var isBack = false
     var isButtonCheck = false
     @IBOutlet weak var lblQuestionValueCount: UILabel!
-      var dicAnsData = Dictionary<String, String>()
-     var strInce: String!
+    var dicAnsData = Dictionary<String, String>()
+    var strInce: String!
+    var delegate: StartOrderdDelegate?
     @IBOutlet var pickerView: UIPickerView!
     @IBOutlet weak var btnNext: UIButton!
     var count = 0
@@ -272,6 +279,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
         
        
         if isFirstQuestion ==  true{
+            self.delegate?.setDataOnBack(isBack:true)
             self.navigationController?.popViewController(animated: true)
         }else{
             

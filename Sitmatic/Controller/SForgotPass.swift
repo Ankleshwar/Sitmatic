@@ -133,9 +133,11 @@ class SForgotPass: BaseViewController {
         }
         else if self.txtConfirmPass.text?.count == 0{
             self.showToast(message: "Please enter your confirm password ")
-        }else if  (firstPassword!.isEqualToString(find: secondPassword!)) == false {
+        }
+        else if  (firstPassword!.isEqualToString(find: secondPassword!)) == false {
             self.showToast(message: "Please enter same password ")
-        }else{
+        }
+        else{
             
             callPassSave()
         }

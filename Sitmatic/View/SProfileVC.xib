@@ -142,7 +142,7 @@
                                                 <constraint firstAttribute="height" constant="1" id="458-qT-ETY"/>
                                             </constraints>
                                         </view>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Delivery Address: Please Select Address" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EsF-qQ-2K5">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EsF-qQ-2K5">
                                             <rect key="frame" x="15" y="212" width="305" height="98"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>

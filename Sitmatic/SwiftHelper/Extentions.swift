@@ -116,9 +116,9 @@ extension UIViewController {
         })
     }
     
-    func showToastForQue(message : String) {
+    func showToastForQue(message : String , y:Int) {
         
-        let toastLabel = UILabel(frame: CGRect(x: 0, y:self.view.frame.size.height/2 , width: self.view.frame.size.width, height: 40))
+        let toastLabel = UILabel(frame: CGRect(x: 0, y:CGFloat(y) , width: self.view.frame.size.width, height: 40))
         //toastLabel.backgroundColor = UIColor.darkBlue
         toastLabel.textColor = UIColor.red
         toastLabel.textAlignment = .center;
