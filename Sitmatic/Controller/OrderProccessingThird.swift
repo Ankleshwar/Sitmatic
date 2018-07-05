@@ -12,6 +12,9 @@ import SVProgressHUD
 
 class OrderProccessingThird: BaseViewController {
     
+  
+    
+    
     @IBOutlet weak var tostView: UIView!
     @IBOutlet weak var tostLable: UILabel!
     
@@ -169,6 +172,25 @@ class OrderProccessingThird: BaseViewController {
            //showToast()
         }
         else{
+            print(strSelected)
+            
+            if strSelected == "No"{
+                if let index = self.arrayPersnonID.index(of: "17N") {
+                    print(index)
+                }
+                else{
+                    self.arrQuestion?.append(["queId": "17N","queText": "Are you ready to make an upholstery selection?", "option1":"Yes","option2":"No"])
+                    self.arrayPersnonID.append("17N")
+                }
+            }else{
+                if let index = self.arrayPersnonID.index(of: "18") {
+                    print(index)
+                }
+                else{
+                    self.arrQuestion?.append(["queId": "18","queText": "Please select fabric category", "option1":"Category 2/Flexx","option2":"Category 4/Dreamweave"])
+                    self.arrayPersnonID.append("18")
+                }
+            }
             
             nextQues()
             self.btnNext.isEnabled = false

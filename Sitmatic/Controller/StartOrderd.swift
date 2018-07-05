@@ -124,8 +124,12 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
             textField(color:UIColor.lightGray)
         }
         self.view.endEditing(true)
-       
-        
+    
+        Timer.scheduledTimer(timeInterval: 0.3,
+                             target: self,
+                             selector: #selector(self.setDataOnNext),
+                             userInfo: nil,
+                             repeats: false)
     }
     
     
@@ -157,10 +161,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
         self.txtField.layer.cornerRadius = 5.0
     }
     
-    @IBAction func clickToNext(_ sender: Any) {
-        
-       
-        
+    @objc fileprivate func setDataOnNext() {
         if self.txtField.text?.count == 0 {
             
             
@@ -175,7 +176,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                 //self.showToast(message: "Thanku")
             }
             else{
-               
+                
                 if isButtonCheck == true{
                     arrAnswer.removeLast()
                     serverArraySecond.removeLast()
@@ -183,11 +184,11 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                 }
                 
                 
-
+                
                 
                 if(self.isFirstQuestion == true){
                     dicData["selected"] = self.txtField.text
-                  
+                    
                     
                     if NSString(string: strValue).contains("ft") {
                         
@@ -199,7 +200,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                         strInce = String(strInce.dropLast(2))
                         print(strInce)
                     }
-
+                    
                     self.ansStrIn = String(Int(strValue)!*12 + Int(strInce)!)
                     dicAnsData["ans"] = self.ansStrIn
                 }
@@ -209,50 +210,50 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                 }
                 
                 
-               
+                
                 let arr : Array<Any>? = arrQuestion[count]["value"] as? Array
                 dicData["questionId"] = String(id)
-              
+                
                 dicData["questionText"] = arrQuestion[count]["questionText"] as? String
-              
-            
+                
+                
                 self.isFirstQuestion = false
                 dicData["value"] = arr
-          
-
-             
-
+                
+                
+                
+                
                 
                 self.arrAnswer.append(dicData)
                 
                 
-    
                 
                 
                 
-               
+                
+                
                 self.serverArraySecond = self.serverArraySecond.filter { !$0.values.contains(String(id)) }
                 
                 dicAnsData["id"] = String(id)
-              
+                
                 self.serverArraySecond.append(dicAnsData)
-               
-             
+                
+                
                 
                 if id == 12{
                     
-                 print(self.arrAnswer)
-                     self.isButtonCheck = true
+                    print(self.arrAnswer)
+                    self.isButtonCheck = true
                     let vc = OrderProccessingSecond(nibName: "OrderProccessingSecond", bundle: nil)
                     vc.serverArrayThid = serverArraySecond
                     vc.delegate = self
                     vc.arrPreviousControllerData = arrAnswer
-                   
+                    
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
                 else{
                     count += 1
-                     self.txtField.text = ""
+                    self.txtField.text = ""
                     lblQuestion.text = arrQuestion[count]["questionText"] as? String
                     let id : Int = (arrQuestion[count]["questionId"] as? Int)!
                     self.lblQuestionValueCount.text = String(id) + " " + "of 19 Questions"
@@ -262,12 +263,19 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                     self.pickerView.selectRow(0, inComponent: 0, animated: true)
                     self.pickerView(pickerView, didSelectRow: 0, inComponent: 0)
                 }
-               
+                
                 
             }
             
             
         }
+    }
+    
+    @IBAction func clickToNext(_ sender: Any) {
+        
+       
+        
+        setDataOnNext()
             
         
         
