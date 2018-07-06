@@ -125,7 +125,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
         }
         self.view.endEditing(true)
     
-        Timer.scheduledTimer(timeInterval: 0.3,
+        Timer.scheduledTimer(timeInterval: 0.6,
                              target: self,
                              selector: #selector(self.setDataOnNext),
                              userInfo: nil,

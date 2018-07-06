@@ -33,9 +33,9 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
         self.viewProfile.layer.cornerRadius = 5.0;
         self.lblUserName.text = self.appUserObject?.userName
         self.lblUserEmail.text = self.appUserObject?.email
-        let strname = self.appUserObject?.mobile
+        let strnumber = self.appUserObject?.mobile
          let strAddress = self.appUserObject?.address
-        self.txtMobile.text = " Mobile : \(strname!)"
+        self.txtMobile.text = " Mobile :  \(strnumber!)"
         
         
         self.txtMobile.isEnabled = false

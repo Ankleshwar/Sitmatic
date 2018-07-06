@@ -553,9 +553,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
     }
     
     
-    func setData(value : Int){
-        
-        
+    fileprivate func coreNextDataSet(_ value: Int) {
         self.lblYes.text = arrQuestion?[value]["option1"] as? String
         self.lblNo.text = arrQuestion?[value]["option2"] as? String
         let strID = arrQuestion?[value]["queId"] as! String
@@ -568,6 +566,25 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         self.btnYes.setButtonImage("off.png")
         self.btnNo.setButtonImage("off.png")
         self.isYesbtnTap = false
+    }
+    
+    func setData(value : Int){
+        
+        if strSelected == "No"{
+            if value == 3{
+                 coreNextDataSet(2)
+            }
+            else{
+                coreNextDataSet(value)
+            }
+        }else{
+            coreNextDataSet(value)
+        }
+        
+        
+        
+        
+        
     }
     
     func setPreviousData(valueindex : Int){

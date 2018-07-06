@@ -12,14 +12,17 @@ import SVProgressHUD
 
 class OrderProccessingThird: BaseViewController {
     
-  
+  var strValue: String = ""
+    @IBOutlet weak var txtColor: UITextField!
+    @IBOutlet var pickerView: UIPickerView!
     
+    @IBOutlet weak var btnCancle: UIButton!
     
     @IBOutlet weak var tostView: UIView!
     @IBOutlet weak var tostLable: UILabel!
     
     @IBOutlet var viewShowModel: UIView!
-    
+    var arrIteam :Array<Any>?
     @IBOutlet weak var lblModel: UILabel!
     var dicAnsData = Dictionary<String, String>()
     var isFirstQue: Bool!
@@ -34,8 +37,8 @@ class OrderProccessingThird: BaseViewController {
     var strSelected : String!
     var dicData = Dictionary<String, String>()
     @IBOutlet weak var lblNo: UILabel!
-    var arrNext = [[:]]
-    var dicNext  = Dictionary<String, String>()
+    
+   
     @IBOutlet weak var btnprevious: UIButton!
     var arrayPersnonID: [String] = []
     var customViewAlert: UIView!
@@ -50,11 +53,43 @@ class OrderProccessingThird: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.txtColor.isHidden = true
         arrQuestion = setDataWithLocalJson("OrderProccessingThird") as NSArray as? Array<Dictionary<String, Any>>
         setInitial()
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.pickerView.translatesAutoresizingMaskIntoConstraints = false
+        showPicker()
+        
+        
+    }
+    
+    
+    func showPicker(){
+        
+        self.txtColor.inputView = self.pickerView
+        
+        let toolBar = UIToolbar().ToolbarPiker(mySelect: #selector(self.donedatePicker))
+        
+        txtColor.inputAccessoryView = toolBar
+        
+        
+    }
+    
+    @objc func donedatePicker(){
+        
+        self.txtColor.text = strValue
+      
+        self.view.endEditing(true)
+        textField(color:UIColor.lightGray)
+        Timer.scheduledTimer(timeInterval: 0.3,
+                             target: self,
+                             selector: #selector(self.callApi),
+                             userInfo: nil,
+                             repeats: false)
+    }
     
     
     
@@ -97,14 +132,7 @@ class OrderProccessingThird: BaseViewController {
             else{
                 
                 
-                dicNext["selected"] = strSelected
-                dicNext["option1"] = arrQuestion?[value]["option1"] as? String
-                dicNext["option2"] = arrQuestion?[value]["option2"] as? String
-                dicNext["queText"] = arrQuestion?[value]["queText"] as? String
-                dicNext["queId"] = arrQuestion?[value]["queId"] as? String
-                
-                self.arrNext.insert(dicNext, at: 0)
-                
+
                 
                 self.arrQuestion?.remove(at: value)
                 self.arrayPersnonID.remove(at: value)
@@ -191,10 +219,28 @@ class OrderProccessingThird: BaseViewController {
                                  userInfo: nil,
                                  repeats: false)
         }
-            
+        else if strId == "19"{
+            callApi()
+        }
             
         else if strId == "18" {
-            callApi()
+           
+            if let index = self.arrayPersnonID.index(of: "19") {
+                print(index)
+            }
+            else{
+                self.arrQuestion?.append(["queId": "19","queText": "Please select color", "value": ["Black","Indigo","Charcoal","Maroon"]])
+                self.arrayPersnonID.append("19")
+            }
+            self.arrIteam = ["Black","Indigo","Charcoal","Maroon"]
+            self.pickerView.selectRow(0, inComponent: 0, animated: true)
+            self.pickerView(pickerView, didSelectRow: 0, inComponent: 0)
+            Timer.scheduledTimer(timeInterval: 0.3,
+                                 target: self,
+                                 selector: #selector(nextQues),
+                                 userInfo: nil,
+                                 repeats: false)
+            
         }else{
             Timer.scheduledTimer(timeInterval: 0.3,
                                  target: self,
@@ -207,8 +253,32 @@ class OrderProccessingThird: BaseViewController {
     fileprivate func setDataNo(strId:String) {
         if strId == "17N"{
             callApi()
-        }else if strId == "18"{
+        }else if strId == "19"{
             callApi()
+        }
+        
+        else if strId == "18"{
+            
+            
+            if let index = self.arrayPersnonID.index(of: "19") {
+                print(index)
+            }
+            else{
+                self.arrQuestion?.append(["queId": "19","queText": "Please select color", "value": ["Navy","Charcoal","Aqua","Ember","Cologne","Napa","Tropicana"]])
+                self.arrayPersnonID.append("19")
+            }
+             self.arrIteam = ["Navy","Charcoal","Aqua","Ember","Cologne","Napa","Tropicana"]
+            self.pickerView.selectRow(0, inComponent: 0, animated: true)
+            self.pickerView(pickerView, didSelectRow: 0, inComponent: 0)
+            Timer.scheduledTimer(timeInterval: 0.3,
+                                 target: self,
+                                 selector: #selector(nextQues),
+                                 userInfo: nil,
+                                 repeats: false)
+                
+                
+            
+            
         }
         else    if strId == "17"{
             if let index = self.arrayPersnonID.index(of: "17N") {
@@ -233,30 +303,64 @@ class OrderProccessingThird: BaseViewController {
         }
     }
     
+    fileprivate func textField(color:UIColor) {
+        self.txtColor.layer.borderWidth = 1.0
+        self.txtColor.layer.borderColor = color.cgColor
+        self.txtColor.layer.cornerRadius = 5.0
+    }
+    
+    
     @IBAction func clickToNext(_ sender: Any) {
         
-    
-        if self.isYesbtnTap == false  {
-           
-            self.showToast(message: " Please select a valid option  ")
-          
-        }
-        else{
-            print(strSelected)
+        
+        textField(color:UIColor.lightGray)
+        
+        if (arrQuestion?[value]["queId"] as? String)! == "19"{
             
-            if strSelected == "No"{
-                setDataNo(strId: (arrQuestion?[value]["queId"] as? String)!)
+            if self.txtColor.text == ""{
+                self.showToast(message: " Please select a color ")
+                textField(color:UIColor.red)
+            }else{
+                textField(color:UIColor.lightGray)
+                callApi()
             }
             
+        }else{
+            
+            
+            if self.isYesbtnTap == false  {
+                
+                self.showToast(message: " Please select a valid option  ")
+                
+            }
             else{
-                setdataYes(strId: (arrQuestion?[value]["queId"] as? String)!)
+                print(strSelected)
+                
+                
+                if strSelected == "No"{
+                    setDataNo(strId: (arrQuestion?[value]["queId"] as? String)!)
+                }
+                    
+                else{
+                    setdataYes(strId: (arrQuestion?[value]["queId"] as? String)!)
+                }
+                
+                nextQues()
+                self.btnNext.isEnabled = true
             }
             
-            nextQues()
-            self.btnNext.isEnabled = true
+            
         }
         
-    }
+        
+        
+    
+     
+            
+          
+        }
+        
+    
     
     
     @objc func nextQues(){
@@ -264,7 +368,7 @@ class OrderProccessingThird: BaseViewController {
         self.isFirstQue = false
         
         if isYesbtnTap == false{
-            //self.showToast(message: "Please select option")
+            
         }else{
             
             dicData["selected"] = strSelected
@@ -275,6 +379,10 @@ class OrderProccessingThird: BaseViewController {
             
             self.arrAnswer.add(dicData)
             self.btnprevious.isHidden = false
+            
+            
+       
+            
             
             let strId = arrQuestion?[value]["queId"] as! String
             
@@ -323,45 +431,7 @@ class OrderProccessingThird: BaseViewController {
         
         setdataYes(strId: strId!)
         
-//        if strId == "17"{
-//            if let index = self.arrayPersnonID.index(of: "18") {
-//                print(index)
-//            }
-//            else{
-//                self.arrQuestion?.append(["queId": "18","queText": "Please select fabric category", "option1":"Category 2/Flexx","option2":"Category 4/Dreamweave"])
-//                self.arrayPersnonID.append("18")
-//            }
-//            Timer.scheduledTimer(timeInterval: 0.3,
-//                                 target: self,
-//                                 selector: #selector(nextQues),
-//                                 userInfo: nil,
-//                                 repeats: false)
-//        }  else if strId == "17N"{
-//            if let index = self.arrayPersnonID.index(of: "18") {
-//                print(index)
-//            }
-//            else{
-//                self.arrQuestion?.append(["queId": "18","queText": "Please select fabric category", "option1":"Category 2/Flexx","option2":"Category 4/Dreamweave"])
-//                self.arrayPersnonID.append("18")
-//            }
-//            Timer.scheduledTimer(timeInterval: 0.3,
-//                                 target: self,
-//                                 selector: #selector(nextQues),
-//                                 userInfo: nil,
-//                                 repeats: false)
-//        }
-//
-//
-//         else if strId == "18" {
-//            callApi()
-//        }else{
-//            Timer.scheduledTimer(timeInterval: 0.3,
-//                                 target: self,
-//                                 selector: #selector(nextQues),
-//                                 userInfo: nil,
-//                                 repeats: false)
-//        }
-        
+
         
      
             
@@ -384,12 +454,14 @@ class OrderProccessingThird: BaseViewController {
     
     
     
-    func callApi(){
+    @objc func callApi(){
         
-     
+        self.btnprevious.isHidden =  true
+        self.btnNext.isEnabled = false
+        self.btnCancle.isEnabled = false
         self.serverArrayThid = serverArrayThid.compactMap { $0 }
         
-     print(serverArrayThid)
+        print(serverArrayThid)
         
         
         
@@ -471,32 +543,7 @@ class OrderProccessingThird: BaseViewController {
         let strId = arrQuestion?[value]["queId"] as? String
         
          setDataNo(strId: strId!)
-//        if strId == "17N"{
-//            callApi()
-//        }else if strId == "18"{
-//            callApi()
-//        }
-//        else    if strId == "17"{
-//            if let index = self.arrayPersnonID.index(of: "17N") {
-//                print(index)
-//            }
-//            else{
-//                self.arrQuestion?.append(["queId": "17N","queText": "Are you ready to make an upholstery selection?", "option1":"Yes","option2":"No"])
-//                self.arrayPersnonID.append("17N")
-//            }
-//            Timer.scheduledTimer(timeInterval: 0.3,
-//                                 target: self,
-//                                 selector: #selector(nextQues),
-//                                 userInfo: nil,
-//                                 repeats: false)
-//        }
-//        else{
-//            Timer.scheduledTimer(timeInterval: 0.3,
-//                                 target: self,
-//                                 selector: #selector(nextQues),
-//                                 userInfo: nil,
-//                                 repeats: false)
-//        }
+
         
         
     }
@@ -522,9 +569,38 @@ class OrderProccessingThird: BaseViewController {
         self.isYesbtnTap = false
         
         
+        if (arrQuestion?[value]["queId"] as? String)! == "19"{
+            self.txtColor.isHidden = false
+            self.btnYes.isHidden = true
+            self.btnNo.isHidden = true
+            self.lblYes.isHidden = true
+            self.lblNo.isHidden = true
+        }else{
+            self.txtColor.isHidden = true
+            self.btnYes.isHidden = false
+            self.btnNo.isHidden = false
+            self.lblYes.isHidden = false
+            self.lblNo.isHidden = false
+        }
+        
+        
     }
     
     func setPreviousData(valueindex : Int){
+        
+        if (arrQuestion?[value]["queId"] as? String)! == "19"{
+            self.txtColor.isHidden = false
+            self.btnYes.isHidden = true
+            self.btnNo.isHidden = true
+            self.lblYes.isHidden = true
+            self.lblNo.isHidden = true
+        }else{
+            self.txtColor.isHidden = true
+            self.btnYes.isHidden = false
+            self.btnNo.isHidden = false
+            self.lblYes.isHidden = false
+            self.lblNo.isHidden = false
+        }
         
         
         
@@ -576,9 +652,63 @@ class OrderProccessingThird: BaseViewController {
     
 }
 
-//let orderSet = NSOrderedSet(array: self.arrAnswer as! [Any])
-//let arrayShort = orderSet.array
-//self.arrAnswer.removeAllObjects()
-//self.arrAnswer.add(ar)
-//print(self.arrAnswer)
+
+
+
+extension OrderProccessingThird : UIPickerViewDelegate,UIPickerViewDataSource{
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    
+            return 1
+        
+        
+        
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
+   
+            return arrIteam!.count
+        
+        
+        
+        
+        
+    }
+    
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+   
+            return arrIteam?[row] as? String
+        
+        
+        
+        
+        
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        
+     
+        self.strValue = (arrIteam?[row] as? String)!
+        
+        
+        
+    }
+}
+extension OrderProccessingThird: UITextFieldDelegate{
+    
+    
+    
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.setLeftPaddingPoints(5)
+        self.pickerView.reloadAllComponents()
+    }
+    
+    
+    
+}
 

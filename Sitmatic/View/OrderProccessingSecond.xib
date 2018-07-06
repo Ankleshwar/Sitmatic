@@ -16,6 +16,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OrderProccessingSecond" customModule="Sitmatic" customModuleProvider="target">
             <connections>
+                <outlet property="btnCancle" destination="ovK-KC-y0X" id="IkH-gl-22W"/>
                 <outlet property="btnNext" destination="6xX-0B-v2p" id="7cl-N8-fVc"/>
                 <outlet property="btnNo" destination="i3k-x0-zLe" id="z7Z-fO-yeP"/>
                 <outlet property="btnYes" destination="MrY-Nd-F49" id="sxc-Ht-Ksk"/>

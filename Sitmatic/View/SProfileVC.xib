@@ -62,10 +62,10 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBd-ZE-syv">
-                            <rect key="frame" x="335" y="8" width="30" height="30"/>
+                            <rect key="frame" x="320" y="3" width="40" height="40"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="7kD-J3-v5T"/>
-                                <constraint firstAttribute="width" constant="30" id="fh9-yi-XtH"/>
+                                <constraint firstAttribute="height" constant="40" id="uTW-5z-XIm"/>
+                                <constraint firstAttribute="width" constant="40" id="wPJ-ZY-29n"/>
                             </constraints>
                             <state key="normal" image="edit.png"/>
                             <connections>
@@ -76,11 +76,11 @@
                     <color key="backgroundColor" red="0.1960784314" green="0.65098039220000004" blue="0.88235294119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="46" id="C3V-rp-o6W"/>
-                        <constraint firstAttribute="bottom" secondItem="GBd-ZE-syv" secondAttribute="bottom" constant="8" id="Hpk-dh-A2V"/>
-                        <constraint firstAttribute="trailing" secondItem="GBd-ZE-syv" secondAttribute="trailing" constant="10" id="NUP-GB-5O2"/>
                         <constraint firstItem="AVC-Yk-V44" firstAttribute="centerX" secondItem="1aa-in-zBg" secondAttribute="centerX" id="Nf8-zg-pBO"/>
-                        <constraint firstItem="GBd-ZE-syv" firstAttribute="top" secondItem="1aa-in-zBg" secondAttribute="top" constant="8" id="UTl-Cz-lCs"/>
+                        <constraint firstAttribute="bottom" secondItem="GBd-ZE-syv" secondAttribute="bottom" constant="3" id="Srk-em-HsO"/>
+                        <constraint firstItem="GBd-ZE-syv" firstAttribute="top" secondItem="1aa-in-zBg" secondAttribute="top" constant="3" id="Vco-gJ-kZP"/>
                         <constraint firstItem="bps-1E-eft" firstAttribute="top" secondItem="1aa-in-zBg" secondAttribute="top" constant="8" id="bAb-el-Q26"/>
+                        <constraint firstAttribute="trailing" secondItem="GBd-ZE-syv" secondAttribute="trailing" constant="15" id="ePT-d3-SWu"/>
                         <constraint firstItem="bps-1E-eft" firstAttribute="leading" secondItem="1aa-in-zBg" secondAttribute="leading" constant="15" id="jWX-lQ-asD"/>
                         <constraint firstAttribute="bottom" secondItem="AVC-Yk-V44" secondAttribute="bottom" constant="8" id="nHQ-S6-Ub6"/>
                         <constraint firstItem="AVC-Yk-V44" firstAttribute="top" secondItem="1aa-in-zBg" secondAttribute="top" constant="8" id="qaT-Z0-8lc"/>
@@ -123,7 +123,7 @@
                                                 <constraint firstAttribute="height" constant="1" id="Kd9-jd-caI"/>
                                             </constraints>
                                         </view>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Mobile:  8888888888" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DPf-YB-Dav">
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Mobile:   8888888888" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DPf-YB-Dav">
                                             <rect key="frame" x="15" y="161" width="305" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="Wrd-fG-AaT"/>
@@ -142,7 +142,7 @@
                                                 <constraint firstAttribute="height" constant="1" id="458-qT-ETY"/>
                                             </constraints>
                                         </view>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EsF-qQ-2K5">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EsF-qQ-2K5">
                                             <rect key="frame" x="85" y="212" width="248" height="98"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>

@@ -21,6 +21,7 @@ class OrderProccessingSecond: BaseViewController {
     
     @IBOutlet weak var tostView: UIView!
     @IBOutlet weak var tostLable: UILabel!
+    @IBOutlet weak var btnCancle: UIButton!
     
     var delegate : OrderProccessingSecondDelegate?
     var dicAnsData = Dictionary<String, String>()
@@ -315,7 +316,9 @@ class OrderProccessingSecond: BaseViewController {
     func callApi(){
         
      
-     
+        self.btnprevious.isHidden =  true
+        self.btnNext.isEnabled = false
+        self.btnCancle.isEnabled = false
         
      print(serverArrayThid)
         
@@ -361,6 +364,8 @@ class OrderProccessingSecond: BaseViewController {
                                      repeats: false)
                 
                 SVProgressHUD.dismiss()
+                self.btnNext.isEnabled = true
+                self.btnCancle.isEnabled = true
             }else{
 
                 let strMessage = "We’re almost done! Your ideal chair model is:" + "Model Number :3&&&&" + "Need to make a change or add something?"
@@ -373,7 +378,8 @@ class OrderProccessingSecond: BaseViewController {
                                      repeats: false)
                 
                  SVProgressHUD.dismiss()
-                
+                self.btnNext.isEnabled = true
+                self.btnCancle.isEnabled = true
             }
             
             SVProgressHUD.dismiss()
