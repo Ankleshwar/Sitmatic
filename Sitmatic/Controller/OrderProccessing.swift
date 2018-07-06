@@ -93,27 +93,45 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         else{
             
             
-            dicNext["selected"] = strSelected
-            dicNext["option1"] = arrQuestion?[value]["option1"] as? String
-            dicNext["option2"] = arrQuestion?[value]["option2"] as? String
-            dicNext["queText"] = arrQuestion?[value]["queText"] as? String
-            dicNext["queId"] = arrQuestion?[value]["queId"] as? String
             
-            self.arrNext.insert(dicNext, at: 0)
+            if strSelected == "No"{
+                if value == 3{
+                    value -= 1
+                     self.setPriviousSubData()
+                }
+                else{
+                     self.setPriviousSubData()
+                }
+            }else{
+                if value == 5{
+                    value -= 1
+                     self.setPriviousSubData()
+                }
+                else{
+                    self.setPriviousSubData()
+                    
+                }
+            }
             
+
             
-            self.arrQuestion?.remove(at: value)
-            self.arrayPersnonID.remove(at: value)
-            value -= 1
-           serverArray.remove(at: value)
-            setPreviousData(valueindex: value)
-            self.arrAnswer.removeObject(at: value)
-            
-            self.isPreviousClick = true
+           
             
             
         }
         
+    }
+    
+    
+    fileprivate func setPriviousSubData(){
+        self.arrQuestion?.remove(at: value)
+        self.arrayPersnonID.remove(at: value)
+        value -= 1
+        serverArray.remove(at: value)
+        setPreviousData(valueindex: value)
+        self.arrAnswer.removeObject(at: value)
+        
+        self.isPreviousClick = true
     }
     
     
@@ -288,7 +306,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
                 
             }
             
-            
+       
             
             Timer.scheduledTimer(timeInterval: 0.5,
                                  target: self,
@@ -321,47 +339,78 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
     
     
     
+    fileprivate func nextDataSet() {
+        dicData["selected"] = strSelected
+        dicData["option1"] = arrQuestion?[value]["option1"] as? String
+        dicData["option2"] = arrQuestion?[value]["option2"] as? String
+        dicData["queText"] = arrQuestion?[value]["queText"] as? String
+        dicData["queId"] = arrQuestion?[value]["queId"] as? String
+        
+        self.arrAnswer.add(dicData)
+        self.btnprevious.isHidden = false
+        
+        
+        
+        serverSideData()
+        
+        if (self.arrQuestion?.count == value){
+            ECSAlert().showAlert(message: "Que overThanku", controller: self)
+        }
+        else{
+            if self.isPreviousClick == true{
+                value += 1
+                setData(value: value)
+            }else{
+                value += 1
+                setData(value: value)
+            }
+            
+            
+            
+            
+            
+            
+            
+        }
+    }
+    
     @objc func nextQues(){
         
-        
+  
         
         if isYesbtnTap == false{
             self.showToast(message: "Please select option")
            
         }else{
             
-            dicData["selected"] = strSelected
-            dicData["option1"] = arrQuestion?[value]["option1"] as? String
-            dicData["option2"] = arrQuestion?[value]["option2"] as? String
-            dicData["queText"] = arrQuestion?[value]["queText"] as? String
-            dicData["queId"] = arrQuestion?[value]["queId"] as? String
             
-            self.arrAnswer.add(dicData)
-            self.btnprevious.isHidden = false
-            
-            
-            
-            serverSideData()
-            
-            if (self.arrQuestion?.count == value){
-                ECSAlert().showAlert(message: "Que overThanku", controller: self)
-            }
-            else{
-                if self.isPreviousClick == true{
-                    value += 1
-                    setData(value: value)
-                }else{
-                    value += 1
-                    setData(value: value)
+            if strSelected == "No"{
+                if value == 3{
+                    
                 }
-                
-                
-                
-                
-                
-                
-                
+                else{
+                   nextDataSet()
+                }
+            }else{
+                if value == 5{
+                   
+                }
+                else{
+                   nextDataSet()
+                    
+                }
             }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
         }
         
@@ -398,81 +447,14 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
     @IBAction func clickToBtnYes(_ sender: Any) {
         self.btnYes.setButtonImage("on.png")
         self.btnNo.setButtonImage("off.png")
-      //  self.btnNext.isEnabled = false
+
         self.isYesbtnTap = true
         self.strSelected = "Yes"
         let strId = arrQuestion?[value]["queId"] as? String
         
         self.isPreviousClick = false
         dataForYes(strId!)
-//        if strId == "5Y"{
-//            serverSideData()
-//
-//
-//
-//            goToNext()
-//        }
-//
-//        else if strId == "3"{
-//           serverSideData()
-//
-//
-//            goToNext()
-//        }
-//        else{
-//
-//
-//
-//
-//            if strId == "2" {
-//
-//                if let index = self.arrayPersnonID.index(of: "3Y") {
-//                    print(index)
-//                }
-//                else{
-//                    self.arrQuestion?.append(["queId": "3Y","queText": "Did you have corrective eye surgery?", "option1":"Yes","option2":"No"])
-//                    self.arrayPersnonID.append("3Y")
-//                }
-//
-//
-//            }
-//            if strId == "3Y"{
-//
-//                if let index = self.arrayPersnonID.index(of: "4Y") {
-//                    print(index)
-//                }
-//                else{
-//                    self.arrQuestion?.append(["queId": "4Y","queText": "Was it monovision correction? (Was one eye corrected for reading and the other corrected for distance?", "option1":"Yes","option2":"No"])
-//                    self.arrayPersnonID.append("4Y")
-//                }
-//
-//
-//            }
-//            else if strId == "4Y"{
-//
-//                if let index = self.arrayPersnonID.index(of: "5Y") {
-//                    print(index)
-//
-//                }
-//                else{
-//                    self.arrQuestion?.append(["queId": "5Y","queText": "Which eye was corrected for reading?", "option1":"Left","option2":"Right"])
-//
-//                    self.arrayPersnonID.append("5Y")
-//
-//                }
-//
-//            }
-//
-//
-//
-//            Timer.scheduledTimer(timeInterval: 0.5,
-//                                 target: self,
-//                                 selector: #selector(nextQues),
-//                                 userInfo: nil,
-//                                 repeats: false)
-//
-//
-//        }
+
         
         
         
@@ -497,7 +479,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         vc.serverArraySecond = serverArray
         vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)
-//        self.btnNext.isEnabled = false
+
     }
     
     
@@ -511,43 +493,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         let strId = arrQuestion?[value]["queId"] as? String
         dataForNo(strId!)
         
-//        if strId == "3"{
-//           serverSideData()
-//
-//            goToNext()
-//        }
-//        else if strId == "5Y"{
-//            serverSideData()
-//
-//
-//            goToNext()
-//        }
-//        else{
-//
-//             if strId == "2" || strId == "3Y" || strId == "4Y"{
-//            if let index = self.arrayPersnonID.index(of: "3") {
-//                print(index)
-//
-//            }
-//
-//            else{
-//                self.arrQuestion?.append(["queId": "3","queText": "Which is your dominant eye?", "option1":"Left","option2":"Right"])
-//
-//                self.arrayPersnonID.append("3")
-//            }
-//
-//
-//            }
-//
-//
-//            Timer.scheduledTimer(timeInterval: 0.5,
-//                                                   target: self,
-//                                                   selector: #selector(nextQues),
-//                                                   userInfo: nil,
-//                                                   repeats: false)
-//
-//
-//        }
+
         
         
     }
@@ -572,13 +518,19 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         
         if strSelected == "No"{
             if value == 3{
-                 coreNextDataSet(2)
+                
             }
             else{
                 coreNextDataSet(value)
             }
         }else{
-            coreNextDataSet(value)
+            if value == 5{
+               //self.value -= 1
+            }
+            else{
+                coreNextDataSet(value)
+                
+            }
         }
         
         

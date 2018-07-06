@@ -66,7 +66,7 @@ class ModifieModel: BaseViewController {
         arrQuestion = (setDataWithLocalJson("ModifiModel") as NSArray as? Array<Dictionary<String, Any>>)!
       
        self.arrIteam = arrQuestion![0]["value"] as? Array
-       //self.showToast(message: "Please Select Options from picker")
+        
         
     }
     
@@ -106,7 +106,8 @@ class ModifieModel: BaseViewController {
         
         textField.inputAccessoryView = toolBar
         textField.becomeFirstResponder()
-        
+        self.pickerView.selectRow(0, inComponent: 0, animated: true)
+        self.pickerView(pickerView, didSelectRow: 0, inComponent: 0)
         
     }
     

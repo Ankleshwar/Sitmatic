@@ -40,10 +40,10 @@
                             </constraints>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fuh-YP-80l">
-                            <rect key="frame" x="369" y="8" width="30" height="30"/>
+                            <rect key="frame" x="359" y="3" width="40" height="40"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="M0N-h8-9gf"/>
-                                <constraint firstAttribute="width" constant="30" id="uYc-l7-X7b"/>
+                                <constraint firstAttribute="height" constant="40" id="1m2-2W-o4R"/>
+                                <constraint firstAttribute="width" constant="40" id="amF-qb-cjH"/>
                             </constraints>
                             <state key="normal" image="male.png"/>
                             <connections>
@@ -53,13 +53,13 @@
                     </subviews>
                     <color key="backgroundColor" red="0.19607843137254902" green="0.65098039215686276" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
+                        <constraint firstItem="Fuh-YP-80l" firstAttribute="top" secondItem="vNw-mo-Ifs" secondAttribute="top" constant="3" id="1Ca-ly-Ufm"/>
                         <constraint firstItem="ARR-Vm-tWG" firstAttribute="centerX" secondItem="vNw-mo-Ifs" secondAttribute="centerX" id="EMg-qv-wU8"/>
                         <constraint firstAttribute="bottom" secondItem="ARR-Vm-tWG" secondAttribute="bottom" constant="5" id="Elh-2U-bRZ"/>
-                        <constraint firstAttribute="bottom" secondItem="Fuh-YP-80l" secondAttribute="bottom" constant="8" id="PBs-E7-3PW"/>
                         <constraint firstItem="ARR-Vm-tWG" firstAttribute="top" secondItem="vNw-mo-Ifs" secondAttribute="top" constant="6" id="PTZ-zJ-nH9"/>
-                        <constraint firstItem="Fuh-YP-80l" firstAttribute="centerY" secondItem="ARR-Vm-tWG" secondAttribute="centerY" id="V4f-Sx-Rfd"/>
-                        <constraint firstAttribute="trailing" secondItem="Fuh-YP-80l" secondAttribute="trailing" constant="15" id="XnT-Qz-wfs"/>
-                        <constraint firstItem="Fuh-YP-80l" firstAttribute="top" secondItem="vNw-mo-Ifs" secondAttribute="top" constant="8" id="dUj-cs-7PK"/>
+                        <constraint firstAttribute="bottom" secondItem="Fuh-YP-80l" secondAttribute="bottom" constant="3" id="Y8l-RF-qyK"/>
+                        <constraint firstItem="Fuh-YP-80l" firstAttribute="centerY" secondItem="ARR-Vm-tWG" secondAttribute="centerY" id="Z8E-ji-Hbn"/>
+                        <constraint firstAttribute="trailing" secondItem="Fuh-YP-80l" secondAttribute="trailing" constant="15" id="ikL-ll-3sg"/>
                         <constraint firstAttribute="height" constant="46" id="pmu-Pv-Fx6"/>
                     </constraints>
                 </view>
