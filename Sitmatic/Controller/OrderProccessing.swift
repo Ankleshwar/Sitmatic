@@ -22,7 +22,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     var arrQuestion: Array<Dictionary<String,Any>>?
-    var arrAnswer = NSMutableArray()
+    var arrAnswer: [[String: String]]  = Array()
     @IBOutlet weak var btnYes: UIButton!
     @IBOutlet weak var lblYes: UILabel!
     @IBOutlet weak var btnNo: UIButton!
@@ -83,56 +83,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    @IBAction func clickToPrivious(_ sender: Any) {
-        print(value)
-        
-        if (value == 0){
-            self.btnprevious.isHidden = true
-            
-        }
-        else{
-            
-            
-            
-            if strSelected == "No"{
-                if value == 3{
-                    value -= 1
-                     self.setPriviousSubData()
-                }
-                else{
-                     self.setPriviousSubData()
-                }
-            }else{
-                if value == 5{
-                    value -= 1
-                     self.setPriviousSubData()
-                }
-                else{
-                    self.setPriviousSubData()
-                    
-                }
-            }
-            
-
-            
-           
-            
-            
-        }
-        
-    }
-    
-    
-    fileprivate func setPriviousSubData(){
-        self.arrQuestion?.remove(at: value)
-        self.arrayPersnonID.remove(at: value)
-        value -= 1
-        serverArray.remove(at: value)
-        setPreviousData(valueindex: value)
-        self.arrAnswer.removeObject(at: value)
-        
-        self.isPreviousClick = true
-    }
+   
     
     
     func setValuenext(){
@@ -186,20 +137,41 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
            print(strSelected)
             
             self.setNextButtonData(strId: (arrQuestion?[value]["queId"] as? String)!)
-           
-//            Timer.scheduledTimer(timeInterval: 0.5,
-//                                 target: self,
-//                                 selector: #selector(nextQues),
-//                                 userInfo: nil,
-//                                 repeats: false)
+           }
+        
+        
+    }
+    
+    
+    func setNextButtonData(strId:String){
+        
+        
+        if strSelected == "No" {
+            
+            dataForNo(strId)
             
             
-            
-            
-            
-           
-           
+        }else{
+            dataForYes(strId)
         }
+        
+    }
+    
+    //MARK: set Data No Button
+    
+    
+    
+    @IBAction func clickToBtnNo(_ sender: Any) {
+        //  self.btnNext.isEnabled = false
+        self.btnYes.setButtonImage("off.png")
+        self.btnNo.setButtonImage("on.png")
+        self.isYesbtnTap = true
+        self.isPreviousClick = false
+        self.strSelected = "No"
+        let strId = arrQuestion?[value]["queId"] as? String
+        dataForNo(strId!)
+        
+        
         
         
     }
@@ -237,15 +209,36 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
             }
             
             
+            //nextQues()
+            self.view.isUserInteractionEnabled = false
             Timer.scheduledTimer(timeInterval: 0.5,
                                  target: self,
                                  selector: #selector(nextQues),
                                  userInfo: nil,
                                  repeats: false)
-            
+
             
         }
     }
+    
+    // MARK:- Set Yes Button Data
+    
+    
+    
+    @IBAction func clickToBtnYes(_ sender: Any) {
+        self.btnYes.setButtonImage("on.png")
+        self.btnNo.setButtonImage("off.png")
+        
+        self.isYesbtnTap = true
+        self.strSelected = "Yes"
+        let strId = arrQuestion?[value]["queId"] as? String
+        
+        self.isPreviousClick = false
+        dataForYes(strId!)
+        
+}
+    
+    
     
     fileprivate func dataForYes(_ strId: String) {
         if strId == "5Y"{
@@ -306,7 +299,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
                 
             }
             
-       
+            self.view.isUserInteractionEnabled = false
             
             Timer.scheduledTimer(timeInterval: 0.5,
                                  target: self,
@@ -314,39 +307,36 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
                                  userInfo: nil,
                                  repeats: false)
             
+         
+        }
+    }
+    
+
+    @objc func nextQues(){
+        
+        
+        
+        if isYesbtnTap == false{
+            self.showToast(message: "Please select option")
+            
+        }else{
+            nextDataSet()
             
         }
     }
     
-    func setNextButtonData(strId:String){
     
-            if strSelected == "No" {
-                
-                dataForNo(strId)
-                
-                
-            }else{
-                dataForYes(strId)
-            }
-    
-    }
-    
-    
-    
-    
-    
-    
-    
-    
+
     
     fileprivate func nextDataSet() {
         dicData["selected"] = strSelected
         dicData["option1"] = arrQuestion?[value]["option1"] as? String
         dicData["option2"] = arrQuestion?[value]["option2"] as? String
         dicData["queText"] = arrQuestion?[value]["queText"] as? String
-        dicData["queId"] = arrQuestion?[value]["queId"] as? String
-        
-        self.arrAnswer.add(dicData)
+        let strId = arrQuestion?[value]["queId"] as? String
+        dicData["queId"] = strId
+        self.arrAnswer = self.arrAnswer.filter { !$0.values.contains(strId!) }
+        self.arrAnswer.append(dicData)
         self.btnprevious.isHidden = false
         
         
@@ -357,64 +347,28 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
             ECSAlert().showAlert(message: "Que overThanku", controller: self)
         }
         else{
-            if self.isPreviousClick == true{
-                value += 1
-                setData(value: value)
-            }else{
-                value += 1
-                setData(value: value)
-            }
-            
-            
-            
-            
-            
-            
-            
+
+            self.value += 1
+            coreNextDataSet(self.value)
         }
     }
     
-    @objc func nextQues(){
+
+
+    
+    
+    fileprivate func coreNextDataSet(_ value: Int) {
         
-  
-        
-        if isYesbtnTap == false{
-            self.showToast(message: "Please select option")
-           
-        }else{
-            
-            
-            if strSelected == "No"{
-                if value == 3{
-                    
-                }
-                else{
-                   nextDataSet()
-                }
-            }else{
-                if value == 5{
-                   
-                }
-                else{
-                   nextDataSet()
-                    
-                }
-            }
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-        }
-        
-        
+        self.lblYes.text = arrQuestion?[value]["option1"] as? String
+        self.lblNo.text = arrQuestion?[value]["option2"] as? String
+        let strID = arrQuestion?[value]["queId"] as! String
+        let quename = arrQuestion?[value]["queText"] as! String
+        self.lblQuestion.text  =   quename
+        self.lblQuestionValueCount.text = strID + " " + "of 19 Questions"
+        self.btnYes.setButtonImage("off.png")
+        self.btnNo.setButtonImage("off.png")
+        self.isYesbtnTap = false
+        self.view.isUserInteractionEnabled = true
         
     }
     
@@ -422,54 +376,22 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
     
     
     fileprivate func serverSideData() {
-        
         let  strId = arrQuestion?[value]["queId"] as! String
-        
-        
-
-   
-        
          self.serverArray = self.serverArray.filter { !$0.values.contains(strId) }
-
-   
-        
-        
-        
-        
-        
-  
         dicAnsData["id"] = arrQuestion?[value]["queId"] as? String
         dicAnsData["ans"] = strSelected
         self.serverArray.append(dicAnsData)
         
     }
     
-    @IBAction func clickToBtnYes(_ sender: Any) {
-        self.btnYes.setButtonImage("on.png")
-        self.btnNo.setButtonImage("off.png")
 
-        self.isYesbtnTap = true
-        self.strSelected = "Yes"
-        let strId = arrQuestion?[value]["queId"] as? String
-        
-        self.isPreviousClick = false
-        dataForYes(strId!)
-
-        
-        
-        
-        
-        
-        
-        
-    }
     
     
     func goToNext() {
         
         self.serverArray = serverArray.compactMap { $0 }
        
-         print(self.serverArray)
+         print("~~~~~~~~~~~~~~~~~\(self.value)~~~~~~~~~~~~~~~~~~~~~~~")
      
        
       
@@ -482,69 +404,66 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
 
     }
     
-    
-    @IBAction func clickToBtnNo(_ sender: Any) {
-      //  self.btnNext.isEnabled = false
-        self.btnYes.setButtonImage("off.png")
-        self.btnNo.setButtonImage("on.png")
-        self.isYesbtnTap = true
-        self.isPreviousClick = false
-        self.strSelected = "No"
-        let strId = arrQuestion?[value]["queId"] as? String
-        dataForNo(strId!)
-        
 
-        
-        
-    }
+
+    
+
     
     
-    fileprivate func coreNextDataSet(_ value: Int) {
-        self.lblYes.text = arrQuestion?[value]["option1"] as? String
-        self.lblNo.text = arrQuestion?[value]["option2"] as? String
-        let strID = arrQuestion?[value]["queId"] as! String
-        let quename = arrQuestion?[value]["queText"] as! String
-        //self.lblQuestion.text  = strID + " " + quename
-        self.lblQuestion.text  =   quename
-        
-        self.lblQuestionValueCount.text = strID + " " + "of 19 Questions"
-        
-        self.btnYes.setButtonImage("off.png")
-        self.btnNo.setButtonImage("off.png")
-        self.isYesbtnTap = false
-    }
     
-    func setData(value : Int){
+    //MARK:- Previous Set Data
+    
+    
+    @IBAction func clickToPrivious(_ sender: Any) {
+        print("main value is\(value) ")
         
-        if strSelected == "No"{
-            if value == 3{
-                
-            }
-            else{
-                coreNextDataSet(value)
-            }
-        }else{
-            if value == 5{
-               //self.value -= 1
-            }
-            else{
-                coreNextDataSet(value)
-                
-            }
+        self.btnNo.isEnabled = true
+        self.btnYes.isEnabled = true
+        
+        if (value == 0){
+            self.btnprevious.isHidden = true
+            
+        }
+        else{
+            
+
+            
+            self.setPriviousSubData()
+            
+            
+            
+            
         }
         
-        
-        
-        
-        
     }
+    
+    
+    fileprivate func setPriviousSubData(){
+       
+        self.arrQuestion?.remove(at: value)
+        self.arrayPersnonID.remove(at: value)
+        value -= 1
+        serverArray.remove(at: value)
+        setPreviousData(valueindex: value)
+        self.arrAnswer.remove(at: value)
+        
+        self.isPreviousClick = true
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     func setPreviousData(valueindex : Int){
         
-    print(serverArray)
-//        print(arrAnswer)
-        
-       // self.btnNext.isEnabled = false
+
+        print(valueindex)
+    
         isback = false
         var dicdata  = arrAnswer[valueindex] as! [String: String]
         
@@ -552,20 +471,20 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         self.lblNo.text = dicdata["option2"]
         let strID = dicdata["queId"]
         let quename = dicdata["queText"]
-        //self.lblQuestion.text  = strID! + " " + quename!
+     
         self.lblQuestion.text  =   quename!
         self.lblQuestionValueCount.text = strID! + " " + "of 19 Questions"
-        let selctedValue = dicdata["selected"]
+        let  strSelected = dicdata["selected"]
         
         self.btnYes.setButtonImage("off.png")
         self.btnNo.setButtonImage("off.png")
         
         
-        if selctedValue == "Yes"{
+        if strSelected == "Yes"{
             self.btnYes.setButtonImage("on.png")
             self.btnNo.setButtonImage("off.png")
         }
-        else if selctedValue == "No"{
+        else if strSelected == "No"{
             self.btnYes.setButtonImage("off.png")
             self.btnNo.setButtonImage("on.png")
         }
