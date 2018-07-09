@@ -48,6 +48,7 @@
 		1B7289EB20EB724F00C5D395 /* SDocumentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7289E920EB724F00C5D395 /* SDocumentVC.swift */; };
 		1B7289EC20EB724F00C5D395 /* SDocumentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B7289EA20EB724F00C5D395 /* SDocumentVC.xib */; };
 		1B7289EE20EB757700C5D395 /* Sitmatic App Storyboard.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 1B7289ED20EB757700C5D395 /* Sitmatic App Storyboard.pdf */; };
+		1B9E474F20F3356B0009E2EF /* red.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B9E474E20F3356B0009E2EF /* red.png */; };
 		1BB9C4C020C8F8E10028A48A /* OrderProccessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9C4BE20C8F8E10028A48A /* OrderProccessing.swift */; };
 		1BB9C4C120C8F8E10028A48A /* OrderProccessing.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BB9C4BF20C8F8E10028A48A /* OrderProccessing.xib */; };
 		1BB9C4C420C8FA620028A48A /* orderProcell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9C4C220C8FA620028A48A /* orderProcell.swift */; };
@@ -159,6 +160,7 @@
 		1B7289E920EB724F00C5D395 /* SDocumentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDocumentVC.swift; sourceTree = "<group>"; };
 		1B7289EA20EB724F00C5D395 /* SDocumentVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SDocumentVC.xib; sourceTree = "<group>"; };
 		1B7289ED20EB757700C5D395 /* Sitmatic App Storyboard.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Sitmatic App Storyboard.pdf"; sourceTree = "<group>"; };
+		1B9E474E20F3356B0009E2EF /* red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red.png; sourceTree = "<group>"; };
 		1BB9C4BE20C8F8E10028A48A /* OrderProccessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderProccessing.swift; sourceTree = "<group>"; };
 		1BB9C4BF20C8F8E10028A48A /* OrderProccessing.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderProccessing.xib; sourceTree = "<group>"; };
 		1BB9C4C220C8FA620028A48A /* orderProcell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = orderProcell.swift; sourceTree = "<group>"; };
@@ -392,6 +394,7 @@
 		3B01AB3A20C6DD7700291522 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1B9E474E20F3356B0009E2EF /* red.png */,
 				1B7289E720EB6BCA00C5D395 /* info.png */,
 				1B48805D20CA8CD3008AC3DD /* cancel.png */,
 				1B48805B20CA8CD2008AC3DD /* next.png */,
@@ -587,6 +590,7 @@
 				1B6DF8FE20C8102900280E84 /* on.png in Resources */,
 				1B2E012920C7AC7200B34645 /* left-arrow.png in Resources */,
 				3B01AB3F20C6DE3400291522 /* sitmaticsplash.png in Resources */,
+				1B9E474F20F3356B0009E2EF /* red.png in Resources */,
 				1B6DF8E220C7E05C00280E84 /* orderbtn.png in Resources */,
 				3B01AB3E20C6DE3400291522 /* lbackground.jpg in Resources */,
 				1B7289E820EB6BCB00C5D395 /* info.png in Resources */,

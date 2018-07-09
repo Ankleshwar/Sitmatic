@@ -43,8 +43,9 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
         imgView.clipsToBounds = true
         imgView.layer.cornerRadius = (imgView.frame.size.height)/2
         self.btnPhoto.isEnabled = false
-        self.imgView.image = UIImage(named: "nouser.png")
-        self.imageUser = UIImage(named: "nouser.png")!
+
+        
+        
         if    (self.appUserObject?.userImageUrl)! == "" {
                 self.imgView.image = UIImage(named: "nouser.png")
                 self.imageUser = UIImage(named: "nouser.png")!
@@ -54,7 +55,7 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
             let url = URL(string: (self.appUserObject?.userImageUrl)!)
             imgView.kf.setImage(with: url)
             KingfisherManager.shared.retrieveImage(with: url!, options: nil, progressBlock: nil, completionHandler: { image, error, cacheType, imageURL in
-                //self.imageUser = image!
+                self.imageUser = image!
             })
            
         }

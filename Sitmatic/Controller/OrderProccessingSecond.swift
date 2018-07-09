@@ -19,10 +19,15 @@ protocol OrderProccessingSecondDelegate {
 
 class OrderProccessingSecond: BaseViewController {
     
+    var strValueID = ""
+    
+    @IBOutlet var viewSubView: UIView!
     @IBOutlet weak var tostView: UIView!
     @IBOutlet weak var tostLable: UILabel!
     @IBOutlet weak var btnCancle: UIButton!
+    @IBOutlet weak var btnPreviousSub: UIButton!
     
+    @IBOutlet weak var txtModelNumber: UITextField!
     var delegate : OrderProccessingSecondDelegate?
     var dicAnsData = Dictionary<String, String>()
     var isFirstQue: Bool!
@@ -30,8 +35,10 @@ class OrderProccessingSecond: BaseViewController {
     var arrQuestion: Array<Dictionary<String,Any>>?
     var arrAnswer = NSMutableArray()
     
+    @IBOutlet weak var btnYesSub: UIButton!
     
-     var arrPreviousControllerData: [[String: Any]]  = Array()
+    @IBOutlet weak var btnNoSub: UIButton!
+    var arrPreviousControllerData: [[String: Any]]  = Array()
     
     @IBOutlet weak var btnYes: UIButton!
     @IBOutlet weak var lblYes: UILabel!
@@ -182,13 +189,23 @@ class OrderProccessingSecond: BaseViewController {
         if self.isYesbtnTap == false  {
            
             self.showToast(message: " Please select a valid option  ")
-           
+            
+            if strValueID == "15"{
+                self.btnNoSub.setButtonImage("red.png")
+                self.btnYesSub.setButtonImage("red.png")
+                
+            }else{
+                self.btnYes.setButtonImage("red.png")
+                self.btnNo.setButtonImage("red.png")
+            }
+            
+         
         }
         else{
             
            
             
-            if arrQuestion?[value]["queId"] as? String == "15" {
+            if strValueID == "15" {
                 if strSelected == "No"{
                     self.setNoNextScreen()
                 }else{
@@ -282,14 +299,6 @@ class OrderProccessingSecond: BaseViewController {
         if strId == "14"{
             serverSideData()
             callApi()
-        } else if strId == "15"{
-            self.view.isUserInteractionEnabled = false
-             self.btnNext.isEnabled = true
-            Timer.scheduledTimer(timeInterval: 0.5,
-                                 target: self,
-                                 selector: #selector(self.setNextData),
-                                 userInfo: nil,
-                                 repeats: false)
         }else{
             
             
@@ -364,28 +373,29 @@ class OrderProccessingSecond: BaseViewController {
             if error != nil{
                 print(dicdata)
                 
-                let strMessage = "We’re almost done! Your ideal chair model is:" + "Model Number :3&&&&" + "Need to make a change or add something?"
-                
-                self.arrQuestion?.append(["queId": "15","queText": strMessage , "option1":"Yes","option2":"No"])
-                Timer.scheduledTimer(timeInterval: 0.3,
-                                     target: self,
-                                     selector: #selector(self.nextQues),
-                                     userInfo: nil,
-                                     repeats: false)
+           self.strValueID = "15"
+                self.btnPreviousSub.isHidden = true
+                self.txtModelNumber.isEnabled = false
+                self.btnYesSub.setButtonImage("off.png")
+                self.btnNoSub.setButtonImage("off.png")
+                self.viewSubView.frame = self.view.bounds
+                self.view.addSubview(self.viewSubView)
+             self.isYesbtnTap = false
+
                 
                 SVProgressHUD.dismiss()
                 self.btnNext.isEnabled = true
                 self.btnCancle.isEnabled = true
             }else{
-
-                let strMessage = "We’re almost done! Your ideal chair model is:" + "Model Number :3&&&&" + "Need to make a change or add something?"
-                
-                self.arrQuestion?.append(["queId": "15","queText": strMessage , "option1":"Yes","option2":"No"])
-                Timer.scheduledTimer(timeInterval: 0.3,
-                                     target: self,
-                                     selector: #selector(self.nextQues),
-                                     userInfo: nil,
-                                     repeats: false)
+                self.isYesbtnTap = false
+                 self.strValueID = "15"
+                self.btnPreviousSub.isHidden = true
+                self.txtModelNumber.isEnabled = false
+                self.btnYesSub.setButtonImage("off.png")
+                self.btnNoSub.setButtonImage("off.png")
+                self.viewSubView.frame = self.view.bounds
+                self.view.addSubview(self.viewSubView)
+            
                 
                  SVProgressHUD.dismiss()
                 self.btnNext.isEnabled = true
@@ -398,11 +408,36 @@ class OrderProccessingSecond: BaseViewController {
         
     }
     
+    // MARK:- SubView Actions
+    
+    @IBAction func clickToYesSub(_ sender: Any) {
+       
+        self.isYesbtnTap = true
+        self.btnYesSub.setButtonImage("on.png")
+        self.btnNoSub.setButtonImage("off.png")
+         self.strSelected = "Yes"
+        self.view.isUserInteractionEnabled = false
+        self.btnNext.isEnabled = true
+        Timer.scheduledTimer(timeInterval: 0.5,
+                             target: self,
+                             selector: #selector(self.setNextData),
+                             userInfo: nil,
+                             repeats: false)
+    }
     
     
     
-    
-    
+    @IBAction func clickToNoSub(_ sender: Any) {
+        self.isYesbtnTap = true
+        self.btnNoSub.setButtonImage("on.png")
+        self.btnYesSub.setButtonImage("off.png")
+        self.strSelected = "No"
+        Timer.scheduledTimer(timeInterval: 0.3,
+                             target: self,
+                             selector: #selector(self.setNoNextScreen),
+                             userInfo: nil,
+                             repeats: false)
+    }
     
     
     
@@ -426,14 +461,6 @@ class OrderProccessingSecond: BaseViewController {
         if strId == "14"{
             serverSideData()
             callApi()
-        }else    if strId == "15"{
-            Timer.scheduledTimer(timeInterval: 0.3,
-                                 target: self,
-                                 selector: #selector(self.setNoNextScreen),
-                                 userInfo: nil,
-                                 repeats: false)
-            
-           
         }
         else{
             Timer.scheduledTimer(timeInterval: 0.3,

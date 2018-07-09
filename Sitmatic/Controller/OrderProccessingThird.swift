@@ -331,7 +331,8 @@ class OrderProccessingThird: BaseViewController {
             if self.isYesbtnTap == false  {
                 
                 self.showToast(message: " Please select a valid option  ")
-                
+                self.btnYes.setButtonImage("red.png")
+                self.btnNo.setButtonImage("red.png")
             }
             else{
                 print(strSelected)
@@ -486,7 +487,7 @@ class OrderProccessingThird: BaseViewController {
         
         let dic = ["data": strData]
 
-        
+        self.txtColor.isEnabled = false
         
         SVProgressHUD.show()
         
@@ -495,16 +496,16 @@ class OrderProccessingThird: BaseViewController {
             if error != nil{
                 print(dicdata)
                 
-                let strMessage = "We’re  done! Your ideal chair model is:" + "Model Number :#####"
-                self.lblModel.text = strMessage
+             //   let strMessage = "We’re  done! Your ideal chair model is:" + "Model Number :#####"
+                //self.lblModel.text = strMessage
                 self.viewShowModel.frame = self.view.bounds
                 self.view.addSubview(self.viewShowModel)
                 
                 SVProgressHUD.dismiss()
             }else{
 
-                let strMessage = "We’re  done! Your ideal chair model is:" + "Model Number :#####"
-                self.lblModel.text = strMessage
+                //let strMessage = "We’re  done! Your ideal chair model is:" + "Model Number :#####"
+             //   self.lblModel.text = strMessage
                 self.viewShowModel.frame = self.view.bounds
                 self.view.addSubview(self.viewShowModel)
                 

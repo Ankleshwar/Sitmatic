@@ -212,11 +212,18 @@ extension SForgotPass: UITextFieldDelegate{
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.setLeftPaddingPoints(10)
+         self.moveTextField(textField: textField, moveDistance: -100, up: true)
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        self.moveTextField(textField: textField, moveDistance: -100, up: false)
         
     }
     
+    
+    
+    
+    
+
 }
 

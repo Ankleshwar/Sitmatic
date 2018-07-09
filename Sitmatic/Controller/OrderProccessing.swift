@@ -62,7 +62,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         self.lblNo.text = arrQuestion?[0]["option2"] as? String
         //self.lblQuestion.text  = arrQuestion?[0]["queText"] as? String
         
-        let strID = arrQuestion?[value]["queId"] as! String
+        _ = arrQuestion?[value]["queId"] as! String
         let quename = arrQuestion?[value]["queText"] as! String
         //self.lblQuestion.text  = strID + " " + quename
         self.lblQuestion.text  =   quename
@@ -74,21 +74,6 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         self.arrayPersnonID.append("2")
         
         self.btnprevious.isHidden = true
-    }
-    
-    
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-   
-    
-    
-    func setValuenext(){
-        
-        
     }
     
     
@@ -125,12 +110,13 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         
         if self.isYesbtnTap == false  {
             self.showToast(message: "Please select option")
-           
+            self.btnYes.setButtonImage("red.png")
+            self.btnNo.setButtonImage("red.png")
            
         } else if isback == true{
            goToNext()
             self.isback = false
-            //self.btnNext.isEnabled = false
+            
         }
         else{
             
@@ -465,7 +451,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         print(valueindex)
     
         isback = false
-        var dicdata  = arrAnswer[valueindex] as! [String: String]
+        var dicdata  = arrAnswer[valueindex] 
         
         self.lblYes.text = dicdata["option1"]
         self.lblNo.text = dicdata["option2"]
