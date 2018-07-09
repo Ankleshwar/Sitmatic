@@ -186,16 +186,20 @@ class OrderProccessingSecond: BaseViewController {
         }
         else{
             
-            nextQues()
+           
             
-//            if arrQuestion?[value]["queId"] as? String == "15" {
-//                 self.btnNext.isEnabled = true
-//
-//            }else{
-//                self.btnNext.isEnabled = false
-//            }
+            if arrQuestion?[value]["queId"] as? String == "15" {
+                if strSelected == "No"{
+                    self.setNoNextScreen()
+                }else{
+                    self.setNextData()
+                }
+
+            }else{
+                 nextQues()
+            }
             
-            self.btnNext.isEnabled = false
+           
             
         }
         
@@ -269,7 +273,7 @@ class OrderProccessingSecond: BaseViewController {
     @IBAction func clickToBtnYes(_ sender: Any) {
         self.btnYes.setButtonImage("on.png")
         self.btnNo.setButtonImage("off.png")
-        self.btnNext.isEnabled = false
+        self.btnNext.isEnabled = true
         self.isYesbtnTap = true
         self.strSelected = "Yes"
         let strId = arrQuestion?[value]["queId"] as? String
@@ -279,13 +283,18 @@ class OrderProccessingSecond: BaseViewController {
             serverSideData()
             callApi()
         } else if strId == "15"{
-            Timer.scheduledTimer(timeInterval: 0.3,
+            self.view.isUserInteractionEnabled = false
+             self.btnNext.isEnabled = true
+            Timer.scheduledTimer(timeInterval: 0.5,
                                  target: self,
                                  selector: #selector(self.setNextData),
                                  userInfo: nil,
                                  repeats: false)
         }else{
-            Timer.scheduledTimer(timeInterval: 0.3,
+            
+            
+            self.view.isUserInteractionEnabled = false
+            Timer.scheduledTimer(timeInterval: 0.5,
                                  target: self,
                                  selector: #selector(self.nextQues),
                                  userInfo: nil,
@@ -301,6 +310,7 @@ class OrderProccessingSecond: BaseViewController {
 }
         
     @objc func setNextData(){
+        self.view.isUserInteractionEnabled = true
         let vc = ModifieModel(nibName: "ModifieModel", bundle: nil)
         self.navigationController?.pushViewController(vc, animated: true)
         
@@ -404,7 +414,7 @@ class OrderProccessingSecond: BaseViewController {
     
     
     @IBAction func clickToBtnNo(_ sender: Any) {
-        self.btnNext.isEnabled = false
+        self.btnNext.isEnabled = true
         self.btnYes.setButtonImage("off.png")
         self.btnNo.setButtonImage("on.png")
         self.isYesbtnTap = true
@@ -460,6 +470,7 @@ class OrderProccessingSecond: BaseViewController {
         self.btnYes.setButtonImage("off.png")
         self.btnNo.setButtonImage("off.png")
         self.isYesbtnTap = false
+        self.view.isUserInteractionEnabled = true
     }
     
     func setPreviousData(valueindex : Int){
