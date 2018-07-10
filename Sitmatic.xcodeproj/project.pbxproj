@@ -49,6 +49,13 @@
 		1B7289EC20EB724F00C5D395 /* SDocumentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B7289EA20EB724F00C5D395 /* SDocumentVC.xib */; };
 		1B7289EE20EB757700C5D395 /* Sitmatic App Storyboard.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 1B7289ED20EB757700C5D395 /* Sitmatic App Storyboard.pdf */; };
 		1B9E474F20F3356B0009E2EF /* red.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B9E474E20F3356B0009E2EF /* red.png */; };
+		1BB6090E20F4C343000023D3 /* AddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB6090C20F4C343000023D3 /* AddressVC.swift */; };
+		1BB6090F20F4C343000023D3 /* AddressVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BB6090D20F4C343000023D3 /* AddressVC.xib */; };
+		1BB6091120F4C688000023D3 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BB6091020F4C688000023D3 /* user.png */; };
+		1BB6091320F4C7B5000023D3 /* DesignableUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB6091220F4C7B5000023D3 /* DesignableUITextField.swift */; };
+		1BB6091720F4CDF8000023D3 /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BB6091420F4CDF7000023D3 /* location.png */; };
+		1BB6091820F4CDF8000023D3 /* email.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BB6091520F4CDF7000023D3 /* email.png */; };
+		1BB6091920F4CDF8000023D3 /* phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BB6091620F4CDF7000023D3 /* phone.png */; };
 		1BB9C4C020C8F8E10028A48A /* OrderProccessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9C4BE20C8F8E10028A48A /* OrderProccessing.swift */; };
 		1BB9C4C120C8F8E10028A48A /* OrderProccessing.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BB9C4BF20C8F8E10028A48A /* OrderProccessing.xib */; };
 		1BB9C4C420C8FA620028A48A /* orderProcell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9C4C220C8FA620028A48A /* orderProcell.swift */; };
@@ -161,6 +168,13 @@
 		1B7289EA20EB724F00C5D395 /* SDocumentVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SDocumentVC.xib; sourceTree = "<group>"; };
 		1B7289ED20EB757700C5D395 /* Sitmatic App Storyboard.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Sitmatic App Storyboard.pdf"; sourceTree = "<group>"; };
 		1B9E474E20F3356B0009E2EF /* red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red.png; sourceTree = "<group>"; };
+		1BB6090C20F4C343000023D3 /* AddressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressVC.swift; sourceTree = "<group>"; };
+		1BB6090D20F4C343000023D3 /* AddressVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressVC.xib; sourceTree = "<group>"; };
+		1BB6091020F4C688000023D3 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
+		1BB6091220F4C7B5000023D3 /* DesignableUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableUITextField.swift; sourceTree = "<group>"; };
+		1BB6091420F4CDF7000023D3 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location.png; sourceTree = "<group>"; };
+		1BB6091520F4CDF7000023D3 /* email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = email.png; sourceTree = "<group>"; };
+		1BB6091620F4CDF7000023D3 /* phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phone.png; sourceTree = "<group>"; };
 		1BB9C4BE20C8F8E10028A48A /* OrderProccessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderProccessing.swift; sourceTree = "<group>"; };
 		1BB9C4BF20C8F8E10028A48A /* OrderProccessing.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderProccessing.xib; sourceTree = "<group>"; };
 		1BB9C4C220C8FA620028A48A /* orderProcell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = orderProcell.swift; sourceTree = "<group>"; };
@@ -351,6 +365,7 @@
 				3B01AB2220C6D98300291522 /* LocalText.json */,
 				3B01AB3620C6DAB700291522 /* Sitmatic-Bridging-Header.h */,
 				1BF27F4220E633430014B84E /* Section.swift */,
+				1BB6091220F4C7B5000023D3 /* DesignableUITextField.swift */,
 			);
 			path = SwiftHelper;
 			sourceTree = "<group>";
@@ -369,6 +384,8 @@
 				1B6DF8F820C7F2A400280E84 /* StartOrderd.swift */,
 				1BECAEFB20D24DF50050AE31 /* SForgotPass.swift */,
 				1B7289E920EB724F00C5D395 /* SDocumentVC.swift */,
+				1BB6090C20F4C343000023D3 /* AddressVC.swift */,
+				1BB6090D20F4C343000023D3 /* AddressVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -394,6 +411,10 @@
 		3B01AB3A20C6DD7700291522 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1BB6091520F4CDF7000023D3 /* email.png */,
+				1BB6091420F4CDF7000023D3 /* location.png */,
+				1BB6091620F4CDF7000023D3 /* phone.png */,
+				1BB6091020F4C688000023D3 /* user.png */,
 				1B9E474E20F3356B0009E2EF /* red.png */,
 				1B7289E720EB6BCA00C5D395 /* info.png */,
 				1B48805D20CA8CD3008AC3DD /* cancel.png */,
@@ -573,9 +594,11 @@
 				1B6DF8F720C7F26700280E84 /* QuestionPartOne.xib in Resources */,
 				1BF27F4720E635820014B84E /* HeaderCell.xib in Resources */,
 				1B6DF8DF20C7DB2900280E84 /* slider2.jpg in Resources */,
+				1BB6091920F4CDF8000023D3 /* phone.png in Resources */,
 				1BB9C4C520C8FA620028A48A /* orderProcell.xib in Resources */,
 				1B6DF8EB20C7E38200280E84 /* HomeCell.xib in Resources */,
 				3B01AAEA20C6D7EC00291522 /* LaunchScreen.storyboard in Resources */,
+				1BB6091720F4CDF8000023D3 /* location.png in Resources */,
 				1BCC0A4420EB419D00196F69 /* OrderProccessingThird.xib in Resources */,
 				3B01AB4420C6E7B400291522 /* login.png in Resources */,
 				3B01AAE720C6D7EC00291522 /* Assets.xcassets in Resources */,
@@ -587,10 +610,12 @@
 				1B2E013220C7B3F600B34645 /* 750_1334.png in Resources */,
 				1B6DF8DE20C7DB2900280E84 /* slider1.png in Resources */,
 				1B48805E20CA8CD3008AC3DD /* next.png in Resources */,
+				1BB6091120F4C688000023D3 /* user.png in Resources */,
 				1B6DF8FE20C8102900280E84 /* on.png in Resources */,
 				1B2E012920C7AC7200B34645 /* left-arrow.png in Resources */,
 				3B01AB3F20C6DE3400291522 /* sitmaticsplash.png in Resources */,
 				1B9E474F20F3356B0009E2EF /* red.png in Resources */,
+				1BB6090F20F4C343000023D3 /* AddressVC.xib in Resources */,
 				1B6DF8E220C7E05C00280E84 /* orderbtn.png in Resources */,
 				3B01AB3E20C6DE3400291522 /* lbackground.jpg in Resources */,
 				1B7289E820EB6BCB00C5D395 /* info.png in Resources */,
@@ -606,6 +631,7 @@
 				1B48805F20CA8CD3008AC3DD /* previous.png in Resources */,
 				1B2E012520C7A4E500B34645 /* Roboto-Regular.ttf in Resources */,
 				1BF27F4120E60B5E0014B84E /* ModifieModel.xib in Resources */,
+				1BB6091820F4CDF8000023D3 /* email.png in Resources */,
 				3B01AB4020C6DE3400291522 /* background.jpg in Resources */,
 				3B01AB4220C6E18400291522 /* sitmaticlogo.png in Resources */,
 				1B2E012B20C7AED800B34645 /* edit.png in Resources */,
@@ -828,6 +854,7 @@
 				3B01AB2B20C6D98400291522 /* TopBar.swift in Sources */,
 				3B01AAE020C6D7E900291522 /* AppDelegate.swift in Sources */,
 				3B01AB2420C6D98300291522 /* ServiceClass.swift in Sources */,
+				1BB6090E20F4C343000023D3 /* AddressVC.swift in Sources */,
 				1B2E011E20C79ED400B34645 /* SProfileVC.swift in Sources */,
 				1BF27F3E20E608740014B84E /* ModifieModel.swift in Sources */,
 				1B48805620CA5C3D008AC3DD /* QuestionDataSecond.swift in Sources */,
@@ -836,6 +863,7 @@
 				1B2E012220C79EFD00B34645 /* SHomeVC.swift in Sources */,
 				3B01AB3920C6DAB900291522 /* AppUserObject.m in Sources */,
 				3B01AB0F20C6D87300291522 /* SSLoginVC.swift in Sources */,
+				1BB6091320F4C7B5000023D3 /* DesignableUITextField.swift in Sources */,
 				1BB9C4C020C8F8E10028A48A /* OrderProccessing.swift in Sources */,
 				1BF27F4320E633430014B84E /* Section.swift in Sources */,
 				3B01AB4620C6F06000291522 /* SSignupVC.swift in Sources */,

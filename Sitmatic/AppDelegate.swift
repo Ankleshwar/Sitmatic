@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let islogin = UserDefaults.standard.bool(forKey: "isLogin")
         if islogin == true{
-            viewController = OrderProccessingThird(nibName: "OrderProccessingThird", bundle: nil)
+            viewController = AddressVC(nibName: "AddressVC", bundle: nil)
         }else{
             viewController = SSLoginVC(nibName: "SSLoginVC", bundle: nil)
         }

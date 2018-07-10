@@ -109,7 +109,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         
         
         if self.isYesbtnTap == false  {
-            self.showToast(message: "Please select option")
+            self.showToast(message: "Please select a valid option")
             self.btnYes.setButtonImage("red.png")
             self.btnNo.setButtonImage("red.png")
            

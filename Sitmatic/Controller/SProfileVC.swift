@@ -85,11 +85,12 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
     @IBAction func clickToEdit(_ sender: Any) {
         
         if btnEdit.isSelected {
-    
+           
             
             if self.txtAddress.text == "" {
                self.showToastForQue(message: "Please select your address", y: 75)
                  self.btnEdit.setButtonImage("ic_check_white")
+                 self.btnLogOut.isHidden = true
             }else{
                 self.btnEdit.setButtonImage("edit.png")
                 self.txtAddress.isEditable = false
@@ -97,6 +98,7 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
                 
                 self.btnEdit.isSelected = false
                  callServiceEditProfile()
+                
             }
             
             
@@ -105,6 +107,7 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
             self.txtAddress.isEditable = true
             self.btnPhoto.isEnabled = true
             self.btnEdit.setButtonImage("ic_check_white")
+            self.btnLogOut.isHidden = true
             self.btnEdit.isSelected = true
             
         }
@@ -153,6 +156,7 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
                 imgholder.kf.setImage(with: url)
                 
                 SVProgressHUD.dismiss()
+                self.btnLogOut.isHidden = false
                 
             }
             else{
@@ -279,12 +283,7 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
             textView.resignFirstResponder()
             return false
         }
-//            else if strNew.length < 8{
-//            textView.becomeFirstResponder()
-//            return false
-//        }else if strNew.length < 0{
-//            return false
-//        }
+
         
         return true
     }

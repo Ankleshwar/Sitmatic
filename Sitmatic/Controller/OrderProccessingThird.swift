@@ -197,7 +197,7 @@ class OrderProccessingThird: BaseViewController {
                 print(index)
             }
             else{
-                self.arrQuestion?.append(["queId": "18","queText": "Please select fabric category", "option1":"Category 2/Flexx","option2":"Category 4/Dreamweave"])
+                self.arrQuestion?.append(["queId": "18","queText": "Please select fabric category", "option1":"Category 2 (Flexx)","option2":"Category 4 (Dreamweave)"])
                 self.arrayPersnonID.append("18")
             }
             Timer.scheduledTimer(timeInterval: 0.3,
@@ -210,7 +210,7 @@ class OrderProccessingThird: BaseViewController {
                 print(index)
             }
             else{
-                self.arrQuestion?.append(["queId": "18","queText": "Please select fabric category", "option1":"Category 2/Flexx","option2":"Category 4/Dreamweave"])
+                self.arrQuestion?.append(["queId": "18","queText": "Please select fabric category", "option1":"Category 2 (Flexx)","option2":"Category 4 (Dreamweave)"])
                 self.arrayPersnonID.append("18")
             }
             Timer.scheduledTimer(timeInterval: 0.3,
