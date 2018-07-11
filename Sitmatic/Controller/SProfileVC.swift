@@ -192,16 +192,16 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
         
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
-        let actionsheet = UIAlertController(title: "", message: "Choose A Sourece", preferredStyle: .actionSheet)
+        let actionsheet = UIAlertController(title: "", message: "Select a Source", preferredStyle: .actionSheet)
         actionsheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action:UIAlertAction)in
             if UIImagePickerController.isSourceTypeAvailable(.camera){
                 imagePickerController.sourceType = .camera
                 self.present(imagePickerController, animated: true, completion: nil)
             }else
             {
-                print("Camera is Not Available")
+                //print("Camera is Not Available")
                 
-                ECSAlert().showAlert(message: "Camera is Not Available", controller: self)
+                ECSAlert().showAlert(message: "Camera Not Available", controller: self)
             }
             
             
