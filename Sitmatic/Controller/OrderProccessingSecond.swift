@@ -21,6 +21,7 @@ class OrderProccessingSecond: BaseViewController {
     
     var strValueID = ""
     
+
     @IBOutlet var viewSubView: UIView!
     @IBOutlet weak var tostView: UIView!
     @IBOutlet weak var tostLable: UILabel!
@@ -550,6 +551,18 @@ class OrderProccessingSecond: BaseViewController {
     }
     
     
+}
+
+
+extension OrderProccessingSecond:UITableViewDelegate,UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 4
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as? UITableViewCell
+        cell?.textLabel?.text = "Low size"
+        return cell!
+    }
 }
 
 
