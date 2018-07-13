@@ -297,20 +297,20 @@ extension ModifieModel : UIPickerViewDelegate,UIPickerViewDataSource{
         var pickerLabel: UILabel? = (view as? UILabel)
         if pickerLabel == nil {
             pickerLabel = UILabel()
-            pickerLabel?.font = UIFont(name: "Roboto-Regular", size: 15)
+            pickerLabel?.font = UIFont(name: "Roboto-Regular", size: 20)
             pickerLabel?.textAlignment = .center
             pickerLabel?.numberOfLines = 0
         }
         pickerLabel?.text = (arrIteam?[row] as? String)!
-        pickerLabel?.textColor = #colorLiteral(red: 0.06666666667, green: 0.6470588235, blue: 1, alpha: 1)
-        
+        pickerLabel?.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+
         return pickerLabel!
     }
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         if index == 11 {
-            return 50.0
+            return 85.0
         }else{
-            return 30.0
+             return 40.0
         }
         
     }

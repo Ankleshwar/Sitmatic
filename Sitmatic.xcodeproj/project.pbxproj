@@ -72,6 +72,7 @@
 		1BECD14520F86D3C004252D5 /* SuccessData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BECD14220F86D3B004252D5 /* SuccessData.swift */; };
 		1BECD14620F86D3C004252D5 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BECD14320F86D3C004252D5 /* Model.swift */; };
 		1BECD14820F8B557004252D5 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1BECD14720F8B556004252D5 /* Roboto-Bold.ttf */; };
+		1BECD14A20F8D5DA004252D5 /* Simulator Screen Shot - iPhone 8 Plus - 2018-07-13 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1BECD14920F8D5DA004252D5 /* Simulator Screen Shot - iPhone 8 Plus - 2018-07-13 1.jpg */; };
 		1BEFEAA620CA46DD00400AF1 /* watermark.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BEFEAA520CA46DC00400AF1 /* watermark.png */; };
 		1BF27F3E20E608740014B84E /* ModifieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF27F3C20E608740014B84E /* ModifieModel.swift */; };
 		1BF27F4120E60B5E0014B84E /* ModifieModel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BF27F4020E60B5E0014B84E /* ModifieModel.xib */; };
@@ -195,6 +196,7 @@
 		1BECD14220F86D3B004252D5 /* SuccessData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccessData.swift; sourceTree = "<group>"; };
 		1BECD14320F86D3C004252D5 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		1BECD14720F8B556004252D5 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		1BECD14920F8D5DA004252D5 /* Simulator Screen Shot - iPhone 8 Plus - 2018-07-13 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Simulator Screen Shot - iPhone 8 Plus - 2018-07-13 1.jpg"; sourceTree = "<group>"; };
 		1BEFEAA520CA46DC00400AF1 /* watermark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = watermark.png; sourceTree = "<group>"; };
 		1BF27F3C20E608740014B84E /* ModifieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifieModel.swift; sourceTree = "<group>"; };
 		1BF27F4020E60B5E0014B84E /* ModifieModel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModifieModel.xib; sourceTree = "<group>"; };
@@ -431,6 +433,7 @@
 		3B01AB3A20C6DD7700291522 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1BECD14920F8D5DA004252D5 /* Simulator Screen Shot - iPhone 8 Plus - 2018-07-13 1.jpg */,
 				1BB6091520F4CDF7000023D3 /* email.png */,
 				1BB6091420F4CDF7000023D3 /* location.png */,
 				1BB6091620F4CDF7000023D3 /* phone.png */,
@@ -668,6 +671,7 @@
 				1B7289EE20EB757700C5D395 /* Sitmatic App Storyboard.pdf in Resources */,
 				1B2E013520C7B68900B34645 /* 1125_2436.png in Resources */,
 				3B01AB1020C6D87300291522 /* SSLoginVC.xib in Resources */,
+				1BECD14A20F8D5DA004252D5 /* Simulator Screen Shot - iPhone 8 Plus - 2018-07-13 1.jpg in Resources */,
 				3B01AB2720C6D98400291522 /* TopBar.xib in Resources */,
 				1B6DF8DA20C7C73000280E84 /* logout.png in Resources */,
 			);
