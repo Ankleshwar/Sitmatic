@@ -14,7 +14,7 @@ class ServiceClass: NSObject {
     
     typealias dictionaryBlock = (_ error: Error?, _ response: [String:Any]) -> Void
     typealias arrayBlock = (_ error: Error?, _ response: [Any]) -> Void
-    
+     typealias jsonBlock = (_ error: Error?, _ response: JSON) -> Void
 
     
     var headers: [String: String] = [:]
@@ -36,7 +36,7 @@ class ServiceClass: NSObject {
     
     
     
-    public func getModel(strUrl:String,param:[String:AnyObject],completion:@escaping (dictionaryBlock)){
+    public func getModel(strUrl:String,param:[String:AnyObject],completion:@escaping (jsonBlock)){
         
         print(param)
         
@@ -44,12 +44,19 @@ class ServiceClass: NSObject {
             (JSONResponse) -> Void in
             print(JSONResponse)
             
+            if JSONResponse["status"] == "Ok"{
+               
+                 completion(nil,JSONResponse)
+            }else{
+                let errorTemp = NSError(domain:"Status Not Valid", code:600, userInfo:nil)
+                completion(errorTemp,[:])
+            }
+           
             
             
             
             
-            
-            completion(nil,JSONResponse.dictionaryObject!)
+           
             
             
             

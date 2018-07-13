@@ -20,13 +20,15 @@ protocol OrderProccessingSecondDelegate {
 class OrderProccessingSecond: BaseViewController {
     
     var strValueID = ""
-    
+    var strprice = ""
 
+    @IBOutlet weak var lblprice: UILabel!
     @IBOutlet var viewSubView: UIView!
     @IBOutlet weak var tostView: UIView!
     @IBOutlet weak var tostLable: UILabel!
     @IBOutlet weak var btnCancle: UIButton!
     @IBOutlet weak var btnPreviousSub: UIButton!
+    @IBOutlet weak var tableViewieght: NSLayoutConstraint!
     
     @IBOutlet weak var txtModelNumber: UITextField!
     var delegate : OrderProccessingSecondDelegate?
@@ -40,7 +42,7 @@ class OrderProccessingSecond: BaseViewController {
     
     @IBOutlet weak var btnNoSub: UIButton!
     var arrPreviousControllerData: [[String: Any]]  = Array()
-    
+    var arrModelDescription : [Model]?
     @IBOutlet weak var btnYes: UIButton!
     @IBOutlet weak var lblYes: UILabel!
     @IBOutlet weak var btnNo: UIButton!
@@ -66,7 +68,11 @@ class OrderProccessingSecond: BaseViewController {
         super.viewDidLoad()
         arrQuestion = setDataWithLocalJson("OrderProccessingSecond") as NSArray as? Array<Dictionary<String, Any>>
         setInitial()
-        
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        self.tableView.separatorStyle = .none
+        self.tableView.backgroundColor = UIColor.clear
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 45
     }
     
     
@@ -340,7 +346,7 @@ class OrderProccessingSecond: BaseViewController {
         self.btnNext.isEnabled = false
         self.btnCancle.isEnabled = false
         
-     print(serverArrayThid)
+        print(serverArrayThid)
         
         
         
@@ -369,40 +375,44 @@ class OrderProccessingSecond: BaseViewController {
         
         SVProgressHUD.show()
         
-        ServiceClass().getModel(strUrl: "savebasicquestions", param: dic as [String : AnyObject] ) { error, dicdata in
+        ServiceClass().getModel(strUrl: "savebasicquestions", param: dic as [String : AnyObject] ) { error, jsondata in
             
             if error != nil{
-                print(dicdata)
-                
-           self.strValueID = "15"
-                self.btnPreviousSub.isHidden = true
-                self.txtModelNumber.isEnabled = false
-                self.btnYesSub.setButtonImage("off.png")
-                self.btnNoSub.setButtonImage("off.png")
-                self.viewSubView.frame = self.view.bounds
-                self.view.addSubview(self.viewSubView)
-             self.isYesbtnTap = false
-
                 
                 SVProgressHUD.dismiss()
-                self.btnNext.isEnabled = true
-                self.btnCancle.isEnabled = true
-            }else{
+           
+            }
+            else{
+                
+                if jsondata["successData"] == true{
+                    
+                   
+                }
+                else{
+               
+                let obj = SuccessData(fromJson: jsondata["successData"])
+                self.arrModelDescription = obj.model
                 self.isYesbtnTap = false
-                 self.strValueID = "15"
+                self.strValueID = "15"
                 self.btnPreviousSub.isHidden = true
                 self.txtModelNumber.isEnabled = false
                 self.btnYesSub.setButtonImage("off.png")
                 self.btnNoSub.setButtonImage("off.png")
                 self.viewSubView.frame = self.view.bounds
                 self.view.addSubview(self.viewSubView)
-            
+               
+                self.txtModelNumber.text = obj.proposedModel
+                self.tableViewieght.constant = CGFloat((self.arrModelDescription?.count)! * 45 + 30)
                 
+      
+              
+                self.lblprice.text = "Product Price:" + " " + "$" + String(obj.proposedPrice) 
+                 self.tableView.reloadData()
                  SVProgressHUD.dismiss()
                 self.btnNext.isEnabled = true
                 self.btnCancle.isEnabled = true
+                }
             }
-            
             SVProgressHUD.dismiss()
         }
         
@@ -556,13 +566,18 @@ class OrderProccessingSecond: BaseViewController {
 
 extension OrderProccessingSecond:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return (arrModelDescription?.count)!
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as? UITableViewCell
-        cell?.textLabel?.text = "Low size"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
+        
+        cell?.contentView.backgroundColor = UIColor.clear
+        cell?.backgroundColor = UIColor.clear
+        cell?.textLabel?.text = self.arrModelDescription![indexPath.row].descriptionField
+        cell?.textLabel?.numberOfLines = 0
         return cell!
     }
+
 }
 
 

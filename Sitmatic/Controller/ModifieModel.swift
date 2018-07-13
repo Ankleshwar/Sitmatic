@@ -16,12 +16,16 @@ class ModifieModel: BaseViewController {
     @IBOutlet weak var lblArmcap: UILabel!
     @IBOutlet weak var lblBase: UILabel!
     @IBOutlet weak var lblCasters: UILabel!
+    @IBOutlet weak var lblFootrest: UILabel!
+    @IBOutlet weak var lblMesh: UILabel!
     
     @IBOutlet weak var lblSeatHieght: UILabel!
     @IBOutlet weak var lblSeatOption: UILabel!
+    @IBOutlet weak var lblCantrol: UILabel!
     
    var textField : UITextField!
     
+    @IBOutlet var viewSub: UIView!
     @IBOutlet weak var lblQuestionValueCount: UILabel!
     var dicAnsData = Dictionary<String, String>()
     var strInce: String!
@@ -115,20 +119,14 @@ class ModifieModel: BaseViewController {
         
         if index == 0{
             
-            if strValue == ""{
-                 self.lblbackRestSize.text   = "Mid Size"
-                
-            }else{
+         
                  self.lblbackRestSize.text   = strValue
-            }
+            
             
         }else if index == 1{
-            if strValue == ""{
-                self.lblSeatSize.text   = "Mid Size"
-                
-            }else{
+          
             self.lblSeatSize.text  = strValue
-            }
+            
         }else if index == 2{
             self.lblBackrestPosition.text  = strValue
         }else if index == 3{
@@ -142,7 +140,13 @@ class ModifieModel: BaseViewController {
         }else if index == 7{
             self.lblBase.text  = strValue
         }else if index == 8{
-            self.lblCasters.text  = strValue
+            self.lblFootrest.text  = strValue
+        }else if index == 9{
+            self.lblCasters.text = strValue
+        }else if index == 10{
+            self.lblMesh.text  = strValue
+        }else if index == 11{
+            self.lblCantrol.text = strValue
         }
   
         
@@ -186,11 +190,17 @@ class ModifieModel: BaseViewController {
     
     
     
+    @IBAction func clickToSubview(_ sender: Any) {
+        self.viewSub.frame = self.view.bounds
+        self.view.addSubview(self.viewSub)
+    }
     
     
+    @IBAction func clickToRemoveSub(_ sender: Any) {
+        self.viewSub.removeFromSuperview()
+    }
     
-    
-    
+        
     @IBAction func clickToNext(_ sender: Any) {
         
         
@@ -279,6 +289,29 @@ extension ModifieModel : UIPickerViewDelegate,UIPickerViewDataSource{
         self.strValue = (arrIteam?[row] as? String)!
         
         
+        
+    }
+    
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        var pickerLabel: UILabel? = (view as? UILabel)
+        if pickerLabel == nil {
+            pickerLabel = UILabel()
+            pickerLabel?.font = UIFont(name: "Roboto-Regular", size: 15)
+            pickerLabel?.textAlignment = .center
+            pickerLabel?.numberOfLines = 0
+        }
+        pickerLabel?.text = (arrIteam?[row] as? String)!
+        pickerLabel?.textColor = #colorLiteral(red: 0.06666666667, green: 0.6470588235, blue: 1, alpha: 1)
+        
+        return pickerLabel!
+    }
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        if index == 11 {
+            return 50.0
+        }else{
+            return 30.0
+        }
         
     }
 }
