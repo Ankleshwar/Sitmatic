@@ -22,6 +22,8 @@ class OrderProccessingSecond: BaseViewController {
     var strValueID = ""
     var strprice = ""
 
+    @IBOutlet weak var viewDetails: UIView!
+    @IBOutlet weak var lblModel: UILabel!
     @IBOutlet weak var lblprice: UILabel!
     @IBOutlet var viewSubView: UIView!
     @IBOutlet weak var tostView: UIView!
@@ -29,11 +31,13 @@ class OrderProccessingSecond: BaseViewController {
     @IBOutlet weak var btnCancle: UIButton!
     @IBOutlet weak var btnPreviousSub: UIButton!
     @IBOutlet weak var tableViewieght: NSLayoutConstraint!
+    @IBOutlet weak var viewScrollHeight: NSLayoutConstraint!
     
     @IBOutlet weak var txtModelNumber: UITextField!
     var delegate : OrderProccessingSecondDelegate?
     var dicAnsData = Dictionary<String, String>()
     var isFirstQue: Bool!
+
     @IBOutlet weak var tableView: UITableView!
     var arrQuestion: Array<Dictionary<String,Any>>?
     var arrAnswer = NSMutableArray()
@@ -60,6 +64,11 @@ class OrderProccessingSecond: BaseViewController {
      var serverArrayThid: [[String: String]]  = Array()
     var  value: Int = 0
     
+    @IBOutlet weak var viewModel: UIView!
+    
+    
+    
+    
     @IBOutlet weak var lblQuestionValueCount: UILabel!
     
     @IBOutlet weak var lblQuestion: UILabel!
@@ -68,14 +77,24 @@ class OrderProccessingSecond: BaseViewController {
         super.viewDidLoad()
         arrQuestion = setDataWithLocalJson("OrderProccessingSecond") as NSArray as? Array<Dictionary<String, Any>>
         setInitial()
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        self.tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         self.tableView.separatorStyle = .none
         self.tableView.backgroundColor = UIColor.clear
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 45
+       // tableView.estimatedRowHeight = 45
+      //  tableView.rowHeight = UITableViewAutomaticDimension
+        
+//        self.setShadow(self.viewDetails)
+//        self.setShadow(self.viewModel)
     }
     
-    
+    func setShadow(_ view: UIView){
+        
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 1
+        view.layer.shadowOffset = CGSize.zero
+        view.layer.shadowRadius = 2
+        
+    }
     
     
     func setInitial(){
@@ -367,6 +386,41 @@ class OrderProccessingSecond: BaseViewController {
     
     
     
+    fileprivate func addSubView(_ obj: SuccessData) {
+        self.viewSubView.frame = self.view.bounds
+        self.view.addSubview(self.viewSubView)
+        
+        
+         self.tableViewieght.constant = CGFloat((self.arrModelDescription?.count)! * 50 + 20)
+        let modelName = UIDevice.modelName
+        
+        if modelName == "iPhone 5s" || modelName == "iPhone 5c" || modelName == "iPhone 5" || modelName == "iPhone SE" {
+            self.viewScrollHeight.constant = CGFloat((self.arrModelDescription?.count)! * 50 + 80)
+        }
+        else{
+            self.viewScrollHeight.constant =  CGFloat((self.arrModelDescription?.count)! * 50 )
+        }
+        
+        //self.tableViewieght.constant = 3 * 50 + 20
+        
+        let attrs1 = [NSAttributedStringKey.font : UIFont(name: "Roboto-Light", size: 19) ?? "", NSAttributedStringKey.foregroundColor :#colorLiteral(red: 0.3607843137, green: 0.3607843137, blue: 0.3607843137, alpha: 1)] as [NSAttributedStringKey : Any]
+        
+        let attrs2 = [NSAttributedStringKey.font : UIFont(name: "Roboto-Bold", size: 22) ?? "", NSAttributedStringKey.foregroundColor : #colorLiteral(red: 0.1215686275, green: 0.5607843137, blue: 0.7843137255, alpha: 1)] as [NSAttributedStringKey : Any]
+        
+        let attributedString1 = NSMutableAttributedString(string:"Your ideal chair model is ", attributes:attrs1)
+        
+        let attributedString2 = NSMutableAttributedString(string:"QT33SE", attributes:attrs2)
+        
+        attributedString1.append(attributedString2)
+        self.lblModel.attributedText = attributedString1
+        //self.lblprice.text = obj.proposedPrice
+        self.lblprice.text = "Total Price:" + " " + "$" + String(obj.proposedPrice)
+        self.tableView.reloadData()
+        SVProgressHUD.dismiss()
+        self.btnNext.isHidden = true
+        self.btnCancle.isEnabled = true
+    }
+    
     func callGenrateModelApi(strData : String){
         
         let dic = ["data": strData]
@@ -379,38 +433,33 @@ class OrderProccessingSecond: BaseViewController {
             
             if error != nil{
                 
+
+                
                 SVProgressHUD.dismiss()
            
             }
             else{
                 
                 if jsondata["successData"] == true{
-                    
+                  
                    
                 }
                 else{
-               
-                let obj = SuccessData(fromJson: jsondata["successData"])
-                self.arrModelDescription = obj.model
-                self.isYesbtnTap = false
-                self.strValueID = "15"
-                self.btnPreviousSub.isHidden = true
-                self.txtModelNumber.isEnabled = false
-                self.btnYesSub.setButtonImage("off.png")
-                self.btnNoSub.setButtonImage("off.png")
-                self.viewSubView.frame = self.view.bounds
-                self.view.addSubview(self.viewSubView)
-               
-                self.txtModelNumber.text = obj.proposedModel
-                self.tableViewieght.constant = CGFloat((self.arrModelDescription?.count)! * 45 + 30)
+                    
+                    let obj = SuccessData(fromJson: jsondata["successData"])
+                    self.arrModelDescription = obj.model
+                    
                 
-      
-              
-                self.lblprice.text = "Product Price:" + " " + "$" + String(obj.proposedPrice) 
-                 self.tableView.reloadData()
-                 SVProgressHUD.dismiss()
-                self.btnNext.isEnabled = true
-                self.btnCancle.isEnabled = true
+                    
+                    self.btnYesSub.setButtonImage("off.png")
+                    self.btnNoSub.setButtonImage("off.png")
+                    
+               
+                    self.isYesbtnTap = false
+                    self.strValueID = "15"
+                    
+                    self.addSubView(obj)
+                    
                 }
             }
             SVProgressHUD.dismiss()
@@ -565,19 +614,46 @@ class OrderProccessingSecond: BaseViewController {
 
 
 extension OrderProccessingSecond:UITableViewDelegate,UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return (arrModelDescription?.count)!
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+       
+         return 1
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as? TableViewCell
         
-        cell?.contentView.backgroundColor = UIColor.clear
-        cell?.backgroundColor = UIColor.clear
-        cell?.textLabel?.text = self.arrModelDescription![indexPath.row].descriptionField
-        cell?.textLabel?.numberOfLines = 0
+        
+        cell?.lblDiscription?.text = " " + self.arrModelDescription![indexPath.section].descriptionField
+        if indexPath.section == 0 {
+            
+            cell?.lblTittle.text = "BackrestSize"
+            
+        }else  if indexPath.section == 1 {
+            
+            cell?.lblTittle.text = "SeatSize"
+        }else  if indexPath.section == 2 {
+           
+             cell?.lblTittle.text = "Control Type"
+        }
+       
         return cell!
     }
-
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 0.0
+        }else{
+             return 2.0
+        }
+       
+    }
+   
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50.0
+    }
 }
 
 

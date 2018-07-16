@@ -26,7 +26,7 @@ class OrderProccessingThird: BaseViewController {
     @IBOutlet weak var lblModel: UILabel!
     var dicAnsData = Dictionary<String, String>()
     var isFirstQue: Bool!
-    @IBOutlet weak var tableView: UITableView!
+    
     var arrQuestion: Array<Dictionary<String,Any>>?
     var arrAnswer = NSMutableArray()
     var arrPreviousControllerData = NSMutableArray()
@@ -37,8 +37,10 @@ class OrderProccessingThird: BaseViewController {
     var strSelected : String!
     var dicData = Dictionary<String, String>()
     @IBOutlet weak var lblNo: UILabel!
+    @IBOutlet weak var tableViewHieght: NSLayoutConstraint!
     
-   
+    @IBOutlet weak var tableView: UITableView!
+    
     @IBOutlet weak var btnprevious: UIButton!
     var arrayPersnonID: [String] = []
     var customViewAlert: UIView!

@@ -4,7 +4,7 @@
 //
 //  Created by Ankleshwar on 05/06/18.
 //  Copyright © 2018 Ankleshwar. All rights reserved.
-//
+// Aurthophoto photogenphic
 // 9811848833 Sachin.
 //subros sector 8 gurgao
 import UIKit
@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let islogin = UserDefaults.standard.bool(forKey: "isLogin")
         if islogin == true{
-            viewController = ModifieModel(nibName: "ModifieModel", bundle: nil)
+            viewController = SHomeVC(nibName: "SHomeVC", bundle: nil)
         }else{
             viewController = SSLoginVC(nibName: "SSLoginVC", bundle: nil)
         }

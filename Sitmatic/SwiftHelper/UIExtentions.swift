@@ -205,6 +205,23 @@ extension UITextField {
 
 }
 
+
+
+extension NSMutableAttributedString {
+    
+    func setColorForText(textForAttribute: String, withColor color: UIColor) {
+        let range: NSRange = self.mutableString.range(of: textForAttribute, options: .caseInsensitive)
+        
+        // Swift 4.2 and above
+       // self.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: range)
+        
+        // Swift 4.1 and below
+        self.addAttribute(NSAttributedStringKey.foregroundColor, value: color, range: range)
+    }
+    
+}
+
+
 extension UIPickerView {
     func setUpWithDoneButton() {
         let numberToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 44))

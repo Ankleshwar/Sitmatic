@@ -64,6 +64,9 @@
 		1BB9C4C920C960B10028A48A /* chair.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BB9C4C720C960B00028A48A /* chair.png */; };
 		1BCC0A4220EB419300196F69 /* OrderProccessingThird.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCC0A4120EB419300196F69 /* OrderProccessingThird.swift */; };
 		1BCC0A4420EB419D00196F69 /* OrderProccessingThird.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BCC0A4320EB419D00196F69 /* OrderProccessingThird.xib */; };
+		1BCEB5C020FC6D010042EFBD /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1BCEB5BF20FC6D010042EFBD /* Roboto-Light.ttf */; };
+		1BCEB5C320FC7A280042EFBD /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCEB5C120FC7A280042EFBD /* TableViewCell.swift */; };
+		1BCEB5C420FC7A280042EFBD /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BCEB5C220FC7A280042EFBD /* TableViewCell.xib */; };
 		1BE313B520CE6ABD004F1931 /* OrderProccessingSecond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE313B420CE6ABD004F1931 /* OrderProccessingSecond.swift */; };
 		1BE313B720CE6B17004F1931 /* OrderProccessingSecond.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BE313B620CE6B17004F1931 /* OrderProccessingSecond.xib */; };
 		1BECAEFD20D24DF50050AE31 /* SForgotPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BECAEFB20D24DF50050AE31 /* SForgotPass.swift */; };
@@ -188,6 +191,9 @@
 		1BB9C4C720C960B00028A48A /* chair.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chair.png; sourceTree = "<group>"; };
 		1BCC0A4120EB419300196F69 /* OrderProccessingThird.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderProccessingThird.swift; sourceTree = "<group>"; };
 		1BCC0A4320EB419D00196F69 /* OrderProccessingThird.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderProccessingThird.xib; sourceTree = "<group>"; };
+		1BCEB5BF20FC6D010042EFBD /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		1BCEB5C120FC7A280042EFBD /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		1BCEB5C220FC7A280042EFBD /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		1BE313B420CE6ABD004F1931 /* OrderProccessingSecond.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderProccessingSecond.swift; sourceTree = "<group>"; };
 		1BE313B620CE6B17004F1931 /* OrderProccessingSecond.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderProccessingSecond.xib; sourceTree = "<group>"; };
 		1BECAEFB20D24DF50050AE31 /* SForgotPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SForgotPass.swift; sourceTree = "<group>"; };
@@ -290,6 +296,8 @@
 				1BB9C4C320C8FA620028A48A /* orderProcell.xib */,
 				1BF27F4420E635820014B84E /* HeaderCell.swift */,
 				1BF27F4520E635820014B84E /* HeaderCell.xib */,
+				1BCEB5C120FC7A280042EFBD /* TableViewCell.swift */,
+				1BCEB5C220FC7A280042EFBD /* TableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -307,6 +315,7 @@
 		3B01AAD320C6D7E900291522 = {
 			isa = PBXGroup;
 			children = (
+				1BCEB5BF20FC6D010042EFBD /* Roboto-Light.ttf */,
 				1B7289ED20EB757700C5D395 /* Sitmatic App Storyboard.pdf */,
 				1B2E012420C7A4E500B34645 /* Roboto-Regular.ttf */,
 				1BECD14720F8B556004252D5 /* Roboto-Bold.ttf */,
@@ -653,6 +662,7 @@
 				1B6DF8F220C7E4BC00280E84 /* chair3.jpg in Resources */,
 				3B01AB3020C6D98400291522 /* LocalText.json in Resources */,
 				1B48805F20CA8CD3008AC3DD /* previous.png in Resources */,
+				1BCEB5C020FC6D010042EFBD /* Roboto-Light.ttf in Resources */,
 				1B2E012520C7A4E500B34645 /* Roboto-Regular.ttf in Resources */,
 				1BF27F4120E60B5E0014B84E /* ModifieModel.xib in Resources */,
 				1BB6091820F4CDF8000023D3 /* email.png in Resources */,
@@ -670,6 +680,7 @@
 				1B6DF8FB20C7F2A400280E84 /* StartOrderd.xib in Resources */,
 				1B7289EE20EB757700C5D395 /* Sitmatic App Storyboard.pdf in Resources */,
 				1B2E013520C7B68900B34645 /* 1125_2436.png in Resources */,
+				1BCEB5C420FC7A280042EFBD /* TableViewCell.xib in Resources */,
 				3B01AB1020C6D87300291522 /* SSLoginVC.xib in Resources */,
 				1BECD14A20F8D5DA004252D5 /* Simulator Screen Shot - iPhone 8 Plus - 2018-07-13 1.jpg in Resources */,
 				3B01AB2720C6D98400291522 /* TopBar.xib in Resources */,
@@ -899,6 +910,7 @@
 				3B01AB2A20C6D98400291522 /* UIExtentions.swift in Sources */,
 				1BECD14620F86D3C004252D5 /* Model.swift in Sources */,
 				3B01AB2F20C6D98400291522 /* Constaint.swift in Sources */,
+				1BCEB5C320FC7A280042EFBD /* TableViewCell.swift in Sources */,
 				1BE313B520CE6ABD004F1931 /* OrderProccessingSecond.swift in Sources */,
 				1B6DF8EA20C7E38200280E84 /* HomeCell.swift in Sources */,
 				1BECAEFD20D24DF50050AE31 /* SForgotPass.swift in Sources */,
