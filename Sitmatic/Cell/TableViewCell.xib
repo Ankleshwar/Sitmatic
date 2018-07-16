@@ -9,11 +9,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Roboto-Bold.ttf">
+            <string>Roboto-Bold</string>
+        </array>
         <array key="Roboto-Light.ttf">
             <string>Roboto-Light</string>
-        </array>
-        <array key="Roboto-Regular.ttf">
-            <string>Roboto-Regular</string>
         </array>
     </customFonts>
     <objects>
@@ -28,34 +28,42 @@
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6O-n6-h6C">
                         <rect key="frame" x="0.0" y="0.0" width="120" height="52"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="0.70887433978873238" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="120" id="gZ3-6h-0zc"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ixs-Eu-fkP">
-                        <rect key="frame" x="122" y="0.0" width="198" height="52"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="apg-FW-6xV">
+                        <rect key="frame" x="120" y="0.0" width="1" height="51"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="1" id="4Mc-Oh-GUz"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ixs-Eu-fkP">
+                        <rect key="frame" x="123" y="0.0" width="197" height="52"/>
+                        <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="14"/>
                         <color key="textColor" red="0.36078431372549019" green="0.36078431372549019" blue="0.36078431372549019" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="B6O-n6-h6C" firstAttribute="centerY" secondItem="ixs-Eu-fkP" secondAttribute="centerY" id="3NV-5j-hSk"/>
+                    <constraint firstAttribute="trailing" secondItem="ixs-Eu-fkP" secondAttribute="trailing" id="2Md-hW-vSE"/>
                     <constraint firstItem="B6O-n6-h6C" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="4e8-2U-Mxx"/>
-                    <constraint firstItem="ixs-Eu-fkP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="IKM-Be-c7c"/>
-                    <constraint firstItem="ixs-Eu-fkP" firstAttribute="leading" secondItem="B6O-n6-h6C" secondAttribute="trailing" constant="2" id="Icg-x2-E5A"/>
-                    <constraint firstAttribute="bottom" secondItem="ixs-Eu-fkP" secondAttribute="bottom" id="XAl-cg-ewt"/>
-                    <constraint firstItem="ixs-Eu-fkP" firstAttribute="leading" secondItem="B6O-n6-h6C" secondAttribute="trailing" constant="2" id="cKD-og-n9a"/>
+                    <constraint firstItem="ixs-Eu-fkP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="BRe-p4-YDX"/>
+                    <constraint firstItem="apg-FW-6xV" firstAttribute="leading" secondItem="B6O-n6-h6C" secondAttribute="trailing" id="JS5-EE-ycX"/>
+                    <constraint firstAttribute="bottom" secondItem="apg-FW-6xV" secondAttribute="bottom" id="Ug7-lS-QHc"/>
+                    <constraint firstItem="apg-FW-6xV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Xxe-ES-cyl"/>
                     <constraint firstItem="B6O-n6-h6C" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="iJg-yP-HcT"/>
+                    <constraint firstItem="ixs-Eu-fkP" firstAttribute="leading" secondItem="apg-FW-6xV" secondAttribute="trailing" constant="2" id="ivk-I0-TcU"/>
                     <constraint firstAttribute="bottom" secondItem="B6O-n6-h6C" secondAttribute="bottom" id="mxb-VQ-vQe"/>
-                    <constraint firstAttribute="trailing" secondItem="ixs-Eu-fkP" secondAttribute="trailing" id="rPm-Fz-68b"/>
+                    <constraint firstAttribute="bottom" secondItem="ixs-Eu-fkP" secondAttribute="bottom" id="uov-kM-ull"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="lblDiscription" destination="ixs-Eu-fkP" id="hyY-C3-0pH"/>

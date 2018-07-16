@@ -409,7 +409,7 @@ class OrderProccessingSecond: BaseViewController {
         
         let attributedString1 = NSMutableAttributedString(string:"Your ideal chair model is ", attributes:attrs1)
         
-        let attributedString2 = NSMutableAttributedString(string:"QT33SE", attributes:attrs2)
+        let attributedString2 = NSMutableAttributedString(string:obj.proposedModel, attributes:attrs2)
         
         attributedString1.append(attributedString2)
         self.lblModel.attributedText = attributedString1
@@ -627,14 +627,14 @@ extension OrderProccessingSecond:UITableViewDelegate,UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as? TableViewCell
         
         
-        cell?.lblDiscription?.text = " " + self.arrModelDescription![indexPath.section].descriptionField
+        cell?.lblDiscription?.text =  self.arrModelDescription![indexPath.section].descriptionField
         if indexPath.section == 0 {
             
-            cell?.lblTittle.text = "BackrestSize"
+            cell?.lblTittle.text = "Backrest Size"
             
         }else  if indexPath.section == 1 {
             
-            cell?.lblTittle.text = "SeatSize"
+            cell?.lblTittle.text = "Seat Size"
         }else  if indexPath.section == 2 {
            
              cell?.lblTittle.text = "Control Type"
@@ -650,7 +650,12 @@ extension OrderProccessingSecond:UITableViewDelegate,UITableViewDataSource{
         }
        
     }
-   
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let viewHeader = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 2))
+        viewHeader.backgroundColor = UIColor.white
+        return viewHeader
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50.0
     }

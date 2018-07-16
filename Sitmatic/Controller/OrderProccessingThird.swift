@@ -15,7 +15,7 @@ class OrderProccessingThird: BaseViewController {
   var strValue: String = ""
     @IBOutlet weak var txtColor: UITextField!
     @IBOutlet var pickerView: UIPickerView!
-    
+    var arrModelDescription : [Model]?
     @IBOutlet weak var btnCancle: UIButton!
     
     @IBOutlet weak var tostView: UIView!
@@ -27,6 +27,7 @@ class OrderProccessingThird: BaseViewController {
     var dicAnsData = Dictionary<String, String>()
     var isFirstQue: Bool!
     
+    @IBOutlet weak var lblPrice: UILabel!
     var arrQuestion: Array<Dictionary<String,Any>>?
     var arrAnswer = NSMutableArray()
     var arrPreviousControllerData = NSMutableArray()
@@ -38,7 +39,7 @@ class OrderProccessingThird: BaseViewController {
     var dicData = Dictionary<String, String>()
     @IBOutlet weak var lblNo: UILabel!
     @IBOutlet weak var tableViewHieght: NSLayoutConstraint!
-    
+    @IBOutlet weak var viewScrollHeight: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var btnprevious: UIButton!
@@ -58,7 +59,9 @@ class OrderProccessingThird: BaseViewController {
         self.txtColor.isHidden = true
         arrQuestion = setDataWithLocalJson("OrderProccessingThird") as NSArray as? Array<Dictionary<String, Any>>
         setInitial()
-        
+        self.tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        self.tableView.separatorStyle = .none
+        self.tableView.backgroundColor = UIColor.clear
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -493,21 +496,27 @@ class OrderProccessingThird: BaseViewController {
         
         SVProgressHUD.show()
         
-        ServiceClass().getModel(strUrl: "savebasicquestions", param: dic as [String : AnyObject] ) { error, dicdata in
+        ServiceClass().getModel(strUrl: "savebasicquestions", param: dic as [String : AnyObject] ) { error, jsondata in
             
             if error != nil{
-                print(dicdata)
+             
                 
-             //   let strMessage = "We’re  done! Your ideal chair model is:" + "Model Number :#####"
-                //self.lblModel.text = strMessage
+                let obj = SuccessData(fromJson: jsondata["successData"])
+                self.arrModelDescription = obj.model
+                self.addSubView(obj)
                 self.viewShowModel.frame = self.view.bounds
                 self.view.addSubview(self.viewShowModel)
                 
                 SVProgressHUD.dismiss()
             }else{
 
-                //let strMessage = "We’re  done! Your ideal chair model is:" + "Model Number :#####"
-             //   self.lblModel.text = strMessage
+           
+                
+                let obj = SuccessData(fromJson: jsondata["successData"])
+                self.arrModelDescription = obj.model
+                self.addSubView(obj)
+                
+                
                 self.viewShowModel.frame = self.view.bounds
                 self.view.addSubview(self.viewShowModel)
                 
@@ -523,7 +532,42 @@ class OrderProccessingThird: BaseViewController {
     
     
     
+    fileprivate func addSubView(_ obj: SuccessData) {
     
+        
+        
+       // self.tableViewHieght.constant = CGFloat((self.arrModelDescription?.count)! * 50 + 20)
+        self.tableViewHieght.constant = CGFloat(6 * 50 + 20)
+        let modelName = UIDevice.modelName
+        
+        if modelName == "iPhone 5s" || modelName == "iPhone 5c" || modelName == "iPhone 5" || modelName == "iPhone SE" {
+            //self.viewScrollHeight.constant = CGFloat((self.arrModelDescription?.count)! * 50 + 80)
+            self.viewScrollHeight.constant = CGFloat( 6 * 50 + 80)
+        }
+        else{
+         //   self.viewScrollHeight.constant =  CGFloat((self.arrModelDescription?.count)! * 50 )
+            self.viewScrollHeight.constant =  CGFloat(6 * 50 )
+        }
+        
+        //self.tableViewieght.constant = 3 * 50 + 20
+        
+        let attrs1 = [NSAttributedStringKey.font : UIFont(name: "Roboto-Light", size: 19) ?? "", NSAttributedStringKey.foregroundColor :#colorLiteral(red: 0.3607843137, green: 0.3607843137, blue: 0.3607843137, alpha: 1)] as [NSAttributedStringKey : Any]
+        
+        let attrs2 = [NSAttributedStringKey.font : UIFont(name: "Roboto-Bold", size: 22) ?? "", NSAttributedStringKey.foregroundColor : #colorLiteral(red: 0.1215686275, green: 0.5607843137, blue: 0.7843137255, alpha: 1)] as [NSAttributedStringKey : Any]
+        
+        let attributedString1 = NSMutableAttributedString(string:"Your ideal chair model is ", attributes:attrs1)
+        
+        let attributedString2 = NSMutableAttributedString(string:"QM22SE", attributes:attrs2)
+        
+        attributedString1.append(attributedString2)
+        self.lblModel.attributedText = attributedString1
+    
+       // self.lblPrice.text = "Total Price:" + " " + "$" + String(obj.proposedPrice)
+        self.lblPrice.text = "Total Price:" + " " + "$" + "1120"
+        self.tableView.reloadData()
+        SVProgressHUD.dismiss()
+      
+    }
     
     
     
@@ -701,6 +745,69 @@ extension OrderProccessingThird : UIPickerViewDelegate,UIPickerViewDataSource{
         
     }
 }
+
+
+
+extension OrderProccessingThird:UITableViewDelegate,UITableViewDataSource{
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+      //  return (arrModelDescription?.count)!
+        return 6
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return 1
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as? TableViewCell
+        
+        
+       // cell?.lblDiscription?.text = " " + self.arrModelDescription![indexPath.section].descriptionField
+        if indexPath.section == 0 {
+            
+            cell?.lblTittle.text = "BackrestSize"
+            cell?.lblDiscription?.text = " " + "Smallest backrest 17h x17w"
+        }else  if indexPath.section == 1 {
+            
+            cell?.lblTittle.text = "SeatSize"
+             cell?.lblDiscription?.text = " " + "Tiniest Seat 16\"w x 16\"d"
+        }else  if indexPath.section == 2 {
+            
+            cell?.lblTittle.text = "Control Type"
+             cell?.lblDiscription?.text = " " + "Synchro Ergo, proportional rocking with independently adjustable backrest angle, seat depth,"
+        }else  if indexPath.section == 3 {
+            
+            cell?.lblTittle.text = "Backrest Option"
+            cell?.lblDiscription?.text = " " + "Thoracic Air Bolster"
+        }else  if indexPath.section == 4 {
+            
+            cell?.lblTittle.text = "Mesh"
+            cell?.lblDiscription?.text = " " + "Without Mesh"
+        }else  if indexPath.section == 5 {
+            
+            cell?.lblTittle.text = "Base"
+            cell?.lblDiscription?.text = " " + "Black Aluminum Base"
+        }
+        
+        return cell!
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 0.0
+        }else{
+            return 2.0
+        }
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50.0
+    }
+}
+
+
+
 extension OrderProccessingThird: UITextFieldDelegate{
     
     
