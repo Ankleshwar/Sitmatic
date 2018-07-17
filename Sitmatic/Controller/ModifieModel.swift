@@ -18,19 +18,19 @@ class ModifieModel: BaseViewController {
     @IBOutlet weak var lblCasters: UILabel!
     @IBOutlet weak var lblFootrest: UILabel!
     @IBOutlet weak var lblMesh: UILabel!
-    
+    var selectedOptions = [String]()
     @IBOutlet weak var lblSeatHieght: UILabel!
     @IBOutlet weak var lblSeatOption: UILabel!
     @IBOutlet weak var lblCantrol: UILabel!
     
-   var textField : UITextField!
-    
+    var textField : UITextField!
+    var imagViewForPicker = UIImageView()
     @IBOutlet var viewSub: UIView!
     @IBOutlet weak var lblQuestionValueCount: UILabel!
     var dicAnsData = Dictionary<String, String>()
     var strInce: String!
     @IBOutlet var pickerView: UIPickerView!
-
+   
     @IBOutlet weak var lblbackRestSize: UILabel!
     var count = 0
    
@@ -89,12 +89,19 @@ class ModifieModel: BaseViewController {
     
   
     
-    
+   
     
 
     
     
     func showPicker(){
+        
+        for key in arrIteam!{
+            selectedOptions.append(key as! Int)
+        }
+        
+        
+        
         
         if  textField == nil {
             
@@ -184,7 +191,11 @@ class ModifieModel: BaseViewController {
         
         self.arrIteam = arrQuestion![index]["value"] as? Array
          self.strValue = (arrIteam?[0] as? String)!
-         showPicker()
+    
+            showPicker()
+        
+        
+        
     }
     
     
@@ -285,27 +296,111 @@ extension ModifieModel : UIPickerViewDelegate,UIPickerViewDataSource{
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         
+        if index == 2 || index == 3{
+            
+            let cell = view as? UITableViewCell
+       
+            if selectedOptions.index(of: row) != NSNotFound {
+                cell?.accessoryType = .checkmark
+            } else {
+                cell?.accessoryType = .checkmark
+            }
+            cell?.textLabel?.text = (arrIteam?[row] as? String)!
+           
+            
+           
+        }else{
+             self.strValue = (arrIteam?[row] as? String)!
+        }
+        
   
-        self.strValue = (arrIteam?[row] as? String)!
+       
         
         
         
     }
+    
+    
     
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        var pickerLabel: UILabel? = (view as? UILabel)
-        if pickerLabel == nil {
-            pickerLabel = UILabel()
-            pickerLabel?.font = UIFont(name: "Roboto-Regular", size: 20)
-            pickerLabel?.textAlignment = .center
-            pickerLabel?.numberOfLines = 0
+        
+   
+        
+        
+        
+        
+        if index == 2 || index == 3{
+            
+             var cell = view as? UITableViewCell
+            if cell == nil {
+                cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+                cell?.backgroundColor = UIColor.clear
+                cell?.bounds = CGRect(x: 0, y: 0, width: (cell?.frame.size.width ?? 0.0) - 20, height: 44)
+                cell?.tag = row
+                let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.toggleSelection(_:)))
+                singleTapGestureRecognizer.numberOfTapsRequired = 1
+                cell?.addGestureRecognizer(singleTapGestureRecognizer)
+            }
+            if selectedOptions.index(of: arrIteam?[row] as! String) != NSNotFound {
+                cell?.accessoryType = .checkmark
+            } else {
+                cell?.accessoryType = .none
+            }
+            cell?.textLabel?.text = arrIteam?[row] as? String
+            cell?.tag = row
+            return cell!
+            
+            
+            
+            
+        }else{
+            var pickerLabel: UILabel? = (view as? UILabel)
+                    if pickerLabel == nil {
+                        pickerLabel = UILabel()
+                        pickerLabel?.font = UIFont(name: "Roboto-Regular", size: 20)
+                        pickerLabel?.textAlignment = .center
+                        pickerLabel?.numberOfLines = 0
+                    }
+                    pickerLabel?.text = (arrIteam?[row] as? String)!
+                    pickerLabel?.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            
+                    return pickerLabel!
         }
-        pickerLabel?.text = (arrIteam?[row] as? String)!
-        pickerLabel?.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-
-        return pickerLabel!
+        
+        
+        
     }
+
+    
+    @objc func toggleSelection(_ recognizer: UITapGestureRecognizer?) {
+        let row = Int32(recognizer?.view?.tag ?? 0)
+        let index: Int = selectedOptions.index(of: arrIteam?[row] as! String)!
+        if index != NSNotFound {
+            selectedOptions.remove(at: index)
+            ((recognizer?.view) as? UITableViewCell)?.accessoryType = .none
+        } else {
+            selectedOptions.append(Int(row))
+            ((recognizer?.view) as? UITableViewCell)?.accessoryType = .checkmark
+        }
+    }
+    
+    
+
+    
+//    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+//        var pickerLabel: UILabel? = (view as? UILabel)
+//        if pickerLabel == nil {
+//            pickerLabel = UILabel()
+//            pickerLabel?.font = UIFont(name: "Roboto-Regular", size: 20)
+//            pickerLabel?.textAlignment = .center
+//            pickerLabel?.numberOfLines = 0
+//        }
+//        pickerLabel?.text = (arrIteam?[row] as? String)!
+//        pickerLabel?.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+//
+//        return pickerLabel!
+//    }
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         if index == 11 {
             return 85.0
