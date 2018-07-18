@@ -17,10 +17,13 @@ class OrderProccessingThird: BaseViewController {
     @IBOutlet var pickerView: UIPickerView!
     var arrModelDescription : [Model]?
     @IBOutlet weak var btnCancle: UIButton!
+    @IBOutlet weak var textViewHeight: NSLayoutConstraint!
     
     @IBOutlet weak var tostView: UIView!
     @IBOutlet weak var tostLable: UILabel!
     
+    @IBOutlet weak var btnEdit: UIButton!
+    @IBOutlet weak var txtAddress: UITextView!
     @IBOutlet var viewShowModel: UIView!
     var arrIteam :Array<Any>?
     @IBOutlet weak var lblModel: UILabel!
@@ -48,7 +51,7 @@ class OrderProccessingThird: BaseViewController {
     @IBOutlet weak var btnNext: UIButton!
      var isPreviousClick : Bool!
      var serverArrayThid: [[String: String]]  = Array()
-    var  value: Int = 0
+     var  value: Int = 0
     
     @IBOutlet weak var lblQuestionValueCount: UILabel!
     
@@ -62,6 +65,9 @@ class OrderProccessingThird: BaseViewController {
         self.tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         self.tableView.separatorStyle = .none
         self.tableView.backgroundColor = UIColor.clear
+        self.txtAddress.layer.borderWidth = 1
+        self.txtAddress.layer.borderColor = UIColor.gray.cgColor
+        self.txtAddress.isEditable = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -118,10 +124,102 @@ class OrderProccessingThird: BaseViewController {
     }
     
     @IBAction func clickToConfirmModel(_ sender: Any) {
+        
+        _ = SweetAlert().showAlert("Confirm Order", subTitle: "", style: AlertStyle.warning, buttonTitle:"No", buttonColor:UIColor.darkBlue , otherButtonTitle:  "Yes", otherButtonColor: UIColor.colorFromRGB(0xDD6B55)) { (isOtherButton) -> Void in
+            if isOtherButton == true {
+                
+              // _ = SweetAlert().showAlert("Thank you!", subTitle: "Your Order has been placed sucessfully. Your order ID is 12567", style: AlertStyle.success)
+            }
+            else {
+              
+                 _ = SweetAlert().showAlert("Thank you!", subTitle: "Your Order has been placed sucessfully. Your order ID is 12567", style: AlertStyle.success)
+                let vc = SHomeVC(nibName: "SHomeVC", bundle: nil)
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
+        
     }
     
     
-
+    
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        //let strNew : NSString = (textView.text as NSString).replacingCharacters(in: range, with: text) as NSString
+      
+        let size = CGRectFromString(text)
+        self.textViewHeight.constant = size.size.height
+        
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        
+        
+        return true
+    }
+    func textViewDidBeginEditing(_ textView: UITextView)
+    {
+        if (textView.text == "Please select your address")
+        {
+            textView.text = ""
+            textView.textColor = .black
+        }else if (textView.text == "")
+        {
+            
+        }
+        
+        textView.becomeFirstResponder() //Optional
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView)
+    {
+        if (textView.text == "")
+        {
+            textView.text = "Please select your address"
+            textView.textColor = .lightGray
+        }
+        
+        textView.resignFirstResponder()
+    }
+    
+    
+    
+    
+    
+    
+    @IBAction func clickToEdit(_ sender: Any) {
+        
+        if btnEdit.isSelected {
+            
+            
+            if self.txtAddress.text == "" {
+                self.showToastForQue(message: "Please select your address", y: 75)
+                self.btnEdit.setButtonImage("check.png")
+                
+            }else{
+                
+                self.btnEdit.setButtonImage("editblack.png")
+                self.txtAddress.isEditable = false
+                
+                
+                self.btnEdit.isSelected = false
+                
+                
+            }
+            
+            
+            
+        }else{
+            self.txtAddress.isEditable = true
+            
+            self.btnEdit.setButtonImage("check.png")
+            
+            self.btnEdit.isSelected = true
+            
+        }
+    }
+    
     @IBAction func clickToPrivious(_ sender: Any) {
         print(value)
         
@@ -566,6 +664,14 @@ class OrderProccessingThird: BaseViewController {
         self.lblPrice.text = "Total Price:" + " " + "$" + "1120"
         self.tableView.reloadData()
         SVProgressHUD.dismiss()
+        
+        if    (self.appUserObject?.address)! == "" {
+            self.txtAddress.text = "Please select your address"
+        }
+        else{
+            self.txtAddress.text = (self.appUserObject?.address)!
+        }
+        
       
     }
     

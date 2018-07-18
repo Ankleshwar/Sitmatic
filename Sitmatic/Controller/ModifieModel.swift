@@ -22,7 +22,8 @@ class ModifieModel: BaseViewController {
     @IBOutlet weak var lblSeatHieght: UILabel!
     @IBOutlet weak var lblSeatOption: UILabel!
     @IBOutlet weak var lblCantrol: UILabel!
-    
+    @IBOutlet weak var tableView: UITableView!
+    var dicSelected = Dictionary<String, Any>()
     var textField : UITextField!
     var imagViewForPicker = UIImageView()
     @IBOutlet var viewSub: UIView!
@@ -56,7 +57,7 @@ class ModifieModel: BaseViewController {
     
     
     @IBAction func clickToDone(_ sender: Any) {
-        
+        print(dicSelected)
         let vc = OrderProccessingThird(nibName: "OrderProccessingThird", bundle: nil)
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -70,8 +71,21 @@ class ModifieModel: BaseViewController {
         arrQuestion = (setDataWithLocalJson("ModifiModel") as NSArray as? Array<Dictionary<String, Any>>)!
       
        self.arrIteam = arrQuestion![0]["value"] as? Array
-        
-        
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        self.tableView.backgroundColor = #colorLiteral(red: 0.8, green: 0.8117647059, blue: 0.8392156863, alpha: 1)
+        self.tableView.isHidden = true
+        dicSelected["backrestOptions"] = [""]
+        dicSelected["seatOptions"] = [""]
+        dicSelected["control"] = ""
+        dicSelected["mesh"] = ""
+        dicSelected["casters"] = ""
+        dicSelected["footrest"] = ""
+        dicSelected["base"] = ""
+        dicSelected["armcap"] = ""
+        dicSelected["armrests"] = ""
+        dicSelected["seatHieght"] = ""
+        dicSelected["seatSize"] = ""
+        dicSelected["backrestSize"] = ""
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,17 +103,20 @@ class ModifieModel: BaseViewController {
     
   
     
-   
+    func setTableView(){
+      
+         let toolBar = UIToolbar().ToolbarPiker(mySelect: #selector(self.donedatePicker))
+        self.tableView.tableHeaderView = toolBar
+        self.tableView.isHidden = false
+        self.tableView.reloadData()
+    }
     
 
     
     
     func showPicker(){
         
-        for key in arrIteam!{
-            selectedOptions.append(key as! Int)
-        }
-        
+
         
         
         
@@ -126,34 +143,51 @@ class ModifieModel: BaseViewController {
         
         if index == 0{
             
-         
-                 self.lblbackRestSize.text   = strValue
+        self.lblbackRestSize.text   = strValue
+            dicSelected["backrestSize"] = strValue
             
             
         }else if index == 1{
           
             self.lblSeatSize.text  = strValue
+             dicSelected["seatSize"] = strValue
             
         }else if index == 2{
-            self.lblBackrestPosition.text  = strValue
+            dicSelected["backrestOptions"] = self.selectedOptions
+            let string = selectedOptions.joined(separator: " ")
+            self.lblBackrestPosition.text  = string
+            self.selectedOptions.removeAll()
+            self.tableView.isHidden = true
         }else if index == 3{
-            self.lblSeatOption.text  = strValue
+            dicSelected["seatOptions"] = self.selectedOptions
+            let string = selectedOptions.joined(separator: " ")
+            self.lblSeatOption.text  = string
+            self.selectedOptions.removeAll()
+            self.tableView.isHidden = true
         }else if index == 4{
             self.lblSeatHieght.text  = strValue
+             dicSelected["seatHieght"] = strValue
         }else if index == 5{
             self.lblArmrests.text  = strValue
+              dicSelected["armrests"] = strValue
         }else if index == 6{
             self.lblArmcap.text  = strValue
+             dicSelected["armcap"] = strValue
         }else if index == 7{
             self.lblBase.text  = strValue
+             dicSelected["base"] = strValue
         }else if index == 8{
             self.lblFootrest.text  = strValue
+            dicSelected["footrest"] = strValue
         }else if index == 9{
             self.lblCasters.text = strValue
+            dicSelected["casters"] = strValue
         }else if index == 10{
             self.lblMesh.text  = strValue
+            dicSelected["mesh"] = strValue
         }else if index == 11{
             self.lblCantrol.text = strValue
+             dicSelected["control"] = strValue
         }
   
         
@@ -164,7 +198,7 @@ class ModifieModel: BaseViewController {
     }
     
     
-    
+  
     
     
     
@@ -190,9 +224,22 @@ class ModifieModel: BaseViewController {
         index = (sender as AnyObject).tag
         
         self.arrIteam = arrQuestion![index]["value"] as? Array
-         self.strValue = (arrIteam?[0] as? String)!
+        self.strValue = ""
     
+        if index == 2 {
+            self.selectedOptions = dicSelected["backrestOptions"] as! [String]
+            self.setTableView()
+        }else if index == 3 {
+            self.lblSeatOption.numberOfLines = 0
+            self.selectedOptions = dicSelected["seatOptions"] as! [String]
+            self.setTableView()
+        }
+        
+        else{
             showPicker()
+        }
+        
+        
         
         
         
@@ -215,13 +262,8 @@ class ModifieModel: BaseViewController {
     @IBAction func clickToNext(_ sender: Any) {
         
         
-        
-       
-        
-        
-        
-        
-    }
+}
+    
     
     @IBAction func clickToPrevious(_ sender: Any) {
         
@@ -298,14 +340,7 @@ extension ModifieModel : UIPickerViewDelegate,UIPickerViewDataSource{
         
         if index == 2 || index == 3{
             
-            let cell = view as? UITableViewCell
-       
-            if selectedOptions.index(of: row) != NSNotFound {
-                cell?.accessoryType = .checkmark
-            } else {
-                cell?.accessoryType = .checkmark
-            }
-            cell?.textLabel?.text = (arrIteam?[row] as? String)!
+
            
             
            
@@ -330,31 +365,7 @@ extension ModifieModel : UIPickerViewDelegate,UIPickerViewDataSource{
         
         
         
-        if index == 2 || index == 3{
-            
-             var cell = view as? UITableViewCell
-            if cell == nil {
-                cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-                cell?.backgroundColor = UIColor.clear
-                cell?.bounds = CGRect(x: 0, y: 0, width: (cell?.frame.size.width ?? 0.0) - 20, height: 44)
-                cell?.tag = row
-                let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.toggleSelection(_:)))
-                singleTapGestureRecognizer.numberOfTapsRequired = 1
-                cell?.addGestureRecognizer(singleTapGestureRecognizer)
-            }
-            if selectedOptions.index(of: arrIteam?[row] as! String) != NSNotFound {
-                cell?.accessoryType = .checkmark
-            } else {
-                cell?.accessoryType = .none
-            }
-            cell?.textLabel?.text = arrIteam?[row] as? String
-            cell?.tag = row
-            return cell!
-            
-            
-            
-            
-        }else{
+    
             var pickerLabel: UILabel? = (view as? UILabel)
                     if pickerLabel == nil {
                         pickerLabel = UILabel()
@@ -366,41 +377,14 @@ extension ModifieModel : UIPickerViewDelegate,UIPickerViewDataSource{
                     pickerLabel?.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
             
                     return pickerLabel!
-        }
+        
         
         
         
     }
 
     
-    @objc func toggleSelection(_ recognizer: UITapGestureRecognizer?) {
-        let row = Int32(recognizer?.view?.tag ?? 0)
-        let index: Int = selectedOptions.index(of: arrIteam?[row] as! String)!
-        if index != NSNotFound {
-            selectedOptions.remove(at: index)
-            ((recognizer?.view) as? UITableViewCell)?.accessoryType = .none
-        } else {
-            selectedOptions.append(Int(row))
-            ((recognizer?.view) as? UITableViewCell)?.accessoryType = .checkmark
-        }
-    }
-    
-    
 
-    
-//    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-//        var pickerLabel: UILabel? = (view as? UILabel)
-//        if pickerLabel == nil {
-//            pickerLabel = UILabel()
-//            pickerLabel?.font = UIFont(name: "Roboto-Regular", size: 20)
-//            pickerLabel?.textAlignment = .center
-//            pickerLabel?.numberOfLines = 0
-//        }
-//        pickerLabel?.text = (arrIteam?[row] as? String)!
-//        pickerLabel?.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-//
-//        return pickerLabel!
-//    }
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         if index == 11 {
             return 85.0
@@ -427,4 +411,42 @@ extension ModifieModel: UITextFieldDelegate{
     
     
 }
+
+
+extension ModifieModel : UITableViewDelegate,UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return (arrIteam?.count)!
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
+        cell?.textLabel?.text = arrIteam?[indexPath.row] as? String
+        
+        if self.selectedOptions.index(of: arrIteam?[indexPath.row] as! String) != nil {
+            cell?.accessoryType = .checkmark
+        
+        }else{
+            cell?.accessoryType = .none
+            
+        }
+        
+      
+        cell?.backgroundColor = UIColor.clear
+        return cell!
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+          let selectedCell = tableView.cellForRow(at: indexPath)
+        if let index = self.selectedOptions.index(of: arrIteam?[indexPath.row] as! String){
+            self.selectedOptions.remove(at: index)
+            selectedCell?.accessoryType = .none
+        }else{
+            selectedCell?.accessoryType = .checkmark
+            self.selectedOptions.append(arrIteam?[indexPath.row] as! String)
+        }
+        
+      
+        
+        print(indexPath.row)
+    }
+}
+
 

@@ -419,6 +419,8 @@ class OrderProccessingSecond: BaseViewController {
         SVProgressHUD.dismiss()
         self.btnNext.isHidden = true
         self.btnCancle.isEnabled = true
+        
+        
     }
     
     func callGenrateModelApi(strData : String){
@@ -483,6 +485,7 @@ class OrderProccessingSecond: BaseViewController {
                              selector: #selector(self.setNextData),
                              userInfo: nil,
                              repeats: false)
+        dicAnsData["isModified"] = "1"
     }
     
     
@@ -497,6 +500,8 @@ class OrderProccessingSecond: BaseViewController {
                              selector: #selector(self.setNoNextScreen),
                              userInfo: nil,
                              repeats: false)
+         dicAnsData["isModified"] = "0"
+        
     }
     
     
