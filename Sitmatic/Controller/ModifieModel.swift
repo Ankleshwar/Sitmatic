@@ -31,11 +31,12 @@ class ModifieModel: BaseViewController {
     var dicAnsData = Dictionary<String, String>()
     var strInce: String!
     @IBOutlet var pickerView: UIPickerView!
-   
+    var isMesh = false
     @IBOutlet weak var lblbackRestSize: UILabel!
     var count = 0
    
-
+    @IBOutlet weak var lblSeatDepth: UILabel!
+    
     @IBOutlet weak var collectionView: UICollectionView!
 
     var arrIteam :Array<Any>?
@@ -143,7 +144,9 @@ class ModifieModel: BaseViewController {
         
         if index == 0{
             
-        self.lblbackRestSize.text   = strValue
+        
+            
+            self.lblbackRestSize.text   = strValue
             dicSelected["backrestSize"] = strValue
             
             
@@ -184,10 +187,19 @@ class ModifieModel: BaseViewController {
             dicSelected["casters"] = strValue
         }else if index == 10{
             self.lblMesh.text  = strValue
+            if self.lblMesh.text == "Without Mesh"{
+                self.isMesh = true
+                }else{
+                self.isMesh = false
+            }
+            
             dicSelected["mesh"] = strValue
         }else if index == 11{
             self.lblCantrol.text = strValue
              dicSelected["control"] = strValue
+        }else if index == 12{
+            self.lblSeatDepth.text = strValue
+            dicSelected["seatDepth"] = strValue
         }
   
         
@@ -233,9 +245,13 @@ class ModifieModel: BaseViewController {
             self.lblSeatOption.numberOfLines = 0
             self.selectedOptions = dicSelected["seatOptions"] as! [String]
             self.setTableView()
-        }
-        
-        else{
+        } else if index == 0 {
+            if isMesh == true{
+                self.showToast(message: "Option avilable only with mesh")
+            }else{
+                showPicker()
+            }
+        }else{
             showPicker()
         }
         

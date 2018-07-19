@@ -15,12 +15,72 @@ class SSignupVC: BaseViewController {
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtMobile: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
-    
+    var myTextField = UITextField()
 
     @IBOutlet weak var txtConfirmPassword: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
     //@IBOutlet weak var imgButtonLogin: UIImageView!
     @IBOutlet weak var btnSignup: UIButton!
+    
+    lazy var inputToolbar: UIToolbar = {
+        var toolbar = UIToolbar()
+        toolbar.barStyle = .default
+        toolbar.isTranslucent = true
+        toolbar.sizeToFit()
+        
+        var doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.inputToolbarDonePressed))
+        var flexibleSpaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        var fixedSpaceButton = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+        
+        var nextButton  = UIBarButtonItem(image: UIImage(named: "previous.png"),  style: .plain, target: self, action: #selector(self.keyboardpreviousButton))
+        nextButton.width = 50.0
+        var previousButton  = UIBarButtonItem(image: UIImage(named: "next.png"), style: .plain, target: self, action: #selector(self.keyboardNextButton))
+        
+        toolbar.setItems([fixedSpaceButton, nextButton, fixedSpaceButton, previousButton, flexibleSpaceButton, doneButton], animated: false)
+        toolbar.isUserInteractionEnabled = true
+        
+        return toolbar
+    }()
+    
+    
+    
+    @objc func inputToolbarDonePressed(){
+        self.txtName.resignFirstResponder()
+        self.txtEmail.resignFirstResponder()
+        self.txtMobile.resignFirstResponder()
+        self.txtPassword.resignFirstResponder()
+        self.txtConfirmPassword.resignFirstResponder()
+        
+    }
+    @objc func keyboardNextButton(){
+        
+        if myTextField == txtName {
+            self.txtEmail.becomeFirstResponder()
+        }else if myTextField == txtEmail {
+            self.txtMobile.becomeFirstResponder()
+        }else if myTextField == txtMobile {
+            self.txtPassword.becomeFirstResponder()
+        }else if myTextField == txtMobile {
+            self.txtPassword.becomeFirstResponder()
+        }else if myTextField == txtPassword {
+            self.txtConfirmPassword.becomeFirstResponder()
+        }
+    }
+    @objc func keyboardpreviousButton(){
+        
+        if myTextField == txtName {
+           // self.txtConfirmPassword.becomeFirstResponder()
+        }else if myTextField == txtEmail {
+            self.txtName.becomeFirstResponder()
+        }else if myTextField == txtMobile {
+            self.txtEmail.becomeFirstResponder()
+        }else if myTextField == txtPassword {
+            self.txtMobile.becomeFirstResponder()
+        }else if myTextField == txtConfirmPassword {
+            self.txtPassword.becomeFirstResponder()
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -170,12 +230,31 @@ extension SSignupVC: UITextFieldDelegate{
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.setLeftPaddingPoints(15)
+        self.myTextField = textField
       //  self.moveTextField(textField: textField, moveDistance: -10, up: true)
     }
     
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        textField.inputAccessoryView = inputToolbar
+        
+        return true
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
-        //self.moveTextField(textField: textField, moveDistance: -10, up: true)
+      
         self.scrollView.scrollToBottom(animated: true)
+        if textField == txtName {
+            self.txtEmail.becomeFirstResponder()
+        }else if textField == txtEmail {
+            self.txtMobile.becomeFirstResponder()
+        }else if textField == txtMobile {
+            self.txtPassword.becomeFirstResponder()
+        }else if textField == txtMobile {
+            self.txtPassword.becomeFirstResponder()
+        }else if textField == txtPassword {
+            self.txtConfirmPassword.becomeFirstResponder()
+        }
        
     }
     

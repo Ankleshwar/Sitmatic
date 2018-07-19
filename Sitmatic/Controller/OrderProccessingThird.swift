@@ -66,7 +66,7 @@ class OrderProccessingThird: BaseViewController {
         self.tableView.separatorStyle = .none
         self.tableView.backgroundColor = UIColor.clear
         self.txtAddress.layer.borderWidth = 1
-        self.txtAddress.layer.borderColor = UIColor.gray.cgColor
+        self.txtAddress.layer.borderColor = #colorLiteral(red: 0.8784313725, green: 0.8745098039, blue: 0.8745098039, alpha: 1).cgColor
         self.txtAddress.isEditable = false
     }
     
