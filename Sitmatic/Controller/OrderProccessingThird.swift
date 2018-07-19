@@ -870,6 +870,7 @@ extension OrderProccessingThird:UITableViewDelegate,UITableViewDataSource{
         
         
        // cell?.lblDiscription?.text = " " + self.arrModelDescription![indexPath.section].descriptionField
+        //  cell?.lblTittle.text = self.arrModelDescription![indexPath.section].type
         if indexPath.section == 0 {
             
             cell?.lblTittle.text = "BackrestSize"

@@ -11,7 +11,7 @@ import Toast_Swift
 import SVProgressHUD
 
 
-protocol OrderProccessingSecondDelegate {
+protocol OrderProccessingSecondDelegate  {
     func setData(arrData:[[String: Any]],isbackValue:Bool)
 }
 
@@ -21,7 +21,8 @@ class OrderProccessingSecond: BaseViewController {
     
     var strValueID = ""
     var strprice = ""
-
+    @IBOutlet weak var lblModelCode: UILabel!
+    
     @IBOutlet weak var viewDetails: UIView!
     @IBOutlet weak var lblModel: UILabel!
     @IBOutlet weak var lblprice: UILabel!
@@ -34,6 +35,7 @@ class OrderProccessingSecond: BaseViewController {
     @IBOutlet weak var viewScrollHeight: NSLayoutConstraint!
     
     @IBOutlet weak var txtModelNumber: UITextField!
+    
     var delegate : OrderProccessingSecondDelegate?
     var dicAnsData = Dictionary<String, String>()
     var isFirstQue: Bool!
@@ -403,16 +405,17 @@ class OrderProccessingSecond: BaseViewController {
         
         //self.tableViewieght.constant = 3 * 50 + 20
         
-        let attrs1 = [NSAttributedStringKey.font : UIFont(name: "Roboto-Light", size: 19) ?? "", NSAttributedStringKey.foregroundColor :#colorLiteral(red: 0.3607843137, green: 0.3607843137, blue: 0.3607843137, alpha: 1)] as [NSAttributedStringKey : Any]
-        
-        let attrs2 = [NSAttributedStringKey.font : UIFont(name: "Roboto-Bold", size: 22) ?? "", NSAttributedStringKey.foregroundColor : #colorLiteral(red: 0.1215686275, green: 0.5607843137, blue: 0.7843137255, alpha: 1)] as [NSAttributedStringKey : Any]
-        
-        let attributedString1 = NSMutableAttributedString(string:"Your ideal chair model is ", attributes:attrs1)
-        
-        let attributedString2 = NSMutableAttributedString(string:obj.proposedModel, attributes:attrs2)
-        
-        attributedString1.append(attributedString2)
-        self.lblModel.attributedText = attributedString1
+//        let attrs1 = [NSAttributedStringKey.font : UIFont(name: "Roboto-Light", size: 19) ?? "", NSAttributedStringKey.foregroundColor :#colorLiteral(red: 0.3607843137, green: 0.3607843137, blue: 0.3607843137, alpha: 1)] as [NSAttributedStringKey : Any]
+//
+//        let attrs2 = [NSAttributedStringKey.font : UIFont(name: "Roboto-Bold", size: 22) ?? "", NSAttributedStringKey.foregroundColor : #colorLiteral(red: 0.1215686275, green: 0.5607843137, blue: 0.7843137255, alpha: 1)] as [NSAttributedStringKey : Any]
+//
+//        let attributedString1 = NSMutableAttributedString(string:"Your ideal chair model is ", attributes:attrs1)
+//
+//        let attributedString2 = NSMutableAttributedString(string:obj.proposedModel, attributes:attrs2)
+//
+//        attributedString1.append(attributedString2)
+        self.lblModel.text = "We're almost done!" +  " "  + "Your ideal chair model is "
+        self.lblModelCode.text = obj.proposedModel
         //self.lblprice.text = obj.proposedPrice
         self.lblprice.text = "Total Price:" + " " + "$" + String(obj.proposedPrice)
         self.tableView.reloadData()
@@ -633,17 +636,18 @@ extension OrderProccessingSecond:UITableViewDelegate,UITableViewDataSource{
         
         
         cell?.lblDiscription?.text =  self.arrModelDescription![indexPath.section].descriptionField
-        if indexPath.section == 0 {
-            
-            cell?.lblTittle.text = "Backrest Size"
-            
-        }else  if indexPath.section == 1 {
-            
-            cell?.lblTittle.text = "Seat Size"
-        }else  if indexPath.section == 2 {
-           
-             cell?.lblTittle.text = "Control Type"
-        }
+        cell?.lblTittle.text = self.arrModelDescription![indexPath.section].type
+//        if indexPath.section == 0 {
+//
+//            cell?.lblTittle.text = "Backrest Size"
+//
+//        }else  if indexPath.section == 1 {
+//
+//            cell?.lblTittle.text = "Seat Size"
+//        }else  if indexPath.section == 2 {
+//
+//             cell?.lblTittle.text = "Control Type"
+//        }
        
         return cell!
     }

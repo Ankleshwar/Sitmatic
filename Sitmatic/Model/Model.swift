@@ -10,7 +10,9 @@ class Model : NSObject, NSCoding{
 
 	var code : String!
 	var descriptionField : String!
+	var name : String!
 	var price : Int!
+	var type : String!
 
 
 	/**
@@ -22,7 +24,9 @@ class Model : NSObject, NSCoding{
 		}
 		code = json["code"].stringValue
 		descriptionField = json["description"].stringValue
+		name = json["name"].stringValue
 		price = json["price"].intValue
+		type = json["type"].stringValue
 	}
 
 	/**
@@ -37,8 +41,14 @@ class Model : NSObject, NSCoding{
 		if descriptionField != nil{
 			dictionary["description"] = descriptionField
 		}
+		if name != nil{
+			dictionary["name"] = name
+		}
 		if price != nil{
 			dictionary["price"] = price
+		}
+		if type != nil{
+			dictionary["type"] = type
 		}
 		return dictionary
 	}
@@ -51,7 +61,9 @@ class Model : NSObject, NSCoding{
 	{
          code = aDecoder.decodeObject(forKey: "code") as? String
          descriptionField = aDecoder.decodeObject(forKey: "description") as? String
+         name = aDecoder.decodeObject(forKey: "name") as? String
          price = aDecoder.decodeObject(forKey: "price") as? Int
+         type = aDecoder.decodeObject(forKey: "type") as? String
 
 	}
 
@@ -67,8 +79,14 @@ class Model : NSObject, NSCoding{
 		if descriptionField != nil{
 			aCoder.encode(descriptionField, forKey: "description")
 		}
+		if name != nil{
+			aCoder.encode(name, forKey: "name")
+		}
 		if price != nil{
 			aCoder.encode(price, forKey: "price")
+		}
+		if type != nil{
+			aCoder.encode(type, forKey: "type")
 		}
 
 	}
