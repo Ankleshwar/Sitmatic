@@ -34,7 +34,7 @@ class ModifieModel: BaseViewController {
     var isMesh = false
     @IBOutlet weak var lblbackRestSize: UILabel!
     var count = 0
-   
+   var successDataObject : SuccessData!
     @IBOutlet weak var lblSeatDepth: UILabel!
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -70,24 +70,51 @@ class ModifieModel: BaseViewController {
         super.viewDidLoad()
        
         arrQuestion = (setDataWithLocalJson("ModifiModel") as NSArray as? Array<Dictionary<String, Any>>)!
+        print(successDataObject)
       
        self.arrIteam = arrQuestion![0]["value"] as? Array
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         self.tableView.backgroundColor = #colorLiteral(red: 0.8, green: 0.8117647059, blue: 0.8392156863, alpha: 1)
         self.tableView.isHidden = true
+      
+        setSlectedValue()
+        
+        
+        
+        
+    }
+    
+    func setSlectedValue(){
         dicSelected["backrestOptions"] = [""]
         dicSelected["seatOptions"] = [""]
-        dicSelected["control"] = ""
+        dicSelected["control"] = successDataObject.controlValue
         dicSelected["mesh"] = ""
         dicSelected["casters"] = ""
         dicSelected["footrest"] = ""
         dicSelected["base"] = ""
         dicSelected["armcap"] = ""
-        dicSelected["armrests"] = ""
-        dicSelected["seatHieght"] = ""
-        dicSelected["seatSize"] = ""
-        dicSelected["backrestSize"] = ""
+        dicSelected["armrests"] = successDataObject.elbowToElbowDistanceValue
+        dicSelected["seatHieght"] = successDataObject.lowerLegLengthValue
+        dicSelected["seatDepth"] = successDataObject.upperLegLengthValue
+        dicSelected["seatSize"] = successDataObject.theighBredthValue
+        dicSelected["backrestSize"] = successDataObject.backrestSizeValue
+         self.lblbackRestSize.text = successDataObject.backrestSizeValue
+        self.lblBackrestPosition.text = "Please select a value"
+         self.lblSeatDepth.text = "Please select a value"
+        self.lblSeatOption.text = "Please select a value"
+        self.lblSeatHieght.text =  successDataObject.lowerLegLengthValue
+        self.lblArmrests.text = "Please select a value"
+        self.lblArmcap.text = "Please select a value"
+        self.lblBase.text = "Please select a value"
+        self.lblFootrest.text = "Please select a value"
+        self.lblCasters.text  = "Please select a value"
+        self.lblMesh.text = "Without Mesh"
+        self.lblCantrol.text = successDataObject.controlValue
+        self.lblSeatSize.text = successDataObject.theighBredthValue
     }
+    
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
     
@@ -187,7 +214,7 @@ class ModifieModel: BaseViewController {
             dicSelected["casters"] = strValue
         }else if index == 10{
             self.lblMesh.text  = strValue
-            if self.lblMesh.text == "Without Mesh"{
+            if self.lblMesh.text == "With Mesh"{
                 self.isMesh = true
                 }else{
                 self.isMesh = false
@@ -247,7 +274,7 @@ class ModifieModel: BaseViewController {
             self.setTableView()
         } else if index == 0 {
             if isMesh == true{
-                self.showToast(message: "Option avilable only with mesh")
+                self.showToast(message: "Option avilable only Without Mesh")
             }else{
                 showPicker()
             }

@@ -18,10 +18,11 @@ protocol OrderProccessingSecondDelegate  {
 
 
 class OrderProccessingSecond: BaseViewController {
-    
+    var sucessObj : SuccessData!
     var strValueID = ""
     var strprice = ""
     @IBOutlet weak var lblModelCode: UILabel!
+    @IBOutlet var viewCall: UIView!
     
     @IBOutlet weak var viewDetails: UIView!
     @IBOutlet weak var lblModel: UILabel!
@@ -33,7 +34,7 @@ class OrderProccessingSecond: BaseViewController {
     @IBOutlet weak var btnPreviousSub: UIButton!
     @IBOutlet weak var tableViewieght: NSLayoutConstraint!
     @IBOutlet weak var viewScrollHeight: NSLayoutConstraint!
-    
+   
     @IBOutlet weak var txtModelNumber: UITextField!
     
     var delegate : OrderProccessingSecondDelegate?
@@ -65,7 +66,7 @@ class OrderProccessingSecond: BaseViewController {
      var isPreviousClick : Bool!
      var serverArrayThid: [[String: String]]  = Array()
     var  value: Int = 0
-    
+
     @IBOutlet weak var viewModel: UIView!
     
     
@@ -349,6 +350,7 @@ class OrderProccessingSecond: BaseViewController {
     @objc func setNextData(){
         self.view.isUserInteractionEnabled = true
         let vc = ModifieModel(nibName: "ModifieModel", bundle: nil)
+        vc.successDataObject = self.sucessObj
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
@@ -368,10 +370,6 @@ class OrderProccessingSecond: BaseViewController {
         self.btnCancle.isEnabled = false
         
         print(serverArrayThid)
-        
-        
-        
-        
         
         let strJson = self.json(from: serverArrayThid)
         print(strJson ?? "")
@@ -422,6 +420,7 @@ class OrderProccessingSecond: BaseViewController {
         SVProgressHUD.dismiss()
         self.btnNext.isHidden = true
         self.btnCancle.isEnabled = true
+        let sendData = obj
         
         
     }
@@ -438,23 +437,26 @@ class OrderProccessingSecond: BaseViewController {
             
             if error != nil{
                 
-
+                self.showToast(message: (error?.localizedDescription)!)
+                self.btnCancle.isEnabled = true
                 
                 SVProgressHUD.dismiss()
            
             }
             else{
                 
-                if jsondata["successData"] == true{
-                  
+                if jsondata["callDetected"] == "Yes"{
+                    
+                    self.viewCall.frame = self.view.bounds
+                    self.view.addSubview(self.viewCall)
                    
                 }
                 else{
                     
                     let obj = SuccessData(fromJson: jsondata["successData"])
                     self.arrModelDescription = obj.model
-                    
-                
+                    self.sucessObj = obj
+                 
                     
                     self.btnYesSub.setButtonImage("off.png")
                     self.btnNoSub.setButtonImage("off.png")
@@ -509,6 +511,10 @@ class OrderProccessingSecond: BaseViewController {
     
     
     
+    @IBAction func clickToCallDone(_ sender: Any) {
+        let vc = SHomeVC(nibName: "SHomeVC", bundle: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
     
     

@@ -25,6 +25,7 @@
                 <outlet property="btnNo" destination="i3k-x0-zLe" id="z7Z-fO-yeP"/>
                 <outlet property="btnYes" destination="MrY-Nd-F49" id="sxc-Ht-Ksk"/>
                 <outlet property="btnprevious" destination="k2x-Bd-3gF" id="e71-XL-lOs"/>
+                <outlet property="lblModeFinal" destination="09a-kn-35D" id="ayS-fB-O4i"/>
                 <outlet property="lblModel" destination="D6L-PN-CrK" id="WsS-QL-Wul"/>
                 <outlet property="lblNo" destination="jlF-S4-5za" id="dfX-lJ-ATx"/>
                 <outlet property="lblPrice" destination="Vtv-iD-8kp" id="cQn-gc-gkj"/>
@@ -396,7 +397,7 @@
                     <rect key="frame" x="0.0" y="216" width="414" height="50"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D6L-PN-CrK">
-                            <rect key="frame" x="10" y="5" width="394" height="40"/>
+                            <rect key="frame" x="10" y="5" width="394" height="20"/>
                             <attributedString key="attributedText">
                                 <fragment content="We're almost done!">
                                     <attributes>
@@ -408,14 +409,23 @@
                             </attributedString>
                             <nil key="highlightedColor"/>
                         </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We're almost done!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09a-kn-35D">
+                            <rect key="frame" x="10" y="30" width="394" height="20"/>
+                            <fontDescription key="fontDescription" name=".SFNSText" family=".SF NS Text" pointSize="17"/>
+                            <color key="textColor" red="0.066666666669999999" green="0.64705882349999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="D6L-PN-CrK" firstAttribute="leading" secondItem="Qk7-Jv-1Yr" secondAttribute="leading" constant="10" id="U51-Oi-l7G"/>
+                        <constraint firstAttribute="bottom" secondItem="09a-kn-35D" secondAttribute="bottom" id="AQE-3x-GEE"/>
+                        <constraint firstAttribute="trailing" secondItem="D6L-PN-CrK" secondAttribute="trailing" constant="10" id="BCk-ru-ElI"/>
+                        <constraint firstItem="D6L-PN-CrK" firstAttribute="top" secondItem="Qk7-Jv-1Yr" secondAttribute="top" constant="5" id="SsB-IW-Z2i"/>
                         <constraint firstAttribute="height" constant="50" id="YOs-a1-82W"/>
-                        <constraint firstAttribute="trailing" secondItem="D6L-PN-CrK" secondAttribute="trailing" constant="10" id="heT-MK-1bs"/>
-                        <constraint firstItem="D6L-PN-CrK" firstAttribute="top" secondItem="Qk7-Jv-1Yr" secondAttribute="top" constant="5" id="jI4-0j-1gv"/>
-                        <constraint firstAttribute="bottom" secondItem="D6L-PN-CrK" secondAttribute="bottom" constant="5" id="z94-M9-Cn6"/>
+                        <constraint firstItem="09a-kn-35D" firstAttribute="top" secondItem="D6L-PN-CrK" secondAttribute="bottom" constant="5" id="fWJ-UQ-jnu"/>
+                        <constraint firstItem="D6L-PN-CrK" firstAttribute="leading" secondItem="Qk7-Jv-1Yr" secondAttribute="leading" constant="10" id="iXt-dw-dZ1"/>
+                        <constraint firstItem="09a-kn-35D" firstAttribute="leading" secondItem="Qk7-Jv-1Yr" secondAttribute="leading" constant="10" id="pRn-2l-jU4"/>
+                        <constraint firstAttribute="trailing" secondItem="09a-kn-35D" secondAttribute="trailing" constant="10" id="zS2-Nn-WVT"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4aB-9T-wTQ">

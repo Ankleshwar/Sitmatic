@@ -84,6 +84,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
         arrAnswer = arrData
         isBack = isbackValue
         self.isButtonCheck = true
+        self.txtField.isEnabled = true
     }
     
     @objc func donedatePicker(){
@@ -243,6 +244,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                 if id == 12{
                     
                     print(self.arrAnswer)
+                    self.txtField.isEnabled = false
                     self.isButtonCheck = true
                     let vc = OrderProccessingSecond(nibName: "OrderProccessingSecond", bundle: nil)
                     vc.serverArrayThid = serverArraySecond
@@ -252,6 +254,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
                 else{
+                    self.txtField.isEnabled = true
                     count += 1
                     self.txtField.text = ""
                     lblQuestion.text = arrQuestion[count]["questionText"] as? String

@@ -12,7 +12,8 @@ import SVProgressHUD
 
 class OrderProccessingThird: BaseViewController {
     
-  var strValue: String = ""
+    @IBOutlet weak var lblModeFinal: UILabel!
+    var strValue: String = ""
     @IBOutlet weak var txtColor: UITextField!
     @IBOutlet var pickerView: UIPickerView!
     var arrModelDescription : [Model]?
@@ -193,12 +194,12 @@ class OrderProccessingThird: BaseViewController {
         if btnEdit.isSelected {
             
             
-            if self.txtAddress.text == "" {
-                self.showToastForQue(message: "Please select your address", y: 75)
-                self.btnEdit.setButtonImage("check.png")
-                
-            }else{
-                
+//            if self.txtAddress.text == "" {
+//                self.showToastForQue(message: "Please select your address", y: 75)
+//                self.btnEdit.setButtonImage("check.png")
+//
+//            }else{
+            
                 self.btnEdit.setButtonImage("editblack.png")
                 self.txtAddress.isEditable = false
                 
@@ -206,7 +207,7 @@ class OrderProccessingThird: BaseViewController {
                 self.btnEdit.isSelected = false
                 
                 
-            }
+          //  }
             
             
             
@@ -649,16 +650,20 @@ class OrderProccessingThird: BaseViewController {
         
         //self.tableViewieght.constant = 3 * 50 + 20
         
+        
+      
+        
         let attrs1 = [NSAttributedStringKey.font : UIFont(name: "Roboto-Light", size: 19) ?? "", NSAttributedStringKey.foregroundColor :#colorLiteral(red: 0.3607843137, green: 0.3607843137, blue: 0.3607843137, alpha: 1)] as [NSAttributedStringKey : Any]
         
-        let attrs2 = [NSAttributedStringKey.font : UIFont(name: "Roboto-Bold", size: 22) ?? "", NSAttributedStringKey.foregroundColor : #colorLiteral(red: 0.1215686275, green: 0.5607843137, blue: 0.7843137255, alpha: 1)] as [NSAttributedStringKey : Any]
+     
         
         let attributedString1 = NSMutableAttributedString(string:"Your ideal chair model is ", attributes:attrs1)
         
-        let attributedString2 = NSMutableAttributedString(string:"QM22SE", attributes:attrs2)
+ 
         
-        attributedString1.append(attributedString2)
+      
         self.lblModel.attributedText = attributedString1
+        self.lblModeFinal.text = "QM22SY"
     
        // self.lblPrice.text = "Total Price:" + " " + "$" + String(obj.proposedPrice)
         self.lblPrice.text = "Total Price:" + " " + "$" + "1120"

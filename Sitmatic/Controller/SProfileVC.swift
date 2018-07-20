@@ -44,7 +44,7 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
         imgView.layer.cornerRadius = (imgView.frame.size.height)/2
         self.btnPhoto.isEnabled = false
 
-        
+        self.btnLogOut.isEnabled = true
         
         if    (self.appUserObject?.userImageUrl)! == "" {
                 self.imgView.image = UIImage(named: "nouser.png")
@@ -235,7 +235,7 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
         let dic = ["":""]
         let strToken = self.appUserObject?.access_token
         let srtUrl = "logout?token=\(strToken!)"
-        
+        self.btnLogOut.isEnabled = false
         
         SVProgressHUD.show()
         
@@ -262,6 +262,7 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
                     print(dicdata)
                     
                     self.showToastForQue(message: dicdata["errorData"] as! String, y: 75)
+                    self.btnLogOut.isEnabled = true
                 }
                 
                 
