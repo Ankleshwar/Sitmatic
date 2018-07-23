@@ -66,6 +66,8 @@ class ModifieModel: BaseViewController {
     @IBAction func clickToDone(_ sender: Any) {
         print(dicSelected)
         let vc = OrderProccessingThird(nibName: "OrderProccessingThird", bundle: nil)
+        vc.Modifie = "1"
+        vc.dicServerSide = dicSelected
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -83,11 +85,13 @@ class ModifieModel: BaseViewController {
         self.tableView.backgroundColor = #colorLiteral(red: 0.8, green: 0.8117647059, blue: 0.8392156863, alpha: 1)
         self.tableView.isHidden = true
       
-       // setSlectedValue()
-        self.viewBackrestSizeHeight.constant = 0
-        self.btnBackrestSizeHeight.constant = 0
-
-            self.bottomViewHeight.constant = 0
+        
+      //  setSlectedValue()
+      
+        
+        self.viewBackrestSizeHeight.constant = 45
+        self.btnBackrestSizeHeight.constant = 30
+        self.bottomViewHeight.constant = 0
         self.view.layoutIfNeeded()
         
         
@@ -99,6 +103,7 @@ class ModifieModel: BaseViewController {
     
     
     func setSlectedValue(){
+      
         dicSelected["backrestOptions"] = [""]
         dicSelected["seatOptions"] = [""]
         dicSelected["control"] = successDataObject.controlValue

@@ -12,6 +12,7 @@ import Toast_Swift
 
 class OrderProccessing: BaseViewController , StartOrderdDelegate {
  
+ 
     
     
     @IBOutlet weak var tostView: UIView!
@@ -23,6 +24,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
     @IBOutlet weak var tableView: UITableView!
     var arrQuestion: Array<Dictionary<String,Any>>?
     var arrAnswer: [[String: String]]  = Array()
+    var arrStartOrderData: [[String: String]]  = Array()
     @IBOutlet weak var btnYes: UIButton!
     @IBOutlet weak var lblYes: UILabel!
     @IBOutlet weak var btnNo: UIButton!
@@ -98,9 +100,10 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
     }
     
     
-    func setDataOnBack(isBack: Bool) {
+    func setDataOnBack(isBack: Bool , arrSaveValue: [[String : String]]) {
         self.isback = isBack
-         self.btnNext.isEnabled = true
+        self.btnNext.isEnabled = true
+        self.arrStartOrderData = arrSaveValue
     }
     
     
@@ -549,6 +552,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
 
         vc.serverArraySecond = serverArray
         vc.delegate = self
+        vc.arrCurrent = arrStartOrderData
         self.navigationController?.pushViewController(vc, animated: true)
 
     }

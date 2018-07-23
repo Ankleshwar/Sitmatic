@@ -9,7 +9,7 @@
 import UIKit
 
 protocol  StartOrderdDelegate {
-    func setDataOnBack(isBack:Bool)
+    func setDataOnBack(isBack:Bool,arrSaveValue:[[String: String]])
 }
 
 
@@ -47,17 +47,41 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
     @IBOutlet weak var tostView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        arrQuestion = (setDataWithLocalJson("NextVersion") as NSArray as? Array<Dictionary<String, Any>>)!
-        lblQuestion.text = arrQuestion[0]["questionText"] as? String
-        self.arrIteam = arrQuestion[0]["value"] as? Array
-        let id : Int = (arrQuestion[count]["questionId"] as? Int)!
-        self.arrInch = arrQuestion[0]["inch"] as? Array
-        self.isFirstQuestion = true
-        self.lblQuestionValueCount.text = String(id) + " " + "of 19 Questions"
+         arrQuestion = (setDataWithLocalJson("NextVersion") as NSArray as? Array<Dictionary<String, Any>>)!
+         self.isFirstQuestion = true
         self.strInce = "0"
         self.strValue = "3"
         self.ansStrIn = "36"
+        if arrCurrent.isEmpty == false{
+            if(self.isFirstQuestion == true){
+                self.isFirstQuestion = false
+            }
+            
+            let iD : Int = (arrQuestion[count]["questionId"] as? Int)!
+            let index = arrCurrent.index(where: {$0["questionId"] == String(iD)})
+            var  dicLocal = arrCurrent[index!]
+            self.txtField.text = dicLocal["selected"]
+            lblQuestion.text = dicLocal["questionText"]
+            
+            self.lblQuestionValueCount.text = dicLocal["questionId"]! + " " + "of 19 Questions"
+            self.arrIteam?.removeAll()
+            self.arrIteam = arrQuestion[count]["value"] as? Array
+            self.arrInch = arrQuestion[0]["inch"] as? Array
+            self.strValue = ""
+            self.pickerView.selectRow(0, inComponent: 0, animated: true)
+            self.pickerView(pickerView, didSelectRow: 0, inComponent: 0)
+            self.arrAnswer.append(dicLocal)
+            
+        }else{
+           
+            lblQuestion.text = arrQuestion[0]["questionText"] as? String
+            self.arrIteam = arrQuestion[0]["value"] as? Array
+            let id : Int = (arrQuestion[count]["questionId"] as? Int)!
+            self.arrInch = arrQuestion[0]["inch"] as? Array
+           
+            self.lblQuestionValueCount.text = String(id) + " " + "of 19 Questions"
+        }
+        
         
     }
     
@@ -329,7 +353,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
         
        
         if isFirstQuestion ==  true{
-            self.delegate?.setDataOnBack(isBack:true)
+            self.delegate?.setDataOnBack(isBack:true, arrSaveValue: arrCurrent)
             self.navigationController?.popViewController(animated: true)
         }else{
             

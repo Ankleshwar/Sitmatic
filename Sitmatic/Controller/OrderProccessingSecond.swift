@@ -444,14 +444,14 @@ class OrderProccessingSecond: BaseViewController {
            
             }
             else{
-                
-                if jsondata["callDetected"] == "Yes"{
-                    
-                    self.viewCall.frame = self.view.bounds
-                    self.view.addSubview(self.viewCall)
-                   
-                }
-                else{
+               // jsondata["callDetected"] == "Yes"
+//                if jsondata["callDetected"] == "Yes"{
+//                    
+//                    self.viewCall.frame = self.view.bounds
+//                    self.view.addSubview(self.viewCall)
+//                   
+//                }
+//                else{
                     
                     let obj = SuccessData(fromJson: jsondata["successData"])
                     self.arrModelDescription = obj.model
@@ -467,7 +467,7 @@ class OrderProccessingSecond: BaseViewController {
                     
                     self.addSubView(obj)
                     
-                }
+                //}
             }
             SVProgressHUD.dismiss()
         }
@@ -491,6 +491,7 @@ class OrderProccessingSecond: BaseViewController {
                              userInfo: nil,
                              repeats: false)
         dicAnsData["isModified"] = "1"
+        
     }
     
     
@@ -549,6 +550,7 @@ class OrderProccessingSecond: BaseViewController {
     
   @objc  func setNoNextScreen(){
        let vc = OrderProccessingThird(nibName: "OrderProccessingThird", bundle: nil)
+        vc.Modifie = "0"
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

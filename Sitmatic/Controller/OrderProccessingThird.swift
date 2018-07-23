@@ -19,7 +19,7 @@ class OrderProccessingThird: BaseViewController {
     var arrModelDescription : [Model]?
     @IBOutlet weak var btnCancle: UIButton!
     @IBOutlet weak var textViewHeight: NSLayoutConstraint!
-
+    
     @IBOutlet weak var tostView: UIView!
     @IBOutlet weak var tostLable: UILabel!
     
@@ -29,8 +29,9 @@ class OrderProccessingThird: BaseViewController {
     var arrIteam :Array<Any>?
     @IBOutlet weak var lblModel: UILabel!
     var dicAnsData = Dictionary<String, String>()
+    var dicServerSide = Dictionary<String, Any>()
     var isFirstQue: Bool!
-    
+    var Modifie = "0"
     @IBOutlet weak var lblPrice: UILabel!
     var arrQuestion: Array<Dictionary<String,Any>>?
     var arrAnswer = NSMutableArray()
@@ -51,7 +52,7 @@ class OrderProccessingThird: BaseViewController {
     var customViewAlert: UIView!
     @IBOutlet weak var btnNext: UIButton!
      var isPreviousClick : Bool!
-     var serverArrayThid: [[String: String]]  = Array()
+     var serverArrayThid: [[String: Any]]  = Array()
      var  value: Int = 0
     
     @IBOutlet weak var lblQuestionValueCount: UILabel!
@@ -69,6 +70,7 @@ class OrderProccessingThird: BaseViewController {
         self.txtAddress.layer.borderWidth = 1
         self.txtAddress.layer.borderColor = #colorLiteral(red: 0.8784313725, green: 0.8745098039, blue: 0.8745098039, alpha: 1).cgColor
         self.txtAddress.isEditable = false
+        dicServerSide["isModify"] = Modifie
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -93,7 +95,9 @@ class OrderProccessingThird: BaseViewController {
     @objc func donedatePicker(){
         
         self.txtColor.text = strValue
-      
+      dicAnsData["id"] = "19"
+     dicAnsData["ans"] = strValue
+        serverArrayThid.append(dicAnsData)
         self.view.endEditing(true)
         textField(color:UIColor.lightGray)
         Timer.scheduledTimer(timeInterval: 0.3,
@@ -244,7 +248,7 @@ class OrderProccessingThird: BaseViewController {
                 
                 setPreviousData(valueindex: value)
                 self.arrAnswer.removeObject(at: value)
-                 serverArrayThid.remove(at: value)
+                 //serverArrayThid.remove(at: value)
                 self.isPreviousClick = true
                 
                 
@@ -356,6 +360,13 @@ class OrderProccessingThird: BaseViewController {
     
     fileprivate func setDataNo(strId:String) {
         if strId == "17N"{
+            dicAnsData["id"] = strId
+            dicAnsData["ans"] = strSelected
+            
+            
+            
+            
+            self.serverArrayThid.append(dicAnsData)
             callApi()
         }else if strId == "19"{
             callApi()
@@ -491,8 +502,12 @@ class OrderProccessingThird: BaseViewController {
             
             let strId = arrQuestion?[value]["queId"] as! String
             
-           // dicAnsData["id"] = arrQuestion?[value]["queId"] as? String
-            dicAnsData[strId] = strSelected
+            dicAnsData["id"] = strId
+            dicAnsData["ans"] = strSelected
+            
+            
+            
+           
             self.serverArrayThid.append(dicAnsData)
             
             
@@ -564,7 +579,7 @@ class OrderProccessingThird: BaseViewController {
         self.btnprevious.isHidden =  true
         self.btnNext.isEnabled = false
         self.btnCancle.isEnabled = false
-        self.serverArrayThid = serverArrayThid.compactMap { $0 }
+        serverArrayThid.append(dicServerSide)
         
         print(serverArrayThid)
         
