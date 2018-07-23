@@ -17,7 +17,7 @@ protocol  StartOrderdDelegate {
 class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
  
     
-    
+     var arrCurrent: [[String: String]]  = Array()
     var isBack = false
     var isButtonCheck = false
     @IBOutlet weak var lblQuestionValueCount: UILabel!
@@ -37,9 +37,9 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
     var strValue: String!
     var arrQuestion = [[String: Any]]()
     var arrHeightft = [[:]]
-     var arrAnswer: [[String: Any]]  = Array()
+     var arrAnswer: [[String: String]]  = Array()
     var serverArraySecond: [[String: String]]  = Array()
-     var dicData = Dictionary<String, Any>()
+     var dicData = Dictionary<String, String>()
     var arrInch :Array<Any>?
     var ansStrIn: String!
     var isFirstQuestion: Bool!
@@ -80,7 +80,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
         
     }
     
-    func setData(arrData:[[String: Any]],isbackValue:Bool){
+    func setData(arrData:[[String: String]],isbackValue:Bool){
         arrAnswer = arrData
         isBack = isbackValue
         self.isButtonCheck = true
@@ -163,6 +163,8 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
     }
     
     @objc fileprivate func setDataOnNext() {
+        var dicLocal = [String : String]()
+        
         if self.txtField.text?.count == 0 {
             
             
@@ -179,8 +181,8 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
             else{
                 
                 if isButtonCheck == true{
-                    arrAnswer.removeLast()
-                    serverArraySecond.removeLast()
+                    //arrAnswer.removeLast()
+                   // serverArraySecond.removeLast()
                     isButtonCheck = false
                 }
                 
@@ -189,7 +191,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                 
                 if(self.isFirstQuestion == true){
                     dicData["selected"] = self.txtField.text
-                    
+                    dicLocal["selected"] = self.txtField.text
                     
                     if NSString(string: strValue).contains("ft") {
                         
@@ -204,9 +206,11 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                     
                     self.ansStrIn = String(Int(strValue)!*12 + Int(strInce)!)
                     dicAnsData["ans"] = self.ansStrIn
+                    
                 }
                 else{
                     dicData["selected"] = strValue
+                    dicLocal["selected"] = strValue
                     dicAnsData["ans"] = dicData["selected"] as? String
                 }
                 
@@ -214,19 +218,19 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                 
                 let arr : Array<Any>? = arrQuestion[count]["value"] as? Array
                 dicData["questionId"] = String(id)
-                
+                dicLocal["questionId"] = String(id)
                 dicData["questionText"] = arrQuestion[count]["questionText"] as? String
+                dicLocal["questionText"] = arrQuestion[count]["questionText"] as? String
                 
                 
-                self.isFirstQuestion = false
-                dicData["value"] = arr
+      
                 
                 
                 
                 
                 
                 self.arrAnswer.append(dicData)
-                
+                self.arrCurrent.append(dicLocal)
                 
                 
                 
@@ -256,17 +260,49 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                 else{
                     self.txtField.isEnabled = true
                     count += 1
-                    self.txtField.text = ""
-                    lblQuestion.text = arrQuestion[count]["questionText"] as? String
-                    let id : Int = (arrQuestion[count]["questionId"] as? Int)!
-                    self.lblQuestionValueCount.text = String(id) + " " + "of 19 Questions"
-                    self.arrIteam?.removeAll()
-                    self.arrIteam = arrQuestion[count]["value"] as? Array
-                    self.strValue = ""
-                    self.pickerView.selectRow(0, inComponent: 0, animated: true)
-                    self.pickerView(pickerView, didSelectRow: 0, inComponent: 0)
+                    
+                    let iD : Int = (arrQuestion[count]["questionId"] as? Int)!
+                    let index = arrCurrent.index(where: {$0["questionId"] == String(iD)})
+                    
+                    if index != nil {
+                        
+                        if(self.isFirstQuestion == true){
+                            self.isFirstQuestion = false
+                        }
+                        
+                        var  dicLocal = arrCurrent[index!]
+                        self.txtField.text = dicLocal["selected"]
+                        lblQuestion.text = dicLocal["questionText"]
+                        
+                        self.lblQuestionValueCount.text = dicLocal["questionId"]! + " " + "of 19 Questions"
+                        self.arrIteam?.removeAll()
+                        self.arrIteam = arrQuestion[count]["value"] as? Array
+                        self.strValue = ""
+                        self.pickerView.selectRow(0, inComponent: 0, animated: true)
+                        self.pickerView(pickerView, didSelectRow: 0, inComponent: 0)
+                        self.arrAnswer.append(dicLocal)
+                    }
+                    else{
+                        
+                    
+             
+                        self.txtField.text = ""
+                        lblQuestion.text = arrQuestion[count]["questionText"] as? String
+                        let id : Int = (arrQuestion[count]["questionId"] as? Int)!
+                        self.lblQuestionValueCount.text = String(id) + " " + "of 19 Questions"
+                        self.arrIteam?.removeAll()
+                        self.arrIteam = arrQuestion[count]["value"] as? Array
+                        self.strValue = ""
+                        self.pickerView.selectRow(0, inComponent: 0, animated: true)
+                        self.pickerView(pickerView, didSelectRow: 0, inComponent: 0)
+                    
+                    
+                    }
+                    
+                    
+                   
                 }
-                
+                    self.isFirstQuestion = false
                 
             }
             
@@ -275,11 +311,14 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
     }
     
     @IBAction func clickToNext(_ sender: Any) {
+     
         
-       
-        
-        setDataOnNext()
+      
             
+            setDataOnNext()
+        
+        
+    
         
         
         
@@ -295,8 +334,8 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
         }else{
             
             if isBack == true{
-                arrAnswer.removeLast()
-                serverArraySecond.removeLast()
+               // arrAnswer.removeLast()
+               // serverArraySecond.removeLast()
                 isBack = false
             }
             
@@ -308,10 +347,23 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                 
             else{
                
+                var dicdata = [String : String]()
+                let iD : Int = (arrQuestion[count]["questionId"] as? Int)!
+                let index = arrAnswer.index(where: {$0["questionId"] == String(iD)})
+                
+                print(index)
+                
+                if index != nil{
+                     dicdata  = arrAnswer[index!]
+                }
                 
                 
-                var dicdata  = arrAnswer[count]
-                let id: String! = dicdata["questionId"] as? String
+                
+                
+                
+                
+                
+                let id: String! = dicdata["questionId"]
                 self.lblQuestionValueCount.text = id + " " + "of 19 Questions"
                 if id == "5"{
                     self.btnPrevious.isHidden =  false
@@ -319,9 +371,9 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                     
                     
                 }
-                lblQuestion.text = dicdata["questionText"] as? String
-                self.txtField.text = dicdata["selected"] as? String
-                self.arrIteam = dicdata["value"] as? Array<Any>
+                lblQuestion.text = dicdata["questionText"]
+                self.txtField.text = dicdata["selected"]
+                self.arrIteam = arrQuestion[count]["value"] as? Array
                 
              
                 if self.isFirstQuestion == true{
@@ -338,8 +390,8 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                 
            
                 
-                self.arrAnswer.remove(at: count)
-                serverArraySecond.remove(at: count)
+               // self.arrAnswer.remove(at: count)
+               // serverArraySecond.remove(at: count)
                 
             }
         }

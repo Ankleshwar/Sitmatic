@@ -12,7 +12,7 @@ import SVProgressHUD
 
 
 protocol OrderProccessingSecondDelegate  {
-    func setData(arrData:[[String: Any]],isbackValue:Bool)
+    func setData(arrData:[[String: String]],isbackValue:Bool)
 }
 
 
@@ -48,7 +48,7 @@ class OrderProccessingSecond: BaseViewController {
     @IBOutlet weak var btnYesSub: UIButton!
     
     @IBOutlet weak var btnNoSub: UIButton!
-    var arrPreviousControllerData: [[String: Any]]  = Array()
+    var arrPreviousControllerData: [[String: String]]  = Array()
     var arrModelDescription : [Model]?
     @IBOutlet weak var btnYes: UIButton!
     @IBOutlet weak var lblYes: UILabel!
