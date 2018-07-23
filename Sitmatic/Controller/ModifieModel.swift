@@ -9,7 +9,13 @@
 import UIKit
 
 class ModifieModel: BaseViewController {
+    @IBOutlet weak var viewControl: UIView!
+    @IBOutlet weak var viewBacrestSize: UIView!
+    @IBOutlet weak var viewBackrestSizeHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var bottomViewHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var btnBackrestSizeHeight: NSLayoutConstraint!
     @IBOutlet weak var lblSeatSize: UILabel!
     @IBOutlet weak var lblBackrestPosition: UILabel!
     @IBOutlet weak var lblArmrests: UILabel!
@@ -31,7 +37,7 @@ class ModifieModel: BaseViewController {
     var dicAnsData = Dictionary<String, String>()
     var strInce: String!
     @IBOutlet var pickerView: UIPickerView!
-    var isMesh = false
+    var isMesh = true
     @IBOutlet weak var lblbackRestSize: UILabel!
     var count = 0
    var successDataObject : SuccessData!
@@ -77,12 +83,20 @@ class ModifieModel: BaseViewController {
         self.tableView.backgroundColor = #colorLiteral(red: 0.8, green: 0.8117647059, blue: 0.8392156863, alpha: 1)
         self.tableView.isHidden = true
       
-        setSlectedValue()
-        
-        
+       // setSlectedValue()
+        self.viewBackrestSizeHeight.constant = 0
+        self.btnBackrestSizeHeight.constant = 0
+
+            self.bottomViewHeight.constant = 0
+        self.view.layoutIfNeeded()
         
         
     }
+    
+    
+    
+
+    
     
     func setSlectedValue(){
         dicSelected["backrestOptions"] = [""]
@@ -216,8 +230,14 @@ class ModifieModel: BaseViewController {
             self.lblMesh.text  = strValue
             if self.lblMesh.text == "With Mesh"{
                 self.isMesh = true
+                self.viewBackrestSizeHeight.constant = 0
+                self.btnBackrestSizeHeight.constant = 0
+                self.view.layoutIfNeeded()
                 }else{
                 self.isMesh = false
+                 self.viewBackrestSizeHeight.constant = 45
+                self.btnBackrestSizeHeight.constant = 30
+                self.view.layoutIfNeeded()
             }
             
             dicSelected["mesh"] = strValue
@@ -274,8 +294,13 @@ class ModifieModel: BaseViewController {
             self.setTableView()
         } else if index == 0 {
             if isMesh == true{
-                self.showToast(message: "Option avilable only Without Mesh")
+               self.viewBackrestSizeHeight.constant = 0
+                self.btnBackrestSizeHeight.constant = 0
+                self.view.layoutIfNeeded()
             }else{
+                self.viewBackrestSizeHeight.constant = 45
+                self.btnBackrestSizeHeight.constant = 30
+                self.view.layoutIfNeeded()
                 showPicker()
             }
         }else{
@@ -288,6 +313,10 @@ class ModifieModel: BaseViewController {
         
     }
     
+    
+    func setPriorty(){
+        
+    }
     
     
     

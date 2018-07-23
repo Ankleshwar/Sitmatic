@@ -367,8 +367,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
     
     
     
-    
-    //{"questionId":5.1,"questionText":"Select Your Height in Ic.","value":["1","2","3","4","5","6","7","8","9","10","11"]}
+
     
     
     
