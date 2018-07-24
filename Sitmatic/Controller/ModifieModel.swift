@@ -44,7 +44,8 @@ class ModifieModel: BaseViewController {
     @IBOutlet weak var lblSeatDepth: UILabel!
     
     @IBOutlet weak var collectionView: UICollectionView!
-
+    @IBOutlet weak var viewControlHeight: NSLayoutConstraint!
+    
     var arrIteam :Array<Any>?
     @IBOutlet weak var lblQuestion: UILabel!
     var strValue: String = ""
@@ -86,12 +87,14 @@ class ModifieModel: BaseViewController {
         self.tableView.isHidden = true
       
         
-      //  setSlectedValue()
-      
+        setSlectedValue()
+        dicSelected["backrestOptions"] = [""]
+        dicSelected["seatOptions"] = [""]
         
         self.viewBackrestSizeHeight.constant = 45
         self.btnBackrestSizeHeight.constant = 30
         self.bottomViewHeight.constant = 0
+
         self.view.layoutIfNeeded()
         
         
@@ -237,11 +240,26 @@ class ModifieModel: BaseViewController {
                 self.isMesh = true
                 self.viewBackrestSizeHeight.constant = 0
                 self.btnBackrestSizeHeight.constant = 0
+     //            viewBacrestSize.translatesAutoresizingMaskIntoConstraints = false
+      //        self.viewBacrestSize.topAnchor.constraint(equalTo: self.viewControl.bottomAnchor,constant: 10).isActive = false
+           
+       //         self.viewBacrestSize.topAnchor.constraint(equalTo: self.viewControl.bottomAnchor,constant: 0).isActive = true
+//                 self.viewBacrestSize.bottomAnchor.constraint(equalTo: self.viewControl.bottomAnchor,constant: 0).isActive = true
+//                 self.viewBacrestSize.leadingAnchor.constraint(equalTo: self.view.leadingAnchor,constant: 0).isActive = true
+//                 self.viewBacrestSize.trailingAnchor.constraint(equalTo: self.view.trailingAnchor,constant: 0).isActive = true
+            
                 self.view.layoutIfNeeded()
                 }else{
+                
                 self.isMesh = false
                  self.viewBackrestSizeHeight.constant = 45
                 self.btnBackrestSizeHeight.constant = 30
+               // viewBacrestSize.translatesAutoresizingMaskIntoConstraints = false
+                //self.viewBacrestSize.topAnchor.constraint(equalTo: self.viewControl.bottomAnchor,constant: 0).isActive = false
+                //self.viewBacrestSize.topAnchor.constraint(equalTo: self.viewControl.bottomAnchor,constant: 10).isActive = true
+//                self.viewBacrestSize.bottomAnchor.constraint(equalTo: self.viewControl.bottomAnchor,constant: 10).isActive = true
+//                self.viewBacrestSize.leadingAnchor.constraint(equalTo: self.view.leadingAnchor,constant: 0).isActive = true
+//                self.viewBacrestSize.trailingAnchor.constraint(equalTo: self.view.trailingAnchor,constant: 0).isActive = true
                 self.view.layoutIfNeeded()
             }
             

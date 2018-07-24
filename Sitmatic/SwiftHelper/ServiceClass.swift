@@ -34,6 +34,23 @@ class ServiceClass: NSObject {
         }
     }
     
+     func stringify(json: Any, prettyPrinted: Bool = false) -> String {
+        var options: JSONSerialization.WritingOptions = []
+        if prettyPrinted {
+            options = JSONSerialization.WritingOptions.prettyPrinted
+        }
+        
+        do {
+            let data = try JSONSerialization.data(withJSONObject: json, options: options)
+            if let string = String(data: data, encoding: String.Encoding.utf8) {
+                return string
+            }
+        } catch {
+            print(error)
+        }
+        
+        return ""
+    }
     
     
     public func getModel(strUrl:String,param:[String:AnyObject],completion:@escaping (jsonBlock)){
@@ -45,7 +62,8 @@ class ServiceClass: NSObject {
             print(JSONResponse)
             
             if JSONResponse["status"] == "Ok"{
-               
+               // let id  = JSONResponse["data_id"]
+    
                  completion(nil,JSONResponse)
             }else{
                 let errorTemp = NSError(domain:"Status Not Valid", code:600, userInfo:nil)

@@ -117,7 +117,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
             self.btnNo.setButtonImage("red.png")
            
         } else if isback == true{
-           goToNext()
+            goToNext()
             self.isback = false
             
         }
@@ -546,13 +546,13 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
          print("~~~~~~~~~~~~~~~~~\(self.value)~~~~~~~~~~~~~~~~~~~~~~~")
      
        
-      
+      print(self.isYesbtnTap)
 
         let vc = StartOrderd(nibName: "StartOrderd", bundle: nil)
 
         vc.serverArraySecond = serverArray
         vc.delegate = self
-        vc.arrCurrent = arrStartOrderData
+        //vc.arrCurrent = arrStartOrderData
         self.navigationController?.pushViewController(vc, animated: true)
 
     }

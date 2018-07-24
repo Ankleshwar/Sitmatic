@@ -19,6 +19,7 @@ class OrderProccessingThird: BaseViewController {
     var arrModelDescription : [Model]?
     @IBOutlet weak var btnCancle: UIButton!
     @IBOutlet weak var textViewHeight: NSLayoutConstraint!
+    @IBOutlet var viewCall: UIView!
     
     @IBOutlet weak var tostView: UIView!
     @IBOutlet weak var tostLable: UILabel!
@@ -70,7 +71,7 @@ class OrderProccessingThird: BaseViewController {
         self.txtAddress.layer.borderWidth = 1
         self.txtAddress.layer.borderColor = #colorLiteral(red: 0.8784313725, green: 0.8745098039, blue: 0.8745098039, alpha: 1).cgColor
         self.txtAddress.isEditable = false
-        dicServerSide["isModify"] = Modifie
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -476,6 +477,10 @@ class OrderProccessingThird: BaseViewController {
           
         }
         
+    @IBAction func clickToTryAgain(_ sender: Any) {
+        let vc = SHomeVC(nibName: "SHomeVC", bundle: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
     
     
@@ -579,7 +584,7 @@ class OrderProccessingThird: BaseViewController {
         self.btnprevious.isHidden =  true
         self.btnNext.isEnabled = false
         self.btnCancle.isEnabled = false
-        serverArrayThid.append(dicServerSide)
+        //serverArrayThid.append(dicServerSide)
         
         print(serverArrayThid)
         
@@ -604,38 +609,53 @@ class OrderProccessingThird: BaseViewController {
     
     func callGenrateModelApi(strData : String){
         
-        let dic = ["data": strData]
+        let dic = ["questions": strData,
+                   "isModify": Modifie,
+                   "data":dicServerSide,
+                   "data_id": UserDefaults.standard.string(forKey: "dataId") ?? ""] as [String : Any]
 
         self.txtColor.isEnabled = false
         
         SVProgressHUD.show()
         
-        ServiceClass().getModel(strUrl: "savebasicquestions", param: dic as [String : AnyObject] ) { error, jsondata in
+        ServiceClass().getModel(strUrl: "getmodifiedmodel", param: dic as [String : AnyObject] ) { error, jsondata in
             
             if error != nil{
              
                 
-                let obj = SuccessData(fromJson: jsondata["successData"])
-                self.arrModelDescription = obj.model
-                self.addSubView(obj)
-                self.viewShowModel.frame = self.view.bounds
-                self.view.addSubview(self.viewShowModel)
+                self.showToast(message: (error?.localizedDescription)!)
                 
                 SVProgressHUD.dismiss()
             }else{
-
-           
-                
-                let obj = SuccessData(fromJson: jsondata["successData"])
-                self.arrModelDescription = obj.model
-                self.addSubView(obj)
-                
-                
-                self.viewShowModel.frame = self.view.bounds
-                self.view.addSubview(self.viewShowModel)
-                
-                 SVProgressHUD.dismiss()
-                
+              
+                if jsondata["callDetected"] == "Yes"{
+                    
+                    self.viewCall.frame = self.view.bounds
+                    self.view.addSubview(self.viewCall)
+                    
+                }
+                else{
+                    
+                    let obj = SuccessData(fromJson: jsondata["successData"])
+                    self.arrModelDescription = obj.model
+                   
+                    
+                 //   let objNew = ModelDescreption(fromJson: jsondata)
+                    
+                    
+                   // let strDataId = String(objNew.dataId)
+                    
+            
+                    
+            
+                    
+                    
+                    self.isYesbtnTap = false
+                   
+                    
+                    self.addSubView(obj)
+                    
+                }
             }
             
             SVProgressHUD.dismiss()
@@ -648,6 +668,8 @@ class OrderProccessingThird: BaseViewController {
     
     fileprivate func addSubView(_ obj: SuccessData) {
     
+        self.viewShowModel.frame = self.view.bounds
+        self.view.addSubview(self.viewShowModel)
         
         
        // self.tableViewHieght.constant = CGFloat((self.arrModelDescription?.count)! * 50 + 20)
@@ -678,10 +700,10 @@ class OrderProccessingThird: BaseViewController {
         
       
         self.lblModel.attributedText = attributedString1
-        self.lblModeFinal.text = "QM22SY"
+        self.lblModeFinal.text = obj.proposedModel
     
        // self.lblPrice.text = "Total Price:" + " " + "$" + String(obj.proposedPrice)
-        self.lblPrice.text = "Total Price:" + " " + "$" + "1120"
+        self.lblPrice.text = "Total Price:" + " " + "$" + String(obj.proposedPrice)
         self.tableView.reloadData()
         SVProgressHUD.dismiss()
         
@@ -877,8 +899,8 @@ extension OrderProccessingThird : UIPickerViewDelegate,UIPickerViewDataSource{
 extension OrderProccessingThird:UITableViewDelegate,UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
-      //  return (arrModelDescription?.count)!
-        return 6
+        return (arrModelDescription?.count)!
+        //return 6
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -889,33 +911,33 @@ extension OrderProccessingThird:UITableViewDelegate,UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as? TableViewCell
         
         
-       // cell?.lblDiscription?.text = " " + self.arrModelDescription![indexPath.section].descriptionField
-        //  cell?.lblTittle.text = self.arrModelDescription![indexPath.section].type
-        if indexPath.section == 0 {
-            
-            cell?.lblTittle.text = "BackrestSize"
-            cell?.lblDiscription?.text = " " + "Smallest backrest 17h x17w"
-        }else  if indexPath.section == 1 {
-            
-            cell?.lblTittle.text = "SeatSize"
-             cell?.lblDiscription?.text = " " + "Tiniest Seat 16\"w x 16\"d"
-        }else  if indexPath.section == 2 {
-            
-            cell?.lblTittle.text = "Control Type"
-             cell?.lblDiscription?.text = " " + "Synchro Ergo, proportional rocking with independently adjustable backrest angle, seat depth,"
-        }else  if indexPath.section == 3 {
-            
-            cell?.lblTittle.text = "Backrest Option"
-            cell?.lblDiscription?.text = " " + "Thoracic Air Bolster"
-        }else  if indexPath.section == 4 {
-            
-            cell?.lblTittle.text = "Mesh"
-            cell?.lblDiscription?.text = " " + "Without Mesh"
-        }else  if indexPath.section == 5 {
-            
-            cell?.lblTittle.text = "Base"
-            cell?.lblDiscription?.text = " " + "Black Aluminum Base"
-        }
+        cell?.lblDiscription?.text = " " + self.arrModelDescription![indexPath.section].descriptionField
+          cell?.lblTittle.text = self.arrModelDescription![indexPath.section].type
+//        if indexPath.section == 0 {
+//
+//            cell?.lblTittle.text = "BackrestSize"
+//            cell?.lblDiscription?.text = " " + "Smallest backrest 17h x17w"
+//        }else  if indexPath.section == 1 {
+//
+//            cell?.lblTittle.text = "SeatSize"
+//             cell?.lblDiscription?.text = " " + "Tiniest Seat 16\"w x 16\"d"
+//        }else  if indexPath.section == 2 {
+//
+//            cell?.lblTittle.text = "Control Type"
+//             cell?.lblDiscription?.text = " " + "Synchro Ergo, proportional rocking with independently adjustable backrest angle, seat depth,"
+//        }else  if indexPath.section == 3 {
+//
+//            cell?.lblTittle.text = "Backrest Option"
+//            cell?.lblDiscription?.text = " " + "Thoracic Air Bolster"
+//        }else  if indexPath.section == 4 {
+//
+//            cell?.lblTittle.text = "Mesh"
+//            cell?.lblDiscription?.text = " " + "Without Mesh"
+//        }else  if indexPath.section == 5 {
+//
+//            cell?.lblTittle.text = "Base"
+//            cell?.lblDiscription?.text = " " + "Black Aluminum Base"
+//        }
         
         return cell!
     }

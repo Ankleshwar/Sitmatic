@@ -315,7 +315,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="XR2-6X-wWN" secondAttribute="bottom" id="CKJ-V4-R7J"/>
                                                 <constraint firstAttribute="trailing" secondItem="Wig-ti-5Q1" secondAttribute="trailing" constant="5" id="Pik-ze-2wN"/>
                                                 <constraint firstItem="XR2-6X-wWN" firstAttribute="top" secondItem="JKn-KZ-FRc" secondAttribute="top" id="XOf-wV-adj"/>
-                                                <constraint firstAttribute="height" constant="45" id="aBv-lz-KBl"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="aBv-lz-KBl"/>
                                                 <constraint firstItem="XR2-6X-wWN" firstAttribute="leading" secondItem="JKn-KZ-FRc" secondAttribute="leading" constant="5" id="ff7-og-myE"/>
                                                 <constraint firstItem="Wig-ti-5Q1" firstAttribute="leading" secondItem="XR2-6X-wWN" secondAttribute="trailing" constant="5" id="zvS-Ug-W3m"/>
                                             </constraints>

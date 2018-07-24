@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -36,14 +36,13 @@
                             <rect key="frame" x="120" y="6" width="175" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="175" id="MfY-f7-mCE"/>
-                                <constraint firstAttribute="height" constant="35" id="ZMB-Bg-5sY"/>
                             </constraints>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fuh-YP-80l">
                             <rect key="frame" x="359" y="3" width="40" height="40"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="40" id="1m2-2W-o4R"/>
-                                <constraint firstAttribute="width" constant="40" id="amF-qb-cjH"/>
+                                <constraint firstAttribute="height" constant="40" id="o4s-sS-nrL"/>
+                                <constraint firstAttribute="width" constant="40" id="xQ4-Mj-fl8"/>
                             </constraints>
                             <state key="normal" image="male.png"/>
                             <connections>
@@ -53,14 +52,12 @@
                     </subviews>
                     <color key="backgroundColor" red="0.19607843137254902" green="0.65098039215686276" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="Fuh-YP-80l" firstAttribute="top" secondItem="vNw-mo-Ifs" secondAttribute="top" constant="3" id="1Ca-ly-Ufm"/>
                         <constraint firstItem="ARR-Vm-tWG" firstAttribute="centerX" secondItem="vNw-mo-Ifs" secondAttribute="centerX" id="EMg-qv-wU8"/>
                         <constraint firstAttribute="bottom" secondItem="ARR-Vm-tWG" secondAttribute="bottom" constant="5" id="Elh-2U-bRZ"/>
                         <constraint firstItem="ARR-Vm-tWG" firstAttribute="top" secondItem="vNw-mo-Ifs" secondAttribute="top" constant="6" id="PTZ-zJ-nH9"/>
-                        <constraint firstAttribute="bottom" secondItem="Fuh-YP-80l" secondAttribute="bottom" constant="3" id="Y8l-RF-qyK"/>
-                        <constraint firstItem="Fuh-YP-80l" firstAttribute="centerY" secondItem="ARR-Vm-tWG" secondAttribute="centerY" id="Z8E-ji-Hbn"/>
-                        <constraint firstAttribute="trailing" secondItem="Fuh-YP-80l" secondAttribute="trailing" constant="15" id="ikL-ll-3sg"/>
+                        <constraint firstAttribute="trailing" secondItem="Fuh-YP-80l" secondAttribute="trailing" constant="15" id="gek-ZY-HN1"/>
                         <constraint firstAttribute="height" constant="46" id="pmu-Pv-Fx6"/>
+                        <constraint firstItem="Fuh-YP-80l" firstAttribute="centerY" secondItem="ARR-Vm-tWG" secondAttribute="centerY" id="qf7-fH-JVU"/>
                     </constraints>
                 </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbB-7W-Ors">

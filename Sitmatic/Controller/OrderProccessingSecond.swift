@@ -427,7 +427,8 @@ class OrderProccessingSecond: BaseViewController {
     
     func callGenrateModelApi(strData : String){
         
-        let dic = ["data": strData]
+        let dic = ["data": strData,
+                   "user_id":(self.appUserObject?.userId)!]
 
         
         
@@ -445,19 +446,26 @@ class OrderProccessingSecond: BaseViewController {
             }
             else{
                // jsondata["callDetected"] == "Yes"
-//                if jsondata["callDetected"] == "Yes"{
-//                    
-//                    self.viewCall.frame = self.view.bounds
-//                    self.view.addSubview(self.viewCall)
-//                   
-//                }
-//                else{
-                    
+                if jsondata["callDetected"] == "Yes"{
+
+                    self.viewCall.frame = self.view.bounds
+                    self.view.addSubview(self.viewCall)
+
+                }
+                else{
+                
                     let obj = SuccessData(fromJson: jsondata["successData"])
                     self.arrModelDescription = obj.model
                     self.sucessObj = obj
-                 
-                    
+        
+                    let objNew = ModelDescreption(fromJson: jsondata)
+                
+               
+                let strDataId = String(objNew.dataId)
+         
+                UserDefaults.standard.set(strDataId, forKey: "dataId")
+                UserDefaults.standard.synchronize()
+              
                     self.btnYesSub.setButtonImage("off.png")
                     self.btnNoSub.setButtonImage("off.png")
                     
@@ -467,7 +475,7 @@ class OrderProccessingSecond: BaseViewController {
                     
                     self.addSubView(obj)
                     
-                //}
+                }
             }
             SVProgressHUD.dismiss()
         }
@@ -491,7 +499,8 @@ class OrderProccessingSecond: BaseViewController {
                              userInfo: nil,
                              repeats: false)
         dicAnsData["isModified"] = "1"
-        
+     
+        print(UserDefaults.standard.string(forKey: "dataId") ?? "")
     }
     
     

@@ -8,6 +8,9 @@ import SwiftyJSON
 
 class ModelDescreption : NSObject, NSCoding{
 
+	var callDetected : String!
+	var dataId : Int!
+	var descriptionField : String!
 	var status : String!
 	var successData : SuccessData!
 
@@ -19,6 +22,9 @@ class ModelDescreption : NSObject, NSCoding{
 		if json.isEmpty{
 			return
 		}
+		callDetected = json["callDetected"].stringValue
+		dataId = json["data_id"].intValue
+		descriptionField = json["description"].stringValue
 		status = json["status"].stringValue
 		let successDataJson = json["successData"]
 		if !successDataJson.isEmpty{
@@ -32,6 +38,15 @@ class ModelDescreption : NSObject, NSCoding{
 	func toDictionary() -> [String:Any]
 	{
 		var dictionary = [String:Any]()
+		if callDetected != nil{
+			dictionary["callDetected"] = callDetected
+		}
+		if dataId != nil{
+			dictionary["data_id"] = dataId
+		}
+		if descriptionField != nil{
+			dictionary["description"] = descriptionField
+		}
 		if status != nil{
 			dictionary["status"] = status
 		}
@@ -47,6 +62,9 @@ class ModelDescreption : NSObject, NSCoding{
     */
     @objc required init(coder aDecoder: NSCoder)
 	{
+         callDetected = aDecoder.decodeObject(forKey: "callDetected") as? String
+         dataId = aDecoder.decodeObject(forKey: "data_id") as? Int
+         descriptionField = aDecoder.decodeObject(forKey: "description") as? String
          status = aDecoder.decodeObject(forKey: "status") as? String
          successData = aDecoder.decodeObject(forKey: "successData") as? SuccessData
 
@@ -58,6 +76,15 @@ class ModelDescreption : NSObject, NSCoding{
     */
     func encode(with aCoder: NSCoder)
 	{
+		if callDetected != nil{
+			aCoder.encode(callDetected, forKey: "callDetected")
+		}
+		if dataId != nil{
+			aCoder.encode(dataId, forKey: "data_id")
+		}
+		if descriptionField != nil{
+			aCoder.encode(descriptionField, forKey: "description")
+		}
 		if status != nil{
 			aCoder.encode(status, forKey: "status")
 		}
