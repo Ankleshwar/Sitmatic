@@ -8,13 +8,22 @@
 
 import UIKit
 
-class ModifieModel: BaseViewController {
+
+protocol ModifyModelDelegate {
+    func setDataOnPrevious(dicValue:[String:Any])
+}
+
+
+
+class ModifyModel: BaseViewController {
     @IBOutlet weak var viewControl: UIView!
     @IBOutlet weak var viewBacrestSize: UIView!
     @IBOutlet weak var viewBackrestSizeHeight: NSLayoutConstraint!
-    
+    var delegate: ModifyModelDelegate?
     @IBOutlet weak var bottomViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var lblSeatAngle: UILabel!
     
+    @IBOutlet weak var lblArmrestOption: UILabel!
     @IBOutlet weak var btnBackrestSizeHeight: NSLayoutConstraint!
     @IBOutlet weak var lblSeatSize: UILabel!
     @IBOutlet weak var lblBackrestPosition: UILabel!
@@ -37,7 +46,7 @@ class ModifieModel: BaseViewController {
     var dicAnsData = Dictionary<String, String>()
     var strInce: String!
     @IBOutlet var pickerView: UIPickerView!
-    var isMesh = true
+    var isMesh = false
     @IBOutlet weak var lblbackRestSize: UILabel!
     var count = 0
    var successDataObject : SuccessData!
@@ -46,7 +55,7 @@ class ModifieModel: BaseViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var viewControlHeight: NSLayoutConstraint!
     
-    var arrIteam :Array<Any>?
+    var arrIteam :Array<String>?
     @IBOutlet weak var lblQuestion: UILabel!
     var strValue: String = ""
    
@@ -88,8 +97,7 @@ class ModifieModel: BaseViewController {
       
         
         setSlectedValue()
-        dicSelected["backrestOptions"] = [""]
-        dicSelected["seatOptions"] = [""]
+       
         
         self.viewBackrestSizeHeight.constant = 45
         self.btnBackrestSizeHeight.constant = 30
@@ -107,32 +115,134 @@ class ModifieModel: BaseViewController {
     
     func setSlectedValue(){
       
-        dicSelected["backrestOptions"] = [""]
-        dicSelected["seatOptions"] = [""]
-        dicSelected["control"] = successDataObject.controlValue
-        dicSelected["mesh"] = ""
-        dicSelected["casters"] = ""
-        dicSelected["footrest"] = ""
-        dicSelected["base"] = ""
-        dicSelected["armcap"] = ""
-        dicSelected["armrests"] = successDataObject.elbowToElbowDistanceValue
-        dicSelected["seatHieght"] = successDataObject.lowerLegLengthValue
-        dicSelected["seatDepth"] = successDataObject.upperLegLengthValue
-        dicSelected["seatSize"] = successDataObject.theighBredthValue
-        dicSelected["backrestSize"] = successDataObject.backrestSizeValue
-         self.lblbackRestSize.text = successDataObject.backrestSizeValue
-        self.lblBackrestPosition.text = "Please select a value"
-         self.lblSeatDepth.text = "Please select a value"
-        self.lblSeatOption.text = "Please select a value"
-        self.lblSeatHieght.text =  successDataObject.lowerLegLengthValue
-        self.lblArmrests.text = "Please select a value"
-        self.lblArmcap.text = "Please select a value"
-        self.lblBase.text = "Please select a value"
-        self.lblFootrest.text = "Please select a value"
-        self.lblCasters.text  = "Please select a value"
-        self.lblMesh.text = "Without Mesh"
-        self.lblCantrol.text = successDataObject.controlValue
-        self.lblSeatSize.text = successDataObject.theighBredthValue
+        
+        if dicSelected["backrestOptions"] != nil{
+         let  array = dicSelected["backrestOptions"] as! [String]
+            let string = array.joined(separator: " ")
+            self.lblBackrestPosition.text  = string
+        }else{
+            dicSelected["backrestOptions"] = [""]
+        }
+        if dicSelected["seatOptions"] != nil{
+            let  array = dicSelected["seatOptions"] as! [String]
+            let string = array.joined(separator: " ")
+            self.lblSeatOption.text  = string
+        }else{
+            dicSelected["seatOptions"] = [""]
+        }
+        if dicSelected["mesh"] as? String != nil {
+            self.lblMesh.text = dicSelected["mesh"] as? String
+        }else{
+             self.lblMesh.text = "Without Mesh"
+             dicSelected["mesh"] = "Without Mesh"
+        }
+        if successDataObject.elbowToElbowDistanceValue != "" {
+             dicSelected["armrests"] = successDataObject.elbowToElbowDistanceValue
+            self.lblArmrests.text = successDataObject.elbowToElbowDistanceValue
+        } else if dicSelected["armrests"] != nil{
+            self.lblArmrests.text = dicSelected["armrests"] as? String
+            
+        }else{
+            self.lblArmrests.text = "Please select "
+            dicSelected["armrests"] = "Please select "
+        }
+        if successDataObject.controlValue != "" {
+            dicSelected["control"] = successDataObject.controlValue
+             self.lblCantrol.text = successDataObject.controlValue
+        } else{
+            self.lblCantrol.text = "Please select "
+            dicSelected["control"] = "Please select "
+        }
+        if dicSelected["casters"] as? String != nil {
+            self.lblCasters.text = dicSelected["casters"] as? String
+        }else{
+             self.lblCasters.text  = "Please select "
+                dicSelected["casters"] = "Please select "
+        }
+        
+        if dicSelected["footrest"] as? String != nil {
+            self.lblFootrest.text = dicSelected["footrest"] as? String
+        }else{
+           self.lblFootrest.text = "Please select "
+            dicSelected["footrest"] = "Please select "
+        }
+        if dicSelected["base"] as? String != nil {
+            self.lblBase.text = dicSelected["base"] as? String
+        }else{
+            self.lblBase.text = "Please select "
+            dicSelected["base"] = "Please select "
+        }
+        if dicSelected["armcap"] as? String != nil {
+            self.lblArmcap.text = dicSelected["armcap"] as? String
+        }else{
+             self.lblArmcap.text = "Please select "
+            dicSelected["armcap"] = "Please select "
+        }
+        
+        if successDataObject.lowerLegLengthValue != "" {
+            dicSelected["seatHieght"] = successDataObject.lowerLegLengthValue
+            self.lblSeatHieght.text = successDataObject.lowerLegLengthValue
+        } else if dicSelected["seatHieght"] != nil{
+            self.lblSeatHieght.text = dicSelected["seatHieght"] as? String
+            
+        }else{
+            self.lblSeatHieght.text = "Please select "
+            dicSelected["seatHieght"] = "Please select "
+        }
+        if successDataObject.upperLegLengthValue != "" {
+            dicSelected["seatDepth"] = successDataObject.upperLegLengthValue
+            self.lblSeatDepth.text = successDataObject.upperLegLengthValue
+        } else if dicSelected["seatDepth"] != nil{
+            self.lblSeatDepth.text = dicSelected["seatDepth"] as? String
+            
+        }else{
+            self.lblSeatDepth.text = "Please select "
+            dicSelected["seatDepth"] = "Please select "
+        }
+        if successDataObject.theighBredthValue != "" {
+            dicSelected["seatSize"] = successDataObject.theighBredthValue
+            self.lblSeatSize.text = successDataObject.theighBredthValue
+        } else if dicSelected["seatSize"] != nil{
+            self.lblSeatSize.text = dicSelected["seatSize"] as? String
+            
+        }else{
+            self.lblSeatSize.text = "Please select "
+            dicSelected["seatSize"] = "Please select "
+        }
+        if successDataObject.backrestSizeValue != "" {
+            dicSelected["backrestSize"] = successDataObject.backrestSizeValue
+            self.lblbackRestSize.text = successDataObject.backrestSizeValue
+        } else if dicSelected["backrestSize"] != nil{
+            self.lblbackRestSize.text = dicSelected["backrestSize"] as? String
+            
+        }else{
+            self.lblbackRestSize.text = "Please select "
+            dicSelected["backrestSize"] = "Please select "
+        }
+        if dicSelected["seatAngle"] as? String != nil {
+            self.lblSeatAngle.text = dicSelected["seatAngle"] as? String
+        }else{
+            self.lblSeatAngle.text = "Please select "
+            dicSelected["seatAngle"] = "Please select "
+        }
+        if dicSelected["armrestOption"] as? String != nil {
+            self.lblArmrestOption.text = dicSelected["armrestOption"] as? String
+        }else{
+            self.lblArmrestOption.text = "Please select "
+            dicSelected["armrestOption"] = "Please select "
+        }
+   
+       
+
+      
+        
+       
+      
+       
+       
+       
+        
+      
     }
     
     
@@ -155,7 +265,7 @@ class ModifieModel: BaseViewController {
     
     func setTableView(){
       
-         let toolBar = UIToolbar().ToolbarPiker(mySelect: #selector(self.donedatePicker))
+         let toolBar = UIToolbar().ToolbarTable(mySelect: #selector(self.donedatePicker),myCancle:#selector(self.cancleTable))
         self.tableView.tableHeaderView = toolBar
         self.tableView.isHidden = false
         self.tableView.reloadData()
@@ -189,20 +299,46 @@ class ModifieModel: BaseViewController {
         
     }
     
+    @objc func cancleTable(){
+        if index == 2{
+            self.lblBackrestPosition.text  = "Please select"
+            dicSelected["backrestOptions"] = ["Please select"]
+            self.tableView.isHidden = true
+        }else if index == 3{
+            self.lblSeatOption.text  = "Please select"
+            dicSelected["seatOptions"] = ["Please select"]
+            self.tableView.isHidden = true
+        }
+    }
+    
     @objc func donedatePicker(){
         
         if index == 0{
-            
+            if strValue == "Default value"{
+                self.lblbackRestSize.text   = successDataObject.backrestSizeValue
+                dicSelected["backrestSize"] = successDataObject.backrestSizeValue
+            }else{
+                self.lblbackRestSize.text   = strValue
+                dicSelected["backrestSize"] = strValue
+            }
         
             
-            self.lblbackRestSize.text   = strValue
-            dicSelected["backrestSize"] = strValue
+           
             
             
         }else if index == 1{
+            
+            
+            if strValue == "Default value"{
+                self.lblSeatSize.text  = successDataObject.theighBredthValue
+                dicSelected["seatSize"] = successDataObject.theighBredthValue
+            }else{
+                self.lblSeatSize.text  = strValue
+                dicSelected["seatSize"] = strValue
+            }
+            
           
-            self.lblSeatSize.text  = strValue
-             dicSelected["seatSize"] = strValue
+        
             
         }else if index == 2{
             dicSelected["backrestOptions"] = self.selectedOptions
@@ -217,11 +353,28 @@ class ModifieModel: BaseViewController {
             self.selectedOptions.removeAll()
             self.tableView.isHidden = true
         }else if index == 4{
-            self.lblSeatHieght.text  = strValue
-             dicSelected["seatHieght"] = strValue
+            
+            
+            if strValue == "Default value"{
+                self.lblSeatHieght.text  = successDataObject.lowerLegLengthValue
+                dicSelected["seatHieght"] = successDataObject.lowerLegLengthValue
+            }else{
+                self.lblSeatHieght.text  = strValue
+                dicSelected["seatHieght"] = strValue
+            }
+            
+           
         }else if index == 5{
-            self.lblArmrests.text  = strValue
-              dicSelected["armrests"] = strValue
+            
+            if strValue == "Default value"{
+                self.lblArmrests.text  = successDataObject.elbowToElbowDistanceValue
+                dicSelected["armrests"] = successDataObject.elbowToElbowDistanceValue
+            }else{
+                self.lblArmrests.text  = strValue
+                dicSelected["armrests"] = strValue
+            }
+            
+     
         }else if index == 6{
             self.lblArmcap.text  = strValue
              dicSelected["armcap"] = strValue
@@ -240,13 +393,7 @@ class ModifieModel: BaseViewController {
                 self.isMesh = true
                 self.viewBackrestSizeHeight.constant = 0
                 self.btnBackrestSizeHeight.constant = 0
-     //            viewBacrestSize.translatesAutoresizingMaskIntoConstraints = false
-      //        self.viewBacrestSize.topAnchor.constraint(equalTo: self.viewControl.bottomAnchor,constant: 10).isActive = false
-           
-       //         self.viewBacrestSize.topAnchor.constraint(equalTo: self.viewControl.bottomAnchor,constant: 0).isActive = true
-//                 self.viewBacrestSize.bottomAnchor.constraint(equalTo: self.viewControl.bottomAnchor,constant: 0).isActive = true
-//                 self.viewBacrestSize.leadingAnchor.constraint(equalTo: self.view.leadingAnchor,constant: 0).isActive = true
-//                 self.viewBacrestSize.trailingAnchor.constraint(equalTo: self.view.trailingAnchor,constant: 0).isActive = true
+
             
                 self.view.layoutIfNeeded()
                 }else{
@@ -254,22 +401,40 @@ class ModifieModel: BaseViewController {
                 self.isMesh = false
                  self.viewBackrestSizeHeight.constant = 45
                 self.btnBackrestSizeHeight.constant = 30
-               // viewBacrestSize.translatesAutoresizingMaskIntoConstraints = false
-                //self.viewBacrestSize.topAnchor.constraint(equalTo: self.viewControl.bottomAnchor,constant: 0).isActive = false
-                //self.viewBacrestSize.topAnchor.constraint(equalTo: self.viewControl.bottomAnchor,constant: 10).isActive = true
-//                self.viewBacrestSize.bottomAnchor.constraint(equalTo: self.viewControl.bottomAnchor,constant: 10).isActive = true
-//                self.viewBacrestSize.leadingAnchor.constraint(equalTo: self.view.leadingAnchor,constant: 0).isActive = true
-//                self.viewBacrestSize.trailingAnchor.constraint(equalTo: self.view.trailingAnchor,constant: 0).isActive = true
+
                 self.view.layoutIfNeeded()
             }
             
             dicSelected["mesh"] = strValue
         }else if index == 11{
-            self.lblCantrol.text = strValue
-             dicSelected["control"] = strValue
+            
+            if strValue == "Default value"{
+                self.lblCantrol.text  = successDataObject.controlValue
+                dicSelected["control"] = successDataObject.controlValue
+            }else{
+                self.lblCantrol.text = strValue
+                dicSelected["control"] = strValue
+            }
+            
+            
+          
         }else if index == 12{
-            self.lblSeatDepth.text = strValue
-            dicSelected["seatDepth"] = strValue
+            
+            if strValue == "Default value"{
+                self.lblSeatDepth.text  = successDataObject.upperLegLengthValue
+                dicSelected["seatDepth"] = successDataObject.upperLegLengthValue
+            }else{
+                self.lblSeatDepth.text = strValue
+                dicSelected["seatDepth"] = strValue
+            }
+            
+           
+        }else if index == 13{
+            self.lblSeatAngle.text  = strValue
+            dicSelected["seatAngle"] = strValue
+        }else if index == 14{
+            self.lblArmrestOption.text  = strValue
+            dicSelected["armrestOption"] = strValue
         }
   
         
@@ -306,10 +471,71 @@ class ModifieModel: BaseViewController {
         index = (sender as AnyObject).tag
         
         self.arrIteam = arrQuestion![index]["value"] as? Array
+        
+        if index == 0 {
+            let indexArray = self.arrIteam?.index(where: { $0 == successDataObject.backrestSizeValue})
+            if indexArray != nil {
+                self.arrIteam?.remove(at: indexArray!)
+                self.arrIteam?.append("Default value")
+            }
+            
+        }
+        
+        
+       else if index == 1 {
+            let indexArray = self.arrIteam?.index(where: { $0 == successDataObject.theighBredthValue})
+            if indexArray != nil {
+                self.arrIteam?.remove(at: indexArray!)
+                self.arrIteam?.append("Default value")
+            }
+            
+        }
+        
+        
+        else if index == 4 {
+            let indexArray = self.arrIteam?.index(where: { $0 == successDataObject.lowerLegLengthValue})
+            if indexArray != nil {
+                self.arrIteam?.remove(at: indexArray!)
+                self.arrIteam?.append("Default value")
+            }
+            
+        }
+        
+        else if index == 5 {
+            let indexArray = self.arrIteam?.index(where: { $0 == successDataObject.elbowToElbowDistanceValue})
+            if indexArray != nil {
+                self.arrIteam?.remove(at: indexArray!)
+                self.arrIteam?.append("Default value")
+            }
+            
+        } else if index == 11 {
+            let indexArray = self.arrIteam?.index(where: { $0 == successDataObject.controlValue})
+            if indexArray != nil {
+                self.arrIteam?.remove(at: indexArray!)
+                self.arrIteam?.append("Default value")
+            }
+        }else if index == 12 {
+            let indexArray = self.arrIteam?.index(where: { $0 == successDataObject.upperLegLengthValue})
+            if indexArray != nil {
+                self.arrIteam?.remove(at: indexArray!)
+                self.arrIteam?.append("Default value")
+            }
+        }
+        
+        
+        
+        
+        
+        
         self.strValue = ""
     
         if index == 2 {
             self.selectedOptions = dicSelected["backrestOptions"] as! [String]
+            
+            if successDataObject.backrestSize == "4"{
+                self.arrIteam?.append("Headrest")
+            }
+            
             self.setTableView()
         }else if index == 3 {
             self.lblSeatOption.numberOfLines = 0
@@ -362,7 +588,7 @@ class ModifieModel: BaseViewController {
     
     @IBAction func clickToPrevious(_ sender: Any) {
         
-        
+        self.delegate?.setDataOnPrevious(dicValue: dicSelected)
         
         self.navigationController?.popViewController(animated: true)
         
@@ -394,7 +620,7 @@ class ModifieModel: BaseViewController {
     
 }
 
-extension ModifieModel : UIPickerViewDelegate,UIPickerViewDataSource{
+extension ModifyModel : UIPickerViewDelegate,UIPickerViewDataSource{
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         
@@ -484,7 +710,7 @@ extension ModifieModel : UIPickerViewDelegate,UIPickerViewDataSource{
         if index == 11 {
             return 85.0
         }else{
-             return 40.0
+             return 50.0
         }
         
     }
@@ -493,7 +719,7 @@ extension ModifieModel : UIPickerViewDelegate,UIPickerViewDataSource{
 
 
 
-extension ModifieModel: UITextFieldDelegate{
+extension ModifyModel: UITextFieldDelegate{
     
     
     
@@ -508,7 +734,7 @@ extension ModifieModel: UITextFieldDelegate{
 }
 
 
-extension ModifieModel : UITableViewDelegate,UITableViewDataSource {
+extension ModifyModel : UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (arrIteam?.count)!
     }

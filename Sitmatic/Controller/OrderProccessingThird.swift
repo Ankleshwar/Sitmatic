@@ -131,16 +131,16 @@ class OrderProccessingThird: BaseViewController {
     
     @IBAction func clickToConfirmModel(_ sender: Any) {
         
-        _ = SweetAlert().showAlert("Confirm Order", subTitle: "", style: AlertStyle.warning, buttonTitle:"No", buttonColor:UIColor.darkBlue , otherButtonTitle:  "Yes", otherButtonColor: UIColor.colorFromRGB(0xDD6B55)) { (isOtherButton) -> Void in
+        _ = SweetAlert().showAlert("Confirm Order?", subTitle: "", style: AlertStyle.warning, buttonTitle:"No", buttonColor:UIColor.darkBlue , otherButtonTitle:  "Yes", otherButtonColor: UIColor.colorFromRGB(0xDD6B55)) { (isOtherButton) -> Void in
             if isOtherButton == true {
                 
-              // _ = SweetAlert().showAlert("Thank you!", subTitle: "Your Order has been placed sucessfully. Your order ID is 12567", style: AlertStyle.success)
+              
             }
             else {
+                
+                    self.callConfirmOrder()
               
-                 _ = SweetAlert().showAlert("Thank you!", subTitle: "Your Order has been placed sucessfully. Your order ID is 12567", style: AlertStyle.success)
-                let vc = SHomeVC(nibName: "SHomeVC", bundle: nil)
-                self.navigationController?.pushViewController(vc, animated: true)
+              
             }
         }
         
@@ -290,7 +290,7 @@ class OrderProccessingThird: BaseViewController {
                 // _ = SweetAlert().showAlert("Cancelled!", subTitle: "Your Order Processing is safe", style: AlertStyle.error)
             }
             else {
-                //_ = SweetAlert().showAlert("Deleted!", subTitle: "Your Order Processing has been deleted!", style: AlertStyle.success)
+               // _ = SweetAlert().showAlert("Deleted!", subTitle: "Your Order Processing has been deleted!", style: AlertStyle.success)
                 let vc = SHomeVC(nibName: "SHomeVC", bundle: nil)
                self.navigationController?.pushViewController(vc, animated: true)
             }
@@ -567,13 +567,63 @@ class OrderProccessingThird: BaseViewController {
 }
         
     func setNextData(){
-        let vc = ModifieModel(nibName: "ModifieModel", bundle: nil)
+        let vc = ModifyModel(nibName: "ModifyModel", bundle: nil)
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
         
         
+    
+    
+    
+    
+    
+    func callConfirmOrder(){
         
+        let dic = [
+            
+                   "user_id":(self.appUserObject?.userId)!,
+                   "data_id": UserDefaults.standard.string(forKey: "dataId") ?? ""] as [String : Any]
+        
+      
+        
+        SVProgressHUD.show()
+        
+        ServiceClass().getModel(strUrl: "sendpdf", param: dic as [String : AnyObject] ) { error, jsondata in
+            
+            if error != nil{
+                
+                
+                self.showToast(message: (error?.localizedDescription)!)
+        
+                SVProgressHUD.dismiss()
+            }else{
+                
+               print(jsondata)
+                
+                let dataDic =  jsondata["successData"]
+                let orderId = dataDic["order_number"]
+                
+                _ = SweetAlert().showAlert("Thank you!", subTitle: "Your Order has been placed sucessfully. Your order ID is \(String(describing: orderId))", style: AlertStyle.success)
+                let vc = SHomeVC(nibName: "SHomeVC", bundle: nil)
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            
+            SVProgressHUD.dismiss()
+        }
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
         
         
     
@@ -624,7 +674,8 @@ class OrderProccessingThird: BaseViewController {
              
                 
                 self.showToast(message: (error?.localizedDescription)!)
-                
+                self.btnCancle.isEnabled = true
+                self.txtColor.isEnabled = true
                 SVProgressHUD.dismiss()
             }else{
               

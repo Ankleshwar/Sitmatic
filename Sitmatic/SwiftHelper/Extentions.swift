@@ -225,6 +225,30 @@ public extension UIToolbar {
         return toolBar
     }
     
+    
+    
+    
+    func ToolbarTable(mySelect : Selector,myCancle : Selector) -> UIToolbar {
+        
+        let toolBar = UIToolbar()
+        
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor.white
+        toolBar.backgroundColor = UIColor.black
+        toolBar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: mySelect)
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+         let cancleButton = UIBarButtonItem(title: "Cancle", style: UIBarButtonItemStyle.plain, target: self, action: myCancle)
+        toolBar.setItems([cancleButton,spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        
+        return toolBar
+    }
+    
+    
+    
 }
 
 

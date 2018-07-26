@@ -17,7 +17,11 @@ protocol OrderProccessingSecondDelegate  {
 
 
 
-class OrderProccessingSecond: BaseViewController {
+class OrderProccessingSecond: BaseViewController , ModifyModelDelegate{
+    
+    
+    
+    
     var sucessObj : SuccessData!
     var strValueID = ""
     var strprice = ""
@@ -34,7 +38,7 @@ class OrderProccessingSecond: BaseViewController {
     @IBOutlet weak var btnPreviousSub: UIButton!
     @IBOutlet weak var tableViewieght: NSLayoutConstraint!
     @IBOutlet weak var viewScrollHeight: NSLayoutConstraint!
-   
+    var dicPreviousData = Dictionary<String, Any>()
     @IBOutlet weak var txtModelNumber: UITextField!
     
     var delegate : OrderProccessingSecondDelegate?
@@ -122,7 +126,9 @@ class OrderProccessingSecond: BaseViewController {
         self.isFirstQue =  true
     }
     
-    
+    func setDataOnPrevious(dicValue: [String : Any]) {
+        self.dicPreviousData = dicValue
+    }
     
     
     override func didReceiveMemoryWarning() {
@@ -349,7 +355,9 @@ class OrderProccessingSecond: BaseViewController {
         
     @objc func setNextData(){
         self.view.isUserInteractionEnabled = true
-        let vc = ModifieModel(nibName: "ModifieModel", bundle: nil)
+        let vc = ModifyModel(nibName: "ModifyModel", bundle: nil)
+        vc.delegate = self
+        vc.dicSelected = self.dicPreviousData
         vc.successDataObject = self.sucessObj
         self.navigationController?.pushViewController(vc, animated: true)
         

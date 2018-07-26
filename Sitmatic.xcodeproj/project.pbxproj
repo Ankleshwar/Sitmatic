@@ -88,8 +88,8 @@
 		1BECD14820F8B557004252D5 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1BECD14720F8B556004252D5 /* Roboto-Bold.ttf */; };
 		1BECD14A20F8D5DA004252D5 /* Simulator Screen Shot - iPhone 8 Plus - 2018-07-13 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1BECD14920F8D5DA004252D5 /* Simulator Screen Shot - iPhone 8 Plus - 2018-07-13 1.jpg */; };
 		1BEFEAA620CA46DD00400AF1 /* watermark.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BEFEAA520CA46DC00400AF1 /* watermark.png */; };
-		1BF27F3E20E608740014B84E /* ModifieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF27F3C20E608740014B84E /* ModifieModel.swift */; };
-		1BF27F4120E60B5E0014B84E /* ModifieModel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BF27F4020E60B5E0014B84E /* ModifieModel.xib */; };
+		1BF27F3E20E608740014B84E /* ModifyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF27F3C20E608740014B84E /* ModifyModel.swift */; };
+		1BF27F4120E60B5E0014B84E /* ModifyModel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BF27F4020E60B5E0014B84E /* ModifyModel.xib */; };
 		1BF27F4320E633430014B84E /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF27F4220E633430014B84E /* Section.swift */; };
 		1BF27F4620E635820014B84E /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF27F4420E635820014B84E /* HeaderCell.swift */; };
 		1BF27F4720E635820014B84E /* HeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BF27F4520E635820014B84E /* HeaderCell.xib */; };
@@ -226,8 +226,8 @@
 		1BECD14720F8B556004252D5 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		1BECD14920F8D5DA004252D5 /* Simulator Screen Shot - iPhone 8 Plus - 2018-07-13 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Simulator Screen Shot - iPhone 8 Plus - 2018-07-13 1.jpg"; sourceTree = "<group>"; };
 		1BEFEAA520CA46DC00400AF1 /* watermark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = watermark.png; sourceTree = "<group>"; };
-		1BF27F3C20E608740014B84E /* ModifieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifieModel.swift; sourceTree = "<group>"; };
-		1BF27F4020E60B5E0014B84E /* ModifieModel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModifieModel.xib; sourceTree = "<group>"; };
+		1BF27F3C20E608740014B84E /* ModifyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyModel.swift; sourceTree = "<group>"; };
+		1BF27F4020E60B5E0014B84E /* ModifyModel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModifyModel.xib; sourceTree = "<group>"; };
 		1BF27F4220E633430014B84E /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		1BF27F4420E635820014B84E /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
 		1BF27F4520E635820014B84E /* HeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderCell.xib; sourceTree = "<group>"; };
@@ -431,7 +431,7 @@
 				1BB9C4BE20C8F8E10028A48A /* OrderProccessing.swift */,
 				1B2E011C20C79ED400B34645 /* SProfileVC.swift */,
 				3B01AB4520C6F06000291522 /* SSignupVC.swift */,
-				1BF27F3C20E608740014B84E /* ModifieModel.swift */,
+				1BF27F3C20E608740014B84E /* ModifyModel.swift */,
 				3B01AB0D20C6D87300291522 /* SSLoginVC.swift */,
 				1B2E012020C79EFD00B34645 /* SHomeVC.swift */,
 				1B6DF8F820C7F2A400280E84 /* StartOrderd.swift */,
@@ -448,7 +448,7 @@
 			children = (
 				1BCC0A4320EB419D00196F69 /* OrderProccessingThird.xib */,
 				1B7289EA20EB724F00C5D395 /* SDocumentVC.xib */,
-				1BF27F4020E60B5E0014B84E /* ModifieModel.xib */,
+				1BF27F4020E60B5E0014B84E /* ModifyModel.xib */,
 				1BECAEFC20D24DF50050AE31 /* SForgotPass.xib */,
 				1BE313B620CE6B17004F1931 /* OrderProccessingSecond.xib */,
 				1B6DF8F920C7F2A400280E84 /* StartOrderd.xib */,
@@ -619,6 +619,11 @@
 					3B01AADB20C6D7E900291522 = {
 						CreatedOnToolsVersion = 9.3.1;
 						LastSwiftMigration = 0930;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					3B01AAEF20C6D7EC00291522 = {
 						CreatedOnToolsVersion = 9.3.1;
@@ -705,7 +710,7 @@
 				1B26854720FF6D55004A11B6 /* check.png in Resources */,
 				1B2E012520C7A4E500B34645 /* Roboto-Regular.ttf in Resources */,
 				1B597C1420FDE79F00180C7D /* unchecked.png in Resources */,
-				1BF27F4120E60B5E0014B84E /* ModifieModel.xib in Resources */,
+				1BF27F4120E60B5E0014B84E /* ModifyModel.xib in Resources */,
 				1B26854120FF4105004A11B6 /* tick.png in Resources */,
 				1BB6091820F4CDF8000023D3 /* email.png in Resources */,
 				3B01AB4020C6DE3400291522 /* background.jpg in Resources */,
@@ -937,7 +942,7 @@
 				3B01AB2420C6D98300291522 /* ServiceClass.swift in Sources */,
 				1BB6090E20F4C343000023D3 /* ConfirmationVC.swift in Sources */,
 				1B2E011E20C79ED400B34645 /* SProfileVC.swift in Sources */,
-				1BF27F3E20E608740014B84E /* ModifieModel.swift in Sources */,
+				1BF27F3E20E608740014B84E /* ModifyModel.swift in Sources */,
 				1B48805620CA5C3D008AC3DD /* QuestionDataSecond.swift in Sources */,
 				3B01AB2820C6D98400291522 /* ECSHelper.swift in Sources */,
 				1B48805A20CA797C008AC3DD /* SweetAlert.swift in Sources */,
@@ -1145,7 +1150,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "Sitmatic/SwiftHelper/Sitmatic-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1171,7 +1176,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Sitmatic/SwiftHelper/Sitmatic-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
