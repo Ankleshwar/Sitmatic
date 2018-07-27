@@ -40,8 +40,16 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
         
         self.txtMobile.isEnabled = false
         self.txtAddress.isEditable = false
+        
+        
+        imgView.layer.borderWidth = 1
+        imgView.layer.masksToBounds = false
+        imgView.layer.borderColor = #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9490196078, alpha: 1).cgColor
+        imgView.layer.cornerRadius = imgView.frame.height/2
         imgView.clipsToBounds = true
-        imgView.layer.cornerRadius = (imgView.frame.size.height)/2
+        
+        
+
         self.btnPhoto.isEnabled = false
 
         self.btnLogOut.isEnabled = true
@@ -52,12 +60,14 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
            
         }
         else{
+            imgView.kf.indicatorType = .activity
+            
             let url = URL(string: (self.appUserObject?.userImageUrl)!)
             imgView.kf.setImage(with: url)
             KingfisherManager.shared.retrieveImage(with: url!, options: nil, progressBlock: nil, completionHandler: { image, error, cacheType, imageURL in
                 self.imageUser = image!
             })
-           
+           imgView.kf.indicatorType = .none
         }
         
         if    (self.appUserObject?.address)! == "" {

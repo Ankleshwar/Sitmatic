@@ -26,7 +26,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="51.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6O-n6-h6C">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6O-n6-h6C">
                         <rect key="frame" x="0.0" y="0.0" width="120" height="52"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -42,8 +42,8 @@
                             <constraint firstAttribute="width" constant="1" id="4Mc-Oh-GUz"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ixs-Eu-fkP">
-                        <rect key="frame" x="123" y="0.0" width="197" height="52"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ixs-Eu-fkP">
+                        <rect key="frame" x="126" y="0.0" width="194" height="52"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="14"/>
                         <color key="textColor" red="0.36078431372549019" green="0.36078431372549019" blue="0.36078431372549019" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -58,7 +58,7 @@
                     <constraint firstAttribute="bottom" secondItem="apg-FW-6xV" secondAttribute="bottom" id="Ug7-lS-QHc"/>
                     <constraint firstItem="apg-FW-6xV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Xxe-ES-cyl"/>
                     <constraint firstItem="B6O-n6-h6C" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="iJg-yP-HcT"/>
-                    <constraint firstItem="ixs-Eu-fkP" firstAttribute="leading" secondItem="apg-FW-6xV" secondAttribute="trailing" constant="2" id="ivk-I0-TcU"/>
+                    <constraint firstItem="ixs-Eu-fkP" firstAttribute="leading" secondItem="apg-FW-6xV" secondAttribute="trailing" constant="5" id="ivk-I0-TcU"/>
                     <constraint firstAttribute="bottom" secondItem="B6O-n6-h6C" secondAttribute="bottom" id="mxb-VQ-vQe"/>
                     <constraint firstAttribute="bottom" secondItem="ixs-Eu-fkP" secondAttribute="bottom" id="uov-kM-ull"/>
                 </constraints>

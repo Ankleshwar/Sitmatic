@@ -662,7 +662,7 @@ extension OrderProccessingSecond:UITableViewDelegate,UITableViewDataSource{
         
         
         if self.arrModelDescription![indexPath.section].descriptionField != nil {
-            cell?.lblDiscription?.text = " " + self.arrModelDescription![indexPath.section].descriptionField
+            cell?.lblDiscription?.text =  self.arrModelDescription![indexPath.section].descriptionField
         }
         if self.arrModelDescription![indexPath.section].type != nil {
             cell?.lblTittle.text = self.arrModelDescription![indexPath.section].type

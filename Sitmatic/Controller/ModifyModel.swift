@@ -136,9 +136,9 @@ class ModifyModel: BaseViewController {
              self.lblMesh.text = "Without Mesh"
              dicSelected["mesh"] = "Without Mesh"
         }
-        if successDataObject.elbowToElbowDistanceValue != "" {
-             dicSelected["armrests"] = successDataObject.elbowToElbowDistanceValue
-            self.lblArmrests.text = successDataObject.elbowToElbowDistanceValue
+        if successDataObject.armrestUprightValue != "" {
+             dicSelected["armrests"] = successDataObject.armrestUprightValue
+            self.lblArmrests.text = successDataObject.armrestUprightValue
         } else if dicSelected["armrests"] != nil{
             self.lblArmrests.text = dicSelected["armrests"] as? String
             
@@ -172,7 +172,11 @@ class ModifyModel: BaseViewController {
             self.lblBase.text = "Please select "
             dicSelected["base"] = "Please select "
         }
-        if dicSelected["armcap"] as? String != nil {
+        
+        if successDataObject.armrestCapValue != "" {
+            dicSelected["armcap"] = successDataObject.armrestCapValue
+            self.lblArmcap.text = successDataObject.armrestCapValue
+        } else if dicSelected["armcap"] as? String != nil {
             self.lblArmcap.text = dicSelected["armcap"] as? String
         }else{
              self.lblArmcap.text = "Please select "
@@ -367,8 +371,8 @@ class ModifyModel: BaseViewController {
         }else if index == 5{
             
             if strValue == "Default value"{
-                self.lblArmrests.text  = successDataObject.elbowToElbowDistanceValue
-                dicSelected["armrests"] = successDataObject.elbowToElbowDistanceValue
+                self.lblArmrests.text  = successDataObject.armrestUprightValue
+                dicSelected["armrests"] = successDataObject.armrestUprightValue
             }else{
                 self.lblArmrests.text  = strValue
                 dicSelected["armrests"] = strValue
@@ -376,8 +380,15 @@ class ModifyModel: BaseViewController {
             
      
         }else if index == 6{
-            self.lblArmcap.text  = strValue
-             dicSelected["armcap"] = strValue
+            
+            if strValue == "Default value"{
+                self.lblArmcap.text  = successDataObject.armrestCapValue
+                dicSelected["armrests"] = successDataObject.armrestCapValue
+            }else{
+            
+                self.lblArmcap.text  = strValue
+                dicSelected["armcap"] = strValue
+            }
         }else if index == 7{
             self.lblBase.text  = strValue
              dicSelected["base"] = strValue
@@ -502,13 +513,20 @@ class ModifyModel: BaseViewController {
         }
         
         else if index == 5 {
-            let indexArray = self.arrIteam?.index(where: { $0 == successDataObject.elbowToElbowDistanceValue})
+            let indexArray = self.arrIteam?.index(where: { $0 == successDataObject.armrestUprightValue})
             if indexArray != nil {
                 self.arrIteam?.remove(at: indexArray!)
                 self.arrIteam?.append("Default value")
             }
             
-        } else if index == 11 {
+        }     else if index == 6 {
+            let indexArray = self.arrIteam?.index(where: { $0 == successDataObject.armrestCapValue})
+            if indexArray != nil {
+                self.arrIteam?.remove(at: indexArray!)
+                self.arrIteam?.append("Default value")
+            }
+            
+        }else if index == 11 {
             let indexArray = self.arrIteam?.index(where: { $0 == successDataObject.controlValue})
             if indexArray != nil {
                 self.arrIteam?.remove(at: indexArray!)
@@ -707,7 +725,7 @@ extension ModifyModel : UIPickerViewDelegate,UIPickerViewDataSource{
     
 
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        if index == 11 {
+        if index == 11 || index == 9 || index == 5 || index == 6 {
             return 85.0
         }else{
              return 50.0
