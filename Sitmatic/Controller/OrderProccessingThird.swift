@@ -962,8 +962,14 @@ extension OrderProccessingThird:UITableViewDelegate,UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as? TableViewCell
         
         
-        cell?.lblDiscription?.text = " " + self.arrModelDescription![indexPath.section].descriptionField
-          cell?.lblTittle.text = self.arrModelDescription![indexPath.section].type
+        if self.arrModelDescription![indexPath.section].descriptionField != nil {
+             cell?.lblDiscription?.text = " " + self.arrModelDescription![indexPath.section].descriptionField
+        }
+        if self.arrModelDescription![indexPath.section].type != nil {
+            cell?.lblTittle.text = self.arrModelDescription![indexPath.section].type
+        }
+       
+        
 //        if indexPath.section == 0 {
 //
 //            cell?.lblTittle.text = "BackrestSize"
