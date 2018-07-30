@@ -8,6 +8,9 @@
 
 import UIKit
 
+
+
+
 class SHomeVC: UIViewController {
 
     @IBOutlet weak var pageController: UIPageControl!
@@ -26,13 +29,12 @@ class SHomeVC: UIViewController {
         super.viewDidLoad()
         
          self.collectionView.register(UINib(nibName: "HomeCell", bundle: Bundle.main), forCellWithReuseIdentifier: "Cell")
-        self.collectionView.backgroundColor = UIColor.clear
-        self.strNamePrivate = "NewPrivate"
-        self.strNameFileprivate = "Newfileprivate"
+         self.collectionView.backgroundColor = UIColor.clear
+
+       let tz = String (TimeZone.current.identifier)
+      
        
-        print(SHomeVC.strNameStatic)
-         SHomeVC.strNameStatic = "strStatic"
-         print(SHomeVC.strNameStatic)
+         print(tz)
       
     }
     

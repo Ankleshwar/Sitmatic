@@ -44,7 +44,7 @@
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ixs-Eu-fkP">
                         <rect key="frame" x="126" y="0.0" width="194" height="52"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.36078431372549019" green="0.36078431372549019" blue="0.36078431372549019" alpha="0.0" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="14"/>
                         <color key="textColor" red="0.36078431372549019" green="0.36078431372549019" blue="0.36078431372549019" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>

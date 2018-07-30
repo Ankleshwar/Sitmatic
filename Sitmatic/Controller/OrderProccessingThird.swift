@@ -658,14 +658,21 @@ class OrderProccessingThird: BaseViewController {
     
     
     func callGenrateModelApi(strData : String){
+        let array = NSMutableArray()
+        array.add(dicServerSide)
+        let strJson = self.json(from: array)
+        print(strJson ?? "")
         
+        
+        print(strJson)
         let dic = ["questions": strData,
                    "isModify": Modifie,
-                   "data":dicServerSide,
+                   "data": strJson,
                    "data_id": UserDefaults.standard.string(forKey: "dataId") ?? ""] as [String : Any]
 
         self.txtColor.isEnabled = false
         
+        print(dic)
         SVProgressHUD.show()
         
         ServiceClass().getModel(strUrl: "getmodifiedmodel", param: dic as [String : AnyObject] ) { error, jsondata in
@@ -690,11 +697,7 @@ class OrderProccessingThird: BaseViewController {
                     let obj = SuccessData(fromJson: jsondata["successData"])
                     self.arrModelDescription = obj.model
                    
-                    
-                 //   let objNew = ModelDescreption(fromJson: jsondata)
-                    
-                    
-                   // let strDataId = String(objNew.dataId)
+      
                     
             
                     
@@ -723,17 +726,17 @@ class OrderProccessingThird: BaseViewController {
         self.view.addSubview(self.viewShowModel)
         
         
-       // self.tableViewHieght.constant = CGFloat((self.arrModelDescription?.count)! * 50 + 20)
-        self.tableViewHieght.constant = CGFloat(6 * 50 + 20)
+        self.tableViewHieght.constant = CGFloat((self.arrModelDescription?.count)! * 50 + 20)
+//self.tableViewHieght.constant = CGFloat(6 * 50 + 20)
         let modelName = UIDevice.modelName
         
         if modelName == "iPhone 5s" || modelName == "iPhone 5c" || modelName == "iPhone 5" || modelName == "iPhone SE" {
             //self.viewScrollHeight.constant = CGFloat((self.arrModelDescription?.count)! * 50 + 80)
-            self.viewScrollHeight.constant = CGFloat( 6 * 50 + 80)
+            self.viewScrollHeight.constant = CGFloat( (self.arrModelDescription?.count)! * 50 + 80)
         }
         else{
          //   self.viewScrollHeight.constant =  CGFloat((self.arrModelDescription?.count)! * 50 )
-            self.viewScrollHeight.constant =  CGFloat(6 * 50 )
+            self.viewScrollHeight.constant =  CGFloat((self.arrModelDescription?.count)! * 50 )
         }
         
         //self.tableViewieght.constant = 3 * 50 + 20
@@ -950,8 +953,9 @@ extension OrderProccessingThird : UIPickerViewDelegate,UIPickerViewDataSource{
 extension OrderProccessingThird:UITableViewDelegate,UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
+       
         return (arrModelDescription?.count)!
-        //return 6
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -970,31 +974,7 @@ extension OrderProccessingThird:UITableViewDelegate,UITableViewDataSource{
         }
        
         
-//        if indexPath.section == 0 {
-//
-//            cell?.lblTittle.text = "BackrestSize"
-//            cell?.lblDiscription?.text = " " + "Smallest backrest 17h x17w"
-//        }else  if indexPath.section == 1 {
-//
-//            cell?.lblTittle.text = "SeatSize"
-//             cell?.lblDiscription?.text = " " + "Tiniest Seat 16\"w x 16\"d"
-//        }else  if indexPath.section == 2 {
-//
-//            cell?.lblTittle.text = "Control Type"
-//             cell?.lblDiscription?.text = " " + "Synchro Ergo, proportional rocking with independently adjustable backrest angle, seat depth,"
-//        }else  if indexPath.section == 3 {
-//
-//            cell?.lblTittle.text = "Backrest Option"
-//            cell?.lblDiscription?.text = " " + "Thoracic Air Bolster"
-//        }else  if indexPath.section == 4 {
-//
-//            cell?.lblTittle.text = "Mesh"
-//            cell?.lblDiscription?.text = " " + "Without Mesh"
-//        }else  if indexPath.section == 5 {
-//
-//            cell?.lblTittle.text = "Base"
-//            cell?.lblDiscription?.text = " " + "Black Aluminum Base"
-//        }
+
         
         return cell!
     }

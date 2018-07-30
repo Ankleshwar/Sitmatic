@@ -80,6 +80,7 @@
 		1BCEB5C420FC7A280042EFBD /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BCEB5C220FC7A280042EFBD /* TableViewCell.xib */; };
 		1BE313B520CE6ABD004F1931 /* OrderProccessingSecond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE313B420CE6ABD004F1931 /* OrderProccessingSecond.swift */; };
 		1BE313B720CE6B17004F1931 /* OrderProccessingSecond.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BE313B620CE6B17004F1931 /* OrderProccessingSecond.xib */; };
+		1BE96303210EDD91008E00FF /* TimeZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE96302210EDD91008E00FF /* TimeZone.swift */; };
 		1BECAEFD20D24DF50050AE31 /* SForgotPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BECAEFB20D24DF50050AE31 /* SForgotPass.swift */; };
 		1BECAEFE20D24DF50050AE31 /* SForgotPass.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BECAEFC20D24DF50050AE31 /* SForgotPass.xib */; };
 		1BECD14420F86D3C004252D5 /* ModelDescreption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BECD14120F86D3B004252D5 /* ModelDescreption.swift */; };
@@ -218,6 +219,7 @@
 		1BCEB5C220FC7A280042EFBD /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		1BE313B420CE6ABD004F1931 /* OrderProccessingSecond.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderProccessingSecond.swift; sourceTree = "<group>"; };
 		1BE313B620CE6B17004F1931 /* OrderProccessingSecond.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderProccessingSecond.xib; sourceTree = "<group>"; };
+		1BE96302210EDD91008E00FF /* TimeZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZone.swift; sourceTree = "<group>"; };
 		1BECAEFB20D24DF50050AE31 /* SForgotPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SForgotPass.swift; sourceTree = "<group>"; };
 		1BECAEFC20D24DF50050AE31 /* SForgotPass.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SForgotPass.xib; sourceTree = "<group>"; };
 		1BECD14120F86D3B004252D5 /* ModelDescreption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelDescreption.swift; sourceTree = "<group>"; };
@@ -419,6 +421,7 @@
 				3B01AB3620C6DAB700291522 /* Sitmatic-Bridging-Header.h */,
 				1BF27F4220E633430014B84E /* Section.swift */,
 				1BB6091220F4C7B5000023D3 /* DesignableUITextField.swift */,
+				1BE96302210EDD91008E00FF /* TimeZone.swift */,
 			);
 			path = SwiftHelper;
 			sourceTree = "<group>";
@@ -553,7 +556,6 @@
 				3B01AAD920C6D7E900291522 /* Frameworks */,
 				3B01AADA20C6D7E900291522 /* Resources */,
 				E0ECE2DDB90549032270E940 /* [CP] Embed Pods Frameworks */,
-				0C4983CAC93026A75DCC313B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -572,8 +574,6 @@
 				3B01AAEC20C6D7EC00291522 /* Sources */,
 				3B01AAED20C6D7EC00291522 /* Frameworks */,
 				3B01AAEE20C6D7EC00291522 /* Resources */,
-				6D7F9CF7B96278CF7817463B /* [CP] Embed Pods Frameworks */,
-				E0AC3CEB2933BA3FBF04CBCC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -593,8 +593,6 @@
 				3B01AAF720C6D7EC00291522 /* Sources */,
 				3B01AAF820C6D7EC00291522 /* Frameworks */,
 				3B01AAF920C6D7EC00291522 /* Resources */,
-				C073863BE3CABA548CCB8C34 /* [CP] Embed Pods Frameworks */,
-				C4231D55052E78C0CF3BC932 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -754,21 +752,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0C4983CAC93026A75DCC313B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Sitmatic/Pods-Sitmatic-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		59F76CBAEF8C6B03C77F3469 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -785,21 +768,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6D7F9CF7B96278CF7817463B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SitmaticTests/Pods-SitmaticTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		77C0F85AC7E6BC2970E65482 /* [CP] Check Pods Manifest.lock */ = {
@@ -820,21 +788,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C073863BE3CABA548CCB8C34 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SitmaticUITests/Pods-SitmaticUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		C1265CB08666E4E00F891A91 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -851,36 +804,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C4231D55052E78C0CF3BC932 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SitmaticUITests/Pods-SitmaticUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E0AC3CEB2933BA3FBF04CBCC /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SitmaticTests/Pods-SitmaticTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E0ECE2DDB90549032270E940 /* [CP] Embed Pods Frameworks */ = {
@@ -942,6 +865,7 @@
 				3B01AB2420C6D98300291522 /* ServiceClass.swift in Sources */,
 				1BB6090E20F4C343000023D3 /* ConfirmationVC.swift in Sources */,
 				1B2E011E20C79ED400B34645 /* SProfileVC.swift in Sources */,
+				1BE96303210EDD91008E00FF /* TimeZone.swift in Sources */,
 				1BF27F3E20E608740014B84E /* ModifyModel.swift in Sources */,
 				1B48805620CA5C3D008AC3DD /* QuestionDataSecond.swift in Sources */,
 				3B01AB2820C6D98400291522 /* ECSHelper.swift in Sources */,

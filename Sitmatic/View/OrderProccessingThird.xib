@@ -439,7 +439,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gjB-8H-cJh">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="600"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Description:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pjF-Xo-i5F">
                                             <rect key="frame" x="10" y="5" width="394" height="24"/>
@@ -550,7 +550,7 @@
                                 <constraint firstItem="gjB-8H-cJh" firstAttribute="top" secondItem="DoA-c3-Dg3" secondAttribute="top" id="dNi-r7-56u"/>
                                 <constraint firstAttribute="bottom" secondItem="gjB-8H-cJh" secondAttribute="bottom" id="eDF-1Q-08H"/>
                                 <constraint firstAttribute="trailing" secondItem="gjB-8H-cJh" secondAttribute="trailing" id="pst-vT-8FW"/>
-                                <constraint firstItem="gjB-8H-cJh" firstAttribute="height" secondItem="DoA-c3-Dg3" secondAttribute="height" constant="100" id="qWL-XU-VYA"/>
+                                <constraint firstItem="gjB-8H-cJh" firstAttribute="height" secondItem="DoA-c3-Dg3" secondAttribute="height" constant="200" id="qWL-XU-VYA"/>
                                 <constraint firstItem="gjB-8H-cJh" firstAttribute="leading" secondItem="DoA-c3-Dg3" secondAttribute="leading" id="vuE-F2-Rjb"/>
                             </constraints>
                         </scrollView>
