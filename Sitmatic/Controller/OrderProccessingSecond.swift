@@ -399,7 +399,7 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate{
         self.view.addSubview(self.viewSubView)
         
         
-         self.tableViewieght.constant = CGFloat((self.arrModelDescription?.count)! * 50 + 20)
+         self.tableViewieght.constant = CGFloat((self.arrModelDescription?.count)! * 50 + 20 + 50)
         let modelName = UIDevice.modelName
         
         if modelName == "iPhone 5s" || modelName == "iPhone 5c" || modelName == "iPhone 5" || modelName == "iPhone SE" {
@@ -669,20 +669,7 @@ extension OrderProccessingSecond:UITableViewDelegate,UITableViewDataSource{
         }
         
         
-//
-//        cell?.lblDiscription?.text =  self.arrModelDescription![indexPath.section].descriptionField
-//        cell?.lblTittle.text = self.arrModelDescription![indexPath.section].type
-//        if indexPath.section == 0 {
-//
-//            cell?.lblTittle.text = "Backrest Size"
-//
-//        }else  if indexPath.section == 1 {
-//
-//            cell?.lblTittle.text = "Seat Size"
-//        }else  if indexPath.section == 2 {
-//
-//             cell?.lblTittle.text = "Control Type"
-//        }
+
        
         return cell!
     }
@@ -701,7 +688,13 @@ extension OrderProccessingSecond:UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50.0
+        
+        if indexPath.section == 2{
+            return 100.0
+        }else{
+            return 50.0
+        }
+        
     }
 }
 

@@ -10,7 +10,10 @@ import UIKit
 import Toast_Swift
 import SVProgressHUD
 
+
+
 class OrderProccessingThird: BaseViewController {
+
     
     @IBOutlet weak var lblModeFinal: UILabel!
     var strValue: String = ""
@@ -726,7 +729,7 @@ class OrderProccessingThird: BaseViewController {
         self.view.addSubview(self.viewShowModel)
         
         
-        self.tableViewHieght.constant = CGFloat((self.arrModelDescription?.count)! * 50 + 20)
+        self.tableViewHieght.constant = CGFloat((self.arrModelDescription?.count)! * 50 + 20 + 50)
 //self.tableViewHieght.constant = CGFloat(6 * 50 + 20)
         let modelName = UIDevice.modelName
         
@@ -755,7 +758,8 @@ class OrderProccessingThird: BaseViewController {
       
         self.lblModel.attributedText = attributedString1
         self.lblModeFinal.text = obj.proposedModel
-    
+      
+        
        // self.lblPrice.text = "Total Price:" + " " + "$" + String(obj.proposedPrice)
         self.lblPrice.text = "Total Price:" + " " + "$" + String(obj.proposedPrice)
         self.tableView.reloadData()
@@ -988,7 +992,11 @@ extension OrderProccessingThird:UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50.0
+        if indexPath.section == 2{
+            return 100.0
+        }else{
+            return 50.0
+        }
     }
 }
 

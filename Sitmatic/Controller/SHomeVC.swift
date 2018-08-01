@@ -17,6 +17,10 @@ class SHomeVC: UIViewController {
     @IBOutlet weak var scrollViewForSlider: UIScrollView!
     @IBOutlet weak var collectionView: UICollectionView!
     
+
+    
+    
+    
     private var strNamePrivate: String = "private"
     public var strNamePublic: String = "public"
     fileprivate var strNameFileprivate: String = "fileprivate"
@@ -31,10 +35,6 @@ class SHomeVC: UIViewController {
          self.collectionView.register(UINib(nibName: "HomeCell", bundle: Bundle.main), forCellWithReuseIdentifier: "Cell")
          self.collectionView.backgroundColor = UIColor.clear
 
-       let tz = String (TimeZone.current.identifier)
-      
-       
-         print(tz)
       
     }
     

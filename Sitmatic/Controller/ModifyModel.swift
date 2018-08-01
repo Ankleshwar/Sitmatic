@@ -117,18 +117,18 @@ class ModifyModel: BaseViewController {
       
         
         if dicSelected["backrestOptions"] != nil{
-         let  array = dicSelected["backrestOptions"] as! [String]
-            let string = array.joined(separator: " ")
+         let  array = [dicSelected["backrestOptions"]] as! [String]
+            let string = array.joined(separator: ",")
             self.lblBackrestPosition.text  = string
         }else{
-            dicSelected["backrestOptions"] = [""]
+            dicSelected["backrestOptions"] = ""
         }
         if dicSelected["seatOptions"] != nil{
-            let  array = dicSelected["seatOptions"] as! [String]
-            let string = array.joined(separator: " ")
+            let  array = [dicSelected["seatOptions"]] as! [String]
+            let string = array.joined(separator: ",")
             self.lblSeatOption.text  = string
         }else{
-            dicSelected["seatOptions"] = [""]
+            dicSelected["seatOptions"] = ""
         }
         if dicSelected["mesh"] as? String != nil {
             self.lblMesh.text = dicSelected["mesh"] as? String
@@ -229,7 +229,10 @@ class ModifyModel: BaseViewController {
             self.lblSeatAngle.text = "Please select "
             dicSelected["seatAngle"] = "Please select "
         }
-        if dicSelected["armrestOption"] as? String != nil {
+        if successDataObject.elbowHeightValue != "" {
+            dicSelected["armrestOption"] = successDataObject.elbowHeightValue
+            self.lblArmrestOption.text = successDataObject.elbowHeightValue
+        }else if dicSelected["armrestOption"] as? String != nil {
             self.lblArmrestOption.text = dicSelected["armrestOption"] as? String
         }else{
             self.lblArmrestOption.text = "Please select "
@@ -306,11 +309,11 @@ class ModifyModel: BaseViewController {
     @objc func cancleTable(){
         if index == 2{
             self.lblBackrestPosition.text  = "Please select"
-            dicSelected["backrestOptions"] = ["Please select"]
+            dicSelected["backrestOptions"] = "Please select"
             self.tableView.isHidden = true
         }else if index == 3{
             self.lblSeatOption.text  = "Please select"
-            dicSelected["seatOptions"] = ["Please select"]
+            dicSelected["seatOptions"] = "Please select"
             self.tableView.isHidden = true
         }
     }
@@ -345,14 +348,16 @@ class ModifyModel: BaseViewController {
         
             
         }else if index == 2{
-            dicSelected["backrestOptions"] = self.selectedOptions
-            let string = selectedOptions.joined(separator: " ")
+            
+            let string = selectedOptions.joined(separator: ",")
+            dicSelected["backrestOptions"] = string
             self.lblBackrestPosition.text  = string
             self.selectedOptions.removeAll()
             self.tableView.isHidden = true
         }else if index == 3{
-            dicSelected["seatOptions"] = self.selectedOptions
-            let string = selectedOptions.joined(separator: " ")
+             let string = selectedOptions.joined(separator: ",")
+            dicSelected["seatOptions"] = string
+           
             self.lblSeatOption.text  = string
             self.selectedOptions.removeAll()
             self.tableView.isHidden = true
@@ -444,8 +449,16 @@ class ModifyModel: BaseViewController {
             self.lblSeatAngle.text  = strValue
             dicSelected["seatAngle"] = strValue
         }else if index == 14{
-            self.lblArmrestOption.text  = strValue
-            dicSelected["armrestOption"] = strValue
+            
+            if strValue == "Default value"{
+                self.lblArmrestOption.text  = successDataObject.elbowHeightValue
+                dicSelected["armrestOption"] = successDataObject.elbowHeightValue
+            }else{
+                self.lblArmrestOption.text  = strValue
+                dicSelected["armrestOption"] = strValue
+            }
+            
+            
         }
   
         
@@ -539,7 +552,13 @@ class ModifyModel: BaseViewController {
                 self.arrIteam?.append("Default value")
             }
         }
-        
+        else if index == 14 {
+            let indexArray = self.arrIteam?.index(where: { $0 == successDataObject.elbowHeightValue})
+            if indexArray != nil {
+                self.arrIteam?.remove(at: indexArray!)
+                self.arrIteam?.append("Default value")
+            }
+        }
         
         
         
@@ -548,7 +567,7 @@ class ModifyModel: BaseViewController {
         self.strValue = ""
     
         if index == 2 {
-            self.selectedOptions = dicSelected["backrestOptions"] as! [String]
+            //self.selectedOptions = [ dicSelected["backrestOptions"] ] as! [String]
             
             if successDataObject.backrestSize == "4"{
                 self.arrIteam?.append("Headrest")
@@ -557,7 +576,8 @@ class ModifyModel: BaseViewController {
             self.setTableView()
         }else if index == 3 {
             self.lblSeatOption.numberOfLines = 0
-            self.selectedOptions = dicSelected["seatOptions"] as! [String]
+            //self.selectedOptions = [ dicSelected["seatOptions"] ] as! [String]
+            
             self.setTableView()
         } else if index == 0 {
             if isMesh == true{
@@ -666,7 +686,7 @@ extension ModifyModel : UIPickerViewDelegate,UIPickerViewDataSource{
         
         
     
-            return arrIteam?[row] as? String
+            return arrIteam?[row]
         
         
         
@@ -684,7 +704,7 @@ extension ModifyModel : UIPickerViewDelegate,UIPickerViewDataSource{
             
            
         }else{
-             self.strValue = (arrIteam?[row] as? String)!
+            self.strValue = (arrIteam?[row])!
         }
         
   
@@ -726,7 +746,7 @@ extension ModifyModel : UIPickerViewDelegate,UIPickerViewDataSource{
 
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         if index == 11 || index == 9 || index == 5 || index == 6 {
-            return 85.0
+            return 95.0
         }else{
              return 50.0
         }
@@ -758,7 +778,7 @@ extension ModifyModel : UITableViewDelegate,UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
-        cell?.textLabel?.text = arrIteam?[indexPath.row] as? String
+        cell?.textLabel?.text = arrIteam?[indexPath.row]
         
         if self.selectedOptions.index(of: arrIteam?[indexPath.row] as! String) != nil {
             cell?.accessoryType = .checkmark
