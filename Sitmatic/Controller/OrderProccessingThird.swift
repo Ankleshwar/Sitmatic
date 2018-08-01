@@ -729,13 +729,13 @@ class OrderProccessingThird: BaseViewController {
         self.view.addSubview(self.viewShowModel)
         
         
-        self.tableViewHieght.constant = CGFloat((self.arrModelDescription?.count)! * 50 + 20 + 50)
+        self.tableViewHieght.constant = CGFloat((self.arrModelDescription?.count)! * 50 + 20 + 70)
 //self.tableViewHieght.constant = CGFloat(6 * 50 + 20)
         let modelName = UIDevice.modelName
         
         if modelName == "iPhone 5s" || modelName == "iPhone 5c" || modelName == "iPhone 5" || modelName == "iPhone SE" {
             //self.viewScrollHeight.constant = CGFloat((self.arrModelDescription?.count)! * 50 + 80)
-            self.viewScrollHeight.constant = CGFloat( (self.arrModelDescription?.count)! * 50 + 80)
+            self.viewScrollHeight.constant = CGFloat( (self.arrModelDescription?.count)! * 50 + 80 + 70)
         }
         else{
          //   self.viewScrollHeight.constant =  CGFloat((self.arrModelDescription?.count)! * 50 )

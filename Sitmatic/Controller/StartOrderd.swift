@@ -53,38 +53,70 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
         self.strInce = "0"
         self.strValue = "3"
         self.ansStrIn = "36"
-        //        if arrCurrent.isEmpty == false{
-        //            if(self.isFirstQuestion == true){
-        //                self.isFirstQuestion = false
-        //            }
-        //
-        //            let iD : Int = (arrQuestion[count]["questionId"] as? Int)!
-        //            let index = arrCurrent.index(where: {$0["questionId"] == String(iD)})
-        //            var  dicLocal = arrCurrent[index!]
-        //            self.txtField.text = dicLocal["selected"]
-        //            lblQuestion.text = dicLocal["questionText"]
-        //
-        //            self.lblQuestionValueCount.text = dicLocal["questionId"]! + " " + "of 19 Questions"
-        //            self.arrIteam?.removeAll()
-        //            self.arrIteam = arrQuestion[count]["value"] as? Array
-        //            self.arrInch = arrQuestion[0]["inch"] as? Array
-        //            self.strValue = ""
-        //            self.pickerView.selectRow(0, inComponent: 0, animated: true)
-        //            self.pickerView(pickerView, didSelectRow: 0, inComponent: 0)
-        //          //  self.arrAnswer.append(dicLocal)
-        //
-        //        }else{
         
-        lblQuestion.text = arrQuestion[0]["questionText"] as? String
-        self.arrIteam = arrQuestion[0]["value"] as? Array
-        let id : Int = (arrQuestion[count]["questionId"] as? Int)!
-        self.arrInch = arrQuestion[0]["inch"] as? Array
-        self.arrIteam = arrQuestion[0]["value"] as? Array
-        self.lblQuestionValueCount.text = String(id) + " " + "of 19 Questions"
-        self.strValue = ""
-        self.pickerView.selectRow(0, inComponent: 0, animated: true)
-        self.pickerView(pickerView, didSelectRow: 0, inComponent: 0)
-        //  }
+        if arrCurrent.isEmpty == false{
+                    if(self.isFirstQuestion == true){
+                        self.isFirstQuestion = false
+                    }
+        
+                    let iD : Int = (arrQuestion[count]["questionId"] as? Int)!
+                    let index = arrCurrent.index(where: {$0["questionId"] == String(iD)})
+                    var  dicLocal = arrCurrent[index!]
+            
+            if iD == 5{
+                let strValueIn = dicLocal["selected"]
+         
+               
+                
+                var  fullNameArr = strValueIn?.components(separatedBy: " ")
+                strValue = fullNameArr![0]
+                strInce =  fullNameArr![1]
+                if NSString(string: strValue).contains("ft") {
+                    
+                    strValue = String(strValue.dropLast(2))
+                    print(strValue)
+                }
+                if NSString(string: strInce).contains("in") {
+                    
+                    strInce = String(strInce.dropLast(2))
+                    print(strInce)
+                }
+                
+                self.ansStrIn = String(Int(strValue)!*12 + Int(strInce)!)
+               
+                
+                
+                self.txtField.text = dicLocal["selected"]
+                self.strValue = self.ansStrIn
+            }else{
+                self.txtField.text = dicLocal["selected"]
+                self.strValue = dicLocal["selected"]
+            }
+            
+                    lblQuestion.text = dicLocal["questionText"]
+        
+                    self.lblQuestionValueCount.text = dicLocal["questionId"]! + " " + "of 19 Questions"
+                    self.arrIteam?.removeAll()
+                    self.arrIteam = arrQuestion[count]["value"] as? Array
+                    self.arrInch = arrQuestion[0]["inch"] as? Array
+                   
+            
+   
+                    self.arrAnswer.append(dicLocal)
+                    self.isPriviousClick = true
+        
+                }else{
+        
+                    lblQuestion.text = arrQuestion[0]["questionText"] as? String
+                    self.arrIteam = arrQuestion[0]["value"] as? Array
+                    let id : Int = (arrQuestion[count]["questionId"] as? Int)!
+                    self.arrInch = arrQuestion[0]["inch"] as? Array
+                    self.arrIteam = arrQuestion[0]["value"] as? Array
+                    self.lblQuestionValueCount.text = String(id) + " " + "of 19 Questions"
+                    self.strValue = ""
+                    self.pickerView.selectRow(0, inComponent: 0, animated: true)
+                    self.pickerView(pickerView, didSelectRow: 0, inComponent: 0)
+          }
         
         
     }
@@ -279,7 +311,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                 
                 
                 if id == 12{
-                    
+                    print(self.serverArraySecond)
                     self.arrAnswer = self.arrAnswer.filter { !$0.values.contains(String(id)) }
                     self.arrAnswer.append(dicData)
                     self.arrCurrent = self.arrCurrent.filter { !$0.values.contains(String(id)) }
@@ -326,8 +358,8 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                             self.arrIteam = arrQuestion[count]["value"] as? Array
                             
                             
-                            //  self.arrAnswer = self.arrAnswer.filter { !$0.values.contains(dicLocal["questionId"]!) }
-                            //self.arrAnswer.append(dicLocal)
+                              self.arrAnswer = self.arrAnswer.filter { !$0.values.contains(dicLocal["questionId"]!) }
+                            self.arrAnswer.append(dicLocal)
                         }
                         else{
                             

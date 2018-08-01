@@ -552,7 +552,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
 
         vc.serverArraySecond = serverArray
         vc.delegate = self
-        //vc.arrCurrent = arrStartOrderData
+        vc.arrCurrent = arrStartOrderData
         self.navigationController?.pushViewController(vc, animated: true)
 
     }
