@@ -688,6 +688,10 @@ class OrderProccessingThird: BaseViewController {
                 self.txtColor.isEnabled = true
                 SVProgressHUD.dismiss()
             }else{
+                
+                if let navVCsCount = self.navigationController?.viewControllers.count {
+                    self.navigationController?.viewControllers.removeSubrange(Range(0..<navVCsCount - 1))
+                }
               
                 if jsondata["callDetected"] == "Yes"{
                     
@@ -696,6 +700,8 @@ class OrderProccessingThird: BaseViewController {
                     
                 }
                 else{
+                    
+                  
                     
                     let obj = SuccessData(fromJson: jsondata["successData"])
                     self.arrModelDescription = obj.model

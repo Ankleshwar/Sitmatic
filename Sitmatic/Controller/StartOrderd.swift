@@ -55,9 +55,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
         self.ansStrIn = "36"
         
         if arrCurrent.isEmpty == false{
-                    if(self.isFirstQuestion == true){
-                        self.isFirstQuestion = false
-                    }
+            
         
                     let iD : Int = (arrQuestion[count]["questionId"] as? Int)!
                     let index = arrCurrent.index(where: {$0["questionId"] == String(iD)})
@@ -87,7 +85,10 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                 
                 
                 self.txtField.text = dicLocal["selected"]
-                self.strValue = self.ansStrIn
+                
+
+            
+                
             }else{
                 self.txtField.text = dicLocal["selected"]
                 self.strValue = dicLocal["selected"]
@@ -99,7 +100,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                     self.arrIteam?.removeAll()
                     self.arrIteam = arrQuestion[count]["value"] as? Array
                     self.arrInch = arrQuestion[0]["inch"] as? Array
-                   
+                    self.arrIteam = arrQuestion[0]["value"] as? Array
             
    
                     self.arrAnswer.append(dicLocal)
@@ -252,6 +253,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                 
                 
                 if(self.isFirstQuestion == true){
+                    
                     dicData["selected"] = self.txtField.text
                     dicLocal["selected"] = self.txtField.text
                     
@@ -316,7 +318,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                     self.arrAnswer.append(dicData)
                     self.arrCurrent = self.arrCurrent.filter { !$0.values.contains(String(id)) }
                     self.arrCurrent.append(dicLocal)
-                    print(self.arrAnswer)
+                   
                     self.txtField.isEnabled = false
                     self.isButtonCheck = true
                     let vc = OrderProccessingSecond(nibName: "OrderProccessingSecond", bundle: nil)
@@ -439,8 +441,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
         }else{
             
             if isBack == true{
-                // arrAnswer.removeLast()
-                // serverArraySecond.removeLast()
+              
                 isBack = false
             }
             
@@ -489,9 +490,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                 
                 self.isPriviousClick = true
                 
-                
-                //  self.arrAnswer.remove(at: count)
-                // serverArraySecond.remove(at: count)
+       
                 
             }
         }

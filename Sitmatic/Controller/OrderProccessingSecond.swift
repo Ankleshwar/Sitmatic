@@ -453,7 +453,10 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate{
            
             }
             else{
-               // jsondata["callDetected"] == "Yes"
+                if let navVCsCount = self.navigationController?.viewControllers.count {
+                    self.navigationController?.viewControllers.removeSubrange(Range(0..<navVCsCount - 1))
+                }
+                
                 if jsondata["callDetected"] == "Yes"{
 
                     self.viewCall.frame = self.view.bounds
@@ -461,7 +464,11 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate{
 
                 }
                 else{
-                
+                    
+                  //  print(self.navigationController?.viewControllers.count)
+                    
+                  
+                    
                     let obj = SuccessData(fromJson: jsondata["successData"])
                     self.arrModelDescription = obj.model
                     self.sucessObj = obj
