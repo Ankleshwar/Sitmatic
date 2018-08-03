@@ -240,7 +240,7 @@ public extension UIToolbar {
         
         let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: mySelect)
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-         let cancleButton = UIBarButtonItem(title: "Cancle", style: UIBarButtonItemStyle.plain, target: self, action: myCancle)
+         let cancleButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: myCancle)
         toolBar.setItems([cancleButton,spaceButton, doneButton], animated: false)
         toolBar.isUserInteractionEnabled = true
         
