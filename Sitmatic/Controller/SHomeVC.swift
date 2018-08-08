@@ -29,12 +29,29 @@ class SHomeVC: UIViewController {
     
     var arrImages = ["Chair1.jpg","Chair2.jpg","chair3.jpg","chair7.jpg"]
     
+    
+    
+    override func loadView() {
+        super.loadView()
+        print("loadViewCall")
+    }
+    //
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("viewDidAppearCall")
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+         print("viewDidDisappearCall")
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        print("viewWillDisappearCall")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
          self.collectionView.register(UINib(nibName: "HomeCell", bundle: Bundle.main), forCellWithReuseIdentifier: "Cell")
          self.collectionView.backgroundColor = UIColor.clear
-
+         print("viewDidLoadCall")
       
     }
     
@@ -57,6 +74,7 @@ class SHomeVC: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         setImageSlider()
+        print("viewWillAppearCall")
     }
     
     @IBAction func clickToProfile(_ sender: Any) {

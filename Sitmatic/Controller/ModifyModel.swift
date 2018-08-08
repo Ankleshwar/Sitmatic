@@ -565,9 +565,28 @@ class ModifyModel: BaseViewController {
         
         
         self.strValue = ""
-    
-        if index == 2 {
-            //self.selectedOptions = [ dicSelected["backrestOptions"] ] as! [String]
+        
+        if index == 10 {
+            if successDataObject.backrestSize == "4"{
+                self.showToast(message: "you can't select it")
+            }else{
+               showPicker()
+            }
+        }else  if index == 1 {
+            
+            
+            if successDataObject.backrestSize == "4"{
+                 self.showToast(message: "you can't select it")
+            }else{
+                  showPicker()
+            }
+            
+            
+        }
+        
+        
+        else  if index == 2 {
+        
             
             if successDataObject.backrestSize == "4"{
                 self.arrIteam?.append("Headrest")
@@ -576,20 +595,27 @@ class ModifyModel: BaseViewController {
             self.setTableView()
         }else if index == 3 {
             self.lblSeatOption.numberOfLines = 0
-            //self.selectedOptions = [ dicSelected["seatOptions"] ] as! [String]
+         
             
             self.setTableView()
         } else if index == 0 {
-            if isMesh == true{
-               self.viewBackrestSizeHeight.constant = 0
-                self.btnBackrestSizeHeight.constant = 0
-                self.view.layoutIfNeeded()
+            if successDataObject.backrestSize == "4"{
+               self.showToast(message: "you can't select it")
             }else{
-                self.viewBackrestSizeHeight.constant = 45
-                self.btnBackrestSizeHeight.constant = 30
-                self.view.layoutIfNeeded()
-                showPicker()
+                if isMesh == true{
+                    self.viewBackrestSizeHeight.constant = 0
+                    self.btnBackrestSizeHeight.constant = 0
+                    self.view.layoutIfNeeded()
+                }else{
+                    self.viewBackrestSizeHeight.constant = 45
+                    self.btnBackrestSizeHeight.constant = 30
+                    self.view.layoutIfNeeded()
+                    showPicker()
+                }
+
             }
+            
+            
         }else{
             showPicker()
         }

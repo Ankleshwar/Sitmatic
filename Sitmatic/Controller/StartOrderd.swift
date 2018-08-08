@@ -53,7 +53,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
         self.strInce = "0"
         self.strValue = "3"
         self.ansStrIn = "36"
-        
+          print("viewDidLoadCall")
         if arrCurrent.isEmpty == false{
             
         
@@ -126,7 +126,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
         self.pickerView.translatesAutoresizingMaskIntoConstraints = false
         showPicker()
         self.btnPrevious.isHidden = false
-        
+          print("viewWillAppearCall")
     }
     
     
