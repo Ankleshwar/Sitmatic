@@ -345,6 +345,9 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                     
                     if isPriviousClick == true {
                         
+                        
+                        
+                        
                         let iD : Int = (arrQuestion[count]["questionId"] as? Int)!
                         let index = arrCurrent.index(where: {$0["questionId"] == String(iD)})
                         
@@ -370,6 +373,8 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                             
                               self.arrAnswer = self.arrAnswer.filter { !$0.values.contains(dicLocal["questionId"]!) }
                             self.arrAnswer.append(dicLocal)
+                            
+                            
                         }
                         else{
                             
@@ -384,6 +389,10 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                             self.lblQuestionValueCount.text = String(id) + " " + "of 19 Questions"
                             self.arrIteam?.removeAll()
                             self.arrIteam = arrQuestion[count]["value"] as? Array
+                            
+                            
+                            
+                            
                             //                            self.strValue = ""
                             //                            self.pickerView.selectRow(0, inComponent: 0, animated: true)
                             //                            self.pickerView(pickerView, didSelectRow: 0, inComponent: 0)
@@ -441,7 +450,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
     @IBAction func clickToPrevious(_ sender: Any) {
         self.isButtonCheck = false
         
-        
+        textField(color:UIColor.white)
         if isFirstQuestion ==  true{
             self.delegate?.setDataOnBack(isBack:true, arrSaveValue: arrCurrent)
             self.navigationController?.popViewController(animated: true)
@@ -609,10 +618,33 @@ extension StartOrderd: UITextFieldDelegate{
     
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.pickerView.reloadAllComponents()
-        let countSize = (self.arrIteam?.count)!/2
-        self.pickerView.selectRow(countSize, inComponent: 0, animated: true)
-        self.pickerView(pickerView, didSelectRow: countSize, inComponent: 0)
+        
+        var indexArray = Int()
+        print(self.strValue)
+        for i in 0..<arrIteam!.count {
+            let str = arrIteam?[i] as! String
+            if str == self.strValue{
+                indexArray = i
+            }
+            
+        }
+        
+        print(indexArray)
+        
+        if isPriviousClick == false {
+            self.pickerView.reloadAllComponents()
+            let countSize = (self.arrIteam?.count)!/2
+            self.pickerView.selectRow(countSize, inComponent: 0, animated: true)
+            self.pickerView(pickerView, didSelectRow: countSize, inComponent: 0)
+            
+        }else{
+            
+            self.pickerView.selectRow(indexArray, inComponent: 0, animated: true)
+            self.pickerView(pickerView, didSelectRow: indexArray, inComponent: 0)
+        }
+        
+        
+    
         textField.setLeftPaddingPoints(5)
      
     }
@@ -622,5 +654,11 @@ extension StartOrderd: UITextFieldDelegate{
     }
     
     
+}
+
+extension Array {
+    func contains<T>(obj: T) -> Bool where T : Equatable {
+        return self.filter({$0 as? T == obj}).count > 0
+    }
 }
 

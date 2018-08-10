@@ -118,11 +118,14 @@
 		3B01AB3E20C6DE3400291522 /* lbackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3B01AB3B20C6DE3300291522 /* lbackground.jpg */; };
 		3B01AB3F20C6DE3400291522 /* sitmaticsplash.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B01AB3C20C6DE3400291522 /* sitmaticsplash.png */; };
 		3B01AB4020C6DE3400291522 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3B01AB3D20C6DE3400291522 /* background.jpg */; };
-		3B01AB4220C6E18400291522 /* sitmaticlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B01AB4120C6E18400291522 /* sitmaticlogo.png */; };
+		3B01AB4220C6E18400291522 /* sitmaticlogo222.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B01AB4120C6E18400291522 /* sitmaticlogo222.png */; };
 		3B01AB4420C6E7B400291522 /* login.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B01AB4320C6E7B300291522 /* login.png */; };
 		3B01AB4620C6F06000291522 /* SSignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B01AB4520C6F06000291522 /* SSignupVC.swift */; };
 		3B01AB4820C6F06B00291522 /* SSignupVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B01AB4720C6F06B00291522 /* SSignupVC.xib */; };
 		3BF68676211C7E160065DE16 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF68675211C7E160065DE16 /* Question.swift */; };
+		3BF68681211DAE730065DE16 /* customFitLogoWhite224x50.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BF6867F211DAE730065DE16 /* customFitLogoWhite224x50.png */; };
+		3BF68682211DAE730065DE16 /* customFitLogoRed224x50.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BF68680211DAE730065DE16 /* customFitLogoRed224x50.png */; };
+		3BF68684211DB18C0065DE16 /* sitmaticlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BF68683211DB18B0065DE16 /* sitmaticlogo.png */; };
 		54C058CD68CE7384BBDB758D /* Pods_SitmaticTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F0CCBF4C24C3822FF13BE5D /* Pods_SitmaticTests.framework */; };
 		8D083A8561EF3FFD80745AC3 /* Pods_SitmaticUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE4BF112AAE98A85A982B556 /* Pods_SitmaticUITests.framework */; };
 		AC86E18E01F71DC8909DA121 /* Pods_Sitmatic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B65637EAF789F0BF584848B5 /* Pods_Sitmatic.framework */; };
@@ -268,11 +271,14 @@
 		3B01AB3B20C6DE3300291522 /* lbackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lbackground.jpg; sourceTree = "<group>"; };
 		3B01AB3C20C6DE3400291522 /* sitmaticsplash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sitmaticsplash.png; sourceTree = "<group>"; };
 		3B01AB3D20C6DE3400291522 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
-		3B01AB4120C6E18400291522 /* sitmaticlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sitmaticlogo.png; sourceTree = "<group>"; };
+		3B01AB4120C6E18400291522 /* sitmaticlogo222.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sitmaticlogo222.png; sourceTree = "<group>"; };
 		3B01AB4320C6E7B300291522 /* login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login.png; sourceTree = "<group>"; };
 		3B01AB4520C6F06000291522 /* SSignupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSignupVC.swift; sourceTree = "<group>"; };
 		3B01AB4720C6F06B00291522 /* SSignupVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SSignupVC.xib; sourceTree = "<group>"; };
 		3BF68675211C7E160065DE16 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		3BF6867F211DAE730065DE16 /* customFitLogoWhite224x50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = customFitLogoWhite224x50.png; sourceTree = "<group>"; };
+		3BF68680211DAE730065DE16 /* customFitLogoRed224x50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = customFitLogoRed224x50.png; sourceTree = "<group>"; };
+		3BF68683211DB18B0065DE16 /* sitmaticlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sitmaticlogo.png; sourceTree = "<group>"; };
 		67BEAEA9DC6C1C17D5432660 /* Pods-SitmaticUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SitmaticUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SitmaticUITests/Pods-SitmaticUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7FB869A65EB39DF955C5DACB /* Pods-SitmaticUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SitmaticUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SitmaticUITests/Pods-SitmaticUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9510C42ABACFDA2EC45DD131 /* Pods-SitmaticTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SitmaticTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SitmaticTests/Pods-SitmaticTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -470,6 +476,9 @@
 		3B01AB3A20C6DD7700291522 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				3BF68683211DB18B0065DE16 /* sitmaticlogo.png */,
+				3BF68680211DAE730065DE16 /* customFitLogoRed224x50.png */,
+				3BF6867F211DAE730065DE16 /* customFitLogoWhite224x50.png */,
 				1B624C442101E65B00289118 /* Confused_Emoji_watermark300x400.png */,
 				1B624C492101F89F00289118 /* error-blue.png */,
 				1B624C482101F89E00289118 /* error-red.png */,
@@ -515,7 +524,7 @@
 				1B2E012820C7AC7200B34645 /* left-arrow.png */,
 				1B2E012620C7AAE900B34645 /* male.png */,
 				3B01AB4320C6E7B300291522 /* login.png */,
-				3B01AB4120C6E18400291522 /* sitmaticlogo.png */,
+				3B01AB4120C6E18400291522 /* sitmaticlogo222.png */,
 				3B01AB3D20C6DE3400291522 /* background.jpg */,
 				3B01AB3B20C6DE3300291522 /* lbackground.jpg */,
 				3B01AB3C20C6DE3400291522 /* sitmaticsplash.png */,
@@ -704,7 +713,9 @@
 				1B6DF8D820C7BF6E00280E84 /* nouser.png in Resources */,
 				1B6DF8F120C7E4BC00280E84 /* Chair1.jpg in Resources */,
 				1B6DF8F220C7E4BC00280E84 /* chair3.jpg in Resources */,
+				3BF68684211DB18C0065DE16 /* sitmaticlogo.png in Resources */,
 				3B01AB3020C6D98400291522 /* LocalText.json in Resources */,
+				3BF68681211DAE730065DE16 /* customFitLogoWhite224x50.png in Resources */,
 				1B624C4A2101F8A000289118 /* error-red.png in Resources */,
 				1B48805F20CA8CD3008AC3DD /* previous.png in Resources */,
 				1BCEB5C020FC6D010042EFBD /* Roboto-Light.ttf in Resources */,
@@ -715,7 +726,7 @@
 				1B26854120FF4105004A11B6 /* tick.png in Resources */,
 				1BB6091820F4CDF8000023D3 /* email.png in Resources */,
 				3B01AB4020C6DE3400291522 /* background.jpg in Resources */,
-				3B01AB4220C6E18400291522 /* sitmaticlogo.png in Resources */,
+				3B01AB4220C6E18400291522 /* sitmaticlogo222.png in Resources */,
 				1B2E012B20C7AED800B34645 /* edit.png in Resources */,
 				1B48806020CA8CD3008AC3DD /* cancel.png in Resources */,
 				1B2E012720C7AAE900B34645 /* male.png in Resources */,
@@ -724,6 +735,7 @@
 				1BECAEFE20D24DF50050AE31 /* SForgotPass.xib in Resources */,
 				1B6DF8F320C7E4BC00280E84 /* chair7.jpg in Resources */,
 				1B6DF8FF20C8102900280E84 /* off.png in Resources */,
+				3BF68682211DAE730065DE16 /* customFitLogoRed224x50.png in Resources */,
 				1B624C462101E65D00289118 /* Confused_Emoji_watermark300x400.png in Resources */,
 				1B597C1520FDE79F00180C7D /* checked.png in Resources */,
 				1B6DF8E020C7DB2900280E84 /* slider3.jpg in Resources */,
@@ -1064,7 +1076,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5K4VV2JC5V;
+				DEVELOPMENT_TEAM = 577N9MGWW6;
 				INFOPLIST_FILE = Sitmatic/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1091,7 +1103,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5K4VV2JC5V;
+				DEVELOPMENT_TEAM = 577N9MGWW6;
 				INFOPLIST_FILE = Sitmatic/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

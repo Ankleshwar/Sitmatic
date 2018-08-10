@@ -420,7 +420,7 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate{
 //        let attributedString2 = NSMutableAttributedString(string:obj.proposedModel, attributes:attrs2)
 //
 //        attributedString1.append(attributedString2)
-        self.lblModel.text = "We're almost done! So far" +  " "  + "Your ideal chair model is:"
+        self.lblModel.text = "We're almost done! So far," +  " "  + "your ideal chair model is:"
         self.lblModelCode.text = obj.proposedModel
         //self.lblprice.text = obj.proposedPrice
         self.lblprice.text = "List Price:" + " " + "$" + String(obj.proposedPrice)

@@ -144,7 +144,7 @@ class ModifyModel: BaseViewController {
     @objc func tapFunction(sender:UITapGestureRecognizer) {
         print(sender.view?.tag ?? "")
         let i = sender.view?.tag ?? 0
-        self.arrIteam = arrQuestion![i]["value"] as? Array
+        self.arrIteam = self.arrQuesOfModifiy![i].options
         self.index = i
         
         if index == 3 {
@@ -570,6 +570,7 @@ class ModifyModel: BaseViewController {
     
     
     @IBAction func clickToPickerOpen(_ sender: Any) {
+      //  self.pickerView.reloadAllComponents()
      
         index = (sender as AnyObject).tag
         
@@ -663,6 +664,7 @@ class ModifyModel: BaseViewController {
                self.viewBackrestSizeHeight.constant = 0
                 self.btnBackrestSizeHeight.constant = 0
                 self.view.layoutIfNeeded()
+                showPicker()
             }else{
                 self.viewBackrestSizeHeight.constant = 45
                 self.btnBackrestSizeHeight.constant = 30

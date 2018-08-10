@@ -133,7 +133,6 @@
                                     </state>
                                     <connections>
                                         <action selector="clickToLogin:" destination="-1" eventType="touchUpInside" id="GHi-Lt-EoO"/>
-                                        <action selector="clickToSignUp:" destination="-1" eventType="touchUpInside" id="pNv-ys-zh4"/>
                                     </connections>
                                 </button>
                             </subviews>
