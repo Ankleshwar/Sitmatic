@@ -46,6 +46,14 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
     var isFirstQuestion: Bool!
     
     @IBOutlet weak var tostView: UIView!
+    fileprivate func setPickerOrder() {
+        let countSize = (self.arrIteam?.count)!/2
+        self.pickerView.selectRow(countSize, inComponent: 0, animated: true)
+        self.pickerView(pickerView, didSelectRow: countSize, inComponent: 0)
+      
+ 
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         arrQuestion = (setDataWithLocalJson("NextVersion") as NSArray as? Array<Dictionary<String, Any>>)!
@@ -101,7 +109,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                     self.arrIteam = arrQuestion[count]["value"] as? Array
                     self.arrInch = arrQuestion[0]["inch"] as? Array
                     self.arrIteam = arrQuestion[0]["value"] as? Array
-            
+                    setPickerOrder()
    
                     self.arrAnswer.append(dicLocal)
                     self.isPriviousClick = true
@@ -115,8 +123,8 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                     self.arrIteam = arrQuestion[0]["value"] as? Array
                     self.lblQuestionValueCount.text = String(id) + " " + "of 19 Questions"
                     self.strValue = ""
-                    self.pickerView.selectRow(0, inComponent: 0, animated: true)
-                    self.pickerView(pickerView, didSelectRow: 0, inComponent: 0)
+                    setPickerOrder()
+
           }
         
         
@@ -398,8 +406,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                         self.arrIteam?.removeAll()
                         self.arrIteam = arrQuestion[count]["value"] as? Array
                         self.strValue = ""
-                        self.pickerView.selectRow(0, inComponent: 0, animated: true)
-                        self.pickerView(pickerView, didSelectRow: 0, inComponent: 0)
+                       
                     }
                     
                     
@@ -602,10 +609,17 @@ extension StartOrderd: UITextFieldDelegate{
     
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.setLeftPaddingPoints(5)
         self.pickerView.reloadAllComponents()
+        let countSize = (self.arrIteam?.count)!/2
+        self.pickerView.selectRow(countSize, inComponent: 0, animated: true)
+        self.pickerView(pickerView, didSelectRow: countSize, inComponent: 0)
+        textField.setLeftPaddingPoints(5)
+     
     }
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+       
+    }
     
     
 }

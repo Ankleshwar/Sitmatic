@@ -11,6 +11,7 @@ class ModelDescreption : NSObject, NSCoding{
 	var callDetected : String!
 	var dataId : Int!
 	var descriptionField : String!
+	var questions : [Question]!
 	var status : String!
 	var successData : SuccessData!
 
@@ -25,6 +26,12 @@ class ModelDescreption : NSObject, NSCoding{
 		callDetected = json["callDetected"].stringValue
 		dataId = json["data_id"].intValue
 		descriptionField = json["description"].stringValue
+		questions = [Question]()
+		let questionsArray = json["questions"].arrayValue
+		for questionsJson in questionsArray{
+			let value = Question(fromJson: questionsJson)
+			questions.append(value)
+		}
 		status = json["status"].stringValue
 		let successDataJson = json["successData"]
 		if !successDataJson.isEmpty{
@@ -47,6 +54,13 @@ class ModelDescreption : NSObject, NSCoding{
 		if descriptionField != nil{
 			dictionary["description"] = descriptionField
 		}
+		if questions != nil{
+			var dictionaryElements = [[String:Any]]()
+			for questionsElement in questions {
+				dictionaryElements.append(questionsElement.toDictionary())
+			}
+			dictionary["questions"] = dictionaryElements
+		}
 		if status != nil{
 			dictionary["status"] = status
 		}
@@ -65,6 +79,7 @@ class ModelDescreption : NSObject, NSCoding{
          callDetected = aDecoder.decodeObject(forKey: "callDetected") as? String
          dataId = aDecoder.decodeObject(forKey: "data_id") as? Int
          descriptionField = aDecoder.decodeObject(forKey: "description") as? String
+         questions = aDecoder.decodeObject(forKey: "questions") as? [Question]
          status = aDecoder.decodeObject(forKey: "status") as? String
          successData = aDecoder.decodeObject(forKey: "successData") as? SuccessData
 
@@ -84,6 +99,9 @@ class ModelDescreption : NSObject, NSCoding{
 		}
 		if descriptionField != nil{
 			aCoder.encode(descriptionField, forKey: "description")
+		}
+		if questions != nil{
+			aCoder.encode(questions, forKey: "questions")
 		}
 		if status != nil{
 			aCoder.encode(status, forKey: "status")

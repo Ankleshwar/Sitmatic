@@ -62,7 +62,7 @@ class ServiceClass: NSObject {
             print(JSONResponse)
             
             if JSONResponse["status"] == "Ok"{
-               // let id  = JSONResponse["data_id"]
+              
     
                  completion(nil,JSONResponse)
             }else{

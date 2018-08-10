@@ -122,6 +122,7 @@
 		3B01AB4420C6E7B400291522 /* login.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B01AB4320C6E7B300291522 /* login.png */; };
 		3B01AB4620C6F06000291522 /* SSignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B01AB4520C6F06000291522 /* SSignupVC.swift */; };
 		3B01AB4820C6F06B00291522 /* SSignupVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B01AB4720C6F06B00291522 /* SSignupVC.xib */; };
+		3BF68676211C7E160065DE16 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF68675211C7E160065DE16 /* Question.swift */; };
 		54C058CD68CE7384BBDB758D /* Pods_SitmaticTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F0CCBF4C24C3822FF13BE5D /* Pods_SitmaticTests.framework */; };
 		8D083A8561EF3FFD80745AC3 /* Pods_SitmaticUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE4BF112AAE98A85A982B556 /* Pods_SitmaticUITests.framework */; };
 		AC86E18E01F71DC8909DA121 /* Pods_Sitmatic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B65637EAF789F0BF584848B5 /* Pods_Sitmatic.framework */; };
@@ -271,6 +272,7 @@
 		3B01AB4320C6E7B300291522 /* login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login.png; sourceTree = "<group>"; };
 		3B01AB4520C6F06000291522 /* SSignupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSignupVC.swift; sourceTree = "<group>"; };
 		3B01AB4720C6F06B00291522 /* SSignupVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SSignupVC.xib; sourceTree = "<group>"; };
+		3BF68675211C7E160065DE16 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		67BEAEA9DC6C1C17D5432660 /* Pods-SitmaticUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SitmaticUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SitmaticUITests/Pods-SitmaticUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7FB869A65EB39DF955C5DACB /* Pods-SitmaticUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SitmaticUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SitmaticUITests/Pods-SitmaticUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9510C42ABACFDA2EC45DD131 /* Pods-SitmaticTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SitmaticTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SitmaticTests/Pods-SitmaticTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 		1BECD13E20F86C8B004252D5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3BF68675211C7E160065DE16 /* Question.swift */,
 				1BECD14320F86D3C004252D5 /* Model.swift */,
 				1BECD14120F86D3B004252D5 /* ModelDescreption.swift */,
 				1BECD14220F86D3B004252D5 /* SuccessData.swift */,
@@ -956,6 +959,7 @@
 				3B01AB3920C6DAB900291522 /* AppUserObject.m in Sources */,
 				3B01AB0F20C6D87300291522 /* SSLoginVC.swift in Sources */,
 				1BB6091320F4C7B5000023D3 /* DesignableUITextField.swift in Sources */,
+				3BF68676211C7E160065DE16 /* Question.swift in Sources */,
 				1BB9C4C020C8F8E10028A48A /* OrderProccessing.swift in Sources */,
 				1BF27F4320E633430014B84E /* Section.swift in Sources */,
 				1BECD14520F86D3C004252D5 /* SuccessData.swift in Sources */,
@@ -1145,7 +1149,10 @@
 				DEVELOPMENT_TEAM = 577N9MGWW6;
 				INFOPLIST_FILE = Sitmatic/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pegasusone.sitmatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1169,7 +1176,10 @@
 				DEVELOPMENT_TEAM = 577N9MGWW6;
 				INFOPLIST_FILE = Sitmatic/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pegasusone.sitmatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1188,7 +1198,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SitmaticTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.opiant.SitmaticTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -1205,7 +1219,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SitmaticTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.opiant.SitmaticTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -1221,7 +1239,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SitmaticUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.opiant.SitmaticUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -1237,7 +1259,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SitmaticUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.opiant.SitmaticUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

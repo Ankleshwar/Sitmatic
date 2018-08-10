@@ -18,7 +18,7 @@
     
     
     "OrderProccessingThird":[
-                              {"queId": "17","queText": "Would you like to pick an upholstery other than base grade?", "option1":"Yes","option2":"No"},
+                              {"queId": "18","queText": "Let's pick a fabric!", "option1":"Base Grade - Category 2 (Flexx)","option2":"3D Knit - Category 4 (Dreamweave)"},
                               
                              
                               
