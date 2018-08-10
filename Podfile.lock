@@ -1,7 +1,6 @@
 PODS:
   - Alamofire (4.7.0)
   - CHIPageControl/Aleppo (0.1.5)
-  - EFAutoScrollLabel (4.0.2)
   - JWTDecode (2.1.1)
   - Kingfisher (4.7.0)
   - ObjectMapper (3.1.0)
@@ -16,7 +15,6 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - CHIPageControl/Aleppo
-  - EFAutoScrollLabel
   - JWTDecode
   - Kingfisher
   - ObjectMapper
@@ -28,10 +26,24 @@ DEPENDENCIES:
   - Toaster
   - YALSideMenu
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - CHIPageControl
+    - JWTDecode
+    - Kingfisher
+    - ObjectMapper
+    - SVProgressHUD
+    - SwiftKeychainWrapper
+    - SwiftyJSON
+    - TextFieldEffects
+    - Toast-Swift
+    - Toaster
+    - YALSideMenu
+
 SPEC CHECKSUMS:
   Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
   CHIPageControl: 79d19a8ee2e35fa3c1da6533adb5364c77b5cfea
-  EFAutoScrollLabel: 0534a0535b5ab9131c939dcf45aaa9f398156e97
   JWTDecode: 83e8b381aafe27158d9f692cbdca2b12d61d460c
   Kingfisher: da6b005aa96d37698e3e4f1ccfe96a5b9bbf27d6
   ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
@@ -43,6 +55,6 @@ SPEC CHECKSUMS:
   Toaster: a6c9532de1ded8105e77376f7dffeb2e12b46dbb
   YALSideMenu: 4d6b90ea44dcdded18a99e46b676e4ad51d9c6bb
 
-PODFILE CHECKSUM: 0e7cf4bfd423e591e8eca2c7d1fdfc29620c91dd
+PODFILE CHECKSUM: ce379b28b7db9d2d1e6bcd32fec271b9bf41c46f
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.0
