@@ -20,14 +20,13 @@ protocol OrderProccessingSecondDelegate  {
 class OrderProccessingSecond: BaseViewController , ModifyModelDelegate{
     
     
-    
-    
+
     var sucessObj : SuccessData!
     var strValueID = ""
     var strprice = ""
     @IBOutlet weak var lblModelCode: UILabel!
     @IBOutlet var viewCall: UIView!
-    
+   var questionsArray : [Question]!
     @IBOutlet weak var viewDetails: UIView!
     @IBOutlet weak var lblModel: UILabel!
     @IBOutlet weak var lblprice: UILabel!
@@ -72,7 +71,7 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate{
     var  value: Int = 0
 
     @IBOutlet weak var viewModel: UIView!
-    
+ 
     
     
     
@@ -358,9 +357,10 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate{
         let vc = ModifyModel(nibName: "ModifyModel", bundle: nil)
         vc.delegate = self
         vc.dicSelected = self.dicPreviousData
+        vc.arrQuesOfModifiy = self.questionsArray
         vc.successDataObject = self.sucessObj
         self.navigationController?.pushViewController(vc, animated: true)
-        
+    
     }
         
         
@@ -420,10 +420,10 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate{
 //        let attributedString2 = NSMutableAttributedString(string:obj.proposedModel, attributes:attrs2)
 //
 //        attributedString1.append(attributedString2)
-        self.lblModel.text = "We're almost done!" +  " "  + "Your ideal chair model is "
+        self.lblModel.text = "We're almost done! So far," +  " "  + "your ideal chair model is:"
         self.lblModelCode.text = obj.proposedModel
         //self.lblprice.text = obj.proposedPrice
-        self.lblprice.text = "Total Price:" + " " + "$" + String(obj.proposedPrice)
+        self.lblprice.text = "List Price:" + " " + "$" + String(obj.proposedPrice)
         self.tableView.reloadData()
         SVProgressHUD.dismiss()
         self.btnNext.isHidden = true
@@ -480,6 +480,14 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate{
          
                 UserDefaults.standard.set(strDataId, forKey: "dataId")
                 UserDefaults.standard.synchronize()
+                    
+                    let objMain = ModelDescreption(fromJson: jsondata)
+                    print(objMain.questions.count)
+                    
+                    self.questionsArray = objMain.questions
+                    
+                    
+             
               
                     self.btnYesSub.setButtonImage("off.png")
                     self.btnNoSub.setButtonImage("off.png")

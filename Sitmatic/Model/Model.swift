@@ -11,7 +11,7 @@ class Model : NSObject, NSCoding{
 	var code : String!
 	var descriptionField : String!
 	var name : String!
-	var price : AnyObject!
+	var price : Int!
 	var type : String!
 
 
@@ -25,7 +25,7 @@ class Model : NSObject, NSCoding{
 		code = json["code"].stringValue
 		descriptionField = json["description"].stringValue
 		name = json["name"].stringValue
-        price = json["price"].stringValue as AnyObject
+		price = json["price"].intValue
 		type = json["type"].stringValue
 	}
 
@@ -62,7 +62,7 @@ class Model : NSObject, NSCoding{
          code = aDecoder.decodeObject(forKey: "code") as? String
          descriptionField = aDecoder.decodeObject(forKey: "description") as? String
          name = aDecoder.decodeObject(forKey: "name") as? String
-         price = aDecoder.decodeObject(forKey: "price") as? AnyObject
+         price = aDecoder.decodeObject(forKey: "price") as? Int
          type = aDecoder.decodeObject(forKey: "type") as? String
 
 	}

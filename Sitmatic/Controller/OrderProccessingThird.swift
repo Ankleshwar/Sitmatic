@@ -21,14 +21,14 @@ class OrderProccessingThird: BaseViewController {
     @IBOutlet var pickerView: UIPickerView!
     var arrModelDescription : [Model]?
     @IBOutlet weak var btnCancle: UIButton!
-    @IBOutlet weak var textViewHeight: NSLayoutConstraint!
+
     @IBOutlet var viewCall: UIView!
     
     @IBOutlet weak var tostView: UIView!
     @IBOutlet weak var tostLable: UILabel!
     
-    @IBOutlet weak var btnEdit: UIButton!
-    @IBOutlet weak var txtAddress: UITextView!
+  
+
     @IBOutlet var viewShowModel: UIView!
     var arrIteam :Array<Any>?
     @IBOutlet weak var lblModel: UILabel!
@@ -71,9 +71,9 @@ class OrderProccessingThird: BaseViewController {
         self.tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         self.tableView.separatorStyle = .none
         self.tableView.backgroundColor = UIColor.clear
-        self.txtAddress.layer.borderWidth = 1
-        self.txtAddress.layer.borderColor = #colorLiteral(red: 0.8784313725, green: 0.8745098039, blue: 0.8745098039, alpha: 1).cgColor
-        self.txtAddress.isEditable = false
+//        self.txtAddress.layer.borderWidth = 1
+//        self.txtAddress.layer.borderColor = #colorLiteral(red: 0.8784313725, green: 0.8745098039, blue: 0.8745098039, alpha: 1).cgColor
+//        self.txtAddress.isEditable = false
        
     }
     
@@ -157,7 +157,7 @@ class OrderProccessingThird: BaseViewController {
         //let strNew : NSString = (textView.text as NSString).replacingCharacters(in: range, with: text) as NSString
       
         let size = CGRectFromString(text)
-        self.textViewHeight.constant = size.size.height
+       
         
         if(text == "\n") {
             textView.resignFirstResponder()
@@ -198,35 +198,35 @@ class OrderProccessingThird: BaseViewController {
     
     
     @IBAction func clickToEdit(_ sender: Any) {
-        
-        if btnEdit.isSelected {
-            
-            
-//            if self.txtAddress.text == "" {
-//                self.showToastForQue(message: "Please select your address", y: 75)
-//                self.btnEdit.setButtonImage("check.png")
 //
-//            }else{
-            
-                self.btnEdit.setButtonImage("editblack.png")
-                self.txtAddress.isEditable = false
-                
-                
-                self.btnEdit.isSelected = false
-                
-                
-          //  }
-            
-            
-            
-        }else{
-            self.txtAddress.isEditable = true
-            
-            self.btnEdit.setButtonImage("check.png")
-            
-            self.btnEdit.isSelected = true
-            
-        }
+//        if btnEdit.isSelected {
+//
+//
+////            if self.txtAddress.text == "" {
+////                self.showToastForQue(message: "Please select your address", y: 75)
+////                self.btnEdit.setButtonImage("check.png")
+////
+////            }else{
+//
+//                self.btnEdit.setButtonImage("editblack.png")
+//                self.txtAddress.isEditable = false
+//
+//
+//                self.btnEdit.isSelected = false
+//
+//
+//          //  }
+//
+//
+//
+//        }else{
+//            self.txtAddress.isEditable = true
+//
+//            self.btnEdit.setButtonImage("check.png")
+//
+//            self.btnEdit.isSelected = true
+//
+//        }
     }
     
     @IBAction func clickToPrivious(_ sender: Any) {
@@ -757,7 +757,7 @@ class OrderProccessingThird: BaseViewController {
         
      
         
-        let attributedString1 = NSMutableAttributedString(string:"Your ideal chair model is ", attributes:attrs1)
+        let attributedString1 = NSMutableAttributedString(string:"We’re all done! Your ideal chair model is:", attributes:attrs1)
         
  
         
@@ -767,17 +767,17 @@ class OrderProccessingThird: BaseViewController {
       
         
        // self.lblPrice.text = "Total Price:" + " " + "$" + String(obj.proposedPrice)
-        self.lblPrice.text = "Total Price:" + " " + "$" + String(obj.proposedPrice)
+        self.lblPrice.text = "List Price:" + " " + "$" + String(obj.proposedPrice)
         self.tableView.reloadData()
         SVProgressHUD.dismiss()
         
-        if    (self.appUserObject?.address)! == "" {
-            self.txtAddress.text = "Please select your address"
-        }
-        else{
-            self.txtAddress.text = (self.appUserObject?.address)!
-        }
-        
+//        if    (self.appUserObject?.address)! == "" {
+//            self.txtAddress.text = "Please select your address"
+//        }
+//        else{
+//            self.txtAddress.text = (self.appUserObject?.address)!
+//        }
+//
       
     }
     
