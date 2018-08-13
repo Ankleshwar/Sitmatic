@@ -823,7 +823,7 @@ class ModifyModel: BaseViewController {
             self.setTableView()
         } else if index == 0 {
             if successDataObject.backrestSize == "4"{
-                self.showToast(message: "You are not able to change mesh")
+                self.showToast(message: "Sorry, you cannot change your mesh.")
             }else {
                 if isMesh == true{
                     self.viewBackrestSizeHeight.constant = 0
@@ -843,13 +843,13 @@ class ModifyModel: BaseViewController {
         }else{
             if index == 2{
                 if successDataObject.backrestSize == "4"{
-                    self.showToast(message: "You are not able to change Backrest size")
+                    self.showToast(message: "Sorry, you cannot change your backrest size.")
                 }else {
                     showPicker()
                 }
             }else if index == 4{
                 if successDataObject.backrestSize == "4"{
-                    self.showToast(message: "You are not able to change Seat size")
+                    self.showToast(message: "Sorry, you cannot change your seat size")
                 }else {
                     showPicker()
                 }
