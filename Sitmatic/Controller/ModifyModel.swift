@@ -736,6 +736,9 @@ class ModifyModel: BaseViewController {
         self.arrIteam = arrQuesOfModifiy![index].options
         
         if index == 2 {
+            
+            
+            
             let indexArray = self.arrIteam?.index(where: { $0 == successDataObject.backrestSizeValue})
             if indexArray != nil {
                 self.arrIteam?.remove(at: indexArray!)
@@ -819,19 +822,43 @@ class ModifyModel: BaseViewController {
             
             self.setTableView()
         } else if index == 0 {
-            if isMesh == true{
-                self.viewBackrestSizeHeight.constant = 0
-                self.btnBackrestSizeHeight.constant = 0
-                self.view.layoutIfNeeded()
-                showPicker()
-            }else{
-                self.viewBackrestSizeHeight.constant = 45
-                self.btnBackrestSizeHeight.constant = 30
-                self.view.layoutIfNeeded()
-                showPicker()
+            if successDataObject.backrestSize == "4"{
+                self.showToast(message: "You are not able to change mesh")
+            }else {
+                if isMesh == true{
+                    self.viewBackrestSizeHeight.constant = 0
+                    self.btnBackrestSizeHeight.constant = 0
+                    self.view.layoutIfNeeded()
+                    showPicker()
+                }else{
+                    self.viewBackrestSizeHeight.constant = 45
+                    self.btnBackrestSizeHeight.constant = 30
+                    self.view.layoutIfNeeded()
+                    showPicker()
+                }
             }
+            
+            
+  
         }else{
-            showPicker()
+            if index == 2{
+                if successDataObject.backrestSize == "4"{
+                    self.showToast(message: "You are not able to change Backrest size")
+                }else {
+                    showPicker()
+                }
+            }else if index == 4{
+                if successDataObject.backrestSize == "4"{
+                    self.showToast(message: "You are not able to change Seat size")
+                }else {
+                    showPicker()
+                }
+                
+            }else{
+                 showPicker()
+            }
+            
+           
         }
         
         
