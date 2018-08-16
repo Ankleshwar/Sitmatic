@@ -143,7 +143,7 @@
                                             </constraints>
                                         </view>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EsF-qQ-2K5">
-                                            <rect key="frame" x="82.5" y="212" width="252.5" height="98"/>
+                                            <rect key="frame" x="82.5" y="207" width="252.5" height="103"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -152,7 +152,7 @@
                                             </connections>
                                         </textView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRp-IA-DkU">
-                                            <rect key="frame" x="15" y="212" width="67.5" height="22.5"/>
+                                            <rect key="frame" x="15" y="214" width="67.5" height="22.5"/>
                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -170,7 +170,7 @@
                                         <constraint firstAttribute="trailing" secondItem="zIW-FD-fEo" secondAttribute="trailing" constant="4" id="MsF-WE-QPD"/>
                                         <constraint firstItem="zIW-FD-fEo" firstAttribute="top" secondItem="DPf-YB-Dav" secondAttribute="bottom" constant="10" id="Xc6-hI-Fbj"/>
                                         <constraint firstItem="drC-nU-kJC" firstAttribute="top" secondItem="Ag2-E8-dKJ" secondAttribute="top" constant="65" id="aTd-wf-MRu"/>
-                                        <constraint firstItem="EsF-qQ-2K5" firstAttribute="top" secondItem="zIW-FD-fEo" secondAttribute="bottom" constant="10" id="eX0-ZD-23V"/>
+                                        <constraint firstItem="EsF-qQ-2K5" firstAttribute="top" secondItem="zIW-FD-fEo" secondAttribute="bottom" constant="5" id="eX0-ZD-23V"/>
                                         <constraint firstItem="udZ-R9-uLU" firstAttribute="top" secondItem="drC-nU-kJC" secondAttribute="bottom" constant="5" id="fdR-tg-XVK"/>
                                         <constraint firstAttribute="trailing" secondItem="udZ-R9-uLU" secondAttribute="trailing" id="gR2-dB-oSS"/>
                                         <constraint firstItem="DPf-YB-Dav" firstAttribute="leading" secondItem="Ag2-E8-dKJ" secondAttribute="leading" constant="15" id="gnP-b1-OSL"/>
@@ -180,7 +180,7 @@
                                         <constraint firstAttribute="trailing" secondItem="drC-nU-kJC" secondAttribute="trailing" id="jdm-xP-0fO"/>
                                         <constraint firstItem="DPf-YB-Dav" firstAttribute="top" secondItem="aoN-mC-Prd" secondAttribute="bottom" constant="10" id="piZ-Vw-zaL"/>
                                         <constraint firstAttribute="trailing" secondItem="EsF-qQ-2K5" secondAttribute="trailing" id="qnY-eP-TG9"/>
-                                        <constraint firstItem="oRp-IA-DkU" firstAttribute="top" secondItem="zIW-FD-fEo" secondAttribute="bottom" constant="10" id="quE-Xi-yGa"/>
+                                        <constraint firstItem="oRp-IA-DkU" firstAttribute="top" secondItem="zIW-FD-fEo" secondAttribute="bottom" constant="12" id="quE-Xi-yGa"/>
                                         <constraint firstItem="drC-nU-kJC" firstAttribute="leading" secondItem="Ag2-E8-dKJ" secondAttribute="leading" id="sMh-op-Clq"/>
                                     </constraints>
                                 </view>
@@ -264,7 +264,7 @@
                 <constraint firstItem="fXR-Im-ACq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="zLL-f6-NzV"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="269.5" y="20.5"/>
+            <point key="canvasLocation" x="182" y="-180"/>
         </view>
     </objects>
     <resources>
