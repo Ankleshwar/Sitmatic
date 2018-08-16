@@ -170,11 +170,13 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
     
     fileprivate func TimeInterval() {
         self.view.isUserInteractionEnabled = false
-        Timer.scheduledTimer(timeInterval: 0.5,
-                             target: self,
-                             selector: #selector(nextQues),
-                             userInfo: nil,
-                             repeats: false)
+//        Timer.scheduledTimer(timeInterval: 0.5,
+//                             target: self,
+//                             selector: #selector(nextQues),
+//                             userInfo: nil,
+//                             repeats: false)
+        
+        self.nextQues()
     }
     
     fileprivate func nextIndexData(_ index: Array<Any>.Index?, _ dicLocal: inout [String : String]) {
@@ -223,7 +225,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
                value += 1
                 if value > arrCurrent.count || value == arrCurrent.count{
                     value -= 1
-                 TimeInterval()
+               //  TimeInterval()
 
                 }else{
                     var  dicLocal = [String : String]()
@@ -288,7 +290,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
             }else{
                 
                 
-                TimeInterval()
+               // TimeInterval()
                 
             }
             
@@ -380,7 +382,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
                 value += 1
                 if value > arrCurrent.count || value == arrCurrent.count{
                     value -= 1
-                   TimeInterval()
+                  //     TimeInterval()
 
                 }else{
                     var  dicLocal = [String : String]()
@@ -445,7 +447,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
             }else{
                 
                 
-              TimeInterval()
+             // TimeInterval()
                 
             }
             
