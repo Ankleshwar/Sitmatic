@@ -386,7 +386,7 @@ class OrderProccessingThird: BaseViewController {
                 self.arrQuestion?.append(["queId": "19","queText": "Please select color", "value": ["Navy","Charcoal","Aqua","Ember","Cologne","Napa","Tropicana"]])
                 self.arrayPersnonID.append("19")
             }
-             self.arrIteam = ["Navy","Charcoal","Aqua","Ember","Cologne","Napa","Tropicana"]
+             self.arrIteam = ["Black","Navy","Charcoal","Aqua","Ember","Cologne","Napa","Tropicana"]
             self.pickerView.selectRow(0, inComponent: 0, animated: true)
             self.pickerView(pickerView, didSelectRow: 0, inComponent: 0)
             Timer.scheduledTimer(timeInterval: 0.3,

@@ -197,12 +197,12 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
         self.isPriviousClick = false
         
         self.view.endEditing(true)
-        self.view.isUserInteractionEnabled = false
-        Timer.scheduledTimer(timeInterval: 0.6,
-                             target: self,
-                             selector: #selector(self.setDataOnNext),
-                             userInfo: nil,
-                             repeats: false)
+//        self.view.isUserInteractionEnabled = false
+//        Timer.scheduledTimer(timeInterval: 0.6,
+//                             target: self,
+//                             selector: #selector(self.setDataOnNext),
+//                             userInfo: nil,
+//                             repeats: false)
     }
     
     

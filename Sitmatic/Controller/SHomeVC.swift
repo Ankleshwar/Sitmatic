@@ -53,6 +53,13 @@ class SHomeVC: UIViewController {
          self.collectionView.backgroundColor = UIColor.clear
          print("viewDidLoadCall")
       
+        
+//        let abc = "Hello world" + " " + "*"
+//        
+//        let result = abc.replacingOccurrences(of: "*", with: "_",
+//                                              options: NSString.CompareOptions.literal, range:nil)
+//        
+//        print(result)
     }
     
     func setValue(strPrivate: String, strFilePrivate: String, strStatic: String) {

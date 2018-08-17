@@ -1,5 +1,7 @@
 //
 //	ModelDescreption.swift
+
+//	Copyright © 2018. All rights reserved.
 //	Model file generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport
 
 import Foundation 
@@ -8,6 +10,7 @@ import SwiftyJSON
 
 class ModelDescreption : NSObject, NSCoding{
 
+	var armrestDetected : String!
 	var callDetected : String!
 	var dataId : Int!
 	var descriptionField : String!
@@ -23,6 +26,7 @@ class ModelDescreption : NSObject, NSCoding{
 		if json.isEmpty{
 			return
 		}
+		armrestDetected = json["armrestDetected"].stringValue
 		callDetected = json["callDetected"].stringValue
 		dataId = json["data_id"].intValue
 		descriptionField = json["description"].stringValue
@@ -45,6 +49,9 @@ class ModelDescreption : NSObject, NSCoding{
 	func toDictionary() -> [String:Any]
 	{
 		var dictionary = [String:Any]()
+		if armrestDetected != nil{
+			dictionary["armrestDetected"] = armrestDetected
+		}
 		if callDetected != nil{
 			dictionary["callDetected"] = callDetected
 		}
@@ -76,6 +83,7 @@ class ModelDescreption : NSObject, NSCoding{
     */
     @objc required init(coder aDecoder: NSCoder)
 	{
+         armrestDetected = aDecoder.decodeObject(forKey: "armrestDetected") as? String
          callDetected = aDecoder.decodeObject(forKey: "callDetected") as? String
          dataId = aDecoder.decodeObject(forKey: "data_id") as? Int
          descriptionField = aDecoder.decodeObject(forKey: "description") as? String
@@ -91,6 +99,9 @@ class ModelDescreption : NSObject, NSCoding{
     */
     func encode(with aCoder: NSCoder)
 	{
+		if armrestDetected != nil{
+			aCoder.encode(armrestDetected, forKey: "armrestDetected")
+		}
 		if callDetected != nil{
 			aCoder.encode(callDetected, forKey: "callDetected")
 		}

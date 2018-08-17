@@ -137,11 +137,27 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         
         if strSelected == "No" {
             
-            dataForNo(strId)
+            if self.isPreviousClick == false {
+                 dataForNo(strId)
+                 TimeInterval()
+            }else{
+                 dataForNo(strId)
+            }
+            
+           
             
             
         }else{
-            dataForYes(strId)
+            
+            if self.isPreviousClick == false {
+               dataForYes(strId)
+                TimeInterval()
+            }else{
+               dataForYes(strId)
+            }
+            
+            
+            
         }
         
     }
@@ -157,6 +173,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         self.isYesbtnTap = true
         self.isPreviousClick = false
         self.strSelected = "No"
+         self.arrStartOrderData =  Array()
         let strId = arrQuestion?[value]["queId"] as? String
         dataForNo(strId!)
         
@@ -306,7 +323,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
     @IBAction func clickToBtnYes(_ sender: Any) {
         self.btnYes.setButtonImage("on.png")
         self.btnNo.setButtonImage("off.png")
-        
+        self.arrStartOrderData =  Array()
         self.isYesbtnTap = true
         self.strSelected = "Yes"
         let strId = arrQuestion?[value]["queId"] as? String

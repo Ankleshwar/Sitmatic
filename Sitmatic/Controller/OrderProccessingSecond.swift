@@ -43,7 +43,7 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate{
     var delegate : OrderProccessingSecondDelegate?
     var dicAnsData = Dictionary<String, String>()
     var isFirstQue: Bool!
-
+    var strArme = String()
     @IBOutlet weak var tableView: UITableView!
     var arrQuestion: Array<Dictionary<String,Any>>?
     var arrAnswer = NSMutableArray()
@@ -359,6 +359,7 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate{
         vc.dicSelected = self.dicPreviousData
         vc.arrQuesOfModifiy = self.questionsArray
         vc.successDataObject = self.sucessObj
+        vc.strArmrest =  self.strArme
         self.navigationController?.pushViewController(vc, animated: true)
     
     }
@@ -485,7 +486,7 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate{
                     print(objMain.questions.count)
                     
                     self.questionsArray = objMain.questions
-                    
+                    self.strArme = objMain.armrestDetected
                     
              
               
