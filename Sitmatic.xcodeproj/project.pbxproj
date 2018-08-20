@@ -110,6 +110,9 @@
 		1BF56E24212AB90800DF30BA /* Gender_350x400.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BF56E21212AB90800DF30BA /* Gender_350x400.png */; };
 		1BF56E25212AB90800DF30BA /* Gender_350x250.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BF56E22212AB90800DF30BA /* Gender_350x250.png */; };
 		1BF56E26212AB90800DF30BA /* Gender_350x150.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BF56E23212AB90800DF30BA /* Gender_350x150.png */; };
+		1BF56E2A212AC43900DF30BA /* play-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BF56E27212AC43800DF30BA /* play-button.png */; };
+		1BF56E2B212AC43900DF30BA /* cancel (2).png in Resources */ = {isa = PBXBuildFile; fileRef = 1BF56E28212AC43800DF30BA /* cancel (2).png */; };
+		1BF56E2C212AC43900DF30BA /* gallery.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BF56E29212AC43900DF30BA /* gallery.png */; };
 		3B01AAE020C6D7E900291522 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B01AADF20C6D7E900291522 /* AppDelegate.swift */; };
 		3B01AAE220C6D7E900291522 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B01AAE120C6D7E900291522 /* ViewController.swift */; };
 		3B01AAE720C6D7EC00291522 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B01AAE620C6D7EC00291522 /* Assets.xcassets */; };
@@ -269,6 +272,9 @@
 		1BF56E21212AB90800DF30BA /* Gender_350x400.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gender_350x400.png; sourceTree = "<group>"; };
 		1BF56E22212AB90800DF30BA /* Gender_350x250.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gender_350x250.png; sourceTree = "<group>"; };
 		1BF56E23212AB90800DF30BA /* Gender_350x150.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gender_350x150.png; sourceTree = "<group>"; };
+		1BF56E27212AC43800DF30BA /* play-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-button.png"; sourceTree = "<group>"; };
+		1BF56E28212AC43800DF30BA /* cancel (2).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel (2).png"; sourceTree = "<group>"; };
+		1BF56E29212AC43900DF30BA /* gallery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gallery.png; sourceTree = "<group>"; };
 		2F0CCBF4C24C3822FF13BE5D /* Pods_SitmaticTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SitmaticTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B01AADC20C6D7E900291522 /* Sitmatic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sitmatic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B01AADF20C6D7E900291522 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -508,6 +514,9 @@
 		3B01AB3A20C6DD7700291522 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1BF56E28212AC43800DF30BA /* cancel (2).png */,
+				1BF56E29212AC43900DF30BA /* gallery.png */,
+				1BF56E27212AC43800DF30BA /* play-button.png */,
 				1BF56E23212AB90800DF30BA /* Gender_350x150.png */,
 				1BF56E22212AB90800DF30BA /* Gender_350x250.png */,
 				1BF56E21212AB90800DF30BA /* Gender_350x400.png */,
@@ -721,6 +730,7 @@
 				1BF56E1C212AA45500DF30BA /* Dominant Eye.PNG in Resources */,
 				1B2E011F20C79ED400B34645 /* SProfileVC.xib in Resources */,
 				1BF56E18212AA45500DF30BA /* Lower Leg.PNG in Resources */,
+				1BF56E2A212AC43900DF30BA /* play-button.png in Resources */,
 				1B6DF8F720C7F26700280E84 /* QuestionPartOne.xib in Resources */,
 				1BECD14820F8B557004252D5 /* Roboto-Bold.ttf in Resources */,
 				1B26854320FF550E004A11B6 /* editblack.png in Resources */,
@@ -742,6 +752,7 @@
 				1B2E013320C7B3F600B34645 /* 640_960.png in Resources */,
 				1BEFEAA620CA46DD00400AF1 /* watermark.png in Resources */,
 				1B6DF8F020C7E4BC00280E84 /* Chair2.jpg in Resources */,
+				1BF56E2B212AC43900DF30BA /* cancel (2).png in Resources */,
 				1B597C1620FDE79F00180C7D /* edit 2.PNG in Resources */,
 				1B6DF8DE20C7DB2900280E84 /* slider1.png in Resources */,
 				1B9ADD7D2121497F0080CF9A /* OrderProccessingThird.xib in Resources */,
@@ -794,6 +805,7 @@
 				1B2E012720C7AAE900B34645 /* male.png in Resources */,
 				1B2E012320C79EFD00B34645 /* SHomeVC.xib in Resources */,
 				1B9ADD7F21217AEA0080CF9A /* 750_1334.jpg in Resources */,
+				1BF56E2C212AC43900DF30BA /* gallery.png in Resources */,
 				1BB9C4C120C8F8E10028A48A /* OrderProccessing.xib in Resources */,
 				1BECAEFE20D24DF50050AE31 /* SForgotPass.xib in Resources */,
 				1B6DF8F320C7E4BC00280E84 /* chair7.jpg in Resources */,

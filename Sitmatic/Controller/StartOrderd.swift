@@ -109,7 +109,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                     self.arrIteam = arrQuestion[count]["value"] as? Array
                     self.arrInch = arrQuestion[0]["inch"] as? Array
                     self.arrIteam = arrQuestion[0]["value"] as? Array
-                    setPickerOrder()
+                 //   setPickerOrder()
    
                     self.arrAnswer.append(dicLocal)
                     self.isPriviousClick = true

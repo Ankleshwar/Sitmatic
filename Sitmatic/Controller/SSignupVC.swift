@@ -17,6 +17,7 @@ class SSignupVC: BaseViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     var myTextField = UITextField()
 
+    @IBOutlet weak var txtZip: UITextField!
     @IBOutlet weak var txtConfirmPassword: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
     //@IBOutlet weak var imgButtonLogin: UIImageView!
@@ -92,6 +93,7 @@ class SSignupVC: BaseViewController {
 
         
          self.txtMobile.setNumberKeybord(self, withLeftTitle: "Cancel", andRightTitle: "Done")
+         self.txtZip.setNumberKeybord(self, withLeftTitle: "Cancel", andRightTitle: "Done")
         setCorveTextField()
         
     }
@@ -152,7 +154,10 @@ class SSignupVC: BaseViewController {
             self.showToast(message: "Please enter your confirm password ")
         }else if  (firstPassword!.isEqualToString(find: secondPassword!)) == false {
              self.showToast(message: "Password mismatch  ")
-        }else{
+        }  else if self.txtZip.text?.count == 0{
+             self.showToast(message: "Please enter your zipcode ")
+        }
+        else{
 
             callSignUpApi()
         }
@@ -254,8 +259,20 @@ extension SSignupVC: UITextFieldDelegate{
             self.txtPassword.becomeFirstResponder()
         }else if textField == txtPassword {
             self.txtConfirmPassword.becomeFirstResponder()
+        }else if textField == txtConfirmPassword {
+            self.txtZip.becomeFirstResponder()
         }
        
+    }
+    
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
+        
+        if textField == self.txtZip {
+            return textField.text!.count < 5 || string == ""
+        }
+        return true
     }
     
 }

@@ -19,6 +19,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
     @IBOutlet weak var tostLable: UILabel!
     var arrCurrent: [[String: String]]  = Array()
     
+    @IBOutlet weak var btnSuggestion: UIButton!
     var isback = false
     
     @IBOutlet weak var tableView: UITableView!
@@ -43,6 +44,8 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
    // var serverArray: [[String: String]]  = Array()
     var serverArray: [[String: String]]  = Array()
     
+    @IBOutlet var viewSub: UIView!
+    @IBOutlet weak var imgSuggestion: UIImageView!
     var  value: Int = 0
     
     @IBOutlet weak var lblQuestionValueCount: UILabel!
@@ -79,7 +82,27 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
     }
     
     
-
+    @IBAction func clickToSuggest(_ sender: Any) {
+       
+        
+        if (sender as AnyObject).tag == 1 {
+            let viewSubData = UIView(frame: CGRect(x: CGFloat(0), y: CGFloat(200), width: CGFloat(self.screenWidth), height: CGFloat(400)))
+            viewSubData.addSubview(self.viewSub)
+             viewSubData.backgroundColor = UIColor.red
+            viewSubData.tag = 500
+            self.view.addSubview(viewSubData)
+           
+        }else{
+            viewSub.removeFromSuperview()
+        
+            if let viewWithTag = self.view.viewWithTag(500) {
+              
+                viewWithTag.removeFromSuperview()
+            }
+            
+        }
+    }
+    
     
     
     @IBAction func clickToCancel(_ sender: Any) {

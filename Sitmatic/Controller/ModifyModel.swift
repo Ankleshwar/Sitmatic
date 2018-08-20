@@ -170,12 +170,15 @@ class ModifyModel: BaseViewController {
         self.index = i
         
         if index == 0 {
-            let indexArray = self.arrIteam?.index(where: { $0 == "(QT) Upholstered Back"})
-            if indexArray != nil {
-                self.arrIteam?.remove(at: indexArray!)
-                self.arrIteam?.append("(QT) Upholstered Back" + " " + "*")
-            }
-        }else if index == 2 {
+            
+        
+                let indexArray = self.arrIteam?.index(where: { $0 == "(QT) Upholstered Back"})
+                if indexArray != nil {
+                    self.arrIteam?.remove(at: indexArray!)
+                    self.arrIteam?.append("(QT) Upholstered Back" + " " + "*")
+                }
+            
+            }else if index == 2 {
             
             
             let indexArray = self.arrIteam?.index(where: { $0 == successDataObject.backrestSizeValue})
@@ -240,11 +243,15 @@ class ModifyModel: BaseViewController {
         }
         
         
-        
+      
     
-        
-        
-        if index == 3 {
+        if index == 0{
+            if successDataObject.backrestSize == "4"{
+                self.showToast(message: "Sorry, you cannot change your mesh.")
+            }else{
+                  showPicker()
+            }
+        }else if index == 3 {
             
          
             if isMesh == true{
@@ -262,16 +269,29 @@ class ModifyModel: BaseViewController {
             
             
             self.setTableView()
-        }else{
-            if index == 2{
-                if isMesh == true{
-                        self.showToast(message: "Sorry, you cannot change your backrest size.")
-                    }else{
-                        showPicker()
-                    }
-                }else{
-                 showPicker()
+        }else if index == 4 {
+              if successDataObject.backrestSize == "4"{
+                 self.showToast(message: "Sorry, you cannot change your seatsize")
+              }else{
+                showPicker()
             }
+        }else  if index == 2{
+            if successDataObject.backrestSize == "4"{
+                self.showToast(message: "Sorry, you cannot change your backrest size.")
+            }else {
+                if isMesh == true{
+                    self.showToast(message: "Sorry, you cannot change your backrest size.")
+                }else{
+                    showPicker()
+                }
+            }
+        }
+            
+        
+        else{
+           
+             showPicker()
+           
             
            
         }
@@ -782,7 +802,8 @@ class ModifyModel: BaseViewController {
             if strValue == "Please select"{
                 self.lblBase.text  = strValue
             }else{
-                self.lblBase.text = strValue + " " + "*"
+                self.lblBase.text = strValue
+                //self.lblBase.text = strValue + " " + "*"
             }
             //self.lblBase.text  = strValue + " " + "*"
             dicSelected["base"] = strValue
@@ -791,7 +812,8 @@ class ModifyModel: BaseViewController {
             if strValue == "Please select"{
                 self.lblFootrest.text  = strValue
             }else{
-                self.lblFootrest.text = strValue + " " + "*"
+                 self.lblFootrest.text = strValue
+              //  self.lblFootrest.text = strValue + " " + "*"
             }
            // self.lblFootrest.text  = strValue + " " + "*"
             dicSelected["footrest"] = strValue
@@ -799,7 +821,8 @@ class ModifyModel: BaseViewController {
             if strValue == "Please select"{
                 self.lblCasters.text  = strValue
             }else{
-                self.lblCasters.text = strValue + " " + "*"
+                 self.lblCasters.text = strValue
+               // self.lblCasters.text = strValue + " " + "*"
             }
             
           //  self.lblCasters.text = strValue + " " + "*"
@@ -821,7 +844,7 @@ class ModifyModel: BaseViewController {
             }else{
                 
                 self.isMesh = false
-                 self.lblbackRestSize.text = "Please select"
+                 self.lblbackRestSize.text = successDataObject.backrestSizeValue
 
             }
             
