@@ -201,7 +201,7 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate{
        
         
         
-        _ = SweetAlert().showAlert("Confirm Cancellation", subTitle: "Are you sure you want to cancel this order?", style: AlertStyle.warning, buttonTitle:"No", buttonColor:UIColor.darkBlue , otherButtonTitle:  "Yes", otherButtonColor: UIColor.colorFromRGB(0xDD6B55)) { (isOtherButton) -> Void in
+        _ = SweetAlert().showAlert("Cancel Evaluation?", subTitle: "Are you sure you want to cancel?", style: AlertStyle.warning, buttonTitle:"No", buttonColor:UIColor.darkBlue , otherButtonTitle:  "Yes", otherButtonColor: UIColor.colorFromRGB(0xDD6B55)) { (isOtherButton) -> Void in
             if isOtherButton == true {
                 
                 // _ = SweetAlert().showAlert("Cancelled!", subTitle: "Your Order Processing is safe", style: AlertStyle.error)
@@ -247,7 +247,13 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate{
                 }
 
             }else{
-                 nextQues()
+                if strValueID == "14"{
+                    callApi()
+                }else{
+                    nextQues()
+                }
+                
+                
             }
             
            
@@ -332,16 +338,17 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate{
         
         if strId == "14"{
             serverSideData()
-            callApi()
+             strValueID = "14"
+           // callApi()
         }else{
             
             
-            self.view.isUserInteractionEnabled = false
-            Timer.scheduledTimer(timeInterval: 0.5,
-                                 target: self,
-                                 selector: #selector(self.nextQues),
-                                 userInfo: nil,
-                                 repeats: false)
+           // self.view.isUserInteractionEnabled = false
+//            Timer.scheduledTimer(timeInterval: 0.5,
+//                                 target: self,
+//                                 selector: #selector(self.nextQues),
+//                                 userInfo: nil,
+//                                 repeats: false)
             
         }
      
@@ -568,14 +575,15 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate{
         
         if strId == "14"{
             serverSideData()
-            callApi()
+             strValueID = "14"
+           // callApi()
         }
         else{
-            Timer.scheduledTimer(timeInterval: 0.3,
-                                 target: self,
-                                 selector: #selector(nextQues),
-                                 userInfo: nil,
-                                 repeats: false)
+//            Timer.scheduledTimer(timeInterval: 0.3,
+//                                 target: self,
+//                                 selector: #selector(nextQues),
+//                                 userInfo: nil,
+//                                 repeats: false)
         }
         
         

@@ -82,7 +82,7 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="75" id="num-a4-8Py"/>
                                     </constraints>
-                                    <state key="normal" image="orderbtn.png"/>
+                                    <state key="normal" image="ANK_orderbtn.png"/>
                                     <connections>
                                         <action selector="clickToStartOrder:" destination="-1" eventType="touchUpInside" id="tIQ-b1-d1q"/>
                                     </connections>
@@ -155,9 +155,9 @@
         </view>
     </objects>
     <resources>
+        <image name="ANK_orderbtn.png" width="500" height="116"/>
         <image name="background.jpg" width="2410" height="4100"/>
         <image name="male.png" width="24" height="24"/>
-        <image name="orderbtn.png" width="500" height="116"/>
         <image name="sitmaticlogo.png" width="224" height="50"/>
     </resources>
 </document>

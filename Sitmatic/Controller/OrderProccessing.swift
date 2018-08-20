@@ -86,7 +86,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         
         
         
-        _ = SweetAlert().showAlert("Confirm Cancellation", subTitle: "Are you sure you want to cancel this order?", style: AlertStyle.warning, buttonTitle:"No", buttonColor:UIColor.darkBlue , otherButtonTitle:  "Yes", otherButtonColor: UIColor.colorFromRGB(0xDD6B55)) { (isOtherButton) -> Void in
+        _ = SweetAlert().showAlert("Cancel Evaluation?", subTitle: "Are you sure you want to cancel?", style: AlertStyle.warning, buttonTitle:"No", buttonColor:UIColor.darkBlue , otherButtonTitle:  "Yes", otherButtonColor: UIColor.colorFromRGB(0xDD6B55)) { (isOtherButton) -> Void in
             if isOtherButton == true {
                 
                 
@@ -139,9 +139,26 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
             
             if self.isPreviousClick == false {
                  dataForNo(strId)
-                 TimeInterval()
+                if strId == "5Y"{
+                    goToNext()
+                }
+                    
+                else if strId == "3"{
+                    goToNext()
+                }else{
+                    TimeInterval()
+                }
+                
+                
             }else{
                  dataForNo(strId)
+                if strId == "5Y"{
+                    goToNext()
+                }
+                    
+                else if strId == "3"{
+                    goToNext()
+                }
             }
             
            
@@ -151,9 +168,24 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
             
             if self.isPreviousClick == false {
                dataForYes(strId)
-                TimeInterval()
+                if strId == "5Y"{
+                    goToNext()
+                }
+                    
+                else if strId == "3"{
+                    goToNext()
+                }else{
+                    TimeInterval()
+                }
             }else{
                dataForYes(strId)
+                if strId == "5Y"{
+                    goToNext()
+                }
+                    
+                else if strId == "3"{
+                    goToNext()
+                }
             }
             
             
@@ -193,6 +225,11 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
 //                             userInfo: nil,
 //                             repeats: false)
         
+        
+        
+        
+        
+        
         self.nextQues()
     }
     
@@ -209,13 +246,13 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         if strId == "3"{
             serverSideData()
             
-            goToNext()
+          //  goToNext()
         }
         else if strId == "5Y"{
             serverSideData()
             
             
-            goToNext()
+           // goToNext()
         }
         else{
             
@@ -341,14 +378,14 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
             
             
             
-            goToNext()
+           // goToNext()
         }
             
         else if strId == "3"{
             serverSideData()
             
             
-            goToNext()
+            //goToNext()
         }
         else{
             

@@ -104,11 +104,11 @@ class OrderProccessingThird: BaseViewController {
         serverArrayThid.append(dicAnsData)
         self.view.endEditing(true)
         textField(color:UIColor.lightGray)
-        Timer.scheduledTimer(timeInterval: 0.3,
-                             target: self,
-                             selector: #selector(self.callApi),
-                             userInfo: nil,
-                             repeats: false)
+//        Timer.scheduledTimer(timeInterval: 0.3,
+//                             target: self,
+//                             selector: #selector(self.callApi),
+//                             userInfo: nil,
+//                             repeats: false)
     }
     
     
@@ -134,7 +134,7 @@ class OrderProccessingThird: BaseViewController {
     
     @IBAction func clickToConfirmModel(_ sender: Any) {
         
-        _ = SweetAlert().showAlert("Confirm Order?", subTitle: "", style: AlertStyle.warning, buttonTitle:"No", buttonColor:UIColor.darkBlue , otherButtonTitle:  "Yes", otherButtonColor: UIColor.colorFromRGB(0xDD6B55)) { (isOtherButton) -> Void in
+        _ = SweetAlert().showAlert("Confirm Evaluation?", subTitle: "", style: AlertStyle.warning, buttonTitle:"No", buttonColor:UIColor.darkBlue , otherButtonTitle:  "Yes", otherButtonColor: UIColor.colorFromRGB(0xDD6B55)) { (isOtherButton) -> Void in
             if isOtherButton == true {
                 
               
@@ -287,7 +287,7 @@ class OrderProccessingThird: BaseViewController {
        
         
         
-        _ = SweetAlert().showAlert("Confirm Cancellation", subTitle: "Are you sure you want to cancel this order?", style: AlertStyle.warning, buttonTitle:"No", buttonColor:UIColor.darkBlue , otherButtonTitle:  "Yes", otherButtonColor: UIColor.colorFromRGB(0xDD6B55)) { (isOtherButton) -> Void in
+        _ = SweetAlert().showAlert("Cancel Evaluation?", subTitle: "Are you sure you want to cancel?", style: AlertStyle.warning, buttonTitle:"No", buttonColor:UIColor.darkBlue , otherButtonTitle:  "Yes", otherButtonColor: UIColor.colorFromRGB(0xDD6B55)) { (isOtherButton) -> Void in
             if isOtherButton == true {
                 
                 // _ = SweetAlert().showAlert("Cancelled!", subTitle: "Your Order Processing is safe", style: AlertStyle.error)
@@ -325,11 +325,11 @@ class OrderProccessingThird: BaseViewController {
                 self.arrQuestion?.append(["queId": "18","queText": "Please select fabric category", "option1":"Category 2 (Flexx)","option2":"Category 4 (Dreamweave)"])
                 self.arrayPersnonID.append("18")
             }
-            Timer.scheduledTimer(timeInterval: 0.3,
-                                 target: self,
-                                 selector: #selector(nextQues),
-                                 userInfo: nil,
-                                 repeats: false)
+//            Timer.scheduledTimer(timeInterval: 0.3,
+//                                 target: self,
+//                                 selector: #selector(nextQues),
+//                                 userInfo: nil,
+//                                 repeats: false)
         }
         else if strId == "19"{
             callApi()
@@ -347,11 +347,11 @@ class OrderProccessingThird: BaseViewController {
             self.arrIteam = ["Black","Indigo","Charcoal","Maroon"]
             self.pickerView.selectRow(0, inComponent: 0, animated: true)
             self.pickerView(pickerView, didSelectRow: 0, inComponent: 0)
-            Timer.scheduledTimer(timeInterval: 0.3,
-                                 target: self,
-                                 selector: #selector(nextQues),
-                                 userInfo: nil,
-                                 repeats: false)
+//            Timer.scheduledTimer(timeInterval: 0.3,
+//                                 target: self,
+//                                 selector: #selector(nextQues),
+//                                 userInfo: nil,
+//                                 repeats: false)
             
         }else{
             Timer.scheduledTimer(timeInterval: 0.3,
@@ -389,12 +389,12 @@ class OrderProccessingThird: BaseViewController {
              self.arrIteam = ["Black","Navy","Charcoal","Aqua","Ember","Cologne","Napa","Tropicana"]
             self.pickerView.selectRow(0, inComponent: 0, animated: true)
             self.pickerView(pickerView, didSelectRow: 0, inComponent: 0)
-            Timer.scheduledTimer(timeInterval: 0.3,
-                                 target: self,
-                                 selector: #selector(nextQues),
-                                 userInfo: nil,
-                                 repeats: false)
-                
+//            Timer.scheduledTimer(timeInterval: 0.3,
+//                                 target: self,
+//                                 selector: #selector(nextQues),
+//                                 userInfo: nil,
+//                                 repeats: false)
+            
                 
             
             
@@ -607,7 +607,7 @@ class OrderProccessingThird: BaseViewController {
                 let dataDic =  jsondata["successData"]
                 let orderId = dataDic["order_number"]
                 
-                _ = SweetAlert().showAlert("Thank you!", subTitle: "Your Order has been placed sucessfully. Your order ID is \(String(describing: orderId))", style: AlertStyle.success)
+                _ = SweetAlert().showAlert("We’re done!", subTitle: "Check your inbox. Your evaluation ID is  \(String(describing: orderId))", style: AlertStyle.success)
                 let vc = SHomeVC(nibName: "SHomeVC", bundle: nil)
                 self.navigationController?.pushViewController(vc, animated: true)
             }
