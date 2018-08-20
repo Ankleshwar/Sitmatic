@@ -22,7 +22,7 @@ class ModifyModel: BaseViewController {
     var delegate: ModifyModelDelegate?
     @IBOutlet weak var bottomViewHeight: NSLayoutConstraint!
     var arrQuesOfModifiy:[Question]?
-   
+    var isBackRestFour = false
     @IBOutlet weak var lblSeatAngle: UILabel!
     @IBOutlet weak var lblSeatAngleQue: UILabel!
     @IBOutlet weak var lblSeatDepthQue: UILabel!
@@ -272,6 +272,8 @@ class ModifyModel: BaseViewController {
         }else if index == 4 {
               if successDataObject.backrestSize == "4"{
                  self.showToast(message: "Sorry, you cannot change your seatsize")
+              }else if isBackRestFour == true{
+                self.showToast(message: "Sorry, you cannot change your seat size")
               }else{
                 showPicker()
             }
@@ -662,6 +664,13 @@ class ModifyModel: BaseViewController {
                     self.lblbackRestSize.text  = strValue
                 }else{
                    // self.lblbackRestSize.text = strValue + " " + "*"
+                    if strValue == "(4) Largest  backrest 26”h x23”w"{
+                        self.isBackRestFour = true
+                        self.lblSeatSize.text = "(4) Largest Seat  24\"w x 24\"d"
+                    }else{
+                            self.isBackRestFour = false
+                    }
+                    
                     self.lblbackRestSize.text = strValue
                 }
                 
@@ -1099,7 +1108,10 @@ class ModifyModel: BaseViewController {
             }else if index == 4{
                 if successDataObject.backrestSize == "4"{
                     self.showToast(message: "Sorry, you cannot change your seat size")
-                }else {
+                }else if isBackRestFour == true{
+                      self.showToast(message: "Sorry, you cannot change your seat size")
+                }
+                else {
                     showPicker()
                 }
                 

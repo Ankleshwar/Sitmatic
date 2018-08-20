@@ -39,7 +39,7 @@
                     <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Q1-BE-iAy">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="766"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="866"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sitmaticlogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="hZl-Yb-i2o">
                                     <rect key="frame" x="95" y="60" width="224" height="50"/>
@@ -143,7 +143,7 @@
                                     </constraints>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
-                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
                                     <connections>
                                         <outlet property="delegate" destination="-1" id="HOt-tL-CY1"/>
                                     </connections>
@@ -161,7 +161,7 @@
                                 <constraint firstItem="3ey-d8-4wn" firstAttribute="leading" secondItem="6Q1-BE-iAy" secondAttribute="leading" constant="30" id="8kn-XX-Sr4"/>
                                 <constraint firstAttribute="trailing" secondItem="56I-85-jMD" secondAttribute="trailing" constant="30" id="AHF-Yb-250"/>
                                 <constraint firstItem="8IL-Tl-FrX" firstAttribute="top" secondItem="Thl-f4-TlD" secondAttribute="bottom" constant="15" id="BXs-Zh-GlS"/>
-                                <constraint firstAttribute="height" constant="766" id="CUJ-0a-tXs"/>
+                                <constraint firstAttribute="height" constant="866" id="CUJ-0a-tXs"/>
                                 <constraint firstAttribute="trailing" secondItem="X8Y-fO-T3J" secondAttribute="trailing" constant="30" id="JQx-vO-p0i"/>
                                 <constraint firstItem="X8Y-fO-T3J" firstAttribute="top" secondItem="hZl-Yb-i2o" secondAttribute="bottom" constant="100" id="JlP-mQ-pPL"/>
                                 <constraint firstItem="Mb7-pg-7Wy" firstAttribute="leading" secondItem="6Q1-BE-iAy" secondAttribute="leading" constant="30" id="MDm-vx-7o0"/>

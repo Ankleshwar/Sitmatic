@@ -93,7 +93,7 @@ class SSignupVC: BaseViewController {
 
         
          self.txtMobile.setNumberKeybord(self, withLeftTitle: "Cancel", andRightTitle: "Done")
-         self.txtZip.setNumberKeybord(self, withLeftTitle: "Cancel", andRightTitle: "Done")
+      //   self.txtZip.setNumberKeybord(self, withLeftTitle: "Cancel", andRightTitle: "Done")
         setCorveTextField()
         
     }
@@ -117,6 +117,9 @@ class SSignupVC: BaseViewController {
         
         self.txtConfirmPassword.layer.masksToBounds = true;
         self.txtConfirmPassword.layer.cornerRadius = 20.0
+        
+        self.txtZip.layer.masksToBounds = true;
+        self.txtZip.layer.cornerRadius = 20.0
         
         self.txtEmail.layer.masksToBounds = true;
         self.txtEmail.layer.cornerRadius = 20.0
@@ -176,7 +179,8 @@ class SSignupVC: BaseViewController {
     let dic = ["name": self.txtName.text,
                "email" : self.txtEmail.text,
                "password" : self.txtPassword.text,
-               "mobile": self.txtMobile.text]
+               "mobile": self.txtMobile.text,
+               "zipcode":self.txtZip.text]
     
     SVProgressHUD.show()
     

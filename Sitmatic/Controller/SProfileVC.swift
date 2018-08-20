@@ -12,7 +12,7 @@ import Kingfisher
 
 
 
-class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINavigationControllerDelegate ,UITextViewDelegate {
+class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINavigationControllerDelegate ,UITextViewDelegate,UITextFieldDelegate {
     @IBOutlet weak var viewProfile: UIView!
     @IBOutlet weak var btnLogOut: UIButton!
     @IBOutlet weak var lblUserEmail: UILabel!
@@ -21,6 +21,7 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var btnEdit: UIButton!
     @IBOutlet weak var btnPhoto: UIButton!
+    @IBOutlet weak var txtZip: UITextField!
     
     var imageUser = UIImage()
     var objeHome = SHomeVC()
@@ -36,11 +37,11 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
         let strnumber = self.appUserObject?.mobile
          let strAddress = self.appUserObject?.address
         self.txtMobile.text = " Mobile :  \(strnumber!)"
-        
+        self.txtZip.text =  self.appUserObject?.countryCode
         
         self.txtMobile.isEnabled = false
         self.txtAddress.isEditable = false
-        
+        self.txtZip.isEnabled = false
         
         imgView.layer.borderWidth = 1
         imgView.layer.masksToBounds = false
@@ -105,7 +106,7 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
                 self.btnEdit.setButtonImage("edit.png")
                 self.txtAddress.isEditable = false
                 self.btnPhoto.isEnabled = false
-                
+                 self.txtZip.isEnabled = false
                 self.btnEdit.isSelected = false
                  callServiceEditProfile()
                 
@@ -119,6 +120,7 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
             self.btnEdit.setButtonImage("ic_check_white")
             self.btnLogOut.isHidden = true
             self.btnEdit.isSelected = true
+             self.txtZip.isEnabled = true
             
         }
         
@@ -140,7 +142,8 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
         strName = "updateprofile?token=\(strName)"
         
         let dic = ["id": (self.appUserObject?.userId)!,
-                   "address": self.txtAddress.text] as [String : Any]
+                   "address": self.txtAddress.text,
+                   "zipcode": self.txtZip.text] as [String : Any]
         
 
         
@@ -300,7 +303,15 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
     }
     
 
-
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
+        
+        if textField == self.txtZip {
+            return textField.text!.count < 5 || string == ""
+        }
+        return true
+    }
 
     
     func textViewDidBeginEditing(_ textView: UITextView)
@@ -327,6 +338,11 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
     }
     
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+        
+    }
 }
 
 
