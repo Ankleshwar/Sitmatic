@@ -240,6 +240,12 @@ class ModifyModel: BaseViewController {
                 self.arrIteam?.remove(at: indexArray!)
                 self.arrIteam?.append(successDataObject.elbowHeightValue + " " + "*")
             }
+        }else if index == 12 {
+            let indexArray = self.arrIteam?.index(where: { $0 == successDataObject.caster})
+            if indexArray != nil {
+                self.arrIteam?.remove(at: indexArray!)
+                self.arrIteam?.append(successDataObject.caster + " " + "*")
+            }
         }
         
         
@@ -248,6 +254,8 @@ class ModifyModel: BaseViewController {
         if index == 0{
             if successDataObject.backrestSize == "4"{
                 self.showToast(message: "Sorry, you cannot change your mesh.")
+            }else if isBackRestFour == true{
+                self.showToast(message: "Sorry, you cannot change your mesh")
             }else{
                   showPicker()
             }
@@ -270,6 +278,7 @@ class ModifyModel: BaseViewController {
             
             self.setTableView()
         }else if index == 4 {
+            
               if successDataObject.backrestSize == "4"{
                  self.showToast(message: "Sorry, you cannot change your seatsize")
               }else if isBackRestFour == true{
@@ -412,7 +421,11 @@ class ModifyModel: BaseViewController {
             self.lblCantrol.text = "Please select"
             dicSelected["control"] = "Please select"
         }
-        if dicSelected["casters"] as? String != nil {
+        if successDataObject.caster != "" {
+            dicSelected["casters"] = successDataObject.caster
+            //self.lblCantrol.text = successDataObject.controlValue + " " + "*"
+            self.lblCasters.text = successDataObject.caster
+        }else if dicSelected["casters"] as? String != nil {
             
             if (dicSelected["casters"] as? String)! == "Please select" {
                 self.lblCasters.text  = "Please select"
@@ -664,9 +677,12 @@ class ModifyModel: BaseViewController {
                     self.lblbackRestSize.text  = strValue
                 }else{
                    // self.lblbackRestSize.text = strValue + " " + "*"
-                    if strValue == "(4) Largest  backrest 26”h x23”w"{
+                     self.arrIteam = arrQuesOfModifiy![index].options
+                    
+                    if strValue == arrIteam?.last{
                         self.isBackRestFour = true
-                        self.lblSeatSize.text = "(4) Largest Seat  24\"w x 24\"d"
+                          self.arrIteam = arrQuesOfModifiy![index].options
+                        self.lblSeatSize.text = arrIteam?.last
                     }else{
                             self.isBackRestFour = false
                     }
@@ -827,6 +843,9 @@ class ModifyModel: BaseViewController {
            // self.lblFootrest.text  = strValue + " " + "*"
             dicSelected["footrest"] = strValue
         }else if index == 12{
+            self.strValue = self.strValue.replacingOccurrences(of: "*", with: "",
+                                                               options: NSString.CompareOptions.literal, range:nil)
+            
             if strValue == "Please select"{
                 self.lblCasters.text  = strValue
             }else{
@@ -843,12 +862,14 @@ class ModifyModel: BaseViewController {
             
           // self.lblMesh.text  = strValue + " " + "*"
              self.lblMesh.text  = strValue
-            if strValue == "(QM) Mesh Back"{
+            self.arrIteam = arrQuesOfModifiy![index].options
+            
+            if strValue == arrIteam?.first{
                 self.isMesh = true
-
+                  self.arrIteam = arrQuesOfModifiy![2].options
                 
-                self.lblbackRestSize.text = "(3) Upholstered High Back - 23”h x 19”w"
-                 dicSelected["backrestSize"] = "(3) Upholstered High Back - 23”h x 19”w"
+                self.lblbackRestSize.text = self.arrIteam?[3]
+                 dicSelected["backrestSize"] = self.arrIteam?[3]
                 
             }else{
                 
@@ -1042,6 +1063,12 @@ class ModifyModel: BaseViewController {
                 self.arrIteam?.remove(at: indexArray!)
                 self.arrIteam?.append(successDataObject.elbowHeightValue + " " + "*")
             }
+        }else if index == 12 {
+            let indexArray = self.arrIteam?.index(where: { $0 == successDataObject.caster})
+            if indexArray != nil {
+                self.arrIteam?.remove(at: indexArray!)
+                self.arrIteam?.append(successDataObject.caster + " " + "*")
+            }
         }
         
         
@@ -1071,6 +1098,8 @@ class ModifyModel: BaseViewController {
         } else if index == 0 {
             if successDataObject.backrestSize == "4"{
                 self.showToast(message: "Sorry, you cannot change your mesh.")
+            }else if isBackRestFour == true{
+                self.showToast(message: "Sorry, you cannot change your mesh")
             }else {
                 
                 let indexArray = self.arrIteam?.index(where: { $0 == "(QT) Upholstered Back"})

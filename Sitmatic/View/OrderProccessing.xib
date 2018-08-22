@@ -96,38 +96,16 @@
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play-button.png" translatesAutoresizingMaskIntoConstraints="NO" id="bvH-hT-var">
-                            <rect key="frame" x="337" y="4" width="28" height="28"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="28" id="EGc-Z8-w0S"/>
-                                <constraint firstAttribute="height" constant="28" id="t01-B5-Qs9"/>
-                            </constraints>
-                        </imageView>
-                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jMc-nc-3jl">
-                            <rect key="frame" x="299" y="4" width="28" height="28"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="28" id="gLK-VG-aoa"/>
-                                <constraint firstAttribute="height" constant="28" id="lhQ-7w-jMd"/>
-                            </constraints>
-                            <state key="normal" image="gallery.png"/>
-                            <connections>
-                                <action selector="clickToSuggest:" destination="-1" eventType="touchUpInside" id="57F-YN-6uU"/>
-                            </connections>
-                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="zHO-GQ-H0U" firstAttribute="top" secondItem="QOu-0N-qHs" secondAttribute="top" constant="3" id="1Jj-Hq-Lun"/>
                         <constraint firstItem="zHO-GQ-H0U" firstAttribute="top" secondItem="QOu-0N-qHs" secondAttribute="top" constant="3" id="1Kn-sh-Lbz"/>
                         <constraint firstAttribute="bottom" secondItem="zHO-GQ-H0U" secondAttribute="bottom" constant="3" id="8JD-9f-g0N"/>
-                        <constraint firstItem="bvH-hT-var" firstAttribute="leading" secondItem="jMc-nc-3jl" secondAttribute="trailing" constant="10" id="C3j-J9-0qe"/>
-                        <constraint firstAttribute="trailing" secondItem="bvH-hT-var" secondAttribute="trailing" constant="10" id="Dxe-OY-Mzd"/>
                         <constraint firstItem="zHO-GQ-H0U" firstAttribute="leading" secondItem="QOu-0N-qHs" secondAttribute="leading" constant="10" id="F3G-U6-6Es"/>
                         <constraint firstAttribute="trailing" secondItem="zHO-GQ-H0U" secondAttribute="trailing" constant="10" id="G2q-BR-zeV"/>
                         <constraint firstItem="zHO-GQ-H0U" firstAttribute="leading" secondItem="QOu-0N-qHs" secondAttribute="leading" constant="10" id="GT7-17-VWP"/>
                         <constraint firstAttribute="trailing" secondItem="zHO-GQ-H0U" secondAttribute="trailing" constant="10" id="ZCW-Fe-67q"/>
-                        <constraint firstAttribute="bottom" secondItem="bvH-hT-var" secondAttribute="bottom" constant="4" id="cvz-iq-I23"/>
-                        <constraint firstAttribute="bottom" secondItem="jMc-nc-3jl" secondAttribute="bottom" constant="4" id="xqh-GA-gTz"/>
                     </constraints>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="watermark.png" translatesAutoresizingMaskIntoConstraints="NO" id="5ot-0G-88E">
@@ -375,10 +353,8 @@
         <image name="cancel (2).png" width="64" height="64"/>
         <image name="cancel.png" width="24" height="24"/>
         <image name="chair.png" width="30" height="30"/>
-        <image name="gallery.png" width="64" height="64"/>
         <image name="info.png" width="28" height="28"/>
         <image name="next.png" width="24" height="24"/>
-        <image name="play-button.png" width="64" height="64"/>
         <image name="previous.png" width="24" height="24"/>
         <image name="watermark.png" width="280" height="245"/>
     </resources>
