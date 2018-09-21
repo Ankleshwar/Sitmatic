@@ -58,7 +58,7 @@ class SSLoginVC: BaseViewController {
         }else if isValid == false{
             self.showToast(message: "Please enter valid Email address")
         }else{
-           
+             self.view.isUserInteractionEnabled = false
             callLoginApi()
         }
         
@@ -101,11 +101,11 @@ class SSLoginVC: BaseViewController {
             
             if error != nil{
                 print(dicdata)
-                
+                  self.view.isUserInteractionEnabled = true
               
                 SVProgressHUD.dismiss()
             }else{
-              
+               self.view.isUserInteractionEnabled = true
                 
                 if dicdata["status"] as! String == "Ok"{
                       print(dicdata)

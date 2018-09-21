@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SVProgressHUD
 
 
 
@@ -16,7 +16,7 @@ class SHomeVC: UIViewController {
     @IBOutlet weak var pageController: UIPageControl!
     @IBOutlet weak var scrollViewForSlider: UIScrollView!
     @IBOutlet weak var collectionView: UICollectionView!
-    
+   
 
     
     
@@ -38,6 +38,10 @@ class SHomeVC: UIViewController {
     //
     
     override func viewDidAppear(_ animated: Bool) {
+        if let navVCsCount = self.navigationController?.viewControllers.count {
+            self.navigationController?.viewControllers.removeSubrange(Range(0..<navVCsCount - 1))
+        }
+        
         print("viewDidAppearCall")
     }
     override func viewDidDisappear(_ animated: Bool) {
@@ -53,13 +57,8 @@ class SHomeVC: UIViewController {
          self.collectionView.backgroundColor = UIColor.clear
          print("viewDidLoadCall")
       
-        
-//        let abc = "Hello world" + " " + "*"
-//        
-//        let result = abc.replacingOccurrences(of: "*", with: "_",
-//                                              options: NSString.CompareOptions.literal, range:nil)
-//        
-//        print(result)
+       
+
     }
     
     func setValue(strPrivate: String, strFilePrivate: String, strStatic: String) {
@@ -77,6 +76,13 @@ class SHomeVC: UIViewController {
         self.strNameOpen = strValue
         
     }
+    
+    
+    
+    
+    
+    
+    
     
 
     override func viewWillAppear(_ animated: Bool) {
@@ -131,7 +137,7 @@ class SHomeVC: UIViewController {
     }
     
     @IBAction func clickToStartOrder(_ sender: Any) {
-        let vc = OrderProccessing(nibName: "OrderProccessing", bundle: nil)
+        let vc = BasicInfoVC(nibName: "BasicInfoVC", bundle: nil)
         self.navigationController?.pushViewController(vc, animated: true)
 
         

@@ -11,9 +11,19 @@
                               {"queId": "13","queText": "Do you like a chair with armrests?  (Arms are strongly recommended to take the weight of your arms off your neck and shoulders)", "option1":"Yes","option2":"No"},
                               
                               {"queId": "14","queText": "What type of floor will your chair be on?", "option1":"Hard Floor","option2":"Carpet"},
+                              {"queId": "15","queText": "Do you have an adjustable height work surface?", "option1":"Yes","option2":"No"},
                              
                    
                    ],
+    "OrderProccessingNew":[
+        
+        
+        {"queId":"16","questionText":"What’s your lower leg length? (Inches)","value":["11.00","11.50","12.00","12.50","13.00","13.50","14.00","14.50","15.00","15.50","16.00","16.50","17.00","17.50","18.00","18.50","19.00","19.50","20.00","20.50","21.00","21.50","22.00","22.50","23.00","23.50","24.00","24.50","25.00","25.50","26.00","26.50","27.00","27.50","28.50","29.00","29.50","30.00","30.50","31.00","31.50","32.00","32.50","33.00","33.50","34.00"]}
+        
+        
+        
+        
+    ],
     
     
     

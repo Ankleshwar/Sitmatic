@@ -71,12 +71,7 @@ class ServiceClass: NSObject {
             }
            
             
-            
-            
-            
-           
-            
-            
+        
             
         }) {
             (error) -> Void in
@@ -85,6 +80,33 @@ class ServiceClass: NSObject {
             
         }
     }
+    
+    
+    public func HomeScreenData(strUrl:String,param:[String:AnyObject],completion:@escaping (arrayBlock)){
+        
+        print(param)
+        
+        requestGETURL(baseURL+strUrl, params: param as [String : AnyObject], headers: nil, success: {
+            (JSONResponse) -> Void in
+            print(JSONResponse)
+            
+            for dic in JSONResponse.array!{
+                let obje = HomeData(fromJson: dic)
+                self.arrIteam.append(obje)
+            }
+            
+            
+            completion(nil,self.arrIteam)
+            
+            
+        }) {
+            (error) -> Void in
+            
+            completion(error,[])
+            
+        }
+    }
+    
     
     
     

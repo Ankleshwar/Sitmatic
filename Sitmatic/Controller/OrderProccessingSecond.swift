@@ -9,7 +9,9 @@
 import UIKit
 import Toast_Swift
 import SVProgressHUD
-
+import MediaPlayer
+import AVKit
+import AVFoundation
 
 protocol OrderProccessingSecondDelegate  {
     func setData(arrData:[[String: String]],isbackValue:Bool)
@@ -18,8 +20,14 @@ protocol OrderProccessingSecondDelegate  {
 
 
 class OrderProccessingSecond: BaseViewController , ModifyModelDelegate{
+    @IBOutlet weak var btnGallery: UIButton!
+    @IBOutlet weak var btnVideo: UIButton!
     
-    
+    var strError = String()
+    var isImageDataEmpty = false
+    var arrImage = NSMutableArray()
+    @IBOutlet var viewSub: UIView!
+    @IBOutlet weak var imgSuggestion: UIImageView!
 
     var sucessObj : SuccessData!
     var strValueID = ""
@@ -81,6 +89,8 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(arrImage)
+         self.viewSub.isHidden = true
         arrQuestion = setDataWithLocalJson("OrderProccessingSecond") as NSArray as? Array<Dictionary<String, Any>>
         setInitial()
         self.tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
@@ -158,7 +168,8 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate{
                 dicNext["queId"] = arrQuestion?[value]["queId"] as? String
                 
                 self.arrNext.insert(dicNext, at: 0)
-                
+                self.btnGallery.isHidden = false
+                self.btnVideo.isHidden = false
                 
                 self.arrQuestion?.remove(at: value)
                 //self.arrayPersnonID.remove(at: value)
@@ -236,10 +247,11 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate{
          
         }
         else{
-            
+            self.btnGallery.isHidden = true
+             self.btnVideo.isHidden = true
            
             
-            if strValueID == "15" {
+            if strValueID == "17" {
                 if strSelected == "No"{
                     self.setNoNextScreen()
                 }else{
@@ -247,8 +259,19 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate{
                 }
 
             }else{
-                if strValueID == "14"{
-                    callApi()
+                if strValueID == "15"{
+                    if strSelected == "No"{
+                        let Array = arrImage[0] as! [HomeData]
+                         let obje = Array[12]
+                                let vc = OrderProccessingNew(nibName: "OrderProccessingNew", bundle: nil)
+                                vc.serverArrayThid = serverArrayThid
+                        vc.strImgeUrl = obje.image
+                        vc.strVideoUrl = obje.video
+                                self.navigationController?.pushViewController(vc, animated: true)
+                    }else{
+                       callApi()
+                    }
+                    
                 }else{
                     nextQues()
                 }
@@ -286,7 +309,7 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate{
             dicData["queId"] = arrQuestion?[value]["queId"] as? String
             
             self.arrAnswer.add(dicData)
-            if arrQuestion?[value]["queId"] as? String == "14" {
+            if arrQuestion?[value]["queId"] as? String == "15" {
                   self.btnprevious.isHidden = true
                 
             }else{
@@ -336,14 +359,14 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate{
         let strId = arrQuestion?[value]["queId"] as? String
         self.isPreviousClick = false
         
-        if strId == "14"{
+        if strId == "15"{
             serverSideData()
-             strValueID = "14"
+             strValueID = "15"
            // callApi()
         }else{
             
             
-           // self.view.isUserInteractionEnabled = false
+//            self.view.isUserInteractionEnabled = false
 //            Timer.scheduledTimer(timeInterval: 0.5,
 //                                 target: self,
 //                                 selector: #selector(self.nextQues),
@@ -389,13 +412,69 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate{
         
         let strJson = self.json(from: serverArrayThid)
         print(strJson ?? "")
+//        let vc = OrderProccessingNew(nibName: "OrderProccessingNew", bundle: nil)
+//        vc.serverArrayThid = serverArrayThid
+//        self.navigationController?.pushViewController(vc, animated: true)
+            callGenrateModelApi(strData: strJson!)
+    }
+    func setImageUrl(str:String){
+        let Array = arrImage[0] as! [HomeData]
+        if str == "13"{
+            let obje = Array[11]
+            imgSuggestion.kf.indicatorType = .activity
+            let url = URL(string: obje.image)
+            imgSuggestion.kf.setImage(with: url)
+        }
         
-        self.callGenrateModelApi(strData :strJson!)
-        self.btnprevious.isHidden =  true
     }
     
     
 
+    @IBAction func clickToSuggest(_ sender: Any) {
+        if isImageDataEmpty == true{
+            self.showToast(message: strError)
+        }else{
+            
+            
+            
+            
+            if (sender as AnyObject).tag == 1 {
+                
+                self.setImageUrl(str:(arrQuestion?[value]["queId"] as! String) )
+                
+                self.viewSub.isHidden = false
+            }
+            else if (sender as AnyObject).tag == 3 {
+                let Array = arrImage[0] as! [HomeData]
+                var strUrl = String()
+                if (arrQuestion?[value]["queId"] as? String)! == "13"{
+                    strUrl = Array[11].video
+                    
+                }
+                
+                let videoURL = URL(string: strUrl)
+                let playerItem = CachingPlayerItem(url: videoURL!)
+                let player = AVPlayer(playerItem: playerItem)
+                player.automaticallyWaitsToMinimizeStalling = true
+                let playerViewController = AVPlayerViewController()
+                playerViewController.player = player
+                
+                self.present(playerViewController, animated: true) {
+                    
+                    playerViewController.player!.play()
+                    
+                    
+                }
+                
+            }
+            else {
+                
+                self.viewSub.isHidden = true
+            }
+        }
+    }
+    
+    
     
     
     
@@ -444,9 +523,12 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate{
     func callGenrateModelApi(strData : String){
         
         let dic = ["data": strData,
-                   "user_id":(self.appUserObject?.userId)!]
+                   "user_id":(self.appUserObject?.userId)!,
+                   "name": (self.appUserObject?.lastName)!,
+                   "organization_name": self.appUserObject?.countryCode ?? "",
+        ]
 
-        
+        print(dic)
         
         SVProgressHUD.show()
         
@@ -502,7 +584,7 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate{
                     
                
                     self.isYesbtnTap = false
-                    self.strValueID = "15"
+                    self.strValueID = "17"
                     
                     self.addSubView(obj)
                     
@@ -573,10 +655,10 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate{
         let strId = arrQuestion?[value]["queId"] as? String
         
         
-        if strId == "14"{
+        if strId == "15"{
             serverSideData()
-             strValueID = "14"
-           // callApi()
+             strValueID = "15"
+           
         }
         else{
 //            Timer.scheduledTimer(timeInterval: 0.3,

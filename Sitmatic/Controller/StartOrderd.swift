@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
 
 protocol  StartOrderdDelegate {
     func setDataOnBack(isBack:Bool,arrSaveValue:[[String: String]])
@@ -15,8 +17,12 @@ protocol  StartOrderdDelegate {
 
 
 class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
-    
-    
+    @IBOutlet weak var imgSuggestion: UIImageView!
+    var strError = String()
+     
+    var isImageDataEmpty = false
+    @IBOutlet var viewSub: UIView!
+     var arrImage = NSMutableArray()
     var arrCurrent: [[String: String]]  = Array()
     var isBack = false
     var isButtonCheck = false
@@ -62,6 +68,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
         self.strValue = "3"
         self.ansStrIn = "36"
           print("viewDidLoadCall")
+         self.viewSub.isHidden = true
         if arrCurrent.isEmpty == false{
             
         
@@ -134,8 +141,77 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
         self.pickerView.translatesAutoresizingMaskIntoConstraints = false
         showPicker()
         self.btnPrevious.isHidden = false
-          print("viewWillAppearCall")
+        print("viewWillAppearCall")
     }
+    
+    
+    @IBAction func clickToSuggest(_ sender: Any) {
+        if isImageDataEmpty == true {
+            self.showToast(message: strError)
+           
+           
+        }else{
+            
+       
+        
+        if (sender as AnyObject).tag == 1 {
+            
+            self.setImageUrl(str:(arrQuestion[count]["questionId"] as? Int)!)
+//            let viewSubData = UIView(frame: CGRect(x: CGFloat(0), y: CGFloat(200), width: CGFloat(self.screenWidth), height: CGFloat(400)))
+//            viewSubData.addSubview(self.viewSub)
+//            viewSubData.backgroundColor = UIColor.clear
+//            viewSubData.tag = 500
+//            self.view.addSubview(viewSubData)
+            self.viewSub.isHidden = false
+            
+        }else if (sender as AnyObject).tag == 3 {
+            let Array = arrImage[0] as! [HomeData]
+            let idIndex = (arrQuestion[count]["questionId"] as? Int)! - 2
+            let objeHome = Array[idIndex]
+      
+            
+            let videoURL = URL(string: objeHome.video)
+            let playerItem = CachingPlayerItem(url: videoURL!)
+            let player = AVPlayer(playerItem: playerItem)
+            player.automaticallyWaitsToMinimizeStalling = true
+            let playerViewController = AVPlayerViewController()
+            playerViewController.player = player
+           
+            
+            
+            self.present(playerViewController, animated: true) {
+                
+                playerViewController.player!.play()
+            
+            }
+        }
+        
+        else{
+            self.viewSub.isHidden = true
+//            viewSub.removeFromSuperview()
+//
+//            if let viewWithTag = self.view.viewWithTag(500) {
+//
+//                viewWithTag.removeFromSuperview()
+//            }
+//
+        }
+             }
+    }
+    
+    func setImageUrl(str:Int){
+        let Array = arrImage[0] as! [HomeData]
+         let idIndex = str - 2
+        let obje = Array[idIndex]
+        imgSuggestion.kf.indicatorType = .activity
+        let url = URL(string: obje.image)
+        imgSuggestion.kf.setImage(with: url)
+    }
+    
+    
+    
+    
+    
     
     
     func showPicker(){
@@ -332,6 +408,9 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                     let vc = OrderProccessingSecond(nibName: "OrderProccessingSecond", bundle: nil)
                     vc.serverArrayThid = serverArraySecond
                     vc.delegate = self
+                    vc.isImageDataEmpty = isImageDataEmpty
+                    vc.arrImage = arrImage
+                    vc.strError = strError
                     vc.arrPreviousControllerData = arrAnswer
                     
                     self.navigationController?.pushViewController(vc, animated: true)

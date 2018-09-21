@@ -8,20 +8,33 @@
 
 import UIKit
 import Toast_Swift
+import SVProgressHUD
+import Kingfisher
+import MediaPlayer
+import AVKit
+import AVFoundation
+
+protocol OrderProccessingDelegate {
+    func setData(arrData:[[String: String]])
+}
 
 
 class OrderProccessing: BaseViewController , StartOrderdDelegate {
  
- 
-    
-    
+    @IBOutlet weak var btnVideo: UIButton!
+    var strError = String()
+    @IBOutlet weak var btnCancleSuggetion: UIButton!
+    @IBOutlet weak var btnGallery: UIButton!
+    var arrImage = NSMutableArray()
+    var delegate:OrderProccessingDelegate?
     @IBOutlet weak var tostView: UIView!
     @IBOutlet weak var tostLable: UILabel!
     var arrCurrent: [[String: String]]  = Array()
     
     @IBOutlet weak var btnSuggestion: UIButton!
     var isback = false
-    
+    var strName: String!
+    var strOrganization: String!
     @IBOutlet weak var tableView: UITableView!
     var arrQuestion: Array<Dictionary<String,Any>>?
     var arrAnswer: [[String: String]]  = Array()
@@ -43,6 +56,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
      var dicAnsData = Dictionary<String, String>()
    // var serverArray: [[String: String]]  = Array()
     var serverArray: [[String: String]]  = Array()
+    var isImageDataEmpty = false
     
     @IBOutlet var viewSub: UIView!
     @IBOutlet weak var imgSuggestion: UIImageView!
@@ -55,10 +69,44 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         arrQuestion = setDataWithLocalJson("StartOrderd") as NSArray as? Array<Dictionary<String, Any>>
-        setInitial()
+
+     
+             setInitial()
+        
+          self.viewSub.isHidden = true
+        
+        self.callGenrateModelApi()
         
     }
     
+    func callGenrateModelApi(){
+        
+        
+        
+        SVProgressHUD.show()
+        
+        ServiceClass().HomeScreenData(strUrl: "resources", param: [:] ) { error, jsondata in
+            
+            if error != nil{
+                
+                self.showToast(message: (error?.localizedDescription)!)
+                self.strError = (error?.localizedDescription)!
+                self.isImageDataEmpty = true
+                SVProgressHUD.dismiss()
+                
+            }
+            else{
+                self.isImageDataEmpty = false
+                print(jsondata)
+                self.arrImage.add(jsondata)
+               
+          
+            }
+            SVProgressHUD.dismiss()
+        }
+        
+        
+    }
     
     
     
@@ -78,31 +126,69 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         self.arrayPersnonID.append("1")
         self.arrayPersnonID.append("2")
         
-        self.btnprevious.isHidden = true
+        self.btnprevious.isHidden = false
     }
     
     
     @IBAction func clickToSuggest(_ sender: Any) {
-       
+        if isImageDataEmpty == true{
+             self.showToast(message: strError)
+        }else{
+            
+        
+        
         
         if (sender as AnyObject).tag == 1 {
-            let viewSubData = UIView(frame: CGRect(x: CGFloat(0), y: CGFloat(200), width: CGFloat(self.screenWidth), height: CGFloat(400)))
-            viewSubData.addSubview(self.viewSub)
-             viewSubData.backgroundColor = UIColor.red
-            viewSubData.tag = 500
-            self.view.addSubview(viewSubData)
-           
-        }else{
-            viewSub.removeFromSuperview()
-        
-            if let viewWithTag = self.view.viewWithTag(500) {
+      
+            self.setImageUrl(str:(arrQuestion?[value]["queId"] as? String)! )
+//            let viewSubData = UIView(frame: CGRect(x: CGFloat(0), y: CGFloat(200), width: CGFloat(300), height: CGFloat(400)))
+//            viewSubData.addSubview(self.viewSub)
+//             viewSubData.backgroundColor = UIColor.clear
+//            viewSubData.tag = 500
+//            self.view.addSubview(viewSubData)
+                self.viewSub.isHidden = false
+            }
+        else if (sender as AnyObject).tag == 3 {
+            let Array = arrImage[0] as! [HomeData]
+            var strUrl = String()
+            if (arrQuestion?[value]["queId"] as? String)! == "1"{
+               strUrl = Array[0].video
+                
+            }else if (arrQuestion?[value]["queId"] as? String)! == "2"{
+                strUrl = Array[1].video
               
-                viewWithTag.removeFromSuperview()
+               
+            }else if (arrQuestion?[value]["queId"] as? String)! == "3" || (arrQuestion?[value]["queId"] as? String)! == "5Y"{
+               strUrl = Array[2].video
+               
             }
             
+                    let videoURL = URL(string: strUrl)
+                    let playerItem = CachingPlayerItem(url: videoURL!)
+                    let player = AVPlayer(playerItem: playerItem)
+                    player.automaticallyWaitsToMinimizeStalling = true
+                    let playerViewController = AVPlayerViewController()
+                    playerViewController.player = player
+            
+                    self.present(playerViewController, animated: true) {
+                    
+                    playerViewController.player!.play()
+                       
+            
         }
+            
     }
-    
+        else {
+//            self.viewSub.removeFromSuperview()
+//
+//            if let viewWithTag = self.view.viewWithTag(500) {
+//
+//                viewWithTag.removeFromSuperview()
+//            }
+             self.viewSub.isHidden = true
+        }
+        }
+}
     
     
     @IBAction func clickToCancel(_ sender: Any) {
@@ -116,7 +202,8 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
             }
             else {
                 
-                self.navigationController?.popViewController(animated: true)
+                let vc = SHomeVC(nibName: "SHomeVC", bundle: nil)
+                self.navigationController?.pushViewController(vc, animated: true)
             }
         }
         
@@ -149,6 +236,8 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
            print(strSelected)
             
             self.setNextButtonData(strId: (arrQuestion?[value]["queId"] as? String)!)
+           
+           
            }
         
         
@@ -157,8 +246,15 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
     
     func setNextButtonData(strId:String){
         
+      
         
         if strSelected == "No" {
+          
+                self.btnGallery.isHidden = false
+                self.btnVideo.isHidden = false
+            
+            
+            
             
             if self.isPreviousClick == false {
                  dataForNo(strId)
@@ -174,7 +270,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
                 
                 
             }else{
-                 dataForNo(strId)
+                
                 if strId == "5Y"{
                     goToNext()
                 }
@@ -182,6 +278,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
                 else if strId == "3"{
                     goToNext()
                 }
+                 dataForNo(strId)
             }
             
            
@@ -189,6 +286,14 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
             
         }else{
             
+            if strId == "2" || strId == "3Y"{
+                self.btnGallery.isHidden = true
+                self.btnVideo.isHidden = true
+            }else{
+                self.btnGallery.isHidden = false
+                self.btnVideo.isHidden = false
+            }
+            
             if self.isPreviousClick == false {
                dataForYes(strId)
                 if strId == "5Y"{
@@ -201,7 +306,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
                     TimeInterval()
                 }
             }else{
-               dataForYes(strId)
+              
                 if strId == "5Y"{
                     goToNext()
                 }
@@ -209,6 +314,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
                 else if strId == "3"{
                     goToNext()
                 }
+                 dataForYes(strId)
             }
             
             
@@ -280,6 +386,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         else{
             
             if strId == "2" || strId == "3Y" || strId == "4Y"{
+            
                 if let index = self.arrayPersnonID.index(of: "3") {
                     print(index)
                     
@@ -302,7 +409,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
                value += 1
                 if value > arrCurrent.count || value == arrCurrent.count{
                     value -= 1
-               //  TimeInterval()
+                 TimeInterval()
 
                 }else{
                     var  dicLocal = [String : String]()
@@ -389,6 +496,8 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         let strId = arrQuestion?[value]["queId"] as? String
         
         self.isPreviousClick = false
+        
+    
         dataForYes(strId!)
         
 }
@@ -416,6 +525,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
             
             
             if strId == "2" {
+                
                 
                 if let index = self.arrayPersnonID.index(of: "3Y") {
                     print(index)
@@ -459,7 +569,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
                 value += 1
                 if value > arrCurrent.count || value == arrCurrent.count{
                     value -= 1
-                  //     TimeInterval()
+                      TimeInterval()
 
                 }else{
                     var  dicLocal = [String : String]()
@@ -565,7 +675,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         self.arrCurrent = self.arrCurrent.filter { !$0.values.contains(strId!)}
         self.arrCurrent.append(dicData)
         
-        
+       
         serverSideData()
         
         if (self.arrQuestion?.count == value){
@@ -632,6 +742,13 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         vc.serverArraySecond = serverArray
         vc.delegate = self
         vc.arrCurrent = arrStartOrderData
+        if isImageDataEmpty == true{
+            vc.isImageDataEmpty = true
+            vc.strError = self.strError
+        }else{
+             vc.arrImage = arrImage
+        }
+       
         self.navigationController?.pushViewController(vc, animated: true)
 
     }
@@ -653,8 +770,26 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         self.btnYes.isEnabled = true
         
         if (value == 0){
-            self.btnprevious.isHidden = true
+         
+                _ = SweetAlert().showAlert("Alert", subTitle: "Are you sure you want to restart the               evaluation?", style: AlertStyle.warning, buttonTitle:"No", buttonColor:UIColor.darkBlue , otherButtonTitle:  "Yes", otherButtonColor: UIColor.colorFromRGB(0xDD6B55)) { (isOtherButton) -> Void in
+                    if isOtherButton == true {
+                        
+                        
+                    }
+                    else {
+                        
+                        let vc = SHomeVC(nibName: "SHomeVC", bundle: nil)
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                }
             
+            
+            
+           
+            
+            
+          
+           
         }
         else{
             
@@ -691,9 +826,28 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
     }
     
     
+    func setImageUrl(str:String){
+        let Array = arrImage[0] as! [HomeData]
+        if str == "1"{
+            let obje = Array[0]
+            imgSuggestion.kf.indicatorType = .activity
+            let url = URL(string: obje.image)
+            imgSuggestion.kf.setImage(with: url)
+        }else if str == "2"{
+            let obje = Array[1]
+            imgSuggestion.kf.indicatorType = .activity
+            let url = URL(string: obje.image)
+            imgSuggestion.kf.setImage(with: url)
+        }else if str == "3" || str == "5Y"{
+            let obje = Array[2]
+            imgSuggestion.kf.indicatorType = .activity
+            let url = URL(string: obje.image)
+            imgSuggestion.kf.setImage(with: url)
+        }
+
+    }
     
-    
-    
+ 
     
     
     
@@ -721,6 +875,14 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         
         
         if strSelected == "Yes"{
+            if strID == "4Y" || strID == "3Y"{
+                self.btnGallery.isHidden = true
+                self.btnVideo.isHidden = true
+            }else{
+                self.btnGallery.isHidden = false
+                self.btnVideo.isHidden = false
+                
+            }
             self.btnYes.setButtonImage("on.png")
             self.btnNo.setButtonImage("off.png")
         }
@@ -728,9 +890,10 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
             self.btnYes.setButtonImage("off.png")
             self.btnNo.setButtonImage("on.png")
         }
+         self.setImageUrl(str:(arrQuestion?[value]["queId"] as? String)! )
         
         if strID == "1"{
-            self.btnprevious.isHidden = true
+            self.btnprevious.isHidden = false
             
             self.btnNext.isEnabled = true
             self.serverArray.removeAll()

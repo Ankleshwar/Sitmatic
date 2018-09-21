@@ -5,7 +5,7 @@ target 'Sitmatic' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
-pod 'ObjectMapper'
+
 pod 'TextFieldEffects'
 pod 'SwiftyJSON'
 pod 'Alamofire'
@@ -17,6 +17,9 @@ pod 'SVProgressHUD'
 pod 'CHIPageControl/Aleppo'
 pod 'Toaster'
 pod 'Kingfisher'
+pod 'FacebookCore'
+pod 'FacebookLogin'
+pod 'FacebookShare'
 
 
   # Pods for Sitmatic

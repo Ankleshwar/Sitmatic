@@ -48,7 +48,7 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
         imgView.layer.borderColor = #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9490196078, alpha: 1).cgColor
         imgView.layer.cornerRadius = imgView.frame.height/2
         imgView.clipsToBounds = true
-        
+        self.btnEdit.isHidden = true
         
 
         self.btnPhoto.isEnabled = false
@@ -58,17 +58,19 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
         if    (self.appUserObject?.userImageUrl)! == "" {
                 self.imgView.image = UIImage(named: "nouser.png")
                 self.imageUser = UIImage(named: "nouser.png")!
-           
+            self.btnEdit.isHidden = false
         }
         else{
             imgView.kf.indicatorType = .activity
-            
+           
             let url = URL(string: (self.appUserObject?.userImageUrl)!)
             imgView.kf.setImage(with: url)
+           
             KingfisherManager.shared.retrieveImage(with: url!, options: nil, progressBlock: nil, completionHandler: { image, error, cacheType, imageURL in
                 self.imageUser = image!
+                self.btnEdit.isHidden = false
             })
-           imgView.kf.indicatorType = .none
+           
         }
         
         if    (self.appUserObject?.address)! == "" {
