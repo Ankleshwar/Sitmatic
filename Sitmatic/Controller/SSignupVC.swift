@@ -183,7 +183,7 @@ class SSignupVC: BaseViewController {
                "zipcode":self.txtZip.text]
     
     SVProgressHUD.show()
-    
+  
     ServiceClass().signUpDetails(strUrl: "register", param: dic as! [String : String]) { error, dicdata in
         
         if error != nil{

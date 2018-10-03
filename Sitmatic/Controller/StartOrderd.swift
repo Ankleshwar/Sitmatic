@@ -19,7 +19,8 @@ protocol  StartOrderdDelegate {
 class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
     @IBOutlet weak var imgSuggestion: UIImageView!
     var strError = String()
-     
+    @IBOutlet weak var imgBanner: UIImageView!
+    
     var isImageDataEmpty = false
     @IBOutlet var viewSub: UIView!
      var arrImage = NSMutableArray()
@@ -68,6 +69,13 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
         self.strValue = "3"
         self.ansStrIn = "36"
           print("viewDidLoadCall")
+        
+        self.setImageUrl(str:(arrQuestion[count]["questionId"] as? Int)!)
+        
+        if isImageDataEmpty == true{
+            imgBanner.image = UIImage(named: "banner.png")
+        }
+        
          self.viewSub.isHidden = true
         if arrCurrent.isEmpty == false{
             
@@ -203,9 +211,13 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
         let Array = arrImage[0] as! [HomeData]
          let idIndex = str - 2
         let obje = Array[idIndex]
+        imgBanner.kf.indicatorType = .activity
+        let urlbaner = URL(string: obje.banner)
+        imgBanner.kf.setImage(with: urlbaner)
         imgSuggestion.kf.indicatorType = .activity
         let url = URL(string: obje.image)
         imgSuggestion.kf.setImage(with: url)
+       
     }
     
     
@@ -519,7 +531,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
         
         setDataOnNext()
         
-        
+         self.setImageUrl(str:(arrQuestion[count]["questionId"] as? Int)!)
         
         
         
@@ -569,7 +581,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                 lblQuestion.text = dicdata["questionText"]
                 self.txtField.text = dicdata["selected"]
                 self.arrIteam = arrQuestion[count]["value"] as? Array
-                
+                 self.setImageUrl(str:(arrQuestion[count]["questionId"] as? Int)!)
                 
                 if self.isFirstQuestion == true{
                     
@@ -578,6 +590,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                     self.strValue =  fullNameArr![0]
                     self.strInce = fullNameArr![1]
                     arrQuestion = (setDataWithLocalJson("NextVersion") as NSArray as? Array<Dictionary<String, Any>>)!
+                   //  self.setImageUrl(str: 0)
                 }
                 else{
                     self.strValue = self.txtField.text

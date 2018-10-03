@@ -20,7 +20,8 @@ protocol OrderProccessingDelegate {
 
 
 class OrderProccessing: BaseViewController , StartOrderdDelegate {
- 
+    @IBOutlet weak var imgBanner: UIImageView!
+    
     @IBOutlet weak var btnVideo: UIButton!
     var strError = String()
     @IBOutlet weak var btnCancleSuggetion: UIButton!
@@ -84,8 +85,9 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         
         
         SVProgressHUD.show()
-        
-        ServiceClass().HomeScreenData(strUrl: "resources", param: [:] ) { error, jsondata in
+        var  strName = (self.appUserObject?.access_token)!
+        strName = "resources?token=\(strName)"
+        ServiceClass().HomeScreenData(strUrl: strName, param: [:] ) { error, jsondata in
             
             if error != nil{
                 
@@ -99,7 +101,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
                 self.isImageDataEmpty = false
                 print(jsondata)
                 self.arrImage.add(jsondata)
-               
+                self.setImageUrl(str:(self.arrQuestion?[self.value]["queId"] as? String)! )
           
             }
             SVProgressHUD.dismiss()
@@ -236,7 +238,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
            print(strSelected)
             
             self.setNextButtonData(strId: (arrQuestion?[value]["queId"] as? String)!)
-           
+            self.setImageUrl(str:(self.arrQuestion?[self.value]["queId"] as? String)! )
            
            }
         
@@ -833,16 +835,27 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
             imgSuggestion.kf.indicatorType = .activity
             let url = URL(string: obje.image)
             imgSuggestion.kf.setImage(with: url)
+            imgBanner.kf.indicatorType = .activity
+            let urlbaner = URL(string: obje.banner)
+            imgBanner.kf.setImage(with: urlbaner)
         }else if str == "2"{
             let obje = Array[1]
             imgSuggestion.kf.indicatorType = .activity
             let url = URL(string: obje.image)
             imgSuggestion.kf.setImage(with: url)
+            imgBanner.kf.indicatorType = .activity
+            let urlbaner = URL(string: obje.banner)
+            imgBanner.kf.setImage(with: urlbaner)
         }else if str == "3" || str == "5Y"{
             let obje = Array[2]
             imgSuggestion.kf.indicatorType = .activity
             let url = URL(string: obje.image)
             imgSuggestion.kf.setImage(with: url)
+            imgBanner.kf.indicatorType = .activity
+            let urlbaner = URL(string: obje.banner)
+            imgBanner.kf.setImage(with: urlbaner)
+        }else if str == "3Y" || str == "4Y"{
+            imgBanner.image = UIImage(named: "banner.png")
         }
 
     }

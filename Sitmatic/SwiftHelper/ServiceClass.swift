@@ -85,7 +85,7 @@ class ServiceClass: NSObject {
     public func HomeScreenData(strUrl:String,param:[String:AnyObject],completion:@escaping (arrayBlock)){
         
         print(param)
-        
+        print(baseURL+strUrl)
         requestGETURL(baseURL+strUrl, params: param as [String : AnyObject], headers: nil, success: {
             (JSONResponse) -> Void in
             print(JSONResponse)

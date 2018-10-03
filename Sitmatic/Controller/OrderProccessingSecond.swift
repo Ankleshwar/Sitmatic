@@ -19,7 +19,10 @@ protocol OrderProccessingSecondDelegate  {
 
 
 
-class OrderProccessingSecond: BaseViewController , ModifyModelDelegate{
+class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProccessingNewDelegate{
+ 
+    @IBOutlet weak var imgBanner: UIImageView!
+    
     @IBOutlet weak var btnGallery: UIButton!
     @IBOutlet weak var btnVideo: UIButton!
     
@@ -101,6 +104,8 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate{
         
 //        self.setShadow(self.viewDetails)
 //        self.setShadow(self.viewModel)
+        
+          self.setImageUrl(str:(arrQuestion?[value]["queId"] as! String) )
     }
     
     func setShadow(_ view: UIView){
@@ -112,6 +117,13 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate{
         
     }
     
+    func setData(arrData: [[String : String]], isbackValue: Bool) {
+//        arrQuestion = setDataWithLocalJson("OrderProccessingSecond") as NSArray as? Array<Dictionary<String, Any>>
+  //      strValueID = "13"
+//        value = 0
+//        self.setInitial()
+    }
+  
     
     func setInitial(){
         self.lblYes.text = arrQuestion?[0]["option1"] as? String
@@ -166,7 +178,7 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate{
                 dicNext["option2"] = arrQuestion?[value]["option2"] as? String
                 dicNext["queText"] = arrQuestion?[value]["queText"] as? String
                 dicNext["queId"] = arrQuestion?[value]["queId"] as? String
-                
+                strValueID = arrQuestion?[value]["queId"] as? String ?? ""
                 self.arrNext.insert(dicNext, at: 0)
                 self.btnGallery.isHidden = false
                 self.btnVideo.isHidden = false
@@ -176,6 +188,7 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate{
                 value -= 1
                 
                 setPreviousData(valueindex: value)
+                 self.setImageUrl(str:(arrQuestion?[value]["queId"] as! String) )
                 self.arrAnswer.removeObject(at: value)
                  serverArrayThid.remove(at: value)
                 self.isPreviousClick = true
@@ -259,21 +272,27 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate{
                 }
 
             }else{
-                if strValueID == "15"{
+                strValueID = arrQuestion?[value]["queId"] as? String ?? ""
+                print(strValueID)
+                if arrQuestion?[value]["queId"] as? String == "15"{
                     if strSelected == "No"{
                         let Array = arrImage[0] as! [HomeData]
                          let obje = Array[12]
                                 let vc = OrderProccessingNew(nibName: "OrderProccessingNew", bundle: nil)
+                                vc.delegateNew = self
                                 vc.serverArrayThid = serverArrayThid
-                        vc.strImgeUrl = obje.image
-                        vc.strVideoUrl = obje.video
+                                vc.strImgeUrl = obje.image
+                                vc.strVideoUrl = obje.video
+                                vc.strImgeUrlbanner = obje.banner
                                 self.navigationController?.pushViewController(vc, animated: true)
                     }else{
                        callApi()
                     }
                     
                 }else{
+                     imgBanner.image = UIImage(named: "banner.png")
                     nextQues()
+                    
                 }
                 
                 
@@ -424,6 +443,12 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate{
             imgSuggestion.kf.indicatorType = .activity
             let url = URL(string: obje.image)
             imgSuggestion.kf.setImage(with: url)
+            imgBanner.kf.indicatorType = .activity
+            let urlbaner = URL(string: obje.banner)
+            imgBanner.kf.setImage(with: urlbaner)
+        }
+        else{
+            imgBanner.image = UIImage(named: "banner.png")
         }
         
     }
@@ -531,8 +556,11 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate{
         print(dic)
         
         SVProgressHUD.show()
+        var  strName = (self.appUserObject?.access_token)!
+        strName = "savebasicquestions?token=\(strName)"
         
-        ServiceClass().getModel(strUrl: "savebasicquestions", param: dic as [String : AnyObject] ) { error, jsondata in
+        
+        ServiceClass().getModel(strUrl: strName, param: dic as [String : AnyObject] ) { error, jsondata in
             
             if error != nil{
                 
