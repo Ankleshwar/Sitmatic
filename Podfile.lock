@@ -1,9 +1,33 @@
 PODS:
   - Alamofire (4.7.0)
+  - Bolts (1.9.0):
+    - Bolts/AppLinks (= 1.9.0)
+    - Bolts/Tasks (= 1.9.0)
+  - Bolts/AppLinks (1.9.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.9.0)
   - CHIPageControl/Aleppo (0.1.5)
+  - FacebookCore (0.3.1):
+    - Bolts (~> 1.8)
+    - FBSDKCoreKit (~> 4.33)
+  - FacebookLogin (0.3.1):
+    - Bolts (~> 1.8)
+    - FacebookCore (~> 0.3.1)
+    - FBSDKCoreKit (~> 4.33)
+    - FBSDKLoginKit (~> 4.33)
+  - FacebookShare (0.3.1):
+    - Bolts (~> 1.8)
+    - FacebookCore (~> 0.3.1)
+    - FBSDKCoreKit (~> 4.33)
+    - FBSDKShareKit (~> 4.33)
+  - FBSDKCoreKit (4.34.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.34.0):
+    - FBSDKCoreKit
+  - FBSDKShareKit (4.34.0):
+    - FBSDKCoreKit (~> 4.34.0)
   - JWTDecode (2.1.1)
   - Kingfisher (4.7.0)
-  - ObjectMapper (3.1.0)
   - SVProgressHUD (2.2.5)
   - SwiftKeychainWrapper (3.0.1)
   - SwiftyJSON (4.0.0)
@@ -15,9 +39,11 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - CHIPageControl/Aleppo
+  - FacebookCore
+  - FacebookLogin
+  - FacebookShare
   - JWTDecode
   - Kingfisher
-  - ObjectMapper
   - SVProgressHUD
   - SwiftKeychainWrapper
   - SwiftyJSON
@@ -26,27 +52,18 @@ DEPENDENCIES:
   - Toaster
   - YALSideMenu
 
-SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
-    - Alamofire
-    - CHIPageControl
-    - JWTDecode
-    - Kingfisher
-    - ObjectMapper
-    - SVProgressHUD
-    - SwiftKeychainWrapper
-    - SwiftyJSON
-    - TextFieldEffects
-    - Toast-Swift
-    - Toaster
-    - YALSideMenu
-
 SPEC CHECKSUMS:
   Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
+  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   CHIPageControl: 79d19a8ee2e35fa3c1da6533adb5364c77b5cfea
+  FacebookCore: 33078ef1d7d76b73f7e8c990dca7d3ea6db8d22f
+  FacebookLogin: 6f15bf4fefd7a8865abbfa8fcd7f3dfd87aa275f
+  FacebookShare: c9ee8e5399d961fda00ded9befccacfe04fccf93
+  FBSDKCoreKit: 0ff57f093b85c8c9d5aba697d3edf68a8960ce78
+  FBSDKLoginKit: 8c78f57a145afb756e4755e69195ebe08a42466e
+  FBSDKShareKit: 511d1dfc71204c0a8d69e6c5e3c964dcf0d4f3d9
   JWTDecode: 83e8b381aafe27158d9f692cbdca2b12d61d460c
   Kingfisher: da6b005aa96d37698e3e4f1ccfe96a5b9bbf27d6
-  ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
@@ -55,6 +72,6 @@ SPEC CHECKSUMS:
   Toaster: a6c9532de1ded8105e77376f7dffeb2e12b46dbb
   YALSideMenu: 4d6b90ea44dcdded18a99e46b676e4ad51d9c6bb
 
-PODFILE CHECKSUM: ce379b28b7db9d2d1e6bcd32fec271b9bf41c46f
+PODFILE CHECKSUM: b10c12287dbeb571707639a9d5c54b41bec77921
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.4.0
