@@ -71,7 +71,7 @@
                         <action selector="clickToSuggest:" destination="-1" eventType="touchUpInside" id="MVX-Ms-nr5"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="01 Gender.png" translatesAutoresizingMaskIntoConstraints="NO" id="OHw-Up-TtH">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner.png" translatesAutoresizingMaskIntoConstraints="NO" id="OHw-Up-TtH">
                     <rect key="frame" x="0.0" y="66" width="375" height="200"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="200" id="Kzj-mB-xlq"/>
@@ -538,7 +538,6 @@ Cgo
         </view>
     </objects>
     <resources>
-        <image name="01 Gender.png" width="375" height="200"/>
         <image name="Genderlarge.png" width="350" height="450"/>
         <image name="banner.png" width="360" height="180"/>
         <image name="cancel (2).png" width="64" height="64"/>

@@ -414,8 +414,9 @@ class OrderProccessingNew: BaseViewController , ModifyModelDelegate{
         print(dic)
         
         SVProgressHUD.show()
-        
-        ServiceClass().getModel(strUrl: "savebasicquestions", param: dic as [String : AnyObject] ) { error, jsondata in
+        var  strName = (self.appUserObject?.access_token)!
+        strName = "savebasicquestions?token=\(strName)"
+        ServiceClass().getModel(strUrl: strName, param: dic as [String : AnyObject] ) { error, jsondata in
             
             if error != nil{
                 
