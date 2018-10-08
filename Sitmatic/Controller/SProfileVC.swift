@@ -37,7 +37,7 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
         let strnumber = self.appUserObject?.mobile
          let strAddress = self.appUserObject?.address
         self.txtMobile.text = " Mobile :  \(strnumber!)"
-        self.txtZip.text =  self.appUserObject?.countryCode
+        self.txtZip.text =  self.appUserObject?.pincode
         
         self.txtMobile.isEnabled = false
         self.txtAddress.isEditable = false
@@ -140,47 +140,58 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
         
         SVProgressHUD.show()
         
-        var  strName = (self.appUserObject?.access_token)!
-        strName = "updateprofile?token=\(strName)"
+    
         
         let dic = ["id": (self.appUserObject?.userId)!,
                    "address": self.txtAddress.text,
                    "zipcode": self.txtZip.text] as [String : Any]
         
 
-        
+        var  strName = (self.appUserObject?.access_token)!
+        strName = "updateprofile?token=\(strName)"
         
         
         ServiceClass().profileUpdate(strUrl: strName, param: dic as! [String : String], img: imageUser, completion: { err, dicdata in
             
-            if dicdata["status"] as! String == "Ok"{
+            if err != nil{
                 print(dicdata)
-               let succcessData = dicdata["successData"] as! [String : Any]
-              //  self.appUserObject = AppUserObject.instance(from: succcessData)
-                self.appUserObject?.userImageUrl = succcessData["image"] as! String
-                self.appUserObject?.address = succcessData["address"] as! String
-                self.appUserObject?.mobile = succcessData["mobile"] as! String
-                 self.appUserObject?.userName = succcessData["name"] as! String
-                self.appUserObject?.email = succcessData["email"] as! String
-                //self.appUserObject?.access_token = strName
-                let id = succcessData["id"] as! Int
-                //self.appUserObject?.userId = String(id)
-                self.appUserObject?.saveToUserDefault()
-                let url = URL(string: (self.appUserObject?.userImageUrl)!)
-                let imgholder = UIImageView()
-                imgholder.kf.setImage(with: url)
                 
+                self.showToast(message: err?.localizedDescription ?? "Try Again")
                 SVProgressHUD.dismiss()
-                self.btnLogOut.isHidden = false
-                
+            }else{
+                if dicdata["status"] as! String == "Ok"{
+                    print(dicdata)
+                    let succcessData = dicdata["successData"] as! [String : Any]
+                    //  self.appUserObject = AppUserObject.instance(from: succcessData)
+                    self.appUserObject?.userImageUrl = succcessData["image"] as! String
+                    self.appUserObject?.address = succcessData["address"] as! String
+                    self.appUserObject?.mobile = succcessData["mobile"] as! String
+                    self.appUserObject?.userName = succcessData["name"] as! String
+                    self.appUserObject?.email = succcessData["email"] as! String
+                    self.appUserObject?.pincode = succcessData["zipcode"] as! String
+                    //self.appUserObject?.access_token = strName
+                    let id = succcessData["id"] as! Int
+                    //self.appUserObject?.userId = String(id)
+                    self.appUserObject?.saveToUserDefault()
+                    let url = URL(string: (self.appUserObject?.userImageUrl)!)
+                    let imgholder = UIImageView()
+                    imgholder.kf.setImage(with: url)
+                    
+                    SVProgressHUD.dismiss()
+                    self.btnLogOut.isHidden = false
+                    
+                }
+                else{
+                    
+                    print(dicdata)
+                     self.showToast(message: dicdata["errorData"] as! String)
+                   
+                    SVProgressHUD.dismiss()
+                }
             }
-            else{
-                
-                print(dicdata)
-                
-                self.showToastForQue(message: dicdata["errorData"] as! String, y: 75)
-                 SVProgressHUD.dismiss()
-            }
+            
+            
+
             
             
         })

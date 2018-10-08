@@ -588,11 +588,12 @@ class OrderProccessingThird: BaseViewController {
                    "user_id":(self.appUserObject?.userId)!,
                    "data_id": UserDefaults.standard.string(forKey: "dataId") ?? ""] as [String : Any]
         
-      
+        var  strName = (self.appUserObject?.access_token)!
+        strName = "sendpdf?token=\(strName)"
         
         SVProgressHUD.show()
         
-        ServiceClass().getModel(strUrl: "sendpdf", param: dic as [String : AnyObject] ) { error, jsondata in
+        ServiceClass().getModel(strUrl: strName, param: dic as [String : AnyObject] ) { error, jsondata in
             
             if error != nil{
                 
@@ -674,17 +675,20 @@ class OrderProccessingThird: BaseViewController {
                    "data_id": UserDefaults.standard.string(forKey: "dataId") ?? ""] as [String : Any]
 
         self.txtColor.isEnabled = false
+        var  strName = (self.appUserObject?.access_token)!
+        strName = "getmodifiedmodel?token=\(strName)"
         
         print(dic)
         SVProgressHUD.show()
         
-        ServiceClass().getModel(strUrl: "getmodifiedmodel", param: dic as [String : AnyObject] ) { error, jsondata in
+        ServiceClass().getModel(strUrl: strName, param: dic as [String : AnyObject] ) { error, jsondata in
             
             if error != nil{
              
                 
                 self.showToast(message: (error?.localizedDescription)!)
                 self.btnCancle.isEnabled = true
+                self.btnNext.isEnabled = true
                 self.txtColor.isEnabled = true
                 SVProgressHUD.dismiss()
             }else{

@@ -52,6 +52,27 @@ DEPENDENCIES:
   - Toaster
   - YALSideMenu
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - Bolts
+    - CHIPageControl
+    - FacebookCore
+    - FacebookLogin
+    - FacebookShare
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - FBSDKShareKit
+    - JWTDecode
+    - Kingfisher
+    - SVProgressHUD
+    - SwiftKeychainWrapper
+    - SwiftyJSON
+    - TextFieldEffects
+    - Toast-Swift
+    - Toaster
+    - YALSideMenu
+
 SPEC CHECKSUMS:
   Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
@@ -74,4 +95,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: b10c12287dbeb571707639a9d5c54b41bec77921
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.0

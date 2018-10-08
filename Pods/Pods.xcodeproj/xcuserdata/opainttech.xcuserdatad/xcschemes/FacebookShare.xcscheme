@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4C71A760890CB9AD0A7312C308495B6E"
-               BlueprintName = "SwiftKeychainWrapper"
+               BlueprintIdentifier = "A7FEAA14E89971698ACA148F7F7202F2"
+               BlueprintName = "FacebookShare"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "SwiftKeychainWrapper.framework">
+               BuildableName = "FacebookShare.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
