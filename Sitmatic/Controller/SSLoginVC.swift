@@ -117,7 +117,7 @@ class SSLoginVC: BaseViewController {
                         self.appUserObject?.email = user["email"] as! String
                         self.appUserObject?.mobile = user["mobile"] as! String
                         self.appUserObject?.userImageUrl = user["image"] as! String
-                        self.appUserObject?.countryCode = user["zipcode"] as! String
+                        self.appUserObject?.pincode = user["zipcode"] as! String
                         let id = user["id"] as! Int
                         self.appUserObject?.address = user["address"] as! String
                         self.appUserObject?.userId = String(id)

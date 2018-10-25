@@ -95,9 +95,11 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
                 self.strError = (error?.localizedDescription)!
                 self.isImageDataEmpty = true
                 SVProgressHUD.dismiss()
+                self.btnNext.isEnabled = false
                 
             }
             else{
+                self.btnNext.isEnabled = true
                 self.isImageDataEmpty = false
                 print(jsondata)
                 self.arrImage.add(jsondata)
