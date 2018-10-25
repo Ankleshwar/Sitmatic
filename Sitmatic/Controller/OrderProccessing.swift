@@ -20,18 +20,21 @@ protocol OrderProccessingDelegate {
 
 
 class OrderProccessing: BaseViewController , StartOrderdDelegate {
+    
     @IBOutlet weak var imgBanner: UIImageView!
+    @IBOutlet weak var viewTop: UIView!
     
     @IBOutlet weak var btnVideo: UIButton!
     var strError = String()
     @IBOutlet weak var btnCancleSuggetion: UIButton!
-    @IBOutlet weak var btnGallery: UIButton!
+   
     var arrImage = NSMutableArray()
     var delegate:OrderProccessingDelegate?
     @IBOutlet weak var tostView: UIView!
     @IBOutlet weak var tostLable: UILabel!
     var arrCurrent: [[String: String]]  = Array()
     
+    @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var btnSuggestion: UIButton!
     var isback = false
     var strName: String!
@@ -59,11 +62,11 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
     var serverArray: [[String: String]]  = Array()
     var isImageDataEmpty = false
     
-    @IBOutlet var viewSub: UIView!
+   
     @IBOutlet weak var imgSuggestion: UIImageView!
     var  value: Int = 0
     
-    @IBOutlet weak var lblQuestionValueCount: UILabel!
+   // @IBOutlet weak var lblQuestionValueCount: UILabel!
     
     @IBOutlet weak var lblQuestion: UILabel!
     
@@ -74,11 +77,26 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
      
              setInitial()
         
-          self.viewSub.isHidden = true
+        self.setTopView(self.viewTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user-icon26x26.png", withoutBackButton: true)
+
         
         self.callGenrateModelApi()
         
     }
+    override func viewDidLayoutSubviews() {
+       
+         UIView().setShadowImg(self.imgBanner)
+        
+         UIView().setShadow(self.viewContainer)
+    }
+    
+    
+    @objc func rightButtonClicked(_ sender: Any) {
+        let vc = SProfileVC(nibName: "SProfileVC", bundle: nil)
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     
     func callGenrateModelApi(){
         
@@ -150,7 +168,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
 //             viewSubData.backgroundColor = UIColor.clear
 //            viewSubData.tag = 500
 //            self.view.addSubview(viewSubData)
-                self.viewSub.isHidden = false
+            
             }
         else if (sender as AnyObject).tag == 3 {
             let Array = arrImage[0] as! [HomeData]
@@ -189,7 +207,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
 //
 //                viewWithTag.removeFromSuperview()
 //            }
-             self.viewSub.isHidden = true
+          
         }
         }
 }
@@ -254,7 +272,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         
         if strSelected == "No" {
           
-                self.btnGallery.isHidden = false
+            
                 self.btnVideo.isHidden = false
             
             
@@ -291,10 +309,10 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         }else{
             
             if strId == "2" || strId == "3Y"{
-                self.btnGallery.isHidden = true
+               
                 self.btnVideo.isHidden = true
             }else{
-                self.btnGallery.isHidden = false
+              
                 self.btnVideo.isHidden = false
             }
             
@@ -469,7 +487,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
                     let quename = dicLocal["queText"]
                     strSelected = dicLocal["selected"]
                     self.lblQuestion.text  =   quename
-                    self.lblQuestionValueCount.text = strID! + " " + "of 19 Questions"
+                 //   self.lblQuestionValueCount.text = strID! + " " + "of 19 Questions"
                     isYesbtnTap = true
                     self.btnprevious.isHidden = false
                     
@@ -629,7 +647,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
                     let quename = dicLocal["queText"]
                     strSelected = dicLocal["selected"]
                     self.lblQuestion.text  =   quename
-                    self.lblQuestionValueCount.text = strID! + " " + "of 19 Questions"
+                //    self.lblQuestionValueCount.text = strID! + " " + "of 19 Questions"
                     isYesbtnTap = true
                     self.btnprevious.isHidden = false
                     
@@ -703,7 +721,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         let strID = arrQuestion?[value]["queId"] as! String
         let quename = arrQuestion?[value]["queText"] as! String
         self.lblQuestion.text  =   quename
-        self.lblQuestionValueCount.text = strID + " " + "of 19 Questions"
+        //self.lblQuestionValueCount.text = strID + " " + "of 19 Questions"
         self.btnYes.setButtonImage("off.png")
         self.btnNo.setButtonImage("off.png")
         self.isYesbtnTap = false
@@ -834,25 +852,19 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         let Array = arrImage[0] as! [HomeData]
         if str == "1"{
             let obje = Array[0]
-            imgSuggestion.kf.indicatorType = .activity
-            let url = URL(string: obje.image)
-            imgSuggestion.kf.setImage(with: url)
+            
             imgBanner.kf.indicatorType = .activity
             let urlbaner = URL(string: obje.banner)
             imgBanner.kf.setImage(with: urlbaner)
         }else if str == "2"{
             let obje = Array[1]
-            imgSuggestion.kf.indicatorType = .activity
-            let url = URL(string: obje.image)
-            imgSuggestion.kf.setImage(with: url)
+      
             imgBanner.kf.indicatorType = .activity
             let urlbaner = URL(string: obje.banner)
             imgBanner.kf.setImage(with: urlbaner)
         }else if str == "3" || str == "5Y"{
             let obje = Array[2]
-            imgSuggestion.kf.indicatorType = .activity
-            let url = URL(string: obje.image)
-            imgSuggestion.kf.setImage(with: url)
+          
             imgBanner.kf.indicatorType = .activity
             let urlbaner = URL(string: obje.banner)
             imgBanner.kf.setImage(with: urlbaner)
@@ -882,7 +894,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         let quename = dicdata["queText"]
      
         self.lblQuestion.text  =   quename!
-        self.lblQuestionValueCount.text = strID! + " " + "of 19 Questions"
+       // self.lblQuestionValueCount.text = strID! + " " + "of 19 Questions"
           strSelected = dicdata["selected"]
         
         self.btnYes.setButtonImage("off.png")
@@ -891,10 +903,10 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         
         if strSelected == "Yes"{
             if strID == "4Y" || strID == "3Y"{
-                self.btnGallery.isHidden = true
+               
                 self.btnVideo.isHidden = true
             }else{
-                self.btnGallery.isHidden = false
+               
                 self.btnVideo.isHidden = false
                 
             }

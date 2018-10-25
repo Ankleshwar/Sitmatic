@@ -12,7 +12,10 @@ class BasicInfoVC: BaseViewController,OrderProccessingDelegate {
     func setData(arrData: [[String : String]]) {
         self.arrDataSec = arrData
     }
-  
+    @IBOutlet weak var imgBanner: UIImageView!
+    @IBOutlet weak var viewContainer: UIView!
+    @IBOutlet weak var viewTop: UIView!
+    
     @IBOutlet weak var txtName: UITextField!
     @IBOutlet weak var btnPrevious: UIButton!
     @IBOutlet weak var txtOrgName: UITextField!
@@ -20,7 +23,8 @@ class BasicInfoVC: BaseViewController,OrderProccessingDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.txtName.text = self.appUserObject?.userName
-            self.btnPrevious.isHidden = true
+        self.btnPrevious.isHidden = false
+        self.setTopView(self.viewTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user-icon26x26.png", withoutBackButton: true)
        
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -29,8 +33,26 @@ class BasicInfoVC: BaseViewController,OrderProccessingDelegate {
         }
 
         print("viewDidAppearCall")
+        
+        
     }
+    
+    @objc func rightButtonClicked(_ sender: Any) {
+        let vc = SProfileVC(nibName: "SProfileVC", bundle: nil)
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
    
+    override func viewDidLayoutSubviews() {
+        UIView().setShadow(self.viewContainer)
+        UIView().setShadowImg(self.imgBanner)
+        self.imgBanner.layer.cornerRadius = 5.0
+        self.imgBanner.clipsToBounds = true
+    }
+    
+    
     @IBAction func clickToNext(_ sender: Any) {
        
         if self.txtName.text?.count == 0{

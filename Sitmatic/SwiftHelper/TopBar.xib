@@ -1,71 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina5_5" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Roboto-Regular.ttf">
-            <string>Roboto-Regular</string>
+        <array key="Roboto-Light.ttf">
+            <string>Roboto-Light</string>
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TopBar" customModule="VoyMate" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TopBar" customModule="Sitmatic" customModuleProvider="target">
             <connections>
-                <outlet property="btnBack" destination="Lzw-mg-5Eo" id="Mh5-Qj-Ulc"/>
-                <outlet property="btnHeader" destination="h5u-vK-OFn" id="4Zv-4A-Ex3"/>
-                <outlet property="lblHeading" destination="pZv-q5-qLV" id="0zq-0Q-SCe"/>
+                <outlet property="btnHeader" destination="fhQ-D0-Cff" id="mlb-2N-cnB"/>
+                <outlet property="lblHeading" destination="lUq-m4-aIz" id="WRY-Di-H09"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
-                <outlet property="viewTop" destination="y44-Ag-kod" id="w6D-5o-uob"/>
+                <outlet property="viewTop" destination="roX-Kb-aLM" id="LfT-DT-AL6"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="46"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y44-Ag-kod">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="46"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="roX-Kb-aLM">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lzw-mg-5Eo">
-                            <rect key="frame" x="5" y="8" width="50" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" image="back.png"/>
-                            <connections>
-                                <action selector="clickToGoBack:" destination="-1" eventType="touchUpInside" id="qa3-iZ-zrJ"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5u-vK-OFn">
-                            <rect key="frame" x="320" y="8" width="50" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                            <state key="normal">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                        </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pZv-q5-qLV">
-                            <rect key="frame" x="113" y="5" width="150" height="36"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GoodFit™ by Sitmatic" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lUq-m4-aIz">
+                            <rect key="frame" x="81.5" y="13" width="157" height="20"/>
+                            <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fhQ-D0-Cff">
+                            <rect key="frame" x="259" y="10" width="26" height="26"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="26" id="Qnn-ms-ef9"/>
+                                <constraint firstAttribute="width" constant="26" id="hlP-OT-0zS"/>
+                            </constraints>
+                            <state key="normal" image="user-icon26x26.png"/>
+                            <connections>
+                                <action selector="clickForHeader:" destination="-1" eventType="touchUpInside" id="WOx-eT-RD9"/>
+                            </connections>
+                        </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.18679647769999999" green="0.19696099850000001" blue="0.33333334329999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="46" id="e9D-Gm-2Ng"/>
+                        <constraint firstItem="lUq-m4-aIz" firstAttribute="centerY" secondItem="roX-Kb-aLM" secondAttribute="centerY" id="eWZ-Ha-ahQ"/>
+                        <constraint firstAttribute="trailing" secondItem="fhQ-D0-Cff" secondAttribute="trailing" constant="35" id="pUf-Kp-fHu"/>
+                        <constraint firstItem="fhQ-D0-Cff" firstAttribute="centerY" secondItem="lUq-m4-aIz" secondAttribute="centerY" id="qyF-95-a3N"/>
+                        <constraint firstItem="lUq-m4-aIz" firstAttribute="centerX" secondItem="roX-Kb-aLM" secondAttribute="centerX" id="vZf-tS-XMj"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="0.20000000000000001" green="0.48627450979999998" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="roX-Kb-aLM" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="9Eu-Gh-qQQ"/>
+                <constraint firstItem="roX-Kb-aLM" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="NKt-4m-Sz9"/>
+                <constraint firstAttribute="bottom" secondItem="roX-Kb-aLM" secondAttribute="bottom" id="Nue-W7-J2G"/>
+                <constraint firstItem="roX-Kb-aLM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="SUz-S8-Y8i"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="12" y="-729"/>
+            <point key="canvasLocation" x="-491.19999999999999" y="-762.8185907046477"/>
         </view>
     </objects>
     <resources>
-        <image name="back.png" width="32" height="32"/>
+        <image name="user-icon26x26.png" width="26" height="26"/>
     </resources>
 </document>

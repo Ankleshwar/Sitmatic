@@ -5,7 +5,7 @@ target 'Sitmatic' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
-
+pod 'DeviceKit', '~> 1.3'
 pod 'TextFieldEffects'
 pod 'SwiftyJSON'
 pod 'Alamofire'

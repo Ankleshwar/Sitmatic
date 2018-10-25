@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,16 +18,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="750_1334.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="twH-N0-IyY">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sitmaticlogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="3Z1-Xg-cDM">
+                                <rect key="frame" x="75.5" y="308.5" width="224" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="224" id="HQ8-zJ-ti9"/>
+                                    <constraint firstAttribute="height" constant="50" id="bzT-xw-0rj"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="twH-N0-IyY" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="0zV-GB-ZsR"/>
-                            <constraint firstItem="twH-N0-IyY" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="E81-1z-SS2"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="twH-N0-IyY" secondAttribute="bottom" id="dpe-Xe-EaQ"/>
-                            <constraint firstItem="twH-N0-IyY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="u6U-Qo-puI"/>
+                            <constraint firstItem="3Z1-Xg-cDM" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="WB9-FW-sPj"/>
+                            <constraint firstItem="3Z1-Xg-cDM" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="giO-QN-DOp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -37,6 +40,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="750_1334.jpg" width="750" height="1334"/>
+        <image name="sitmaticlogo.png" width="224" height="50"/>
     </resources>
 </document>

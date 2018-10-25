@@ -14,7 +14,8 @@ protocol  StartOrderdDelegate {
     func setDataOnBack(isBack:Bool,arrSaveValue:[[String: String]])
 }
 
-
+let arrMale = ["5","8.00","19.50","18.50","32.00","9.50","16.5","14.00"]
+let arrFemale = ["5","8.00","19.00","17.00","30.00","9.00","15.0","17.00"]
 
 class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
     @IBOutlet weak var imgSuggestion: UIImageView!
@@ -65,10 +66,10 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
         super.viewDidLoad()
         arrQuestion = (setDataWithLocalJson("NextVersion") as NSArray as? Array<Dictionary<String, Any>>)!
         self.isFirstQuestion = true
-        self.strInce = "0"
-        self.strValue = "3"
-        self.ansStrIn = "36"
-          print("viewDidLoadCall")
+        self.strInce = "8"
+        self.strValue = "5"
+        self.ansStrIn = "68"
+        print("viewDidLoadCall")
         
         self.setImageUrl(str:(arrQuestion[count]["questionId"] as? Int)!)
         

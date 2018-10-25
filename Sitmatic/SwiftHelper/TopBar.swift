@@ -25,13 +25,14 @@ class TopBar: BaseViewController {
     @IBOutlet weak var btnHeader: UIButton!
 
     
-    convenience init(controller: UIViewController, withTitle headerTitle: String) {
+    convenience init(controller: UIViewController, withTitle headerTitle: String,isVisible: Bool) {
         self.init(nibName: "TopBar", bundle: nil)
         self.controller = controller
+        self.isVisible = isVisible
         heading = headerTitle
     }
     convenience init(controller: UIViewController, withTitle headerTitle: String, withButton isVisible: Bool, withButtonTitle buttonTitle: String, withButtonImage buttonBackgroundImage: String, withoutBackButton isHidden: Bool) {
-        self.init(controller: controller, withTitle: headerTitle)
+        self.init(controller: controller, withTitle: headerTitle,isVisible: isVisible)
         self.isVisible = isVisible
         headerButtonTitle = buttonTitle
         headerButtonImage = buttonBackgroundImage
@@ -53,10 +54,15 @@ class TopBar: BaseViewController {
     func hideBackButton() {
         
         if controller?.navigationController?.viewControllers.count == 1 {
-            btnBack.isHidden = true
+            //btnBack.isHidden = true
         }
     }
 
+    @IBAction func clickToProfile(_ sender: Any) {
+        let vc = SProfileVC(nibName: "SProfileVC", bundle: nil)
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -73,7 +79,7 @@ class TopBar: BaseViewController {
         super.viewDidLoad()
         lblHeading.text = heading
         
-        showButton()
+      //  showButton()
         hideBackButton()
         let rect = CGRect(x: 0, y: 0, width: Int(UIScreen.main.bounds.size.width), height: Int(viewTop.frame.size.height))
         viewTop.frame = rect
@@ -120,6 +126,7 @@ class TopBar: BaseViewController {
   
    
     @objc func rightButtonClicked(_ sender: Any) {
+      
     }
     
     @objc func leftButtonClicked(_ sender: Any) {

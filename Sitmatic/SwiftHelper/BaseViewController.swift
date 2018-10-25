@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 import Toast_Swift
-
+import DeviceKit
 
 
 class BaseViewController: UIViewController {
@@ -19,7 +19,7 @@ class BaseViewController: UIViewController {
     var topBar: TopBar?
     var appUserObject: AppUserObject?
     var appDelegate: AppDelegate?
-   
+    let device = Device()
   
  
     
@@ -166,10 +166,10 @@ class BaseViewController: UIViewController {
     
     
     
-    func settingTopView(_ view: UIView, on controller: UIViewController, andTitle title: String) {
+    func settingTopView(_ view: UIView, on controller: UIViewController, andTitle title: String, isVisible: Bool) {
      //   let firstFrame = CGRect(x: 0, y: 0, width: Int(self.screenWidth), height: 46)
        
-        topBar = (TopBar(controller: controller, withTitle: title) as? TopBar)!
+        topBar = (TopBar(controller: controller, withTitle: title,isVisible:isVisible) as? TopBar)!
         view.addSubview((topBar?.view)!)
     }
     

@@ -20,8 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         setRootController()
-        UIApplication.shared.statusBarStyle = .lightContent
-        UINavigationBar.appearance().barStyle = .blackTranslucent
+//        UIApplication.shared.statusBarStyle = .default
+//        UINavigationBar.appearance().barStyle = .blackTranslucent
          print(UIApplication.shared.applicationState)
         print("~~~~~~~~~~~~~~~~~~didFinishLaunchingWithOptions~~~~~~~~~~~~~~~~~~~")
 
