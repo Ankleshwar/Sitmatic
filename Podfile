@@ -20,7 +20,7 @@ pod 'Kingfisher'
 pod 'FacebookCore'
 pod 'FacebookLogin'
 pod 'FacebookShare'
-
+pod "AMXFontAutoScale"
 
   # Pods for Sitmatic
 

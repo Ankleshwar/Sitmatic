@@ -28,12 +28,14 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
     var strError = String()
     @IBOutlet weak var btnCancleSuggetion: UIButton!
    
+    @IBOutlet weak var imgConstraintTopHeight: NSLayoutConstraint!
     var arrImage = NSMutableArray()
     var delegate:OrderProccessingDelegate?
     @IBOutlet weak var tostView: UIView!
     @IBOutlet weak var tostLable: UILabel!
     var arrCurrent: [[String: String]]  = Array()
     
+    @IBOutlet weak var btnVideoConstraintTopHeight: NSLayoutConstraint!
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var btnSuggestion: UIButton!
     var isback = false
@@ -88,6 +90,25 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
          UIView().setShadowImg(self.imgBanner)
         
          UIView().setShadow(self.viewContainer)
+        
+        if device.diagonal == 4{
+           self.btnVideoConstraintTopHeight.constant = 35.0
+            self.imgConstraintTopHeight.constant = 25.0
+        }else   if device.diagonal == 4.7{
+            
+            self.imgConstraintTopHeight.constant = 30.0
+             self.btnVideoConstraintTopHeight.constant = 40.0
+        }else   if device.diagonal == 5.5{
+            self.imgConstraintTopHeight.constant = 35.0
+             self.btnVideoConstraintTopHeight.constant = 45.0
+        }
+        else {
+           
+            self.imgConstraintTopHeight.constant = 40.0
+             self.btnVideoConstraintTopHeight.constant = 50.0
+           
+        }
+  
     }
     
     

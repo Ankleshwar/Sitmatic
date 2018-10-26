@@ -177,8 +177,8 @@ public extension UIView {
     
     func setShadowImg(_ view: UIView){
         
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOpacity = 0.8
+        view.layer.shadowColor = UIColor.darkGray.cgColor
+        view.layer.shadowOpacity = 1
         view.layer.shadowOffset = CGSize.zero
         view.layer.shadowRadius = 2
         
@@ -186,16 +186,37 @@ public extension UIView {
     func setShadow(_ view: UIView){
         
         view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOpacity = 0.8
+        view.layer.shadowOpacity = 0.5
         view.layer.shadowOffset = CGSize.zero
-        view.layer.shadowRadius = 2
+        view.layer.shadowRadius = 4
         view.layer.cornerRadius = 5.0
         
     }
 }
 
 
-
+extension CALayer {
+    func applySketchShadow(
+        color: UIColor = .black,
+        alpha: Float = 0.5,
+        x: CGFloat = 0,
+        y: CGFloat = 2,
+        blur: CGFloat = 4,
+        spread: CGFloat = 0)
+    {
+        shadowColor = color.cgColor
+        shadowOpacity = alpha
+        shadowOffset = CGSize(width: x, height: y)
+        shadowRadius = blur / 2.0
+        if spread == 0 {
+            shadowPath = nil
+        } else {
+            let dx = -spread
+            let rect = bounds.insetBy(dx: dx, dy: dx)
+            shadowPath = UIBezierPath(rect: rect).cgPath
+        }
+    }
+}
 
 extension UIViewController {
     

@@ -23,7 +23,7 @@ class SHomeVC: BaseViewController {
     
     @IBOutlet weak var lblDescription: UILabel!
     
-    @IBOutlet weak var viewLableHeight: NSLayoutConstraint!
+    @IBOutlet weak var viewContaintTopHeight: NSLayoutConstraint!
     
   
     
@@ -58,7 +58,7 @@ class SHomeVC: BaseViewController {
         lblDescription.numberOfLines = 0
         lblDescription.text = text
         
-        self.setTopView(self.viewTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user-icon26x26.png", withoutBackButton: true)
+        self.setTopView(self.viewTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
 
     }
     
@@ -72,12 +72,24 @@ class SHomeVC: BaseViewController {
     
     override func viewDidLayoutSubviews() {
          UIView().setShadow(self.viewContaint)
-        if device.diagonal == 4  {
-            self.viewLableHeight.constant = 100.0
+        
+      
+     //    self.lblDescription.amx_autoScaleFont(forReferenceScreenSize: .size5p5Inch)
+        if device.diagonal == 4{
             self.lblDescription.font = UIFont.init(name: "Roboto-Light", size: 12.0)
-        }else {
-            self.viewLableHeight.constant = 180.0
-            self.lblDescription.font = UIFont.init(name: "Roboto-Light", size: 16.0)
+            self.viewContaintTopHeight.constant = 25.0
+        }else   if device.diagonal == 4.7{
+            
+             self.viewContaintTopHeight.constant = 30.0
+        }
+        else   if device.diagonal == 5.5{
+            
+            self.viewContaintTopHeight.constant = 35.0
+        }
+        else {
+           // self.viewLableHeight.constant = 180.0
+             self.viewContaintTopHeight.constant = 40.0
+            self.lblDescription.font = UIFont.init(name: "Roboto-Light", size: 14.0)
         }
     }
     

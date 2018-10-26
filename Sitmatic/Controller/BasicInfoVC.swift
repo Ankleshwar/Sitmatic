@@ -15,6 +15,7 @@ class BasicInfoVC: BaseViewController,OrderProccessingDelegate {
     @IBOutlet weak var imgBanner: UIImageView!
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var viewTop: UIView!
+    @IBOutlet weak var imgConstraintTopHeight: NSLayoutConstraint!
     
     @IBOutlet weak var txtName: UITextField!
     @IBOutlet weak var btnPrevious: UIButton!
@@ -24,7 +25,7 @@ class BasicInfoVC: BaseViewController,OrderProccessingDelegate {
         super.viewDidLoad()
         self.txtName.text = self.appUserObject?.userName
         self.btnPrevious.isHidden = false
-        self.setTopView(self.viewTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user-icon26x26.png", withoutBackButton: true)
+        self.setTopView(self.viewTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
        
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -50,6 +51,22 @@ class BasicInfoVC: BaseViewController,OrderProccessingDelegate {
         UIView().setShadowImg(self.imgBanner)
         self.imgBanner.layer.cornerRadius = 5.0
         self.imgBanner.clipsToBounds = true
+        if device.diagonal == 4{
+            
+            self.imgConstraintTopHeight.constant = 25.0
+        }else   if device.diagonal == 4.7{
+            
+            self.imgConstraintTopHeight.constant = 30.0
+        }else   if device.diagonal == 5.5{
+            
+            self.imgConstraintTopHeight.constant = 35.0
+        }
+        else {
+            // self.viewLableHeight.constant = 180.0
+            self.imgConstraintTopHeight.constant = 40.0
+            
+        }
+        
     }
     
     
@@ -102,19 +119,17 @@ extension BasicInfoVC: UITextFieldDelegate{
         
     }
     
-//    func textFieldDidBeginEditing(_ textField: UITextField) {
-//        textField.setLeftPaddingPoints(15)
-//        self.myTextField = textField
-//        //  self.moveTextField(textField: textField, moveDistance: -10, up: true)
-//    }
-//
-//
-//    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-//        textField.inputAccessoryView = inputToolbar
-//
-//        return true
-//    }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.setLeftPaddingPoints(15)
     
+          self.moveTextField(textField: textField, moveDistance: -150, up: true)
+    }
+
+
+ 
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.moveTextField(textField: textField, moveDistance: -150, up: false)
+    }
 
     
 }

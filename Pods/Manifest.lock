@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.7.0)
+  - AMXFontAutoScale (1.2.0)
   - Bolts (1.9.0):
     - Bolts/AppLinks (= 1.9.0)
     - Bolts/Tasks (= 1.9.0)
@@ -39,6 +40,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - AMXFontAutoScale
   - CHIPageControl/Aleppo
   - DeviceKit (~> 1.3)
   - FacebookCore
@@ -57,6 +59,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - AMXFontAutoScale
     - Bolts
     - CHIPageControl
     - DeviceKit
@@ -78,6 +81,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
+  AMXFontAutoScale: 142e4296a62cab27f9191971657483000655bc00
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   CHIPageControl: 79d19a8ee2e35fa3c1da6533adb5364c77b5cfea
   DeviceKit: 6a5bdeb103c03757bb94aef1ccb01e08bc8ef4ee
@@ -97,6 +101,6 @@ SPEC CHECKSUMS:
   Toaster: a6c9532de1ded8105e77376f7dffeb2e12b46dbb
   YALSideMenu: 4d6b90ea44dcdded18a99e46b676e4ad51d9c6bb
 
-PODFILE CHECKSUM: 4fe5e62a0d771d734a9890e3cdfe379b67cc74e5
+PODFILE CHECKSUM: 4d2716f4a1b912013f1a14526407f7410aad0037
 
 COCOAPODS: 1.5.3

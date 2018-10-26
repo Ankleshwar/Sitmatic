@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 import Toast_Swift
 import DeviceKit
-
+import AMXFontAutoScale
 
 class BaseViewController: UIViewController {
     

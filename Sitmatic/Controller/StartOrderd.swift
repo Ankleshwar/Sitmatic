@@ -18,18 +18,21 @@ let arrMale = ["5","8.00","19.50","18.50","32.00","9.50","16.5","14.00"]
 let arrFemale = ["5","8.00","19.00","17.00","30.00","9.00","15.0","17.00"]
 
 class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
-    @IBOutlet weak var imgSuggestion: UIImageView!
+ 
     var strError = String()
     @IBOutlet weak var imgBanner: UIImageView!
+    @IBOutlet weak var topView: UIView!
     
     var isImageDataEmpty = false
-    @IBOutlet var viewSub: UIView!
+ 
      var arrImage = NSMutableArray()
     var arrCurrent: [[String: String]]  = Array()
     var isBack = false
     var isButtonCheck = false
     var isPriviousClick = false
-    @IBOutlet weak var lblQuestionValueCount: UILabel!
+     @IBOutlet weak var viewContainer: UIView!
+    @IBOutlet weak var imgConstraintTopHeight: NSLayoutConstraint!
+    @IBOutlet weak var btnVideoConstraintTopHeight: NSLayoutConstraint!
     var dicAnsData = Dictionary<String, String>()
     var strInce: String!
     var delegate: StartOrderdDelegate?
@@ -38,9 +41,9 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
     var count = 0
     @IBOutlet weak var btnCancle: UIButton!
     @IBOutlet weak var btnPrevious: UIButton!
-    @IBOutlet weak var collectionView: UICollectionView!
+   
     @IBOutlet weak var txtField: UITextField!
-    @IBOutlet weak var txtSecondField: UITextField!
+  
     var arrIteam :Array<Any>?
     @IBOutlet weak var lblQuestion: UILabel!
     var strValue: String!
@@ -53,7 +56,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
     var ansStrIn: String!
     var isFirstQuestion: Bool!
     
-    @IBOutlet weak var tostView: UIView!
+
     fileprivate func setPickerOrder() {
         let countSize = (self.arrIteam?.count)!/2
         self.pickerView.selectRow(countSize, inComponent: 0, animated: true)
@@ -64,6 +67,9 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+            self.setTopView(self.topView, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
+        
         arrQuestion = (setDataWithLocalJson("NextVersion") as NSArray as? Array<Dictionary<String, Any>>)!
         self.isFirstQuestion = true
         self.strInce = "8"
@@ -77,7 +83,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
             imgBanner.image = UIImage(named: "banner.png")
         }
         
-         self.viewSub.isHidden = true
+        
         if arrCurrent.isEmpty == false{
             
         
@@ -120,7 +126,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
             
                     lblQuestion.text = dicLocal["questionText"]
         
-                    self.lblQuestionValueCount.text = dicLocal["questionId"]! + " " + "of 19 Questions"
+                 //   self.lblQuestionValueCount.text = dicLocal["questionId"]! + " " + "of 19 Questions"
                     self.arrIteam?.removeAll()
                     self.arrIteam = arrQuestion[count]["value"] as? Array
                     self.arrInch = arrQuestion[0]["inch"] as? Array
@@ -137,7 +143,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                     let id : Int = (arrQuestion[count]["questionId"] as? Int)!
                     self.arrInch = arrQuestion[0]["inch"] as? Array
                     self.arrIteam = arrQuestion[0]["value"] as? Array
-                    self.lblQuestionValueCount.text = String(id) + " " + "of 19 Questions"
+                  //  self.lblQuestionValueCount.text = String(id) + " " + "of 19 Questions"
                     self.strValue = ""
                     setPickerOrder()
 
@@ -153,6 +159,39 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
         print("viewWillAppearCall")
     }
     
+    @objc func rightButtonClicked(_ sender: Any) {
+        let vc = SProfileVC(nibName: "SProfileVC", bundle: nil)
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
+    
+    override func viewDidLayoutSubviews() {
+        
+        UIView().setShadowImg(self.imgBanner)
+        
+        UIView().setShadow(self.viewContainer)
+        
+        if device.diagonal == 4{
+            self.btnVideoConstraintTopHeight.constant = 35.0
+            self.imgConstraintTopHeight.constant = 25.0
+        }else   if device.diagonal == 4.7{
+            
+            self.imgConstraintTopHeight.constant = 30.0
+            self.btnVideoConstraintTopHeight.constant = 40.0
+        }else   if device.diagonal == 5.5{
+            self.imgConstraintTopHeight.constant = 35.0
+            self.btnVideoConstraintTopHeight.constant = 45.0
+        }
+        else {
+            
+            self.imgConstraintTopHeight.constant = 40.0
+            self.btnVideoConstraintTopHeight.constant = 50.0
+            
+        }
+        
+    }
     
     @IBAction func clickToSuggest(_ sender: Any) {
         if isImageDataEmpty == true {
@@ -171,7 +210,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
 //            viewSubData.backgroundColor = UIColor.clear
 //            viewSubData.tag = 500
 //            self.view.addSubview(viewSubData)
-            self.viewSub.isHidden = false
+          
             
         }else if (sender as AnyObject).tag == 3 {
             let Array = arrImage[0] as! [HomeData]
@@ -196,7 +235,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
         }
         
         else{
-            self.viewSub.isHidden = true
+          
 //            viewSub.removeFromSuperview()
 //
 //            if let viewWithTag = self.view.viewWithTag(500) {
@@ -215,9 +254,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
         imgBanner.kf.indicatorType = .activity
         let urlbaner = URL(string: obje.banner)
         imgBanner.kf.setImage(with: urlbaner)
-        imgSuggestion.kf.indicatorType = .activity
-        let url = URL(string: obje.image)
-        imgSuggestion.kf.setImage(with: url)
+      
        
     }
     
@@ -458,7 +495,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                             self.strValue = dicLocal["selected"]
                             lblQuestion.text = dicLocal["questionText"]
                             
-                            self.lblQuestionValueCount.text = dicLocal["questionId"]! + " " + "of 19 Questions"
+                       //     self.lblQuestionValueCount.text = dicLocal["questionId"]! + " " + "of 19 Questions"
                             self.arrIteam?.removeAll()
                             self.arrIteam = arrQuestion[count]["value"] as? Array
                             
@@ -478,7 +515,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                             self.txtField.text = ""
                             lblQuestion.text = arrQuestion[count]["questionText"] as? String
                             let id : Int = (arrQuestion[count]["questionId"] as? Int)!
-                            self.lblQuestionValueCount.text = String(id) + " " + "of 19 Questions"
+                           // self.lblQuestionValueCount.text = String(id) + " " + "of 19 Questions"
                             self.arrIteam?.removeAll()
                             self.arrIteam = arrQuestion[count]["value"] as? Array
                             
@@ -503,7 +540,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                         self.txtField.text = ""
                         lblQuestion.text = arrQuestion[count]["questionText"] as? String
                         let id : Int = (arrQuestion[count]["questionId"] as? Int)!
-                        self.lblQuestionValueCount.text = String(id) + " " + "of 19 Questions"
+                     //   self.lblQuestionValueCount.text = String(id) + " " + "of 19 Questions"
                         self.arrIteam?.removeAll()
                         self.arrIteam = arrQuestion[count]["value"] as? Array
                         self.strValue = ""
@@ -572,7 +609,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                 }
                 
                 let id: String! = dicdata["questionId"]
-                self.lblQuestionValueCount.text = id + " " + "of 19 Questions"
+               // self.lblQuestionValueCount.text = id + " " + "of 19 Questions"
                 if id == "5"{
                     self.btnPrevious.isHidden =  false
                     self.isFirstQuestion = true
