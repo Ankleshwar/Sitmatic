@@ -49,8 +49,8 @@ class BasicInfoVC: BaseViewController,OrderProccessingDelegate {
     override func viewDidLayoutSubviews() {
         UIView().setShadow(self.viewContainer)
         UIView().setShadowImg(self.imgBanner)
-        self.imgBanner.layer.cornerRadius = 5.0
-        self.imgBanner.clipsToBounds = true
+//        self.imgBanner.layer.cornerRadius = 5.0
+//        self.imgBanner.clipsToBounds = true
         if device.diagonal == 4{
             
             self.imgConstraintTopHeight.constant = 25.0

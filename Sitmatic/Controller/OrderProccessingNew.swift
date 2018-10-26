@@ -20,7 +20,14 @@ protocol OrderProccessingNewDelegate  {
 
 
 class OrderProccessingNew: BaseViewController , ModifyModelDelegate{
-    @IBOutlet weak var btnGallery: UIButton!
+    
+    @IBOutlet weak var viewTop: UIView!
+    @IBOutlet weak var lblQuestion: UILabel!
+    
+    @IBOutlet weak var viewContainer: UIView!
+    @IBOutlet weak var imgConstraintTopHeight: NSLayoutConstraint!
+    @IBOutlet weak var btnVideoConstraintTopHeight: NSLayoutConstraint!
+    
     @IBOutlet weak var btnVideo: UIButton!
     @IBOutlet var pickerView: UIPickerView!
     var delegateNew :OrderProccessingNewDelegate?
@@ -32,8 +39,8 @@ class OrderProccessingNew: BaseViewController , ModifyModelDelegate{
    lazy  var strVideoUrl = String()
     var arrImage = NSMutableArray()
     var arrIteam :Array<Any>?
-    @IBOutlet var viewSub: UIView!
-    @IBOutlet weak var imgSuggestion: UIImageView!
+   
+   
     @IBOutlet weak var imgBanner: UIImageView!
     var strImgeUrlbanner = String()
     var sucessObj : SuccessData!
@@ -42,18 +49,17 @@ class OrderProccessingNew: BaseViewController , ModifyModelDelegate{
     @IBOutlet weak var lblModelCode: UILabel!
     @IBOutlet var viewCall: UIView!
    var questionsArray : [Question]!
-    @IBOutlet weak var viewDetails: UIView!
+    
     @IBOutlet weak var lblModel: UILabel!
     @IBOutlet weak var lblprice: UILabel!
     @IBOutlet var viewSubView: UIView!
-    @IBOutlet weak var tostView: UIView!
-    @IBOutlet weak var tostLable: UILabel!
+
     @IBOutlet weak var btnCancle: UIButton!
-    @IBOutlet weak var btnPreviousSub: UIButton!
+    
     @IBOutlet weak var tableViewieght: NSLayoutConstraint!
     @IBOutlet weak var viewScrollHeight: NSLayoutConstraint!
     var dicPreviousData = Dictionary<String, Any>()
-    @IBOutlet weak var txtModelNumber: UITextField!
+    
     @IBOutlet weak var txtField: UITextField!
     
     var delegate : OrderProccessingSecondDelegate?
@@ -89,19 +95,22 @@ class OrderProccessingNew: BaseViewController , ModifyModelDelegate{
     
     
     
-    @IBOutlet weak var lblQuestionValueCount: UILabel!
+
     
-    @IBOutlet weak var lblQuestion: UILabel!
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setTopView(self.viewTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
         print(strServerData)
-         self.viewSub.isHidden = true
+        
         arrQuestion = setDataWithLocalJson("OrderProccessingNew") as NSArray as? Array<Dictionary<String, Any>>
         setInitial()
         self.tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         self.tableView.separatorStyle = .none
         self.tableView.backgroundColor = UIColor.clear
+        self.tableView.layer.borderWidth = 0.5
+        self.tableView.layer.borderColor = UIColor.lightGray.cgColor
          self.setImageUrl()
         
       
@@ -119,7 +128,7 @@ class OrderProccessingNew: BaseViewController , ModifyModelDelegate{
     
     func setInitial(){
 
-         self.lblQuestionValueCount.text = "16" + " " + "of 19 Questions"
+        lblQuestion.text = arrQuestion?[0]["questionText"] as? String
         self.arrIteam = arrQuestion?[0]["value"] as? Array
     
        
@@ -160,7 +169,7 @@ class OrderProccessingNew: BaseViewController , ModifyModelDelegate{
         style.messageColor = UIColor.white
         style.messageAlignment = .center
         style.backgroundColor = UIColor.darkBlue
-        self.tostView.makeToast(" Please select a valid option for start order   ", duration: 2.0, position: .top, style: style )
+      //  self.tostView.makeToast(" Please select a valid option for start order   ", duration: 2.0, position: .top, style: style )
 
         
     }
@@ -187,7 +196,7 @@ class OrderProccessingNew: BaseViewController , ModifyModelDelegate{
     fileprivate func textField(color:UIColor) {
         self.txtField.layer.borderWidth = 1.0
         self.txtField.layer.borderColor = color.cgColor
-        self.txtField.layer.cornerRadius = 5.0
+        //self.txtField.layer.cornerRadius = 5.0
     }
     
     
@@ -237,7 +246,7 @@ class OrderProccessingNew: BaseViewController , ModifyModelDelegate{
         }
         else{
              textField(color:UIColor.white)
-            self.btnGallery.isHidden = true
+        //    self.btnGallery.isHidden = true
              self.btnVideo.isHidden = true
             dicAnsData["id"] = "16"
             dicAnsData["ans"] = self.txtField.text
@@ -307,9 +316,7 @@ class OrderProccessingNew: BaseViewController , ModifyModelDelegate{
         let urlBanner = URL(string: strImgeUrlbanner)
         imgBanner.kf.setImage(with: urlBanner)
         
-            imgSuggestion.kf.indicatorType = .activity
-            let url = URL(string: strImgeUrl)
-            imgSuggestion.kf.setImage(with: url)
+        
        
         
         
@@ -329,7 +336,7 @@ class OrderProccessingNew: BaseViewController , ModifyModelDelegate{
                 
                 self.setImageUrl()
                 
-                self.viewSub.isHidden = false
+               
             }
             else if (sender as AnyObject).tag == 3 {
                
@@ -352,7 +359,7 @@ class OrderProccessingNew: BaseViewController , ModifyModelDelegate{
             }
             else {
                 
-                self.viewSub.isHidden = true
+                
             }
         }
     }
@@ -369,27 +376,17 @@ class OrderProccessingNew: BaseViewController , ModifyModelDelegate{
         self.view.addSubview(self.viewSubView)
         
         
-         self.tableViewieght.constant = CGFloat((self.arrModelDescription?.count)! * 50 + 20 + 50)
+        self.tableViewieght.constant = CGFloat((self.arrModelDescription?.count)! * 50 + 10 + 50)
         let modelName = UIDevice.modelName
         
         if modelName == "iPhone 5s" || modelName == "iPhone 5c" || modelName == "iPhone 5" || modelName == "iPhone SE" {
-            self.viewScrollHeight.constant = CGFloat((self.arrModelDescription?.count)! * 50 + 80)
+            //self.viewScrollHeight.constant = CGFloat((self.arrModelDescription?.count)! * 50 + 200)
         }
         else{
-            self.viewScrollHeight.constant =  CGFloat((self.arrModelDescription?.count)! * 50 )
+          //  self.viewScrollHeight.constant =  CGFloat((self.arrModelDescription?.count)! * 50 )
         }
         
-        //self.tableViewieght.constant = 3 * 50 + 20
-        
-//        let attrs1 = [NSAttributedStringKey.font : UIFont(name: "Roboto-Light", size: 19) ?? "", NSAttributedStringKey.foregroundColor :#colorLiteral(red: 0.3607843137, green: 0.3607843137, blue: 0.3607843137, alpha: 1)] as [NSAttributedStringKey : Any]
-//
-//        let attrs2 = [NSAttributedStringKey.font : UIFont(name: "Roboto-Bold", size: 22) ?? "", NSAttributedStringKey.foregroundColor : #colorLiteral(red: 0.1215686275, green: 0.5607843137, blue: 0.7843137255, alpha: 1)] as [NSAttributedStringKey : Any]
-//
-//        let attributedString1 = NSMutableAttributedString(string:"Your ideal chair model is ", attributes:attrs1)
-//
-//        let attributedString2 = NSMutableAttributedString(string:obj.proposedModel, attributes:attrs2)
-//
-//        attributedString1.append(attributedString2)
+
         self.lblModel.text = "We're almost done! So far," +  " "  + "your ideal chair model is:"
         self.lblModelCode.text = obj.proposedModel
         //self.lblprice.text = obj.proposedPrice
@@ -663,12 +660,32 @@ extension OrderProccessingNew: UITextFieldDelegate{
 
         
         textField.setLeftPaddingPoints(5)
+        if device.diagonal == 4{
+            self.moveTextField(textField: textField, moveDistance: -150, up: true)
+            
+        }else   if device.diagonal == 4.7{
+            self.moveTextField(textField: textField, moveDistance: -150, up: true)
+            
+        }
+        
+        
         
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        if device.diagonal == 4{
+            self.moveTextField(textField: textField, moveDistance: -150, up: false)
+            
+        }else   if device.diagonal == 4.7{
+            self.moveTextField(textField: textField, moveDistance: -150, up: false)
+            
+        }
         
     }
+        
+    
+    
+ 
     
     
 }

@@ -66,7 +66,6 @@
 		1BB9C4C120C8F8E10028A48A /* OrderProccessing.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BB9C4BF20C8F8E10028A48A /* OrderProccessing.xib */; };
 		1BB9C4C420C8FA620028A48A /* orderProcell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9C4C220C8FA620028A48A /* orderProcell.swift */; };
 		1BB9C4C520C8FA620028A48A /* orderProcell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BB9C4C320C8FA620028A48A /* orderProcell.xib */; };
-		1BB9C4C820C960B10028A48A /* banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BB9C4C620C960AF0028A48A /* banner.png */; };
 		1BB9C4C920C960B10028A48A /* chair.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BB9C4C720C960B00028A48A /* chair.png */; };
 		1BCC0A4220EB419300196F69 /* OrderProccessingThird.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCC0A4120EB419300196F69 /* OrderProccessingThird.swift */; };
 		1BCEB5C020FC6D010042EFBD /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1BCEB5BF20FC6D010042EFBD /* Roboto-Light.ttf */; };
@@ -118,9 +117,9 @@
 		3B01AB4820C6F06B00291522 /* SSignupVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B01AB4720C6F06B00291522 /* SSignupVC.xib */; };
 		3B0D728C215B4D38005BCD2C /* 01 Gender.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0D728B215B4D38005BCD2C /* 01 Gender.png */; };
 		3B0D728E215B4DA7005BCD2C /* Genderlarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0D728D215B4DA6005BCD2C /* Genderlarge.png */; };
+		3B14DCB221830E5000447471 /* banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B14DCB121830E4F00447471 /* banner.png */; };
 		3B1B2C2C21819789004A9868 /* user-icon26x26.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B1B2C2B21819789004A9868 /* user-icon26x26.png */; };
 		3BECDE392154AFF9009CB3DC /* cancel (2).png in Resources */ = {isa = PBXBuildFile; fileRef = 3BECDE382154AFF9009CB3DC /* cancel (2).png */; };
-		3BECDE3C2154B009009CB3DC /* play-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BECDE3A2154B009009CB3DC /* play-button.png */; };
 		3BECDE3D2154B009009CB3DC /* gallery.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BECDE3B2154B009009CB3DC /* gallery.png */; };
 		3BECDE3F2154B233009CB3DC /* ANK_orderbtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BECDE3E2154B232009CB3DC /* ANK_orderbtn.png */; };
 		3BF68676211C7E160065DE16 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF68675211C7E160065DE16 /* Question.swift */; };
@@ -218,7 +217,6 @@
 		1BB9C4BF20C8F8E10028A48A /* OrderProccessing.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderProccessing.xib; sourceTree = "<group>"; };
 		1BB9C4C220C8FA620028A48A /* orderProcell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = orderProcell.swift; sourceTree = "<group>"; };
 		1BB9C4C320C8FA620028A48A /* orderProcell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = orderProcell.xib; sourceTree = "<group>"; };
-		1BB9C4C620C960AF0028A48A /* banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner.png; sourceTree = "<group>"; };
 		1BB9C4C720C960B00028A48A /* chair.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chair.png; sourceTree = "<group>"; };
 		1BCC0A4120EB419300196F69 /* OrderProccessingThird.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderProccessingThird.swift; sourceTree = "<group>"; };
 		1BCEB5BF20FC6D010042EFBD /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
@@ -280,9 +278,9 @@
 		3B01AB4720C6F06B00291522 /* SSignupVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SSignupVC.xib; sourceTree = "<group>"; };
 		3B0D728B215B4D38005BCD2C /* 01 Gender.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "01 Gender.png"; sourceTree = "<group>"; };
 		3B0D728D215B4DA6005BCD2C /* Genderlarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Genderlarge.png; sourceTree = "<group>"; };
+		3B14DCB121830E4F00447471 /* banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner.png; sourceTree = "<group>"; };
 		3B1B2C2B21819789004A9868 /* user-icon26x26.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user-icon26x26.png"; sourceTree = "<group>"; };
 		3BECDE382154AFF9009CB3DC /* cancel (2).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel (2).png"; sourceTree = "<group>"; };
-		3BECDE3A2154B009009CB3DC /* play-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-button.png"; sourceTree = "<group>"; };
 		3BECDE3B2154B009009CB3DC /* gallery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gallery.png; sourceTree = "<group>"; };
 		3BECDE3E2154B232009CB3DC /* ANK_orderbtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ANK_orderbtn.png; sourceTree = "<group>"; };
 		3BF68675211C7E160065DE16 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
@@ -508,7 +506,6 @@
 				3B0D728B215B4D38005BCD2C /* 01 Gender.png */,
 				3BECDE3E2154B232009CB3DC /* ANK_orderbtn.png */,
 				3BECDE3B2154B009009CB3DC /* gallery.png */,
-				3BECDE3A2154B009009CB3DC /* play-button.png */,
 				3BECDE382154AFF9009CB3DC /* cancel (2).png */,
 				1B9ADD7E21217AEA0080CF9A /* 750_1334.jpg */,
 				3BF68680211DAE730065DE16 /* customFitLogoRed224x50.png */,
@@ -522,6 +519,7 @@
 				1B26854620FF6D54004A11B6 /* check.png */,
 				1B597C1220FDE79F00180C7D /* edit 2.PNG */,
 				1B26854020FF4104004A11B6 /* tick.png */,
+				3B14DCB121830E4F00447471 /* banner.png */,
 				1B597C1320FDE79F00180C7D /* nouser copy.png */,
 				1B597C1020FDE79F00180C7D /* unchecked.png */,
 				1BECD14920F8D5DA004252D5 /* Simulator Screen Shot - iPhone 8 Plus - 2018-07-13 1.jpg */,
@@ -531,7 +529,6 @@
 				1B9E474E20F3356B0009E2EF /* red.png */,
 				1B7289E720EB6BCA00C5D395 /* info.png */,
 				1BEFEAA520CA46DC00400AF1 /* watermark.png */,
-				1BB9C4C620C960AF0028A48A /* banner.png */,
 				1BB9C4C720C960B00028A48A /* chair.png */,
 				1B6DF8ED20C7E4BC00280E84 /* Chair1.jpg */,
 				1B6DF8EC20C7E4BC00280E84 /* Chair2.jpg */,
@@ -718,6 +715,7 @@
 				1BE313B720CE6B17004F1931 /* OrderProccessingSecond.xib in Resources */,
 				1B624C472101E65D00289118 /* Confused_Emoji100x100.png in Resources */,
 				1B2E013320C7B3F600B34645 /* 640_960.png in Resources */,
+				3B14DCB221830E5000447471 /* banner.png in Resources */,
 				1BEFEAA620CA46DD00400AF1 /* watermark.png in Resources */,
 				1B6DF8F020C7E4BC00280E84 /* Chair2.jpg in Resources */,
 				1B597C1620FDE79F00180C7D /* edit 2.PNG in Resources */,
@@ -726,7 +724,6 @@
 				1B597C1720FDE79F00180C7D /* nouser copy.png in Resources */,
 				3BFA16762154B5450096CA94 /* BasicInfoVC.xib in Resources */,
 				1B2E012920C7AC7200B34645 /* left-arrow.png in Resources */,
-				3BECDE3C2154B009009CB3DC /* play-button.png in Resources */,
 				3B01AB3F20C6DE3400291522 /* sitmaticsplash.png in Resources */,
 				1B9E474F20F3356B0009E2EF /* red.png in Resources */,
 				1BB6090F20F4C343000023D3 /* ConfirmationVC.xib in Resources */,
@@ -736,7 +733,6 @@
 				1BB9C4C920C960B10028A48A /* chair.png in Resources */,
 				1B2E013120C7B3F600B34645 /* 640_1136.png in Resources */,
 				3BECDE3F2154B233009CB3DC /* ANK_orderbtn.png in Resources */,
-				1BB9C4C820C960B10028A48A /* banner.png in Resources */,
 				1B7289EC20EB724F00C5D395 /* SDocumentVC.xib in Resources */,
 				3B01AB4820C6F06B00291522 /* SSignupVC.xib in Resources */,
 				1B6DF8D820C7BF6E00280E84 /* nouser.png in Resources */,

@@ -67,12 +67,12 @@
                             <rect key="frame" x="20" y="240" width="280" height="190"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Di2-ZO-R4z">
-                                    <rect key="frame" x="10" y="10" width="260" height="0.0"/>
+                                    <rect key="frame" x="10" y="15" width="260" height="0.0"/>
                                     <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="18"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jHd-iL-OwF">
-                                    <rect key="frame" x="10" y="50" width="260" height="40"/>
+                                    <rect key="frame" x="10" y="55" width="260" height="40"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="WZL-fw-dCC"/>
                                     </constraints>
@@ -87,7 +87,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="Di2-ZO-R4z" firstAttribute="leading" secondItem="1Zj-TK-W8c" secondAttribute="leading" constant="10" id="9kp-s3-q7F"/>
-                                <constraint firstItem="Di2-ZO-R4z" firstAttribute="top" secondItem="1Zj-TK-W8c" secondAttribute="top" constant="10" id="Db5-b2-vrY"/>
+                                <constraint firstItem="Di2-ZO-R4z" firstAttribute="top" secondItem="1Zj-TK-W8c" secondAttribute="top" constant="15" id="Db5-b2-vrY"/>
                                 <constraint firstAttribute="trailing" secondItem="Di2-ZO-R4z" secondAttribute="trailing" constant="10" id="Fnl-eU-dpS"/>
                                 <constraint firstItem="jHd-iL-OwF" firstAttribute="leading" secondItem="1Zj-TK-W8c" secondAttribute="leading" constant="10" id="M9O-JV-CWR"/>
                                 <constraint firstAttribute="trailing" secondItem="jHd-iL-OwF" secondAttribute="trailing" constant="10" id="c93-vc-QwB"/>

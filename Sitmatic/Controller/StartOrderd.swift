@@ -357,7 +357,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
     fileprivate func textField(color:UIColor) {
         self.txtField.layer.borderWidth = 1.0
         self.txtField.layer.borderColor = color.cgColor
-        self.txtField.layer.cornerRadius = 5.0
+       // self.txtField.layer.cornerRadius = 5.0
     }
     
     @objc fileprivate func setDataOnNext() {
@@ -776,15 +776,40 @@ extension StartOrderd: UITextFieldDelegate{
         
     
         textField.setLeftPaddingPoints(5)
+        
+        if device.diagonal == 4{
+              self.moveTextField(textField: textField, moveDistance: -150, up: true)
+           
+        }else   if device.diagonal == 4.7{
+              self.moveTextField(textField: textField, moveDistance: -150, up: true)
+            
+        }
+        
+      
      
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-       
+        if device.diagonal == 4{
+            self.moveTextField(textField: textField, moveDistance: -150, up: false)
+            
+        }else   if device.diagonal == 4.7{
+            self.moveTextField(textField: textField, moveDistance: -150, up: false)
+            
+        }
+        
     }
     
     
 }
+
+
+
+
+
+
+
+
 
 extension Array {
     func contains<T>(obj: T) -> Bool where T : Equatable {

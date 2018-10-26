@@ -23,14 +23,15 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
  
     @IBOutlet weak var imgBanner: UIImageView!
     
-    @IBOutlet weak var btnGallery: UIButton!
+    @IBOutlet weak var viewTop: UIView!
+    
     @IBOutlet weak var btnVideo: UIButton!
     
     var strError = String()
     var isImageDataEmpty = false
     var arrImage = NSMutableArray()
-    @IBOutlet var viewSub: UIView!
-    @IBOutlet weak var imgSuggestion: UIImageView!
+   
+   
 
     var sucessObj : SuccessData!
     var strValueID = ""
@@ -42,10 +43,16 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
     @IBOutlet weak var lblModel: UILabel!
     @IBOutlet weak var lblprice: UILabel!
     @IBOutlet var viewSubView: UIView!
-    @IBOutlet weak var tostView: UIView!
-    @IBOutlet weak var tostLable: UILabel!
+
+    
+    @IBOutlet weak var viewContainer: UIView!
+    @IBOutlet weak var imgConstraintTopHeight: NSLayoutConstraint!
+    @IBOutlet weak var btnVideoConstraintTopHeight: NSLayoutConstraint!
+    
+    
+
     @IBOutlet weak var btnCancle: UIButton!
-    @IBOutlet weak var btnPreviousSub: UIButton!
+  
     @IBOutlet weak var tableViewieght: NSLayoutConstraint!
     @IBOutlet weak var viewScrollHeight: NSLayoutConstraint!
     var dicPreviousData = Dictionary<String, Any>()
@@ -86,14 +93,15 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
     
     
     
-    @IBOutlet weak var lblQuestionValueCount: UILabel!
+   
     
     @IBOutlet weak var lblQuestion: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setTopView(self.viewTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
         print(arrImage)
-         self.viewSub.isHidden = true
+       //  self.viewSub.isHidden = true
         arrQuestion = setDataWithLocalJson("OrderProccessingSecond") as NSArray as? Array<Dictionary<String, Any>>
         setInitial()
         self.tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
@@ -134,7 +142,7 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
         let quename = arrQuestion?[value]["queText"] as! String
         //self.lblQuestion.text  = strID + " " + quename
         self.lblQuestion.text  =   quename
-         self.lblQuestionValueCount.text = strID + " " + "of 19 Questions"
+       //  self.lblQuestionValueCount.text = strID + " " + "of 19 Questions"
         
         self.btnYes.setButtonImage("off.png")
         self.btnNo.setButtonImage("off.png")
@@ -180,11 +188,11 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
                 dicNext["queId"] = arrQuestion?[value]["queId"] as? String
                 strValueID = arrQuestion?[value]["queId"] as? String ?? ""
                 self.arrNext.insert(dicNext, at: 0)
-                self.btnGallery.isHidden = false
+           
                 self.btnVideo.isHidden = false
                 
                 self.arrQuestion?.remove(at: value)
-                //self.arrayPersnonID.remove(at: value)
+            
                 value -= 1
                 
                 setPreviousData(valueindex: value)
@@ -215,7 +223,7 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
         style.messageColor = UIColor.white
         style.messageAlignment = .center
         style.backgroundColor = UIColor.darkBlue
-        self.tostView.makeToast(" Please select a valid option for start order   ", duration: 2.0, position: .top, style: style )
+     //   self.tostView.makeToast(" Please select a valid option for start order   ", duration: 2.0, position: .top, style: style )
 
         
     }
@@ -260,7 +268,7 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
          
         }
         else{
-            self.btnGallery.isHidden = true
+           // self.btnGallery.isHidden = true
              self.btnVideo.isHidden = true
            
             
@@ -305,6 +313,35 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
     }
     
     
+    
+    override func viewDidLayoutSubviews() {
+        
+        UIView().setShadowImg(self.imgBanner)
+        
+        UIView().setShadow(self.viewContainer)
+        
+        if device.diagonal == 4{
+            self.btnVideoConstraintTopHeight.constant = 35.0
+            self.imgConstraintTopHeight.constant = 25.0
+        }else   if device.diagonal == 4.7{
+            
+            self.imgConstraintTopHeight.constant = 30.0
+            self.btnVideoConstraintTopHeight.constant = 40.0
+        }else   if device.diagonal == 5.5{
+            self.imgConstraintTopHeight.constant = 35.0
+            self.btnVideoConstraintTopHeight.constant = 45.0
+        }
+        else {
+            
+            self.imgConstraintTopHeight.constant = 40.0
+            self.btnVideoConstraintTopHeight.constant = 50.0
+            
+        }
+        
+    }
+    
+    
+    
     fileprivate func serverSideData() {
         let strId = arrQuestion?[value]["queId"] as! String
         self.serverArrayThid = self.serverArrayThid.filter { !$0.values.contains(strId) }
@@ -345,7 +382,7 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
             }
             else{
                 if self.isPreviousClick == true{
-                    value += 1
+                    //value += 1
                     setData(value: value)
                 }else{
                     value += 1
@@ -440,9 +477,7 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
         let Array = arrImage[0] as! [HomeData]
         if str == "13"{
             let obje = Array[11]
-            imgSuggestion.kf.indicatorType = .activity
-            let url = URL(string: obje.image)
-            imgSuggestion.kf.setImage(with: url)
+          
             imgBanner.kf.indicatorType = .activity
             let urlbaner = URL(string: obje.banner)
             imgBanner.kf.setImage(with: urlbaner)
@@ -467,7 +502,7 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
                 
                 self.setImageUrl(str:(arrQuestion?[value]["queId"] as! String) )
                 
-                self.viewSub.isHidden = false
+               // self.viewSub.isHidden = false
             }
             else if (sender as AnyObject).tag == 3 {
                 let Array = arrImage[0] as! [HomeData]
@@ -494,7 +529,7 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
             }
             else {
                 
-                self.viewSub.isHidden = true
+              //  self.viewSub.isHidden = true
             }
         }
     }
@@ -719,7 +754,7 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
         
         self.lblQuestion.text  =   quename
         
-        self.lblQuestionValueCount.text = strID + " " + "of 19 Questions"
+      //  self.lblQuestionValueCount.text = strID + " " + "of 19 Questions"
         
         self.btnYes.setButtonImage("off.png")
         self.btnNo.setButtonImage("off.png")
@@ -740,7 +775,7 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
         let quename = dicdata["queText"]
         //self.lblQuestion.text  = strID! + " " + quename!
         self.lblQuestion.text  =   quename!
-        self.lblQuestionValueCount.text = strID! + " " + "of 19 Questions"
+      //  self.lblQuestionValueCount.text = strID! + " " + "of 19 Questions"
         let selctedValue = dicdata["selected"]
         
         self.btnYes.setButtonImage("off.png")

@@ -66,11 +66,11 @@
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Di2-ZO-R4z">
                                     <rect key="frame" x="10" y="10" width="260" height="0.0"/>
-                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="18"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MrY-Nd-F49">
-                                    <rect key="frame" x="10" y="40" width="30" height="30"/>
+                                    <rect key="frame" x="10" y="30" width="30" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="8vK-85-ZK3"/>
                                         <constraint firstAttribute="width" constant="30" id="fB7-TA-YsD"/>
@@ -81,13 +81,13 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qoO-GC-UwU">
-                                    <rect key="frame" x="50" y="44.5" width="220" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <rect key="frame" x="50" y="35" width="220" height="20"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3k-x0-zLe">
-                                    <rect key="frame" x="10" y="90" width="30" height="30"/>
+                                    <rect key="frame" x="10" y="80" width="30" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="Rlk-c7-9F4"/>
                                         <constraint firstAttribute="width" constant="30" id="hVv-Kt-I94"/>
@@ -98,8 +98,8 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jlF-S4-5za">
-                                    <rect key="frame" x="50" y="94.5" width="220" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <rect key="frame" x="50" y="85" width="220" height="20"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -119,7 +119,7 @@
                                 <constraint firstItem="i3k-x0-zLe" firstAttribute="top" secondItem="MrY-Nd-F49" secondAttribute="bottom" constant="20" id="dvi-za-ETr"/>
                                 <constraint firstItem="MrY-Nd-F49" firstAttribute="leading" secondItem="1Zj-TK-W8c" secondAttribute="leading" constant="10" id="ggi-tA-hR2"/>
                                 <constraint firstItem="Di2-ZO-R4z" firstAttribute="leading" secondItem="1Zj-TK-W8c" secondAttribute="leading" constant="10" id="lGi-ri-mjP"/>
-                                <constraint firstItem="MrY-Nd-F49" firstAttribute="top" secondItem="Di2-ZO-R4z" secondAttribute="bottom" constant="30" id="t3L-LK-nH1"/>
+                                <constraint firstItem="MrY-Nd-F49" firstAttribute="top" secondItem="Di2-ZO-R4z" secondAttribute="bottom" constant="20" id="t3L-LK-nH1"/>
                                 <constraint firstItem="jlF-S4-5za" firstAttribute="centerY" secondItem="i3k-x0-zLe" secondAttribute="centerY" id="zLc-1Z-MqU"/>
                             </constraints>
                         </view>
