@@ -16,8 +16,6 @@
 		1B2E012320C79EFD00B34645 /* SHomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B2E012120C79EFD00B34645 /* SHomeVC.xib */; };
 		1B2E012520C7A4E500B34645 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1B2E012420C7A4E500B34645 /* Roboto-Regular.ttf */; };
 		1B2E012720C7AAE900B34645 /* male.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B2E012620C7AAE900B34645 /* male.png */; };
-		1B2E012920C7AC7200B34645 /* left-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B2E012820C7AC7200B34645 /* left-arrow.png */; };
-		1B2E012B20C7AED800B34645 /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B2E012A20C7AED800B34645 /* edit.png */; };
 		1B2E013020C7B3F600B34645 /* 1242_2208.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B2E012C20C7B3F200B34645 /* 1242_2208.png */; };
 		1B2E013120C7B3F600B34645 /* 640_1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B2E012D20C7B3F300B34645 /* 640_1136.png */; };
 		1B2E013320C7B3F600B34645 /* 640_960.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B2E012F20C7B3F500B34645 /* 640_960.png */; };
@@ -27,7 +25,6 @@
 		1B48805A20CA797C008AC3DD /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B48805920CA797C008AC3DD /* SweetAlert.swift */; };
 		1B597C1420FDE79F00180C7D /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B597C1020FDE79F00180C7D /* unchecked.png */; };
 		1B597C1520FDE79F00180C7D /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B597C1120FDE79F00180C7D /* checked.png */; };
-		1B597C1620FDE79F00180C7D /* edit 2.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1B597C1220FDE79F00180C7D /* edit 2.PNG */; };
 		1B597C1720FDE79F00180C7D /* nouser copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B597C1320FDE79F00180C7D /* nouser copy.png */; };
 		1B624C462101E65D00289118 /* Confused_Emoji_watermark300x400.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B624C442101E65B00289118 /* Confused_Emoji_watermark300x400.png */; };
 		1B624C472101E65D00289118 /* Confused_Emoji100x100.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B624C452101E65C00289118 /* Confused_Emoji100x100.png */; };
@@ -119,6 +116,8 @@
 		3B0D728E215B4DA7005BCD2C /* Genderlarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0D728D215B4DA6005BCD2C /* Genderlarge.png */; };
 		3B14DCB221830E5000447471 /* banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B14DCB121830E4F00447471 /* banner.png */; };
 		3B1B2C2C21819789004A9868 /* user-icon26x26.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B1B2C2B21819789004A9868 /* user-icon26x26.png */; };
+		3BCC14B42186F20E00C24FD8 /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BCC14B32186F20E00C24FD8 /* edit.png */; };
+		3BCC14B62186F24000C24FD8 /* left-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BCC14B52186F24000C24FD8 /* left-arrow.png */; };
 		3BECDE392154AFF9009CB3DC /* cancel (2).png in Resources */ = {isa = PBXBuildFile; fileRef = 3BECDE382154AFF9009CB3DC /* cancel (2).png */; };
 		3BECDE3D2154B009009CB3DC /* gallery.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BECDE3B2154B009009CB3DC /* gallery.png */; };
 		3BECDE3F2154B233009CB3DC /* ANK_orderbtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BECDE3E2154B232009CB3DC /* ANK_orderbtn.png */; };
@@ -166,8 +165,6 @@
 		1B2E012120C79EFD00B34645 /* SHomeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHomeVC.xib; sourceTree = "<group>"; };
 		1B2E012420C7A4E500B34645 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		1B2E012620C7AAE900B34645 /* male.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = male.png; sourceTree = "<group>"; };
-		1B2E012820C7AC7200B34645 /* left-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left-arrow.png"; sourceTree = "<group>"; };
-		1B2E012A20C7AED800B34645 /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
 		1B2E012C20C7B3F200B34645 /* 1242_2208.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1242_2208.png; sourceTree = "<group>"; };
 		1B2E012D20C7B3F300B34645 /* 640_1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 640_1136.png; sourceTree = "<group>"; };
 		1B2E012F20C7B3F500B34645 /* 640_960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 640_960.png; sourceTree = "<group>"; };
@@ -178,7 +175,6 @@
 		1B555F5090C838A9FE7EBEC3 /* Pods-Sitmatic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sitmatic.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sitmatic/Pods-Sitmatic.release.xcconfig"; sourceTree = "<group>"; };
 		1B597C1020FDE79F00180C7D /* unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked.png; sourceTree = "<group>"; };
 		1B597C1120FDE79F00180C7D /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
-		1B597C1220FDE79F00180C7D /* edit 2.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit 2.PNG"; sourceTree = "<group>"; };
 		1B597C1320FDE79F00180C7D /* nouser copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nouser copy.png"; sourceTree = "<group>"; };
 		1B624C442101E65B00289118 /* Confused_Emoji_watermark300x400.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Confused_Emoji_watermark300x400.png; sourceTree = "<group>"; };
 		1B624C452101E65C00289118 /* Confused_Emoji100x100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Confused_Emoji100x100.png; sourceTree = "<group>"; };
@@ -280,6 +276,8 @@
 		3B0D728D215B4DA6005BCD2C /* Genderlarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Genderlarge.png; sourceTree = "<group>"; };
 		3B14DCB121830E4F00447471 /* banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner.png; sourceTree = "<group>"; };
 		3B1B2C2B21819789004A9868 /* user-icon26x26.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user-icon26x26.png"; sourceTree = "<group>"; };
+		3BCC14B32186F20E00C24FD8 /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = edit.png; path = ../../../../Downloads/edit.png; sourceTree = "<group>"; };
+		3BCC14B52186F24000C24FD8 /* left-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left-arrow.png"; sourceTree = "<group>"; };
 		3BECDE382154AFF9009CB3DC /* cancel (2).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel (2).png"; sourceTree = "<group>"; };
 		3BECDE3B2154B009009CB3DC /* gallery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gallery.png; sourceTree = "<group>"; };
 		3BECDE3E2154B232009CB3DC /* ANK_orderbtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ANK_orderbtn.png; sourceTree = "<group>"; };
@@ -499,6 +497,7 @@
 		3B01AB3A20C6DD7700291522 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				3BCC14B32186F20E00C24FD8 /* edit.png */,
 				3BFE26642181D51600B77FC1 /* slide3.png */,
 				3BFE26622181C33D00B77FC1 /* sitmaticlogo.png */,
 				3B1B2C2B21819789004A9868 /* user-icon26x26.png */,
@@ -517,7 +516,6 @@
 				1B26854220FF550D004A11B6 /* editblack.png */,
 				1B597C1120FDE79F00180C7D /* checked.png */,
 				1B26854620FF6D54004A11B6 /* check.png */,
-				1B597C1220FDE79F00180C7D /* edit 2.PNG */,
 				1B26854020FF4104004A11B6 /* tick.png */,
 				3B14DCB121830E4F00447471 /* banner.png */,
 				1B597C1320FDE79F00180C7D /* nouser copy.png */,
@@ -531,6 +529,7 @@
 				1BEFEAA520CA46DC00400AF1 /* watermark.png */,
 				1BB9C4C720C960B00028A48A /* chair.png */,
 				1B6DF8ED20C7E4BC00280E84 /* Chair1.jpg */,
+				3BCC14B52186F24000C24FD8 /* left-arrow.png */,
 				1B6DF8EC20C7E4BC00280E84 /* Chair2.jpg */,
 				1B6DF8EE20C7E4BC00280E84 /* chair3.jpg */,
 				1B6DF8EF20C7E4BC00280E84 /* chair7.jpg */,
@@ -544,8 +543,6 @@
 				1B2E012F20C7B3F500B34645 /* 640_960.png */,
 				1B2E012D20C7B3F300B34645 /* 640_1136.png */,
 				1B2E012C20C7B3F200B34645 /* 1242_2208.png */,
-				1B2E012A20C7AED800B34645 /* edit.png */,
-				1B2E012820C7AC7200B34645 /* left-arrow.png */,
 				1B2E012620C7AAE900B34645 /* male.png */,
 				3B01AB4320C6E7B300291522 /* login.png */,
 				3B01AB4120C6E18400291522 /* sitmaticlogo222.png */,
@@ -718,15 +715,14 @@
 				3B14DCB221830E5000447471 /* banner.png in Resources */,
 				1BEFEAA620CA46DD00400AF1 /* watermark.png in Resources */,
 				1B6DF8F020C7E4BC00280E84 /* Chair2.jpg in Resources */,
-				1B597C1620FDE79F00180C7D /* edit 2.PNG in Resources */,
 				1B6DF8DE20C7DB2900280E84 /* slider1.png in Resources */,
 				1B9ADD7D2121497F0080CF9A /* OrderProccessingThird.xib in Resources */,
 				1B597C1720FDE79F00180C7D /* nouser copy.png in Resources */,
 				3BFA16762154B5450096CA94 /* BasicInfoVC.xib in Resources */,
-				1B2E012920C7AC7200B34645 /* left-arrow.png in Resources */,
 				3B01AB3F20C6DE3400291522 /* sitmaticsplash.png in Resources */,
 				1B9E474F20F3356B0009E2EF /* red.png in Resources */,
 				1BB6090F20F4C343000023D3 /* ConfirmationVC.xib in Resources */,
+				3BCC14B42186F20E00C24FD8 /* edit.png in Resources */,
 				1B6DF8E220C7E05C00280E84 /* orderbtn.png in Resources */,
 				3B01AB3E20C6DE3400291522 /* lbackground.jpg in Resources */,
 				1B7289E820EB6BCB00C5D395 /* info.png in Resources */,
@@ -742,6 +738,7 @@
 				3B01AB3020C6D98400291522 /* LocalText.json in Resources */,
 				3BF68681211DAE730065DE16 /* customFitLogoWhite224x50.png in Resources */,
 				1B624C4A2101F8A000289118 /* error-red.png in Resources */,
+				3BCC14B62186F24000C24FD8 /* left-arrow.png in Resources */,
 				1BCEB5C020FC6D010042EFBD /* Roboto-Light.ttf in Resources */,
 				1B26854720FF6D55004A11B6 /* check.png in Resources */,
 				1B2E012520C7A4E500B34645 /* Roboto-Regular.ttf in Resources */,
@@ -751,7 +748,6 @@
 				1BB6091820F4CDF8000023D3 /* email.png in Resources */,
 				3B01AB4020C6DE3400291522 /* background.jpg in Resources */,
 				3B01AB4220C6E18400291522 /* sitmaticlogo222.png in Resources */,
-				1B2E012B20C7AED800B34645 /* edit.png in Resources */,
 				1B2E012720C7AAE900B34645 /* male.png in Resources */,
 				1B2E012320C79EFD00B34645 /* SHomeVC.xib in Resources */,
 				3B0D728C215B4D38005BCD2C /* 01 Gender.png in Resources */,

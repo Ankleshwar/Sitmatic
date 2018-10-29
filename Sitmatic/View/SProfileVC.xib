@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -36,7 +37,7 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fXR-Im-ACq">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
-                    <color key="backgroundColor" red="0.1960784314" green="0.65098039220000004" blue="0.88235294119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1aa-in-zBg">
                     <rect key="frame" x="0.0" y="20" width="320" height="46"/>
@@ -59,7 +60,6 @@
                                 <constraint firstAttribute="height" constant="30" id="S0g-TG-Zjy"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBd-ZE-syv">
@@ -74,7 +74,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.1960784314" green="0.65098039220000004" blue="0.88235294119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="46" id="C3V-rp-o6W"/>
                         <constraint firstItem="AVC-Yk-V44" firstAttribute="centerX" secondItem="1aa-in-zBg" secondAttribute="centerX" id="Nf8-zg-pBO"/>
@@ -87,8 +87,9 @@
                         <constraint firstItem="AVC-Yk-V44" firstAttribute="top" secondItem="1aa-in-zBg" secondAttribute="top" constant="8" id="qaT-Z0-8lc"/>
                     </constraints>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Jku-4v-Cfi">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jku-4v-Cfi">
                     <rect key="frame" x="0.0" y="66" width="320" height="502"/>
+                    <color key="backgroundColor" red="0.77647058820000003" green="0.91372549020000005" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </imageView>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rx6-WZ-qGg">
                     <rect key="frame" x="0.0" y="66" width="320" height="502"/>
@@ -151,7 +152,7 @@
                                             </constraints>
                                         </view>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EsF-qQ-2K5">
-                                            <rect key="frame" x="93" y="266" width="186" height="119"/>
+                                            <rect key="frame" x="92.5" y="266" width="186.5" height="119"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -217,7 +218,7 @@
                                     </constraints>
                                 </view>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nouser.png" translatesAutoresizingMaskIntoConstraints="NO" id="ORq-dX-ETz">
-                                    <rect key="frame" x="109.5" y="65" width="100" height="100"/>
+                                    <rect key="frame" x="110" y="65" width="100" height="100"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="100" id="o7k-Rp-aKL"/>
                                         <constraint firstAttribute="width" constant="100" id="uhB-g7-yEf"/>
@@ -239,7 +240,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D9u-3a-Uur">
-                                    <rect key="frame" x="109.5" y="65" width="100" height="100"/>
+                                    <rect key="frame" x="110" y="65" width="100" height="100"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="100" id="8lU-BS-htT"/>
                                         <constraint firstAttribute="width" constant="100" id="gPH-8x-Ln6"/>
@@ -300,7 +301,6 @@
         </view>
     </objects>
     <resources>
-        <image name="background.jpg" width="2410" height="4100"/>
         <image name="edit.png" width="24" height="24"/>
         <image name="left-arrow.png" width="24" height="24"/>
         <image name="nouser.png" width="252" height="252"/>

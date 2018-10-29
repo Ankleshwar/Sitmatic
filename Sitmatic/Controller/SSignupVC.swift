@@ -109,22 +109,22 @@ class SSignupVC: BaseViewController {
     func setCorveTextField(){
     
         
-        self.txtName.layer.masksToBounds = true;
-        self.txtName.layer.cornerRadius = 20.0
-        
-        self.txtMobile.layer.masksToBounds = true;
-        self.txtMobile.layer.cornerRadius = 20.0
-        
-        self.txtConfirmPassword.layer.masksToBounds = true;
-        self.txtConfirmPassword.layer.cornerRadius = 20.0
-        
-        self.txtZip.layer.masksToBounds = true;
-        self.txtZip.layer.cornerRadius = 20.0
-        
-        self.txtEmail.layer.masksToBounds = true;
-        self.txtEmail.layer.cornerRadius = 20.0
-        self.txtPassword.layer.masksToBounds = true;
-        self.txtPassword.layer.cornerRadius = 20.0
+//        self.txtName.layer.masksToBounds = true;
+//        self.txtName.layer.cornerRadius = 20.0
+//
+//        self.txtMobile.layer.masksToBounds = true;
+//        self.txtMobile.layer.cornerRadius = 20.0
+//
+//        self.txtConfirmPassword.layer.masksToBounds = true;
+//        self.txtConfirmPassword.layer.cornerRadius = 20.0
+//
+//        self.txtZip.layer.masksToBounds = true;
+//        self.txtZip.layer.cornerRadius = 20.0
+//
+//        self.txtEmail.layer.masksToBounds = true;
+//        self.txtEmail.layer.cornerRadius = 20.0
+//        self.txtPassword.layer.masksToBounds = true;
+//        self.txtPassword.layer.cornerRadius = 20.0
         self.btnSignup.layer.masksToBounds = true;
         self.btnSignup.layer.cornerRadius = 20.0
         self.btnSignup.layer.borderWidth = 1.0

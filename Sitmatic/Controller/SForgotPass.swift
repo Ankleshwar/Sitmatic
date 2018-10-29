@@ -35,18 +35,18 @@ class SForgotPass: BaseViewController {
     
     
     override func viewDidLayoutSubviews() {
-        self.txtEmail.layer.masksToBounds = true;
-        self.txtEmail.layer.cornerRadius = 20.0
-        
-        self.txtVerification.layer.masksToBounds = true;
-        self.txtVerification.layer.cornerRadius = 20.0
-        
-        
-        self.txtPassword.layer.masksToBounds = true;
-        self.txtPassword.layer.cornerRadius = 20.0
-        
-        self.txtConfirmPass.layer.masksToBounds = true;
-        self.txtConfirmPass.layer.cornerRadius = 20.0
+//        self.txtEmail.layer.masksToBounds = true;
+//        self.txtEmail.layer.cornerRadius = 20.0
+//
+//        self.txtVerification.layer.masksToBounds = true;
+//        self.txtVerification.layer.cornerRadius = 20.0
+//
+//
+//        self.txtPassword.layer.masksToBounds = true;
+//        self.txtPassword.layer.cornerRadius = 20.0
+//
+//        self.txtConfirmPass.layer.masksToBounds = true;
+//        self.txtConfirmPass.layer.cornerRadius = 20.0
 
         self.btnCheck.layer.masksToBounds = true;
         self.btnCheck.layer.cornerRadius = 20.0

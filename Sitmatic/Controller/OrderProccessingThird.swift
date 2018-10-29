@@ -799,7 +799,11 @@ class OrderProccessingThird: BaseViewController {
     
     
     
-    
+    @objc func rightButtonClicked(_ sender: Any) {
+        let vc = SProfileVC(nibName: "SProfileVC", bundle: nil)
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
     
     

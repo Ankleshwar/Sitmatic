@@ -65,7 +65,7 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
     var strArme = String()
     @IBOutlet weak var tableView: UITableView!
     var arrQuestion: Array<Dictionary<String,Any>>?
-    var arrAnswer = NSMutableArray()
+     var arrAnswer: [[String: String]]  = Array()
     
     @IBOutlet weak var btnYesSub: UIButton!
     
@@ -102,7 +102,7 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setTopView(self.viewTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
-    self.setTopView(self.viewSubTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
+        self.setTopView(self.viewSubTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
         print(arrImage)
        //  self.viewSub.isHidden = true
         arrQuestion = setDataWithLocalJson("OrderProccessingSecond") as NSArray as? Array<Dictionary<String, Any>>
@@ -113,8 +113,7 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
         self.tableView.backgroundColor = UIColor.clear
         self.tableView.layer.borderWidth = 0.5
         self.tableView.layer.borderColor = UIColor.lightGray.cgColor
-       // tableView.estimatedRowHeight = 45
-      //  tableView.rowHeight = UITableViewAutomaticDimension
+
         
 //        self.setShadow(self.viewDetails)
 //        self.setShadow(self.viewModel)
@@ -187,25 +186,37 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
             else{
                 
                 
-                dicNext["selected"] = strSelected
-                dicNext["option1"] = arrQuestion?[value]["option1"] as? String
-                dicNext["option2"] = arrQuestion?[value]["option2"] as? String
-                dicNext["queText"] = arrQuestion?[value]["queText"] as? String
-                dicNext["queId"] = arrQuestion?[value]["queId"] as? String
+//                dicNext["selected"] = strSelected
+//                dicNext["option1"] = arrQuestion?[value]["option1"] as? String
+//                dicNext["option2"] = arrQuestion?[value]["option2"] as? String
+//                dicNext["queText"] = arrQuestion?[value]["queText"] as? String
+//                dicNext["queId"] = arrQuestion?[value]["queId"] as? String
                 strValueID = arrQuestion?[value]["queId"] as? String ?? ""
-                self.arrNext.insert(dicNext, at: 0)
+               
            
                 self.btnVideo.isHidden = false
                 
-                self.arrQuestion?.remove(at: value)
+               // self.arrQuestion?.remove(at: value)
             
                 value -= 1
                 
-                setPreviousData(valueindex: value)
-                 self.setImageUrl(str:(arrQuestion?[value]["queId"] as! String) )
-                self.arrAnswer.removeObject(at: value)
-                 serverArrayThid.remove(at: value)
+                
+                let localId = arrQuestion?[value]["queId"] as! String
+                
+                
+                let index = arrAnswer.index(where: {$0["queId"] as! String == localId})
+                
+                print(index)
+                if index != nil {
+                    setPreviousData(valueindex: index!)
+                }
+                
                 self.isPreviousClick = true
+                
+                 self.setImageUrl(str:(arrQuestion?[value]["queId"] as! String) )
+              
+                 serverArrayThid.remove(at: value)
+             
                 
                 
             }
@@ -222,17 +233,7 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
     }
     
     
-    func showToast(){
-        var style = ToastStyle()
-        style.activitySize = CGSize(width: CGFloat(self.screenWidth), height: 40.0)
-        style.messageFont = UIFont(name: "Roboto", size: 18.0)!
-        style.messageColor = UIColor.white
-        style.messageAlignment = .center
-        style.backgroundColor = UIColor.darkBlue
-     //   self.tostView.makeToast(" Please select a valid option for start order   ", duration: 2.0, position: .top, style: style )
 
-        
-    }
     
     
     @IBAction func clickToCancel(_ sender: Any) {
@@ -256,7 +257,7 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
     
     
     @IBAction func clickToNext(_ sender: Any) {
-        
+        print(value)
     
         if self.isYesbtnTap == false  {
            
@@ -286,8 +287,6 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
                 }
 
             }else{
-                strValueID = arrQuestion?[value]["queId"] as? String ?? ""
-                print(strValueID)
                 if arrQuestion?[value]["queId"] as? String == "15"{
                     if strSelected == "No"{
                         let Array = arrImage[0] as! [HomeData]
@@ -369,8 +368,10 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
             dicData["option2"] = arrQuestion?[value]["option2"] as? String
             dicData["queText"] = arrQuestion?[value]["queText"] as? String
             dicData["queId"] = arrQuestion?[value]["queId"] as? String
+            self.arrAnswer = self.arrAnswer.filter { !$0.values.contains(dicData["queId"]!) }
+            self.arrAnswer.append(dicData)
+            print("at add time\(dicData)")
             
-            self.arrAnswer.add(dicData)
             if arrQuestion?[value]["queId"] as? String == "15" {
                   self.btnprevious.isHidden = true
                 
@@ -387,15 +388,17 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
                 ECSAlert().showAlert(message: "Que overThanku", controller: self)
             }
             else{
-                if self.isPreviousClick == true{
-                    //value += 1
-                    setData(value: value)
-                }else{
+                
+//                if self.isPreviousClick == true{
+//                    value += 1
+//                    setData(value: value)
+//                }else{
+//                    value += 1
+//                    setData(value: value)
+//                }
+//
                     value += 1
-                    setData(value: value)
-                }
-                
-                
+                 setData(value: value)
                 
                 
                 
@@ -775,10 +778,14 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
     
     func setPreviousData(valueindex : Int){
         
+        print(arrAnswer)
         
         
+        var dicdata  = arrAnswer[valueindex]
         
-        var dicdata  = arrAnswer[valueindex] as! [String: String]
+        
+        print("at remove time\(dicdata)")
+        
         
         self.lblYes.text = dicdata["option1"]
         self.lblNo.text = dicdata["option2"]
@@ -787,17 +794,17 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
         //self.lblQuestion.text  = strID! + " " + quename!
         self.lblQuestion.text  =   quename!
       //  self.lblQuestionValueCount.text = strID! + " " + "of 19 Questions"
-        let selctedValue = dicdata["selected"]
+        strSelected = dicdata["selected"]
         
         self.btnYes.setButtonImage("off.png")
         self.btnNo.setButtonImage("off.png")
         
         
-        if selctedValue == "Yes"{
+        if strSelected == "Yes"{
             self.btnYes.setButtonImage("on.png")
             self.btnNo.setButtonImage("off.png")
         }
-        else if selctedValue == "No"{
+        else if strSelected == "No"{
             self.btnYes.setButtonImage("off.png")
             self.btnNo.setButtonImage("on.png")
         }
@@ -807,9 +814,9 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
             
             self.btnNext.isEnabled = true
             self.isFirstQue = true
-           // self.arrayPersnonID.removeAll()
+         
             value = 0
-          //  self.arrayPersnonID.append("13")
+         
          
             arrQuestion = setDataWithLocalJson("OrderProccessingSecond") as NSArray as? Array<Dictionary<String, Any>>
             
