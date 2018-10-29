@@ -259,8 +259,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
     }
     
     
-    
-    
+ 
     
     
     

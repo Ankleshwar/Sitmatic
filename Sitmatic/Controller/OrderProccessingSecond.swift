@@ -44,6 +44,7 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
     @IBOutlet weak var lblprice: UILabel!
     @IBOutlet var viewSubView: UIView!
 
+    @IBOutlet weak var viewQuestion: UIView!
     
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var imgConstraintTopHeight: NSLayoutConstraint!
@@ -90,6 +91,7 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
 
     @IBOutlet weak var viewModel: UIView!
  
+    @IBOutlet weak var viewSubTop: UIView!
     
     
     
@@ -100,6 +102,7 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setTopView(self.viewTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
+    self.setTopView(self.viewSubTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
         print(arrImage)
        //  self.viewSub.isHidden = true
         arrQuestion = setDataWithLocalJson("OrderProccessingSecond") as NSArray as? Array<Dictionary<String, Any>>
@@ -107,6 +110,9 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
         self.tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         self.tableView.separatorStyle = .none
         self.tableView.backgroundColor = UIColor.clear
+        self.tableView.backgroundColor = UIColor.clear
+        self.tableView.layer.borderWidth = 0.5
+        self.tableView.layer.borderColor = UIColor.lightGray.cgColor
        // tableView.estimatedRowHeight = 45
       //  tableView.rowHeight = UITableViewAutomaticDimension
         
@@ -544,16 +550,16 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
     fileprivate func addSubView(_ obj: SuccessData) {
         self.viewSubView.frame = self.view.bounds
         self.view.addSubview(self.viewSubView)
+     
         
-        
-         self.tableViewieght.constant = CGFloat((self.arrModelDescription?.count)! * 50 + 20 + 50)
+         self.tableViewieght.constant = CGFloat((self.arrModelDescription?.count)! * 50 + 10 + 50)
         let modelName = UIDevice.modelName
-        
+           let frame = self.viewQuestion.frame.origin.y+self.viewQuestion.frame.height+20
         if modelName == "iPhone 5s" || modelName == "iPhone 5c" || modelName == "iPhone 5" || modelName == "iPhone SE" {
-            self.viewScrollHeight.constant = CGFloat((self.arrModelDescription?.count)! * 50 + 80)
+           self.viewScrollHeight.constant =   CGFloat((self.arrModelDescription?.count)! * 50) + CGFloat(frame)
         }
         else{
-            self.viewScrollHeight.constant =  CGFloat((self.arrModelDescription?.count)! * 50 )
+            self.viewScrollHeight.constant =   CGFloat((self.arrModelDescription?.count)! * 50) + CGFloat(frame)
         }
         
         //self.tableViewieght.constant = 3 * 50 + 20
@@ -703,6 +709,11 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
     }
     
     
+    @objc func rightButtonClicked(_ sender: Any) {
+        let vc = SProfileVC(nibName: "SProfileVC", bundle: nil)
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
     
     

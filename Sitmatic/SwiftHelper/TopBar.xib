@@ -38,7 +38,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fhQ-D0-Cff">
-                            <rect key="frame" x="259" y="10" width="26" height="26"/>
+                            <rect key="frame" x="274" y="10" width="26" height="26"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="26" id="Qnn-ms-ef9"/>
                                 <constraint firstAttribute="width" constant="26" id="hlP-OT-0zS"/>
@@ -53,7 +53,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="46" id="e9D-Gm-2Ng"/>
                         <constraint firstItem="lUq-m4-aIz" firstAttribute="centerY" secondItem="roX-Kb-aLM" secondAttribute="centerY" id="eWZ-Ha-ahQ"/>
-                        <constraint firstAttribute="trailing" secondItem="fhQ-D0-Cff" secondAttribute="trailing" constant="35" id="pUf-Kp-fHu"/>
+                        <constraint firstAttribute="trailing" secondItem="fhQ-D0-Cff" secondAttribute="trailing" constant="20" id="pUf-Kp-fHu"/>
                         <constraint firstItem="fhQ-D0-Cff" firstAttribute="centerY" secondItem="lUq-m4-aIz" secondAttribute="centerY" id="qyF-95-a3N"/>
                         <constraint firstItem="lUq-m4-aIz" firstAttribute="centerX" secondItem="roX-Kb-aLM" secondAttribute="centerX" id="vZf-tS-XMj"/>
                     </constraints>

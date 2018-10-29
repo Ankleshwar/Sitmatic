@@ -27,7 +27,8 @@ class OrderProccessingThird: BaseViewController {
     @IBOutlet weak var tostView: UIView!
     @IBOutlet weak var tostLable: UILabel!
     
-  
+    @IBOutlet weak var viewSubTop: UIView!
+    
 
     @IBOutlet var viewShowModel: UIView!
     var arrIteam :Array<Any>?
@@ -59,18 +60,26 @@ class OrderProccessingThird: BaseViewController {
      var serverArrayThid: [[String: Any]]  = Array()
      var  value: Int = 0
     
-    @IBOutlet weak var lblQuestionValueCount: UILabel!
+    @IBOutlet weak var viewTop: UIView!
     
     @IBOutlet weak var lblQuestion: UILabel!
+    
+    
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.txtColor.isHidden = true
+        self.setTopView(self.viewTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
         arrQuestion = setDataWithLocalJson("OrderProccessingThird") as NSArray as? Array<Dictionary<String, Any>>
         setInitial()
         self.tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         self.tableView.separatorStyle = .none
         self.tableView.backgroundColor = UIColor.clear
+        self.tableView.layer.borderWidth = 0.5
+        self.tableView.layer.borderColor = UIColor.lightGray.cgColor
 //        self.txtAddress.layer.borderWidth = 1
 //        self.txtAddress.layer.borderColor = #colorLiteral(red: 0.8784313725, green: 0.8745098039, blue: 0.8745098039, alpha: 1).cgColor
 //        self.txtAddress.isEditable = false
@@ -122,7 +131,7 @@ class OrderProccessingThird: BaseViewController {
         let quename = arrQuestion?[value]["queText"] as! String
         //self.lblQuestion.text  = strID + " " + quename
         self.lblQuestion.text  =   quename
-         self.lblQuestionValueCount.text = strID + " " + "of 19 Questions"
+        // self.lblQuestionValueCount.text = strID + " " + "of 19 Questions"
         self.arrayPersnonID.append("17")
         self.btnYes.setButtonImage("off.png")
         self.btnNo.setButtonImage("off.png")
@@ -742,14 +751,15 @@ class OrderProccessingThird: BaseViewController {
         self.tableViewHieght.constant = CGFloat((self.arrModelDescription?.count)! * 50 + 20 + 70)
 //self.tableViewHieght.constant = CGFloat(6 * 50 + 20)
         let modelName = UIDevice.modelName
-        
+          let frame = self.lblPrice.frame.origin.y+self.lblPrice.frame.height+50
         if modelName == "iPhone 5s" || modelName == "iPhone 5c" || modelName == "iPhone 5" || modelName == "iPhone SE" {
             //self.viewScrollHeight.constant = CGFloat((self.arrModelDescription?.count)! * 50 + 80)
             self.viewScrollHeight.constant = CGFloat( (self.arrModelDescription?.count)! * 50 + 80 + 70)
         }
         else{
          //   self.viewScrollHeight.constant =  CGFloat((self.arrModelDescription?.count)! * 50 )
-            self.viewScrollHeight.constant =  CGFloat((self.arrModelDescription?.count)! * 50 )
+            
+             self.viewScrollHeight.constant =   CGFloat((self.arrModelDescription?.count)! * 50) + CGFloat(frame)
         }
         
         //self.tableViewieght.constant = 3 * 50 + 20
@@ -767,7 +777,7 @@ class OrderProccessingThird: BaseViewController {
         
       
         self.lblModel.attributedText = attributedString1
-        self.lblModeFinal.text = obj.proposedModel
+     //   self.lblModeFinal.text = obj.proposedModel
       
         
        // self.lblPrice.text = "Total Price:" + " " + "$" + String(obj.proposedPrice)
@@ -825,7 +835,7 @@ class OrderProccessingThird: BaseViewController {
         
         self.lblQuestion.text  =   quename
         
-        self.lblQuestionValueCount.text = strID + " " + "of 19 Questions"
+       // self.lblQuestionValueCount.text = strID + " " + "of 19 Questions"
         
         self.btnYes.setButtonImage("off.png")
         self.btnNo.setButtonImage("off.png")
@@ -876,7 +886,7 @@ class OrderProccessingThird: BaseViewController {
         let quename = dicdata["queText"]
         //self.lblQuestion.text  = strID! + " " + quename!
         self.lblQuestion.text  =   quename!
-        self.lblQuestionValueCount.text = strID! + " " + "of 19 Questions"
+       // self.lblQuestionValueCount.text = strID! + " " + "of 19 Questions"
          strSelected = dicdata["selected"]
         
         self.btnYes.setButtonImage("off.png")
@@ -1020,9 +1030,27 @@ extension OrderProccessingThird: UITextFieldDelegate{
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.setLeftPaddingPoints(5)
         self.pickerView.reloadAllComponents()
+        if device.diagonal == 4{
+            self.moveTextField(textField: textField, moveDistance: -150, up: true)
+            
+        }else   if device.diagonal == 4.7{
+            self.moveTextField(textField: textField, moveDistance: -150, up: true)
+            
+        }
+        
     }
     
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if device.diagonal == 4{
+            self.moveTextField(textField: textField, moveDistance: -150, up: false)
+            
+        }else   if device.diagonal == 4.7{
+            self.moveTextField(textField: textField, moveDistance: -150, up: false)
+            
+        }
+        
+    }
     
 }
 

@@ -27,6 +27,7 @@ class OrderProccessingNew: BaseViewController , ModifyModelDelegate{
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var imgConstraintTopHeight: NSLayoutConstraint!
     @IBOutlet weak var btnVideoConstraintTopHeight: NSLayoutConstraint!
+    @IBOutlet weak var viewSubTop: UIView!
     
     @IBOutlet weak var btnVideo: UIButton!
     @IBOutlet var pickerView: UIPickerView!
@@ -39,8 +40,10 @@ class OrderProccessingNew: BaseViewController , ModifyModelDelegate{
    lazy  var strVideoUrl = String()
     var arrImage = NSMutableArray()
     var arrIteam :Array<Any>?
-   
-   
+    @IBOutlet weak var viewQuestion: UIView!
+    
+    @IBOutlet weak var viewHeightSecond: NSLayoutConstraint!
+    
     @IBOutlet weak var imgBanner: UIImageView!
     var strImgeUrlbanner = String()
     var sucessObj : SuccessData!
@@ -102,6 +105,8 @@ class OrderProccessingNew: BaseViewController , ModifyModelDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setTopView(self.viewTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
+        
+          self.setTopView(self.viewSubTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
         print(strServerData)
         
         arrQuestion = setDataWithLocalJson("OrderProccessingNew") as NSArray as? Array<Dictionary<String, Any>>
@@ -115,6 +120,14 @@ class OrderProccessingNew: BaseViewController , ModifyModelDelegate{
         
       
     }
+    
+    
+    @objc func rightButtonClicked(_ sender: Any) {
+        let vc = SProfileVC(nibName: "SProfileVC", bundle: nil)
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     
     func setShadow(_ view: UIView){
         
@@ -376,14 +389,14 @@ class OrderProccessingNew: BaseViewController , ModifyModelDelegate{
         self.view.addSubview(self.viewSubView)
         
         
-        self.tableViewieght.constant = CGFloat((self.arrModelDescription?.count)! * 50 + 10 + 50)
+        self.tableViewieght.constant = CGFloat((self.arrModelDescription?.count)! * 50 + 5 + 50)
         let modelName = UIDevice.modelName
-        
+          let frame = self.viewQuestion.frame.origin.y+self.viewQuestion.frame.height+20
         if modelName == "iPhone 5s" || modelName == "iPhone 5c" || modelName == "iPhone 5" || modelName == "iPhone SE" {
-            //self.viewScrollHeight.constant = CGFloat((self.arrModelDescription?.count)! * 50 + 200)
+            self.viewScrollHeight.constant = CGFloat((self.arrModelDescription?.count)! * 50 + 410)
         }
         else{
-          //  self.viewScrollHeight.constant =  CGFloat((self.arrModelDescription?.count)! * 50 )
+             self.viewScrollHeight.constant =   CGFloat((self.arrModelDescription?.count)! * 50) + CGFloat(frame)
         }
         
 
