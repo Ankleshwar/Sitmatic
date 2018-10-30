@@ -72,8 +72,10 @@ class ModifyModel: BaseViewController {
     
     @IBOutlet weak var lblCastersQue: UILabel!
     
+    @IBOutlet weak var viewTopSecond: UIView!
     
     
+    @IBOutlet weak var viewSecondContainer: UIView!
     
     
     
@@ -85,7 +87,7 @@ class ModifyModel: BaseViewController {
     var textField : UITextField!
     var imagViewForPicker = UIImageView()
     @IBOutlet var viewSub: UIView!
-    @IBOutlet weak var lblQuestionValueCount: UILabel!
+
     var dicAnsData = Dictionary<String, String>()
     var strInce: String!
     @IBOutlet var pickerView: UIPickerView!
@@ -95,11 +97,11 @@ class ModifyModel: BaseViewController {
    var successDataObject : SuccessData!
 
     
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var viewControlHeight: NSLayoutConstraint!
+   
+    
     
     var arrIteam :Array<String>?
-    @IBOutlet weak var lblQuestion: UILabel!
+   
     var strValue: String = ""
     var strArmrest: String = "No"
  
@@ -107,6 +109,7 @@ class ModifyModel: BaseViewController {
     var serverArraySecond: [[String: String]]  = Array()
     var dicData = Dictionary<String, Any>()
     
+    @IBOutlet weak var viewFirstCantainer: UIView!
     var ansStrIn: String!
     var isFirstQuestion: Bool!
     
@@ -114,6 +117,7 @@ class ModifyModel: BaseViewController {
     var index = 100
     var arrQuestion: Array<Dictionary<String,Any>>?
     
+    @IBOutlet weak var viewTopFirst: UIView!
     
     
     @IBAction func clickToDone(_ sender: Any) {
@@ -126,13 +130,14 @@ class ModifyModel: BaseViewController {
     
     
     
-    @IBOutlet weak var tostView: UIView!
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         arrQuestion = (setDataWithLocalJson("ModifiModel") as NSArray as? Array<Dictionary<String, Any>>)!
-       
+        self.setTopView(self.viewTopFirst, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
+        self.setTopView(self.viewTopSecond, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
         
         self.arrIteam = self.arrQuesOfModifiy![0].options
       
@@ -162,6 +167,14 @@ class ModifyModel: BaseViewController {
         
         
     }
+    
+    
+    @objc func rightButtonClicked(_ sender: Any) {
+        let vc = SProfileVC(nibName: "SProfileVC", bundle: nil)
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     
     @objc func tapFunction(sender:UITapGestureRecognizer) {
         print(sender.view?.tag ?? "")
@@ -392,7 +405,7 @@ class ModifyModel: BaseViewController {
             self.lblMesh.text = "(QT) Upholstered Back"
             dicSelected["mesh"] = "(QT) Upholstered Back"
         }
-        if successDataObject.armrestUprightValue != "" {
+        if let armrestUprightValue = successDataObject.armrestUprightValue  {
             dicSelected["armrests"] = successDataObject.armrestUprightValue
            // self.lblArmrests.text = successDataObject.armrestUprightValue + " " + "*"
              self.lblArmrests.text = successDataObject.armrestUprightValue
@@ -604,6 +617,35 @@ class ModifyModel: BaseViewController {
         self.pickerView.translatesAutoresizingMaskIntoConstraints = false
         
         
+    }
+    
+    
+    
+    override func viewDidLayoutSubviews() {
+        
+//        UIView().setShadowImg(self.imgBanner)
+        
+        UIView().setShadow(self.viewFirstCantainer)
+        UIView().setShadow(self.viewSecondContainer)
+        
+//        if device.diagonal == 4{
+//            self.btnVideoConstraintTopHeight.constant = 35.0
+//            self.imgConstraintTopHeight.constant = 25.0
+//        }else   if device.diagonal == 4.7{
+//
+//            self.imgConstraintTopHeight.constant = 30.0
+//            self.btnVideoConstraintTopHeight.constant = 40.0
+//        }else   if device.diagonal == 5.5{
+//            self.imgConstraintTopHeight.constant = 35.0
+//            self.btnVideoConstraintTopHeight.constant = 45.0
+//        }
+//        else {
+//
+//            self.imgConstraintTopHeight.constant = 40.0
+//            self.btnVideoConstraintTopHeight.constant = 50.0
+//
+//        }
+//
     }
     
     

@@ -202,7 +202,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
               
                
             }else if (arrQuestion?[value]["queId"] as? String)! == "3" || (arrQuestion?[value]["queId"] as? String)! == "5Y"{
-               strUrl = Array[2].video
+               strUrl = Array[3].video
                
             }
             
@@ -884,12 +884,20 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
             let urlbaner = URL(string: obje.banner)
             imgBanner.kf.setImage(with: urlbaner)
         }else if str == "3" || str == "5Y"{
-            let obje = Array[2]
+            let obje = Array[3]
           
             imgBanner.kf.indicatorType = .activity
             let urlbaner = URL(string: obje.banner)
             imgBanner.kf.setImage(with: urlbaner)
-        }else if str == "3Y" || str == "4Y"{
+        }else if str == "3Y"{
+            let obje = Array[2]
+            
+            imgBanner.kf.indicatorType = .activity
+            let urlbaner = URL(string: obje.banner)
+            imgBanner.kf.setImage(with: urlbaner)
+        }
+        
+        else if str == "4Y"{
             imgBanner.image = UIImage(named: "banner.png")
         }
 

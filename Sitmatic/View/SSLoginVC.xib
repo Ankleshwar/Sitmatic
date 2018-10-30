@@ -23,6 +23,7 @@
                 <outlet property="txtEmail" destination="X8Y-fO-T3J" id="WpV-gn-VVy"/>
                 <outlet property="txtPassword" destination="3ey-d8-4wn" id="sRY-AO-YJ1"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewContainer" destination="hfc-Yw-x7W" id="yyT-va-RMf"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

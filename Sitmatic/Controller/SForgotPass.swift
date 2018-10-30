@@ -19,6 +19,8 @@ class SForgotPass: BaseViewController {
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtVerification: UITextField!
     
+    @IBOutlet weak var viewContainerFirst: UIView!
+    @IBOutlet weak var viewContainerSecond: UIView!
     
     
     
@@ -48,6 +50,8 @@ class SForgotPass: BaseViewController {
 //        self.txtConfirmPass.layer.masksToBounds = true;
 //        self.txtConfirmPass.layer.cornerRadius = 20.0
 
+         UIView().setShadow(self.viewContainerFirst)
+         UIView().setShadow(self.viewContainerSecond)
         self.btnCheck.layer.masksToBounds = true;
         self.btnCheck.layer.cornerRadius = 20.0
         self.btnCheck.layer.borderWidth = 1.0

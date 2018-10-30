@@ -25,6 +25,8 @@
                 <outlet property="txtPassword" destination="6c8-ny-kMU" id="10f-GO-TDL"/>
                 <outlet property="txtVerification" destination="FG5-Qo-Vx9" id="ZGV-Sx-FHI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewContainerFirst" destination="9wO-VS-Tjk" id="mxe-RG-a7M"/>
+                <outlet property="viewContainerSecond" destination="PR0-KR-k1V" id="UaU-Ms-0dm"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

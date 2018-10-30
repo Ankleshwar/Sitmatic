@@ -15,6 +15,7 @@ class SSLoginVC: BaseViewController {
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var btnForgot: UIButton!
     @IBOutlet weak var lblShowError: UILabel!
+    @IBOutlet weak var viewContainer: UIView!
     
     @IBOutlet weak var btnLogin: UIButton!
     override func viewDidLoad() {
@@ -34,6 +35,7 @@ class SSLoginVC: BaseViewController {
     }
     
     override func viewDidLayoutSubviews() {
+         UIView().setShadow(self.viewContainer)
 //        self.txtEmail.layer.masksToBounds = true;
 //        self.txtEmail.layer.cornerRadius = self.txtEmail.frame.height / 2.0
 //        self.txtPassword.layer.masksToBounds = true;
@@ -42,6 +44,8 @@ class SSLoginVC: BaseViewController {
         self.btnLogin.layer.cornerRadius = self.btnLogin.frame.height / 2.0
         self.btnLogin.layer.borderWidth = 1.0
         self.btnLogin.layer.borderColor = UIColor.white.cgColor
+       
+        
        
        
     }
@@ -160,6 +164,7 @@ class SSLoginVC: BaseViewController {
         
     }
     
+
     
     
     func callResendVerificationApi(){

@@ -55,17 +55,17 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EcI-tC-CSC">
                     <rect key="frame" x="0.0" y="66" width="320" height="452"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slide3.png" translatesAutoresizingMaskIntoConstraints="NO" id="lhh-Tq-iTI">
-                            <rect key="frame" x="20" y="25" width="280" height="200"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gender" translatesAutoresizingMaskIntoConstraints="NO" id="lhh-Tq-iTI">
+                            <rect key="frame" x="24" y="25" width="272" height="200"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="200" id="4de-dE-YO5"/>
+                                <constraint firstAttribute="width" secondItem="lhh-Tq-iTI" secondAttribute="height" multiplier="34:25" id="K7C-C1-BZI"/>
                             </constraints>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Zj-TK-W8c">
-                            <rect key="frame" x="20" y="250" width="280" height="190"/>
+                            <rect key="frame" x="24" y="250" width="272" height="190"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Di2-ZO-R4z">
-                                    <rect key="frame" x="10" y="10" width="260" height="0.0"/>
+                                    <rect key="frame" x="10" y="10" width="252" height="0.0"/>
                                     <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="18"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -81,7 +81,7 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qoO-GC-UwU">
-                                    <rect key="frame" x="50" y="35" width="220" height="20"/>
+                                    <rect key="frame" x="50" y="35" width="212" height="20"/>
                                     <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -98,7 +98,7 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jlF-S4-5za">
-                                    <rect key="frame" x="50" y="85" width="220" height="20"/>
+                                    <rect key="frame" x="50" y="85" width="212" height="20"/>
                                     <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -137,14 +137,13 @@
                     </subviews>
                     <color key="backgroundColor" red="0.77647058820000003" green="0.91372549020000005" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="lhh-Tq-iTI" secondAttribute="trailing" constant="20" id="GZr-AU-pjv"/>
+                        <constraint firstItem="lhh-Tq-iTI" firstAttribute="width" secondItem="EcI-tC-CSC" secondAttribute="width" multiplier="0.85" id="Hzw-LX-8QN"/>
+                        <constraint firstItem="1Zj-TK-W8c" firstAttribute="width" secondItem="lhh-Tq-iTI" secondAttribute="width" id="KYP-S7-w9F"/>
                         <constraint firstItem="ykH-T9-DqJ" firstAttribute="top" secondItem="EcI-tC-CSC" secondAttribute="top" constant="40" id="U0M-k1-hcm"/>
                         <constraint firstItem="lhh-Tq-iTI" firstAttribute="top" secondItem="EcI-tC-CSC" secondAttribute="top" constant="25" id="a28-cg-bWW"/>
                         <constraint firstItem="lhh-Tq-iTI" firstAttribute="centerX" secondItem="EcI-tC-CSC" secondAttribute="centerX" id="dlt-lQ-MMR"/>
                         <constraint firstItem="1Zj-TK-W8c" firstAttribute="top" secondItem="lhh-Tq-iTI" secondAttribute="bottom" constant="25" id="ehA-CY-3G2"/>
-                        <constraint firstItem="lhh-Tq-iTI" firstAttribute="leading" secondItem="EcI-tC-CSC" secondAttribute="leading" constant="20" id="jgk-0v-4eX"/>
                         <constraint firstAttribute="trailing" secondItem="ykH-T9-DqJ" secondAttribute="trailing" constant="35" id="n3e-R3-Gk9"/>
-                        <constraint firstItem="1Zj-TK-W8c" firstAttribute="width" secondItem="lhh-Tq-iTI" secondAttribute="width" id="xef-0I-bP9"/>
                         <constraint firstItem="1Zj-TK-W8c" firstAttribute="centerX" secondItem="EcI-tC-CSC" secondAttribute="centerX" id="yHQ-lz-MU9"/>
                     </constraints>
                 </view>
@@ -233,7 +232,7 @@
                 <constraint firstItem="Q7t-4g-ftc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="uUx-K5-tQf"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="-309" y="-140"/>
+            <point key="canvasLocation" x="-19" y="-154"/>
         </view>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="ZaH-ye-RLu">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -434,6 +433,7 @@ Cgo
         </view>
     </objects>
     <resources>
+        <image name="Gender" width="280" height="200"/>
         <image name="banner.png" width="360" height="180"/>
         <image name="cancel.png" width="24" height="24"/>
         <image name="chair.png" width="30" height="30"/>
@@ -442,7 +442,6 @@ Cgo
         <image name="next.png" width="24" height="24"/>
         <image name="play-button.png" width="28" height="28"/>
         <image name="previous.png" width="24" height="24"/>
-        <image name="slide3.png" width="300" height="210"/>
         <image name="watermark.png" width="280" height="245"/>
     </resources>
 </document>

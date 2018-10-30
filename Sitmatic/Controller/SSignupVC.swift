@@ -23,6 +23,7 @@ class SSignupVC: BaseViewController {
     //@IBOutlet weak var imgButtonLogin: UIImageView!
     @IBOutlet weak var btnSignup: UIButton!
     
+    @IBOutlet weak var viewContainer: UIView!
     lazy var inputToolbar: UIToolbar = {
         var toolbar = UIToolbar()
         toolbar.barStyle = .default
@@ -125,6 +126,7 @@ class SSignupVC: BaseViewController {
 //        self.txtEmail.layer.cornerRadius = 20.0
 //        self.txtPassword.layer.masksToBounds = true;
 //        self.txtPassword.layer.cornerRadius = 20.0
+         UIView().setShadow(self.viewContainer)
         self.btnSignup.layer.masksToBounds = true;
         self.btnSignup.layer.cornerRadius = 20.0
         self.btnSignup.layer.borderWidth = 1.0

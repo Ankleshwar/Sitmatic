@@ -24,6 +24,7 @@ class OrderProccessingThird: BaseViewController {
 
     @IBOutlet var viewCall: UIView!
     
+    @IBOutlet weak var viewCallTop: UIView!
     @IBOutlet weak var tostView: UIView!
     @IBOutlet weak var tostLable: UILabel!
     
@@ -73,6 +74,8 @@ class OrderProccessingThird: BaseViewController {
         super.viewDidLoad()
         self.txtColor.isHidden = true
         self.setTopView(self.viewTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
+           self.setTopView(self.viewCallTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
+              self.setTopView(self.viewSubTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
         arrQuestion = setDataWithLocalJson("OrderProccessingThird") as NSArray as? Array<Dictionary<String, Any>>
         setInitial()
         self.tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
@@ -748,13 +751,14 @@ class OrderProccessingThird: BaseViewController {
         self.view.addSubview(self.viewShowModel)
         
         
-        self.tableViewHieght.constant = CGFloat((self.arrModelDescription?.count)! * 50 + 20 + 70)
+        self.tableViewHieght.constant = CGFloat((self.arrModelDescription?.count)! * 60 + 20 + 80)
 //self.tableViewHieght.constant = CGFloat(6 * 50 + 20)
         let modelName = UIDevice.modelName
           let frame = self.lblPrice.frame.origin.y+self.lblPrice.frame.height+50
         if modelName == "iPhone 5s" || modelName == "iPhone 5c" || modelName == "iPhone 5" || modelName == "iPhone SE" {
             //self.viewScrollHeight.constant = CGFloat((self.arrModelDescription?.count)! * 50 + 80)
-            self.viewScrollHeight.constant = CGFloat( (self.arrModelDescription?.count)! * 50 + 80 + 70)
+           // self.viewScrollHeight.constant = CGFloat( (self.arrModelDescription?.count)! * 50 + 80 + 70)
+             self.viewScrollHeight.constant =   CGFloat((self.arrModelDescription?.count)! * 50) + CGFloat(frame) +  CGFloat(20)
         }
         else{
          //   self.viewScrollHeight.constant =  CGFloat((self.arrModelDescription?.count)! * 50 )
@@ -777,7 +781,7 @@ class OrderProccessingThird: BaseViewController {
         
       
         self.lblModel.attributedText = attributedString1
-     //   self.lblModeFinal.text = obj.proposedModel
+        self.lblModeFinal.text = obj.proposedModel
       
         
        // self.lblPrice.text = "Total Price:" + " " + "$" + String(obj.proposedPrice)
@@ -1017,9 +1021,9 @@ extension OrderProccessingThird:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 2{
-            return 100.0
+            return 120.0
         }else{
-            return 50.0
+            return 60.0
         }
     }
 }

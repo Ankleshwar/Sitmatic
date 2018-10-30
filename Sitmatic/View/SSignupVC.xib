@@ -26,6 +26,7 @@
                 <outlet property="txtPassword" destination="8IL-Tl-FrX" id="cEG-it-CAY"/>
                 <outlet property="txtZip" destination="XYF-Sd-WOt" id="JBb-09-OzN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewContainer" destination="nfN-76-Q1w" id="6kE-lt-4uv"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

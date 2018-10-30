@@ -25,8 +25,16 @@ class BasicInfoVC: BaseViewController,OrderProccessingDelegate {
         super.viewDidLoad()
         self.txtName.text = self.appUserObject?.userName
         self.btnPrevious.isHidden = false
+              textField(color:UIColor.lightGray)
         self.setTopView(self.viewTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
        
+    }
+    fileprivate func textField(color:UIColor) {
+        self.txtName.layer.borderWidth = 0.7
+        self.txtName.layer.borderColor = color.cgColor
+        self.txtOrgName.layer.borderWidth = 0.7
+        self.txtOrgName.layer.borderColor = color.cgColor
+        // self.txtField.layer.cornerRadius = 5.0
     }
     override func viewDidAppear(_ animated: Bool) {
         if let navVCsCount = self.navigationController?.viewControllers.count {
@@ -120,7 +128,7 @@ extension BasicInfoVC: UITextFieldDelegate{
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.setLeftPaddingPoints(15)
+        textField.setLeftPaddingPoints(20)
     
           self.moveTextField(textField: textField, moveDistance: -150, up: true)
     }

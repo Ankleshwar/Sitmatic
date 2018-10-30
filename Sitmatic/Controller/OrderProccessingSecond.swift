@@ -22,6 +22,7 @@ protocol OrderProccessingSecondDelegate  {
 class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProccessingNewDelegate{
  
     @IBOutlet weak var imgBanner: UIImageView!
+    @IBOutlet weak var viewCallTop: UIView!
     
     @IBOutlet weak var viewTop: UIView!
     
@@ -50,6 +51,7 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
     @IBOutlet weak var imgConstraintTopHeight: NSLayoutConstraint!
     @IBOutlet weak var btnVideoConstraintTopHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var viewContainerCall: UIView!
     
 
     @IBOutlet weak var btnCancle: UIButton!
@@ -103,6 +105,7 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
         super.viewDidLoad()
         self.setTopView(self.viewTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
         self.setTopView(self.viewSubTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
+              self.setTopView(self.viewCallTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
         print(arrImage)
        //  self.viewSub.isHidden = true
         arrQuestion = setDataWithLocalJson("OrderProccessingSecond") as NSArray as? Array<Dictionary<String, Any>>
@@ -290,7 +293,7 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
                 if arrQuestion?[value]["queId"] as? String == "15"{
                     if strSelected == "No"{
                         let Array = arrImage[0] as! [HomeData]
-                         let obje = Array[12]
+                         let obje = Array[15]
                                 let vc = OrderProccessingNew(nibName: "OrderProccessingNew", bundle: nil)
                                 vc.delegateNew = self
                                 vc.serverArrayThid = serverArrayThid
@@ -305,7 +308,7 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
                 }else{
                      imgBanner.image = UIImage(named: "banner.png")
                     nextQues()
-                    
+                    self.setImageUrl(str:(arrQuestion?[value]["queId"] as! String) )
                 }
                 
                 
@@ -322,7 +325,7 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
     override func viewDidLayoutSubviews() {
         
         UIView().setShadowImg(self.imgBanner)
-        
+         UIView().setShadow(self.viewContainerCall)
         UIView().setShadow(self.viewContainer)
         
         if device.diagonal == 4{
@@ -485,8 +488,20 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
     func setImageUrl(str:String){
         let Array = arrImage[0] as! [HomeData]
         if str == "13"{
-            let obje = Array[11]
+            let obje = Array[12]
           
+            imgBanner.kf.indicatorType = .activity
+            let urlbaner = URL(string: obje.banner)
+            imgBanner.kf.setImage(with: urlbaner)
+        } else if str == "14"{
+            let obje = Array[13]
+            
+            imgBanner.kf.indicatorType = .activity
+            let urlbaner = URL(string: obje.banner)
+            imgBanner.kf.setImage(with: urlbaner)
+        } else if str == "15"{
+            let obje = Array[14]
+            
             imgBanner.kf.indicatorType = .activity
             let urlbaner = URL(string: obje.banner)
             imgBanner.kf.setImage(with: urlbaner)
@@ -517,7 +532,7 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
                 let Array = arrImage[0] as! [HomeData]
                 var strUrl = String()
                 if (arrQuestion?[value]["queId"] as? String)! == "13"{
-                    strUrl = Array[11].video
+                    strUrl = Array[12].video
                     
                 }
                 
@@ -555,11 +570,11 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
         self.view.addSubview(self.viewSubView)
      
         
-         self.tableViewieght.constant = CGFloat((self.arrModelDescription?.count)! * 50 + 10 + 50)
+         self.tableViewieght.constant = CGFloat((self.arrModelDescription?.count)! * 60 + 10 + 60)
         let modelName = UIDevice.modelName
            let frame = self.viewQuestion.frame.origin.y+self.viewQuestion.frame.height+20
         if modelName == "iPhone 5s" || modelName == "iPhone 5c" || modelName == "iPhone 5" || modelName == "iPhone SE" {
-           self.viewScrollHeight.constant =   CGFloat((self.arrModelDescription?.count)! * 50) + CGFloat(frame)
+           self.viewScrollHeight.constant =   CGFloat((self.arrModelDescription?.count)! * 50) + CGFloat(frame) + CGFloat(20)
         }
         else{
             self.viewScrollHeight.constant =   CGFloat((self.arrModelDescription?.count)! * 50) + CGFloat(frame)
@@ -877,9 +892,9 @@ extension OrderProccessingSecond:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if indexPath.section == 2{
-            return 100.0
+            return 120.0
         }else{
-            return 50.0
+            return 60.0
         }
         
     }

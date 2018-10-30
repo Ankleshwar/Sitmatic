@@ -14,17 +14,17 @@ protocol  StartOrderdDelegate {
     func setDataOnBack(isBack:Bool,arrSaveValue:[[String: String]])
 }
 
-let arrMale = ["5","8.00","19.50","18.50","32.00","9.50","16.5","14.00"]
-let arrFemale = ["5","8.00","19.00","17.00","30.00","9.00","15.0","17.00"]
+let arrMale = [ "8.00", "19.50", "18.50", "32.00", "9.50", "16.50", "14.00"]
+let arrFemale = [ "8.00", "18.50", "17.00", "30.00", "9.00", "15.00", "17.00"]
 
 class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
  
     var strError = String()
     @IBOutlet weak var imgBanner: UIImageView!
     @IBOutlet weak var topView: UIView!
-    
+    var isMale = false
     var isImageDataEmpty = false
- 
+    var strIndex = ""
      var arrImage = NSMutableArray()
     var arrCurrent: [[String: String]]  = Array()
     var isBack = false
@@ -69,7 +69,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
         super.viewDidLoad()
         
             self.setTopView(self.topView, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
-        
+        textField(color:UIColor.lightGray)
         arrQuestion = (setDataWithLocalJson("NextVersion") as NSArray as? Array<Dictionary<String, Any>>)!
         self.isFirstQuestion = true
         self.strInce = "8"
@@ -214,7 +214,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
             
         }else if (sender as AnyObject).tag == 3 {
             let Array = arrImage[0] as! [HomeData]
-            let idIndex = (arrQuestion[count]["questionId"] as? Int)! - 2
+            let idIndex = (arrQuestion[count]["questionId"] as? Int)! - 1
             let objeHome = Array[idIndex]
       
             
@@ -248,14 +248,20 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
     }
     
     func setImageUrl(str:Int){
+        
+        
         let Array = arrImage[0] as! [HomeData]
-         let idIndex = str - 2
+         let idIndex = str - 1
         let obje = Array[idIndex]
         imgBanner.kf.indicatorType = .activity
         let urlbaner = URL(string: obje.banner)
         imgBanner.kf.setImage(with: urlbaner)
       
-       
+        if str == 5{
+            
+        }else{
+            setPickerIndex(id: str)
+        }
     }
     
     
@@ -354,7 +360,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
     
     
     fileprivate func textField(color:UIColor) {
-        self.txtField.layer.borderWidth = 1.0
+        self.txtField.layer.borderWidth = 0.7
         self.txtField.layer.borderColor = color.cgColor
        // self.txtField.layer.cornerRadius = 5.0
     }
@@ -407,8 +413,12 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                 }
                 else{
                     
+                   
                     
                    
+                    
+                    
+                    
                         dicData["selected"] = strValue
                         dicLocal["selected"] = strValue
                         dicAnsData["ans"] = dicData["selected"]
@@ -561,6 +571,67 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
         self.view.isUserInteractionEnabled = true
     }
     
+    func setPickerIndex(id:Int){
+        
+        if isMale {
+            switch(id){
+            case (6):
+                strIndex = arrMale[0]
+                break
+            case (7):
+                strIndex = arrMale[1]
+                break
+            case (8):
+                strIndex = arrMale[2]
+                break
+            case (9):
+                strIndex = arrMale[3]
+                break
+            case (10):
+                strIndex = arrMale[4]
+                break
+            case (11):
+                strIndex = arrMale[5]
+                break
+            case (12):
+                strIndex = arrMale[6]
+                break
+            default: break
+                
+            }
+        }else{
+            switch(id){
+            case (6):
+                strIndex = arrFemale[0]
+                break
+            case (7):
+                strIndex = arrFemale[1]
+                break
+            case (8):
+                strIndex = arrFemale[2]
+                break
+            case (9):
+                strIndex = arrFemale[3]
+                break
+            case (10):
+                strIndex = arrFemale[4]
+                break
+            case (11):
+                strIndex = arrFemale[5]
+                break
+            case (12):
+                strIndex = arrFemale[6]
+                break
+            default: break
+                
+            }
+        }
+    }
+    
+    
+    
+    
+    
     @IBAction func clickToNext(_ sender: Any) {
         
         
@@ -578,7 +649,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
     @IBAction func clickToPrevious(_ sender: Any) {
         self.isButtonCheck = false
         
-        textField(color:UIColor.white)
+//textField(color:UIColor.white)
         if isFirstQuestion ==  true{
             self.delegate?.setDataOnBack(isBack:true, arrSaveValue: arrCurrent)
             self.navigationController?.popViewController(animated: true)
@@ -749,31 +820,77 @@ extension StartOrderd: UITextFieldDelegate{
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
         var indexArray = Int()
-        print(self.strValue)
-        for i in 0..<arrIteam!.count {
-            let str = arrIteam?[i] as! String
-            if str == self.strValue{
-                indexArray = i
+        print(self.strIndex)
+
+   
+        
+        if isPriviousClick == true {
+            for i in 0..<arrIteam!.count {
+                let str = arrIteam?[i] as! String
+                if str == self.strValue{
+                    indexArray = i
+                }
+                
             }
+          
             
-        }
-        
-        print(indexArray)
-        
-        if isPriviousClick == false {
+            print(indexArray)
             self.pickerView.reloadAllComponents()
-            let countSize = (self.arrIteam?.count)!/2
-            self.pickerView.selectRow(countSize, inComponent: 0, animated: true)
-            self.pickerView(pickerView, didSelectRow: countSize, inComponent: 0)
+            self.pickerView.selectRow(indexArray, inComponent: 0, animated: true)
+            self.pickerView(pickerView, didSelectRow: indexArray, inComponent: 0)
             
         }else{
             
-            self.pickerView.selectRow(indexArray, inComponent: 0, animated: true)
-            self.pickerView(pickerView, didSelectRow: indexArray, inComponent: 0)
+            if isMale{
+                if isFirstQuestion == true{
+                    self.pickerView.selectRow(3, inComponent: 0, animated: true)
+                    self.pickerView(pickerView, didSelectRow: 3, inComponent: 0)
+                    self.pickerView.selectRow(9, inComponent: 1, animated: true)
+                    self.pickerView(pickerView, didSelectRow: 9, inComponent: 1)
+                }else{
+                    for i in 0..<arrIteam!.count {
+                        let str = arrIteam?[i] as! String
+                        if str == self.strIndex{
+                            indexArray = i
+                        }
+                        
+                    }
+                    print(indexArray)
+                    self.pickerView.reloadAllComponents()
+                    self.pickerView.selectRow(indexArray, inComponent: 0, animated: true)
+                    self.pickerView(pickerView, didSelectRow: indexArray, inComponent: 0)
+                }
+                
+            }else{
+                if isFirstQuestion == true{
+                    self.pickerView.selectRow(3, inComponent: 0, animated: true)
+                    self.pickerView(pickerView, didSelectRow: 3, inComponent: 0)
+                    self.pickerView.selectRow(4, inComponent: 1, animated: true)
+                    self.pickerView(pickerView, didSelectRow: 4, inComponent: 1)
+                }else{
+                    for i in 0..<arrIteam!.count {
+                        let str = arrIteam?[i] as! String
+                        if str == self.strIndex{
+                            indexArray = i
+                        }
+                        
+                    }
+                    print(indexArray)
+                    self.pickerView.reloadAllComponents()
+                    self.pickerView.selectRow(indexArray, inComponent: 0, animated: true)
+                    self.pickerView(pickerView, didSelectRow: indexArray, inComponent: 0)
+                }
+            }
         }
         
         
+
     
+
+        
+        
+        
+        
         textField.setLeftPaddingPoints(5)
         
         if device.diagonal == 4{

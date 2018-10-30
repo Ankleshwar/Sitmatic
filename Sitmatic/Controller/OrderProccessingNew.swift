@@ -44,6 +44,7 @@ class OrderProccessingNew: BaseViewController , ModifyModelDelegate{
     
     @IBOutlet weak var viewHeightSecond: NSLayoutConstraint!
     
+    @IBOutlet weak var viewCallTop: UIView!
     @IBOutlet weak var imgBanner: UIImageView!
     var strImgeUrlbanner = String()
     var sucessObj : SuccessData!
@@ -107,6 +108,7 @@ class OrderProccessingNew: BaseViewController , ModifyModelDelegate{
         self.setTopView(self.viewTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
         
           self.setTopView(self.viewSubTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
+          self.setTopView(self.viewCallTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
         print(strServerData)
         
         arrQuestion = setDataWithLocalJson("OrderProccessingNew") as NSArray as? Array<Dictionary<String, Any>>
