@@ -115,7 +115,7 @@ class OrderProccessingThird: BaseViewController {
      dicAnsData["ans"] = strValue
         serverArrayThid.append(dicAnsData)
         self.view.endEditing(true)
-        textField(color:UIColor.lightGray)
+        textField(color:UIColor.black)
 //        Timer.scheduledTimer(timeInterval: 0.3,
 //                             target: self,
 //                             selector: #selector(self.callApi),
@@ -444,7 +444,7 @@ class OrderProccessingThird: BaseViewController {
     @IBAction func clickToNext(_ sender: Any) {
         
         
-        textField(color:UIColor.lightGray)
+        textField(color:UIColor.black)
         
         if (arrQuestion?[value]["queId"] as? String)! == "19"{
             
@@ -452,7 +452,7 @@ class OrderProccessingThird: BaseViewController {
                 self.showToast(message: " Please select a color ")
                 textField(color:UIColor.red)
             }else{
-                textField(color:UIColor.lightGray)
+                textField(color:UIColor.black)
                 callApi()
             }
             
@@ -751,7 +751,7 @@ class OrderProccessingThird: BaseViewController {
         self.view.addSubview(self.viewShowModel)
         
         
-        self.tableViewHieght.constant = CGFloat((self.arrModelDescription?.count)! * 60 + 20 + 80)
+        self.tableViewHieght.constant = CGFloat((self.arrModelDescription?.count)! * 60 + 10 + 60)
 //self.tableViewHieght.constant = CGFloat(6 * 50 + 20)
         let modelName = UIDevice.modelName
           let frame = self.lblPrice.frame.origin.y+self.lblPrice.frame.height+50
@@ -763,7 +763,7 @@ class OrderProccessingThird: BaseViewController {
         else{
          //   self.viewScrollHeight.constant =  CGFloat((self.arrModelDescription?.count)! * 50 )
             
-             self.viewScrollHeight.constant =   CGFloat((self.arrModelDescription?.count)! * 50) + CGFloat(frame)
+             self.viewScrollHeight.constant =   CGFloat((self.arrModelDescription?.count)! * 60 + 10 + 60) + CGFloat(frame) 
         }
         
         //self.tableViewieght.constant = 3 * 50 + 20
@@ -1021,7 +1021,7 @@ extension OrderProccessingThird:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 2{
-            return 120.0
+            return 110.0
         }else{
             return 60.0
         }

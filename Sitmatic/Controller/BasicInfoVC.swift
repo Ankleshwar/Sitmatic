@@ -25,7 +25,7 @@ class BasicInfoVC: BaseViewController,OrderProccessingDelegate {
         super.viewDidLoad()
         self.txtName.text = self.appUserObject?.userName
         self.btnPrevious.isHidden = false
-              textField(color:UIColor.lightGray)
+              textField(color:UIColor.black)
         self.setTopView(self.viewTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
        
     }

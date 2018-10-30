@@ -577,7 +577,7 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
            self.viewScrollHeight.constant =   CGFloat((self.arrModelDescription?.count)! * 50) + CGFloat(frame) + CGFloat(20)
         }
         else{
-            self.viewScrollHeight.constant =   CGFloat((self.arrModelDescription?.count)! * 50) + CGFloat(frame)
+            self.viewScrollHeight.constant =   CGFloat((self.arrModelDescription?.count)! * 60 + 10 + 60) + CGFloat(frame)
         }
         
         //self.tableViewieght.constant = 3 * 50 + 20

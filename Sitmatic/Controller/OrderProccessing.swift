@@ -778,13 +778,19 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
          print("~~~~~~~~~~~~~~~~~\(self.value)~~~~~~~~~~~~~~~~~~~~~~~")
      
        
-      print(self.isYesbtnTap)
+      print(serverArray[0]["ans"])
 
         let vc = StartOrderd(nibName: "StartOrderd", bundle: nil)
 
         vc.serverArraySecond = serverArray
         vc.delegate = self
         vc.arrCurrent = arrStartOrderData
+        if self.serverArray[0]["ans"]! == "No"{
+           vc.isMale = false
+        }else{
+            vc.isMale = true
+        }
+        
         if isImageDataEmpty == true{
             vc.isImageDataEmpty = true
             vc.strError = self.strError

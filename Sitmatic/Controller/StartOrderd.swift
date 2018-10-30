@@ -69,7 +69,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
         super.viewDidLoad()
         
             self.setTopView(self.topView, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
-        textField(color:UIColor.lightGray)
+        textField(color:UIColor.black)
         arrQuestion = (setDataWithLocalJson("NextVersion") as NSArray as? Array<Dictionary<String, Any>>)!
         self.isFirstQuestion = true
         self.strInce = "8"
@@ -314,7 +314,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
                 }
                 
                 self.txtField.text = strValue + "ft" + " "  + strInce + "in"
-                textField(color:UIColor.lightGray)
+                textField(color:UIColor.black)
             }
             
             self.txtField.text = strValue + "ft" + " "  + strInce + "in"
@@ -322,7 +322,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
         }
         else{
             self.txtField.text = strValue
-            textField(color:UIColor.lightGray)
+            textField(color:UIColor.black)
         }
         
         self.isPriviousClick = false

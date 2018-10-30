@@ -124,6 +124,16 @@ class OrderProccessingNew: BaseViewController , ModifyModelDelegate{
     }
     
     
+    override func viewDidLayoutSubviews() {
+        
+        UIView().setShadowImg(self.imgBanner)
+        
+        UIView().setShadow(self.viewContainer)
+        
+      
+        
+    }
+    
     @objc func rightButtonClicked(_ sender: Any) {
         let vc = SProfileVC(nibName: "SProfileVC", bundle: nil)
         

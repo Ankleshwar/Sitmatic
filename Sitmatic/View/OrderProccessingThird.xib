@@ -76,17 +76,17 @@
                     <rect key="frame" x="0.0" y="66" width="320" height="452"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slide3.png" translatesAutoresizingMaskIntoConstraints="NO" id="XCJ-b4-7tZ">
-                            <rect key="frame" x="20" y="25" width="280" height="200"/>
+                            <rect key="frame" x="24" y="25" width="272" height="200"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="200" id="UOt-mH-npa"/>
+                                <constraint firstAttribute="width" secondItem="XCJ-b4-7tZ" secondAttribute="height" multiplier="34:25" id="xRI-AX-RKk"/>
                             </constraints>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b5K-x4-XH0">
-                            <rect key="frame" x="20" y="250" width="280" height="190"/>
+                            <rect key="frame" x="24" y="250" width="272" height="190"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p2v-MB-9jH">
-                                    <rect key="frame" x="10" y="10" width="260" height="0.0"/>
-                                    <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="18"/>
+                                    <rect key="frame" x="10" y="10" width="252" height="0.0"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yyd-zt-UaT">
@@ -101,7 +101,7 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WKJ-uZ-eXI">
-                                    <rect key="frame" x="50" y="35" width="220" height="20"/>
+                                    <rect key="frame" x="50" y="35" width="212" height="20"/>
                                     <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -118,13 +118,13 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cud-3A-0vP">
-                                    <rect key="frame" x="50" y="85" width="220" height="20"/>
+                                    <rect key="frame" x="50" y="85" width="212" height="20"/>
                                     <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Please select color" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f54-93-mN9">
-                                    <rect key="frame" x="10" y="40" width="260" height="40"/>
+                                    <rect key="frame" x="10" y="40" width="252" height="40"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="IWY-aS-C4j"/>
                                     </constraints>
@@ -163,13 +163,12 @@
                     </subviews>
                     <color key="backgroundColor" red="0.77647058820000003" green="0.91372549020000005" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
+                        <constraint firstItem="XCJ-b4-7tZ" firstAttribute="width" secondItem="sch-S9-fyz" secondAttribute="width" multiplier="0.85" id="IIq-Ex-HMP"/>
                         <constraint firstItem="b5K-x4-XH0" firstAttribute="top" secondItem="XCJ-b4-7tZ" secondAttribute="bottom" constant="25" id="J4N-DM-mC4"/>
-                        <constraint firstAttribute="trailing" secondItem="XCJ-b4-7tZ" secondAttribute="trailing" constant="20" id="PAN-Ys-Zb1"/>
                         <constraint firstItem="b5K-x4-XH0" firstAttribute="width" secondItem="XCJ-b4-7tZ" secondAttribute="width" id="Zer-cC-RDh"/>
                         <constraint firstItem="b5K-x4-XH0" firstAttribute="centerX" secondItem="sch-S9-fyz" secondAttribute="centerX" id="khb-Q2-O3k"/>
                         <constraint firstItem="XCJ-b4-7tZ" firstAttribute="top" secondItem="sch-S9-fyz" secondAttribute="top" constant="25" id="lgn-k4-qWp"/>
                         <constraint firstItem="XCJ-b4-7tZ" firstAttribute="centerX" secondItem="sch-S9-fyz" secondAttribute="centerX" id="qub-xo-7Eo"/>
-                        <constraint firstItem="XCJ-b4-7tZ" firstAttribute="leading" secondItem="sch-S9-fyz" secondAttribute="leading" constant="20" id="zOO-ov-urz"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yt5-jk-sSg">
