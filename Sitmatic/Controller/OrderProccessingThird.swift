@@ -353,10 +353,10 @@ class OrderProccessingThird: BaseViewController {
                 print(index)
             }
             else{
-                self.arrQuestion?.append(["queId": "19","queText": "Please select color", "value": ["Black","Indigo","Charcoal","Maroon"]])
+                self.arrQuestion?.append(["queId": "19","queText": "Please select color", "value": ["Flexx Black","Flexx Indigo","Flexx Charcoal","Flexx Maroon"]])
                 self.arrayPersnonID.append("19")
             }
-            self.arrIteam = ["Black","Indigo","Charcoal","Maroon"]
+            self.arrIteam = ["Flexx Black","Flexx Indigo","Flexx Charcoal","Flexx Maroon"]
             self.pickerView.selectRow(0, inComponent: 0, animated: true)
             self.pickerView(pickerView, didSelectRow: 0, inComponent: 0)
 //            Timer.scheduledTimer(timeInterval: 0.3,
@@ -395,10 +395,10 @@ class OrderProccessingThird: BaseViewController {
                 print(index)
             }
             else{
-                self.arrQuestion?.append(["queId": "19","queText": "Please select color", "value": ["Navy","Charcoal","Aqua","Ember","Cologne","Napa","Tropicana"]])
+                self.arrQuestion?.append(["queId": "19","queText": "Please select color", "value": ["Dreamweave Black"," Dreamweave Navy","Dreamweave Charcoal","Dreamweave Aqua","Dreamweave Ember","Dreamweave Cologne","Dreamweave Napa","Dreamweave Tropicana"]])
                 self.arrayPersnonID.append("19")
             }
-             self.arrIteam = ["Black","Navy","Charcoal","Aqua","Ember","Cologne","Napa","Tropicana"]
+             self.arrIteam = ["Dreamweave Black"," Dreamweave Navy","Dreamweave Charcoal","Dreamweave Aqua","Dreamweave Ember","Dreamweave Cologne","Dreamweave Napa","Dreamweave Tropicana"]
             self.pickerView.selectRow(0, inComponent: 0, animated: true)
             self.pickerView(pickerView, didSelectRow: 0, inComponent: 0)
 //            Timer.scheduledTimer(timeInterval: 0.3,
@@ -758,7 +758,7 @@ class OrderProccessingThird: BaseViewController {
         if modelName == "iPhone 5s" || modelName == "iPhone 5c" || modelName == "iPhone 5" || modelName == "iPhone SE" {
             //self.viewScrollHeight.constant = CGFloat((self.arrModelDescription?.count)! * 50 + 80)
            // self.viewScrollHeight.constant = CGFloat( (self.arrModelDescription?.count)! * 50 + 80 + 70)
-             self.viewScrollHeight.constant =   CGFloat((self.arrModelDescription?.count)! * 50) + CGFloat(frame) +  CGFloat(20)
+             self.viewScrollHeight.constant =   CGFloat((self.arrModelDescription?.count)! * 60) + CGFloat(frame) +  CGFloat(20)
         }
         else{
          //   self.viewScrollHeight.constant =  CGFloat((self.arrModelDescription?.count)! * 50 )

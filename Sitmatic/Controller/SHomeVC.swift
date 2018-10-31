@@ -12,7 +12,8 @@ import DeviceKit
 
 
 class SHomeVC: BaseViewController {
-
+    @IBOutlet weak var viewLableHeight: NSLayoutConstraint!
+    
     @IBOutlet weak var viewTop: UIView!
     
     @IBOutlet weak var viewContaint: UIView!
@@ -51,7 +52,7 @@ class SHomeVC: BaseViewController {
         self.btnStarted.clipsToBounds = true
        
         let text = "Welcome to GoodFit™ by Sitmatic!\n\n"
-        + "GoodFit™ guarantees a perfect fitting chair for everyone in your organization and a workstationpersonalized for them and the way they work.\n\n"
+        + "GoodFit™ guarantees a perfect fitting chair for everyone in your organization and a workstation personalized for them and the way they work.\n\n"
                      + "We got your back!"
         
         
@@ -87,7 +88,7 @@ class SHomeVC: BaseViewController {
             self.viewContaintTopHeight.constant = 35.0
         }
         else {
-           // self.viewLableHeight.constant = 180.0
+                self.viewLableHeight.constant = 160.0
              self.viewContaintTopHeight.constant = 40.0
             self.lblDescription.font = UIFont.init(name: "Roboto-Light", size: 14.0)
         }

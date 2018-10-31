@@ -15,7 +15,7 @@ protocol  StartOrderdDelegate {
 }
 
 let arrMale = [ "8.00", "19.50", "18.50", "32.00", "9.50", "16.50", "14.00"]
-let arrFemale = [ "8.00", "18.50", "17.00", "30.00", "9.00", "15.00", "17.00"]
+let arrFemale = [ "8.00", "19.00", "17.00", "30.00", "9.00", "15.00", "17.00"]
 
 class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
  

@@ -257,6 +257,11 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         self.isback = isBack
         self.btnNext.isEnabled = true
         self.arrStartOrderData = arrSaveValue
+       let strId = (arrQuestion?[value]["queId"] as? String)!
+        if strId == "5Y"{
+            self.btnVideo.isHidden = true
+        }
+        
     }
     
     
@@ -329,7 +334,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
             
         }else{
             
-            if strId == "2" || strId == "3Y"{
+            if strId == "2" || strId == "3Y" || strId == "4Y"{
                
                 self.btnVideo.isHidden = true
             }else{
@@ -889,13 +894,13 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
             imgBanner.kf.indicatorType = .activity
             let urlbaner = URL(string: obje.banner)
             imgBanner.kf.setImage(with: urlbaner)
-        }else if str == "3" || str == "5Y"{
+        }else if str == "3"  {
             let obje = Array[3]
           
             imgBanner.kf.indicatorType = .activity
             let urlbaner = URL(string: obje.banner)
             imgBanner.kf.setImage(with: urlbaner)
-        }else if str == "3Y"{
+        }else if str == "3Y" || str == "4Y" || str == "5Y"{
             let obje = Array[2]
             
             imgBanner.kf.indicatorType = .activity
@@ -903,10 +908,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
             imgBanner.kf.setImage(with: urlbaner)
         }
         
-        else if str == "4Y"{
-            imgBanner.image = UIImage(named: "banner.png")
-        }
-
+       
     }
     
  
@@ -937,7 +939,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         
         
         if strSelected == "Yes"{
-            if strID == "4Y" || strID == "3Y"{
+            if strID == "4Y" || strID == "3Y" || strID == "5Y"{
                
                 self.btnVideo.isHidden = true
             }else{
@@ -958,7 +960,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
             self.btnprevious.isHidden = false
             
             self.btnNext.isEnabled = true
-            self.serverArray.removeAll()
+           // self.serverArray.removeAll()
             self.arrayPersnonID.removeAll()
             value = 0
             self.arrayPersnonID.append("1")

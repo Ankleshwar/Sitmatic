@@ -405,10 +405,10 @@ class OrderProccessingNew: BaseViewController , ModifyModelDelegate{
         let modelName = UIDevice.modelName
           let frame = self.viewQuestion.frame.origin.y+self.viewQuestion.frame.height+20
         if modelName == "iPhone 5s" || modelName == "iPhone 5c" || modelName == "iPhone 5" || modelName == "iPhone SE" {
-            self.viewScrollHeight.constant = CGFloat((self.arrModelDescription?.count)! * 50 + 410)
+           self.viewScrollHeight.constant =   CGFloat((self.arrModelDescription?.count)! * 60) + CGFloat(frame) + CGFloat(20)
         }
         else{
-             self.viewScrollHeight.constant =   CGFloat((self.arrModelDescription?.count)! * 50) + CGFloat(frame)
+             self.viewScrollHeight.constant =   CGFloat((self.arrModelDescription?.count)! * 60 + 10 + 60) + CGFloat(frame)
         }
         
 
@@ -614,9 +614,9 @@ extension OrderProccessingNew:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if indexPath.section == 2{
-            return 100.0
+            return 120.0
         }else{
-            return 50.0
+            return 60.0
         }
         
     }

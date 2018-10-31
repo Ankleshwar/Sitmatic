@@ -16,6 +16,7 @@ class BasicInfoVC: BaseViewController,OrderProccessingDelegate {
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var viewTop: UIView!
     @IBOutlet weak var imgConstraintTopHeight: NSLayoutConstraint!
+    @IBOutlet weak var viewScroll: UIView!
     
     @IBOutlet weak var txtName: UITextField!
     @IBOutlet weak var btnPrevious: UIButton!
@@ -23,9 +24,10 @@ class BasicInfoVC: BaseViewController,OrderProccessingDelegate {
   var arrDataSec: [[String: String]]  = Array()
     override func viewDidLoad() {
         super.viewDidLoad()
+         self.txtName.setLeftPaddingPoints(10)
         self.txtName.text = self.appUserObject?.userName
-        self.btnPrevious.isHidden = false
-              textField(color:UIColor.black)
+        self.btnPrevious.isHidden = true
+        textField(color:UIColor.black)
         self.setTopView(self.viewTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
        
     }
@@ -80,8 +82,16 @@ class BasicInfoVC: BaseViewController,OrderProccessingDelegate {
     
     @IBAction func clickToNext(_ sender: Any) {
        
+        
+//        print(self.viewScroll.frame.height)
+        print(self.viewContainer.frame.origin.y+self.viewContainer.frame.size.height)
+       
+
+        let frame = self.viewScroll.frame.height-(self.viewContainer.frame.origin.y+self.viewContainer.frame.size.height)
+        
+        
         if self.txtName.text?.count == 0{
-            self.showToast(message: "Please enter your name")
+            self.showToastForQue(message: "Please enter your name",y:frame + self.viewContainer.frame.origin.y+self.viewContainer.frame.size.height)
         }else{
             self.txtOrgName.resignFirstResponder()
             self.txtName.resignFirstResponder()
@@ -128,7 +138,7 @@ extension BasicInfoVC: UITextFieldDelegate{
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.setLeftPaddingPoints(20)
+        textField.setLeftPaddingPoints(10)
     
           self.moveTextField(textField: textField, moveDistance: -150, up: true)
     }

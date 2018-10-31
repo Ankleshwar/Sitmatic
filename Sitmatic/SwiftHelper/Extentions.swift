@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+import DeviceKit
 
 
 public extension String {
@@ -220,9 +220,26 @@ extension CALayer {
 
 extension UIViewController {
     
+    
+    
     func showToast(message : String) {
-        
-        let toastLabel = UILabel(frame: CGRect(x: 0, y:CGFloat(145), width: self.view.frame.size.width, height: 40))
+        let device = Device()
+        var y = CGFloat()
+        if device.diagonal == 4{
+           y  = self.view.frame.size.height-120
+           
+        }else if device.diagonal == 4.7 {
+            y  = self.view.frame.size.height-105
+        }else   if device.diagonal == 5.5{
+            
+            y  = self.view.frame.size.height-120
+        }
+        else {
+            // self.viewLableHeight.constant = 180.0
+            y  = self.view.frame.size.height-200
+            
+        }
+        let toastLabel = UILabel(frame: CGRect(x: 0, y:CGFloat(y), width: self.view.frame.size.width, height: 40))
         //toastLabel.backgroundColor = UIColor.darkBlue
         toastLabel.textColor = UIColor.red
         toastLabel.textAlignment = .center;
@@ -239,9 +256,9 @@ extension UIViewController {
         })
     }
     
-    func showToastForQue(message : String , y:Int) {
+    func showToastForQue(message : String , y:CGFloat) {
         
-        let toastLabel = UILabel(frame: CGRect(x: 0, y:CGFloat(y) , width: self.view.frame.size.width, height: 40))
+        let toastLabel = UILabel(frame: CGRect(x: 0, y:CGFloat(self.view.frame.size.height/2) , width: self.view.frame.size.width, height: 40))
         //toastLabel.backgroundColor = UIColor.darkBlue
         toastLabel.textColor = UIColor.red
         toastLabel.textAlignment = .center;
@@ -260,7 +277,9 @@ extension UIViewController {
     
 }
 
-
+extension CGRect {
+    var center: CGPoint { return CGPoint(x: midX, y: midY) }
+}
 
 public extension UIToolbar {
     

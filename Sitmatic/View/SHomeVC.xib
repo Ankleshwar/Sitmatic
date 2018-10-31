@@ -22,6 +22,7 @@
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewContaint" destination="rnJ-VX-aVs" id="WVA-fb-lah"/>
                 <outlet property="viewContaintTopHeight" destination="Bzt-Qa-qn5" id="xwE-IL-Uoa"/>
+                <outlet property="viewLableHeight" destination="YFm-L5-4B3" id="nHl-fQ-glm"/>
                 <outlet property="viewTop" destination="vNw-mo-Ifs" id="P7P-u7-MwA"/>
             </connections>
         </placeholder>
@@ -56,14 +57,11 @@
                                     <string key="text">
 Welcome to GoodFit™ by Sitmatic!
 
-GoodFit™ guarantees a perfect fitting chair for
-everyone in your organization and a workstation
-personalized for them and the way they work.
-
+                        workstation personalized 
 We got your back!
 
 </string>
-                                    <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="13"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="12"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                     <variation key="default">

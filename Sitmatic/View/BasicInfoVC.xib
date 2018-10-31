@@ -27,6 +27,7 @@
                 <outlet property="txtOrgName" destination="lD5-cO-xQm" id="51o-5X-p7a"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="BsP-ch-jQF"/>
                 <outlet property="viewContainer" destination="1Zj-TK-W8c" id="cCl-La-jlL"/>
+                <outlet property="viewScroll" destination="BrV-t4-Hpi" id="Jz8-bt-seN"/>
                 <outlet property="viewTop" destination="xMa-8q-LZE" id="yZU-jE-i43"/>
             </connections>
         </placeholder>
@@ -232,7 +233,7 @@
                 <constraint firstItem="Q7t-4g-ftc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="v76-7J-Gij"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="-547.5" y="84.507042253521121"/>
+            <point key="canvasLocation" x="-939.13043478260875" y="55.580357142857139"/>
         </view>
     </objects>
     <resources>

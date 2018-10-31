@@ -574,7 +574,7 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
         let modelName = UIDevice.modelName
            let frame = self.viewQuestion.frame.origin.y+self.viewQuestion.frame.height+20
         if modelName == "iPhone 5s" || modelName == "iPhone 5c" || modelName == "iPhone 5" || modelName == "iPhone SE" {
-           self.viewScrollHeight.constant =   CGFloat((self.arrModelDescription?.count)! * 50) + CGFloat(frame) + CGFloat(20)
+           self.viewScrollHeight.constant =   CGFloat((self.arrModelDescription?.count)! * 60) + CGFloat(frame) + CGFloat(20)
         }
         else{
             self.viewScrollHeight.constant =   CGFloat((self.arrModelDescription?.count)! * 60 + 10 + 60) + CGFloat(frame)
