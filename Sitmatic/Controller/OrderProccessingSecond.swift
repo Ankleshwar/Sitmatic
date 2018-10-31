@@ -20,7 +20,10 @@ protocol OrderProccessingSecondDelegate  {
 
 
 class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProccessingNewDelegate{
- 
+
+    @IBOutlet weak var btnTryAgain: UIButton!
+    @IBOutlet weak var viewCallHeight: NSLayoutConstraint!
+    
     @IBOutlet weak var imgBanner: UIImageView!
     @IBOutlet weak var viewCallTop: UIView!
     
@@ -50,7 +53,9 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var imgConstraintTopHeight: NSLayoutConstraint!
     @IBOutlet weak var btnVideoConstraintTopHeight: NSLayoutConstraint!
+    @IBOutlet weak var imgCallHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var imgCallWidth: NSLayoutConstraint!
     @IBOutlet weak var viewContainerCall: UIView!
     
 
@@ -103,6 +108,8 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.btnTryAgain.layer.cornerRadius = 20.0
+        self.btnTryAgain.clipsToBounds = true
         self.setTopView(self.viewTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
         self.setTopView(self.viewSubTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
               self.setTopView(self.viewCallTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
@@ -325,8 +332,10 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
     override func viewDidLayoutSubviews() {
         
         UIView().setShadowImg(self.imgBanner)
-         UIView().setShadow(self.viewContainerCall)
+        UIView().setShadow(self.viewContainerCall)
         UIView().setShadow(self.viewContainer)
+//        self.viewContainerCall.layer.cornerRadius = 5.0
+//        self.viewContainerCall.clipsToBounds = true
         
         if device.diagonal == 4{
             self.btnVideoConstraintTopHeight.constant = 35.0
@@ -335,14 +344,23 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
             
             self.imgConstraintTopHeight.constant = 30.0
             self.btnVideoConstraintTopHeight.constant = 40.0
+            self.imgCallWidth.constant = 80.0
+            self.imgCallHeight.constant = 80.0
+            
         }else   if device.diagonal == 5.5{
             self.imgConstraintTopHeight.constant = 35.0
             self.btnVideoConstraintTopHeight.constant = 45.0
+            self.imgCallWidth.constant = 100.0
+            self.imgCallHeight.constant = 100.0
+             self.viewCallHeight.constant =  220.0
         }
         else {
             
             self.imgConstraintTopHeight.constant = 40.0
             self.btnVideoConstraintTopHeight.constant = 50.0
+            self.imgCallWidth.constant = 80.0
+            self.imgCallHeight.constant = 80.0
+            self.viewCallHeight.constant =  250.0
             
         }
         
@@ -574,7 +592,7 @@ class OrderProccessingSecond: BaseViewController , ModifyModelDelegate,OrderProc
         let modelName = UIDevice.modelName
            let frame = self.viewQuestion.frame.origin.y+self.viewQuestion.frame.height+20
         if modelName == "iPhone 5s" || modelName == "iPhone 5c" || modelName == "iPhone 5" || modelName == "iPhone SE" {
-           self.viewScrollHeight.constant =   CGFloat((self.arrModelDescription?.count)! * 60) + CGFloat(frame) + CGFloat(20)
+           self.viewScrollHeight.constant =   CGFloat((self.arrModelDescription?.count)! * 60 + 10 + 60) + CGFloat(frame) + CGFloat(20)
         }
         else{
             self.viewScrollHeight.constant =   CGFloat((self.arrModelDescription?.count)! * 60 + 10 + 60) + CGFloat(frame)

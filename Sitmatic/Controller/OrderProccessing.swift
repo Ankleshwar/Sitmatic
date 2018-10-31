@@ -121,7 +121,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
     
     func callGenrateModelApi(){
         
-        
+          self.view.isUserInteractionEnabled = false
         
         SVProgressHUD.show()
         var  strName = (self.appUserObject?.access_token)!
@@ -146,6 +146,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
           
             }
             SVProgressHUD.dismiss()
+              self.view.isUserInteractionEnabled = true
         }
         
         
@@ -760,9 +761,10 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
     
     fileprivate func serverSideData() {
         let  strId = arrQuestion?[value]["queId"] as! String
-         self.serverArray = self.serverArray.filter { !$0.values.contains(strId) }
+        
         dicAnsData["id"] = arrQuestion?[value]["queId"] as? String
         dicAnsData["ans"] = strSelected
+        self.serverArray = self.serverArray.filter { !$0.values.contains(strId) }
         self.serverArray.append(dicAnsData)
         dicData["selected"] = strSelected
         dicData["option1"] = arrQuestion?[value]["option1"] as? String
@@ -777,20 +779,27 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
     
     
     func goToNext() {
-        
+        var strCheckValue = ""
         self.serverArray = serverArray.compactMap { $0 }
        
          print("~~~~~~~~~~~~~~~~~\(self.value)~~~~~~~~~~~~~~~~~~~~~~~")
      
        
-      print(serverArray[0]["ans"])
-
+      print(self.serverArray)
+        for dic in self.serverArray{
+            if "1" == dic["id"]{
+                strCheckValue = dic["ans"] ?? ""
+            }
+        }
+        
+        
         let vc = StartOrderd(nibName: "StartOrderd", bundle: nil)
 
         vc.serverArraySecond = serverArray
         vc.delegate = self
         vc.arrCurrent = arrStartOrderData
-        if self.serverArray[0]["ans"]! == "No"{
+        
+        if strCheckValue == "No"{
            vc.isMale = false
         }else{
             vc.isMale = true
@@ -960,7 +969,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
             self.btnprevious.isHidden = false
             
             self.btnNext.isEnabled = true
-           // self.serverArray.removeAll()
+         //   self.serverArray.removeAll()
             self.arrayPersnonID.removeAll()
             value = 0
             self.arrayPersnonID.append("1")

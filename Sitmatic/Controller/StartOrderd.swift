@@ -636,7 +636,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
         
         
         
-        
+       // self.isPriviousClick = false
         setDataOnNext()
         
          self.setImageUrl(str:(arrQuestion[count]["questionId"] as? Int)!)
@@ -833,14 +833,34 @@ extension StartOrderd: UITextFieldDelegate{
                 
             }
           
+//            if isFirstQuestion == true{
+//                if isMale{
+//                    self.pickerView.selectRow(3, inComponent: 0, animated: true)
+//                    self.pickerView(pickerView, didSelectRow: 3, inComponent: 0)
+//                    self.pickerView.selectRow(9, inComponent: 1, animated: true)
+//                    self.pickerView(pickerView, didSelectRow: 9, inComponent: 1)
+//                }else{
+//                    self.pickerView.selectRow(3, inComponent: 0, animated: true)
+//                    self.pickerView(pickerView, didSelectRow: 3, inComponent: 0)
+//                    self.pickerView.selectRow(4, inComponent: 1, animated: true)
+//                    self.pickerView(pickerView, didSelectRow: 4, inComponent: 1)
+//                }
+//
+//            }else{
+//                print(indexArray)
+//                self.pickerView.reloadAllComponents()
+//                self.pickerView.selectRow(indexArray, inComponent: 0, animated: true)
+//                self.pickerView(pickerView, didSelectRow: indexArray, inComponent: 0)
+//            }
+            
             
             print(indexArray)
-            self.pickerView.reloadAllComponents()
-            self.pickerView.selectRow(indexArray, inComponent: 0, animated: true)
-            self.pickerView(pickerView, didSelectRow: indexArray, inComponent: 0)
+                            self.pickerView.reloadAllComponents()
+                            self.pickerView.selectRow(indexArray, inComponent: 0, animated: true)
+                            self.pickerView(pickerView, didSelectRow: indexArray, inComponent: 0)
             
         }else{
-            
+             self.pickerView.reloadAllComponents()
             if isMale{
                 if isFirstQuestion == true{
                     self.pickerView.selectRow(3, inComponent: 0, animated: true)
@@ -862,6 +882,8 @@ extension StartOrderd: UITextFieldDelegate{
                 }
                 
             }else{
+                
+                
                 if isFirstQuestion == true{
                     self.pickerView.selectRow(3, inComponent: 0, animated: true)
                     self.pickerView(pickerView, didSelectRow: 3, inComponent: 0)

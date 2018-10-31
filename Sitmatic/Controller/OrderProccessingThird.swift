@@ -15,6 +15,20 @@ import SVProgressHUD
 class OrderProccessingThird: BaseViewController {
 
     
+    
+    
+    
+    @IBOutlet weak var viewContainerCall: UIView!
+    @IBOutlet weak var viewCallHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var imgCallHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var imgCallWidth: NSLayoutConstraint!
+    
+    @IBOutlet weak var btnTryAgain: UIButton!
+    
+    
+    
     @IBOutlet weak var lblModeFinal: UILabel!
     var strValue: String = ""
     @IBOutlet weak var txtColor: UITextField!
@@ -73,6 +87,8 @@ class OrderProccessingThird: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.txtColor.isHidden = true
+        self.btnTryAgain.layer.cornerRadius = 20.0
+        self.btnTryAgain.clipsToBounds = true
         self.setTopView(self.viewTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
            self.setTopView(self.viewCallTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
               self.setTopView(self.viewSubTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
@@ -107,6 +123,49 @@ class OrderProccessingThird: BaseViewController {
         
         
     }
+    
+    
+    
+    
+    
+    override func viewDidLayoutSubviews() {
+        
+  
+        UIView().setShadow(self.viewContainerCall)
+
+        //        self.viewContainerCall.layer.cornerRadius = 5.0
+        //        self.viewContainerCall.clipsToBounds = true
+        
+        if device.diagonal == 4{
+            
+        }else   if device.diagonal == 4.7{
+            
+            
+            self.imgCallWidth.constant = 80.0
+            self.imgCallHeight.constant = 80.0
+            
+        }else   if device.diagonal == 5.5{
+           
+            self.imgCallWidth.constant = 100.0
+            self.imgCallHeight.constant = 100.0
+            self.viewCallHeight.constant =  220.0
+        }
+        else {
+            
+            
+            self.imgCallWidth.constant = 80.0
+            self.imgCallHeight.constant = 80.0
+            self.viewCallHeight.constant =  250.0
+            
+        }
+        
+    }
+    
+    
+    
+    
+    
+    
     
     @objc func donedatePicker(){
         
@@ -756,9 +815,8 @@ class OrderProccessingThird: BaseViewController {
         let modelName = UIDevice.modelName
           let frame = self.lblPrice.frame.origin.y+self.lblPrice.frame.height+50
         if modelName == "iPhone 5s" || modelName == "iPhone 5c" || modelName == "iPhone 5" || modelName == "iPhone SE" {
-            //self.viewScrollHeight.constant = CGFloat((self.arrModelDescription?.count)! * 50 + 80)
-           // self.viewScrollHeight.constant = CGFloat( (self.arrModelDescription?.count)! * 50 + 80 + 70)
-             self.viewScrollHeight.constant =   CGFloat((self.arrModelDescription?.count)! * 60) + CGFloat(frame) +  CGFloat(20)
+           
+             self.viewScrollHeight.constant =   CGFloat((self.arrModelDescription?.count)! * 60 + 10 + 60) + CGFloat(frame) +  CGFloat(20)
         }
         else{
          //   self.viewScrollHeight.constant =  CGFloat((self.arrModelDescription?.count)! * 50 )
@@ -835,7 +893,7 @@ class OrderProccessingThird: BaseViewController {
         
         self.lblYes.text = arrQuestion?[value]["option1"] as? String
         self.lblNo.text = arrQuestion?[value]["option2"] as? String
-        let strID = arrQuestion?[value]["queId"] as! String
+        _ = arrQuestion?[value]["queId"] as! String
         let quename = arrQuestion?[value]["queText"] as! String
         
         
@@ -851,6 +909,7 @@ class OrderProccessingThird: BaseViewController {
         
         
         if (arrQuestion?[value]["queId"] as? String)! == "19"{
+            self.txtColor.text = ""
             self.txtColor.isHidden = false
             self.btnYes.isHidden = true
             self.btnNo.isHidden = true
@@ -870,6 +929,7 @@ class OrderProccessingThird: BaseViewController {
     func setPreviousData(valueindex : Int){
         
         if (arrQuestion?[value]["queId"] as? String)! == "19"{
+            self.txtColor.text = ""
             self.txtColor.isHidden = false
             self.btnYes.isHidden = true
             self.btnNo.isHidden = true
