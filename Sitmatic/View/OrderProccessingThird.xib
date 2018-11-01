@@ -80,7 +80,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sch-S9-fyz">
                     <rect key="frame" x="0.0" y="66" width="320" height="452"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slide3.png" translatesAutoresizingMaskIntoConstraints="NO" id="XCJ-b4-7tZ">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner.png" translatesAutoresizingMaskIntoConstraints="NO" id="XCJ-b4-7tZ">
                             <rect key="frame" x="24" y="25" width="272" height="200"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="XCJ-b4-7tZ" secondAttribute="height" multiplier="34:25" id="xRI-AX-RKk"/>
@@ -575,6 +575,9 @@
                     <state key="normal" title="Try again">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <connections>
+                        <action selector="clickToTryAgain:" destination="-1" eventType="touchUpInside" id="Dr4-MJ-XEn"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -612,6 +615,5 @@
         <image name="info.png" width="28" height="28"/>
         <image name="next.png" width="24" height="24"/>
         <image name="previous.png" width="24" height="24"/>
-        <image name="slide3.png" width="300" height="210"/>
     </resources>
 </document>

@@ -292,7 +292,7 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
         if(self.isFirstQuestion == true){
             if strValue == "ft"{
                 //self.showToast(message: "Please select a valid value")
-                strValue = "3"
+                strValue = "5"
                 
                 
             }else if strInce == "in" {
@@ -734,6 +734,53 @@ class StartOrderd: BaseViewController , OrderProccessingSecondDelegate{
     
     
     
+    fileprivate func setPicker(){
+           var indexArray = Int()
+         self.pickerView.reloadAllComponents()
+        if isMale{
+            if isFirstQuestion == true{
+                self.pickerView.selectRow(3, inComponent: 0, animated: true)
+                self.pickerView(pickerView, didSelectRow: 3, inComponent: 0)
+                self.pickerView.selectRow(9, inComponent: 1, animated: true)
+                self.pickerView(pickerView, didSelectRow: 9, inComponent: 1)
+            }else{
+                for i in 0..<arrIteam!.count {
+                    let str = arrIteam?[i] as! String
+                    if str == self.strIndex{
+                        indexArray = i
+                    }
+                    
+                }
+                print(indexArray)
+                self.pickerView.reloadAllComponents()
+                self.pickerView.selectRow(indexArray, inComponent: 0, animated: true)
+                self.pickerView(pickerView, didSelectRow: indexArray, inComponent: 0)
+            }
+            
+        }else{
+            
+            
+            if isFirstQuestion == true{
+                self.pickerView.selectRow(3, inComponent: 0, animated: true)
+                self.pickerView(pickerView, didSelectRow: 3, inComponent: 0)
+                self.pickerView.selectRow(4, inComponent: 1, animated: true)
+                self.pickerView(pickerView, didSelectRow: 4, inComponent: 1)
+            }else{
+                for i in 0..<arrIteam!.count {
+                    let str = arrIteam?[i] as! String
+                    if str == self.strIndex{
+                        indexArray = i
+                    }
+                    
+                }
+                print(indexArray)
+                self.pickerView.reloadAllComponents()
+                self.pickerView.selectRow(indexArray, inComponent: 0, animated: true)
+                self.pickerView(pickerView, didSelectRow: indexArray, inComponent: 0)
+            }
+        }
+    }
+    
     
     
     
@@ -822,88 +869,74 @@ extension StartOrderd: UITextFieldDelegate{
         var indexArray = Int()
         print(self.strIndex)
 
-   
+   let strId =  (arrQuestion[count]["questionId"] as? Int)!
         
         if isPriviousClick == true {
-            for i in 0..<arrIteam!.count {
-                let str = arrIteam?[i] as! String
-                if str == self.strValue{
-                    indexArray = i
-                }
-                
-            }
-          
-//            if isFirstQuestion == true{
-//                if isMale{
-//                    self.pickerView.selectRow(3, inComponent: 0, animated: true)
-//                    self.pickerView(pickerView, didSelectRow: 3, inComponent: 0)
-//                    self.pickerView.selectRow(9, inComponent: 1, animated: true)
-//                    self.pickerView(pickerView, didSelectRow: 9, inComponent: 1)
-//                }else{
-//                    self.pickerView.selectRow(3, inComponent: 0, animated: true)
-//                    self.pickerView(pickerView, didSelectRow: 3, inComponent: 0)
-//                    self.pickerView.selectRow(4, inComponent: 1, animated: true)
-//                    self.pickerView(pickerView, didSelectRow: 4, inComponent: 1)
-//                }
-//
-//            }else{
-//                print(indexArray)
-//                self.pickerView.reloadAllComponents()
-//                self.pickerView.selectRow(indexArray, inComponent: 0, animated: true)
-//                self.pickerView(pickerView, didSelectRow: indexArray, inComponent: 0)
-//            }
+            let index = serverArraySecond.index(where: {$0["id"]  == String(strId)})
             
-            
-            print(indexArray)
-                            self.pickerView.reloadAllComponents()
-                            self.pickerView.selectRow(indexArray, inComponent: 0, animated: true)
-                            self.pickerView(pickerView, didSelectRow: indexArray, inComponent: 0)
-            
-        }else{
-             self.pickerView.reloadAllComponents()
-            if isMale{
-                if isFirstQuestion == true{
-                    self.pickerView.selectRow(3, inComponent: 0, animated: true)
-                    self.pickerView(pickerView, didSelectRow: 3, inComponent: 0)
-                    self.pickerView.selectRow(9, inComponent: 1, animated: true)
-                    self.pickerView(pickerView, didSelectRow: 9, inComponent: 1)
-                }else{
-                    for i in 0..<arrIteam!.count {
-                        let str = arrIteam?[i] as! String
-                        if str == self.strIndex{
-                            indexArray = i
-                        }
-                        
-                    }
-                    print(indexArray)
-                    self.pickerView.reloadAllComponents()
-                    self.pickerView.selectRow(indexArray, inComponent: 0, animated: true)
-                    self.pickerView(pickerView, didSelectRow: indexArray, inComponent: 0)
-                }
+            if index == nil{
+              
+                    
+                    
+                        setPicker()
+
+                    
                 
             }else{
+                if NSString(string: strValue).contains("ft") {
+                    
+                    strValue = String(strValue.dropLast(2))
+                    print(strValue)
+                }
+                if NSString(string: strInce).contains("in") {
+                    
+                    strInce = String(strInce.dropLast(2))
+                    print(strInce)
+                }
                 
-                
-                if isFirstQuestion == true{
-                    self.pickerView.selectRow(3, inComponent: 0, animated: true)
-                    self.pickerView(pickerView, didSelectRow: 3, inComponent: 0)
-                    self.pickerView.selectRow(4, inComponent: 1, animated: true)
-                    self.pickerView(pickerView, didSelectRow: 4, inComponent: 1)
-                }else{
-                    for i in 0..<arrIteam!.count {
-                        let str = arrIteam?[i] as! String
-                        if str == self.strIndex{
-                            indexArray = i
+                for i in 0..<arrIteam!.count {
+                    let str = arrIteam?[i] as! String
+                    if str == self.strValue{
+                        indexArray = i
+                    }
+                    
+                }
+                if isFirstQuestion{
+                      var indexArrayInch = Int()
+                    for i in 0..<arrInch!.count {
+                        let str = arrInch?[i] as! String
+                        if str == self.strInce{
+                            indexArrayInch = i
                         }
                         
                     }
-                    print(indexArray)
+                    self.pickerView.reloadAllComponents()
+                    self.pickerView.selectRow(indexArrayInch, inComponent: 1, animated: true)
+                    self.pickerView(pickerView, didSelectRow: indexArrayInch, inComponent: 1)
+                }
+                
+        
                     self.pickerView.reloadAllComponents()
                     self.pickerView.selectRow(indexArray, inComponent: 0, animated: true)
                     self.pickerView(pickerView, didSelectRow: indexArray, inComponent: 0)
-                }
+                
+                
+                
+                
+               
             }
-        }
+            
+          
+          
+
+            
+            print(indexArray)
+            
+            
+        }else{
+                setPicker()
+            }
+        
         
         
 
