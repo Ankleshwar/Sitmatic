@@ -29,13 +29,13 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
     @IBOutlet weak var lblUserName: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.hideKeyboardWhenTappedAround()
         self.btnLogOut.layer.cornerRadius = 5.0;
         self.viewProfile.layer.cornerRadius = 5.0;
         self.lblUserName.text = self.appUserObject?.userName
         self.lblUserEmail.text = self.appUserObject?.email
         let strnumber = self.appUserObject?.mobile
-         let strAddress = self.appUserObject?.address
+        let strAddress = self.appUserObject?.address
         self.txtMobile.text = " Mobile :  \(strnumber!)"
         self.txtZip.text =  self.appUserObject?.pincode
         

@@ -20,7 +20,7 @@ class SSLoginVC: BaseViewController {
     @IBOutlet weak var btnLogin: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.hideKeyboardWhenTappedAround()
         
     }
 

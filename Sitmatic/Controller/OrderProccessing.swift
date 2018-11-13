@@ -60,7 +60,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
     @IBOutlet weak var btnNext: UIButton!
     var isPreviousClick : Bool!
      var dicAnsData = Dictionary<String, String>()
-   // var serverArray: [[String: String]]  = Array()
+
     var serverArray: [[String: String]]  = Array()
     var isImageDataEmpty = false
     
@@ -319,7 +319,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
                 
                 
             }else{
-                
+                 dataForNo(strId)
                 if strId == "5Y"{
                     goToNext()
                 }
@@ -327,7 +327,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
                 else if strId == "3"{
                     goToNext()
                 }
-                 dataForNo(strId)
+                
             }
             
            
@@ -355,7 +355,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
                     TimeInterval()
                 }
             }else{
-              
+                dataForYes(strId)
                 if strId == "5Y"{
                     goToNext()
                 }
@@ -363,7 +363,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
                 else if strId == "3"{
                     goToNext()
                 }
-                 dataForYes(strId)
+                
             }
             
             
@@ -414,6 +414,16 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
     fileprivate func nextIndexData(_ index: Array<Any>.Index?, _ dicLocal: inout [String : String]) {
         if index != nil{
             dicLocal  = arrCurrent[index!]
+           
+          
+            self.arrAnswer = self.arrAnswer.filter { !$0.values.contains(dicLocal["queId"]!) }
+            self.arrAnswer.append(dicLocal)
+            let strId = dicLocal["queId"]
+            dicAnsData["id"] = dicLocal["queId"]
+            dicAnsData["ans"] = dicLocal["selected"]
+            self.serverArray = self.serverArray.filter { !$0.values.contains(strId!) }
+            self.serverArray.append(dicAnsData)
+          
         }else{
             self.value -= 1
             TimeInterval()
@@ -462,11 +472,18 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
 
                 }else{
                     var  dicLocal = [String : String]()
-                  let count = value-1
-                    dicLocal  = arrCurrent[count]
-//                    dicLocal = dicNext["data"] as! [String : String]
-                    self.arrAnswer = self.arrAnswer.filter { !$0.values.contains(dicLocal["queId"]!) }
-                                        self.arrAnswer.append(dicLocal)
+//                  let count = value-1
+//                    dicLocal  = arrCurrent[count]
+////                    dicLocal = dicNext["data"] as! [String : String]
+//                    self.arrAnswer = self.arrAnswer.filter { !$0.values.contains(dicLocal["queId"]!) }
+//                                        self.arrAnswer.append(dicLocal)
+//
+//
+//                    let strId = dicLocal["queId"]
+//                    dicAnsData["id"] = dicLocal["queId"]
+//                    dicAnsData["ans"] = dicLocal["selected"]
+//                    self.serverArray = self.serverArray.filter { !$0.values.contains(strId!) }
+//                    self.serverArray.append(dicAnsData)
                     
                     
                     if strId == "1"{
@@ -624,14 +641,11 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
                     var  dicLocal = [String : String]()
                 
                     let count = value-1
-                    dicLocal  = arrCurrent[count]
-                    //                   dicLocal = dicNext["data"] as! [String : String]
-                    self.arrAnswer = self.arrAnswer.filter { !$0.values.contains(dicLocal["queId"]!) }
-                    self.arrAnswer.append(dicLocal)
-                    
+                  
                     
                     if strId == "1"{
                         let index = arrCurrent.index(where: {$0["queId"] as! String == "2"})
+                        
                         nextIndexData(index, &dicLocal)
                         
                     }else if  strId == "2"{
@@ -869,12 +883,20 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
     
     
     fileprivate func setPriviousSubData(){
+      
+        
        
+  
+        
+        let localIdForserverArray = arrQuestion?[value]["queId"] as! String
+        let indexServer = serverArray.index(where: {$0["id"]  == localIdForserverArray})
+        if indexServer != nil {
+            serverArray.remove(at: indexServer!)
+        }
+        print(serverArray)
         self.arrQuestion?.remove(at: value)
         self.arrayPersnonID.remove(at: value)
         value -= 1
-       // serverArray.remove(at: value)
-    
         let localId = arrQuestion?[value]["queId"] as! String
         
 
@@ -941,13 +963,13 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
      
         self.lblQuestion.text  =   quename!
        // self.lblQuestionValueCount.text = strID! + " " + "of 19 Questions"
-          strSelected = dicdata["selected"]
+       let   strSelectedValue = dicdata["selected"]
         
         self.btnYes.setButtonImage("off.png")
         self.btnNo.setButtonImage("off.png")
         
         
-        if strSelected == "Yes"{
+        if strSelectedValue == "Yes"{
             if strID == "4Y" || strID == "3Y" || strID == "5Y"{
                
                 self.btnVideo.isHidden = true
@@ -959,7 +981,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
             self.btnYes.setButtonImage("on.png")
             self.btnNo.setButtonImage("off.png")
         }
-        else if strSelected == "No"{
+        else if strSelectedValue == "No"{
             self.btnYes.setButtonImage("off.png")
             self.btnNo.setButtonImage("on.png")
         }

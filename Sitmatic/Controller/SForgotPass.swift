@@ -26,7 +26,7 @@ class SForgotPass: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+         self.hideKeyboardWhenTappedAround()
       
     }
 

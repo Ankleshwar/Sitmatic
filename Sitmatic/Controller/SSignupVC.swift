@@ -52,7 +52,7 @@ class SSignupVC: BaseViewController {
         self.txtMobile.resignFirstResponder()
         self.txtPassword.resignFirstResponder()
         self.txtConfirmPassword.resignFirstResponder()
-        
+        self.txtZip.resignFirstResponder()
     }
     @objc func keyboardNextButton(){
         
@@ -66,7 +66,20 @@ class SSignupVC: BaseViewController {
             self.txtPassword.becomeFirstResponder()
         }else if myTextField == txtPassword {
             self.txtConfirmPassword.becomeFirstResponder()
+        }else if myTextField == txtConfirmPassword {
+            self.txtZip.becomeFirstResponder()
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>,
+                               with event: UIEvent?) {
+        self.view.endEditing(true)
+        self.txtName.resignFirstResponder()
+        self.txtEmail.resignFirstResponder()
+        self.txtMobile.resignFirstResponder()
+        self.txtPassword.resignFirstResponder()
+        self.txtConfirmPassword.resignFirstResponder()
+        self.txtZip.resignFirstResponder()
     }
     @objc func keyboardpreviousButton(){
         
@@ -80,14 +93,16 @@ class SSignupVC: BaseViewController {
             self.txtMobile.becomeFirstResponder()
         }else if myTextField == txtConfirmPassword {
             self.txtPassword.becomeFirstResponder()
+        }else if myTextField == txtZip {
+            self.txtConfirmPassword.becomeFirstResponder()
         }
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       // self.imgButtonLogin.image = UIImage(named: "login.png")
-        
+   
+         self.hideKeyboardWhenTappedAround()
     }
 
     override func viewWillAppear(_ animated: Bool) {
