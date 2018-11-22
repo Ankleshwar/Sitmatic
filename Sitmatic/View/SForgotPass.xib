@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -77,7 +77,7 @@
                     <color key="backgroundColor" red="0.77647058820000003" green="0.91372549020000005" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9wO-VS-Tjk">
-                    <rect key="frame" x="20" y="220" width="335" height="150"/>
+                    <rect key="frame" x="20" y="240" width="335" height="150"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DAL-iB-veT">
                             <rect key="frame" x="10" y="90" width="315" height="40"/>
@@ -117,11 +117,22 @@
                         <constraint firstItem="lTg-of-z3O" firstAttribute="top" secondItem="9wO-VS-Tjk" secondAttribute="top" constant="25" id="bX6-gk-Bd1"/>
                     </constraints>
                 </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sitmaticlogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="Xbx-q3-LXb">
+                    <rect key="frame" x="75.666666666666686" y="150" width="224" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="XXo-zU-kGw">
+                            <variation key="heightClass=regular-widthClass=regular" constant="70"/>
+                        </constraint>
+                        <constraint firstAttribute="width" constant="224" id="pP9-JG-32i">
+                            <variation key="heightClass=regular-widthClass=regular" constant="300"/>
+                        </constraint>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="9wO-VS-Tjk" secondAttribute="trailing" constant="20" id="26q-ak-LOy"/>
-                <constraint firstItem="9wO-VS-Tjk" firstAttribute="top" secondItem="xCK-y3-Sqb" secondAttribute="bottom" constant="130" id="729-2D-ea5"/>
+                <constraint firstItem="9wO-VS-Tjk" firstAttribute="top" secondItem="Xbx-q3-LXb" secondAttribute="bottom" constant="40" id="68E-eg-Yb3"/>
                 <constraint firstItem="7bP-3L-jab" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="7uF-zS-rbZ"/>
                 <constraint firstItem="xCK-y3-Sqb" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="FK1-fM-fNs"/>
                 <constraint firstItem="e24-9i-kqo" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="GWh-eb-XlI"/>
@@ -131,8 +142,10 @@
                 <constraint firstItem="7bP-3L-jab" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="NuN-g1-wJm"/>
                 <constraint firstItem="7bP-3L-jab" firstAttribute="top" secondItem="xCK-y3-Sqb" secondAttribute="bottom" id="U93-KI-dSr"/>
                 <constraint firstItem="9wO-VS-Tjk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="ZA2-RS-AFd"/>
+                <constraint firstItem="Xbx-q3-LXb" firstAttribute="top" secondItem="xCK-y3-Sqb" secondAttribute="bottom" constant="60" id="d9d-Qv-N7e"/>
                 <constraint firstItem="xCK-y3-Sqb" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="ecF-1J-TfQ"/>
                 <constraint firstAttribute="bottom" secondItem="7bP-3L-jab" secondAttribute="bottom" id="n1M-zO-BgO"/>
+                <constraint firstItem="Xbx-q3-LXb" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="naH-dn-ZVI"/>
                 <constraint firstItem="xCK-y3-Sqb" firstAttribute="top" secondItem="e24-9i-kqo" secondAttribute="bottom" id="sCO-lt-p8c"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
@@ -185,7 +198,7 @@
                     <color key="backgroundColor" red="0.77647058820000003" green="0.91372549020000005" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PR0-KR-k1V">
-                    <rect key="frame" x="20" y="210" width="335" height="270"/>
+                    <rect key="frame" x="20" y="240" width="335" height="270"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="  New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6c8-ny-kMU">
                             <rect key="frame" x="10" y="85" width="315" height="40"/>
@@ -258,6 +271,17 @@
                         <constraint firstItem="6c8-ny-kMU" firstAttribute="leading" secondItem="PR0-KR-k1V" secondAttribute="leading" constant="10" id="zOZ-Th-iln"/>
                     </constraints>
                 </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sitmaticlogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="VWb-sK-bBh">
+                    <rect key="frame" x="75.666666666666686" y="150" width="224" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="224" id="8wu-he-WpX">
+                            <variation key="heightClass=regular-widthClass=regular" constant="300"/>
+                        </constraint>
+                        <constraint firstAttribute="height" constant="50" id="D2V-vl-Yag">
+                            <variation key="heightClass=regular-widthClass=regular" constant="70"/>
+                        </constraint>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -265,6 +289,8 @@
                 <constraint firstItem="Wtw-J8-9od" firstAttribute="top" secondItem="b77-DZ-g0o" secondAttribute="bottom" id="3sM-n2-K0A"/>
                 <constraint firstItem="b77-DZ-g0o" firstAttribute="top" secondItem="z1D-F4-dHe" secondAttribute="top" id="CY6-c2-SqV"/>
                 <constraint firstItem="z1D-F4-dHe" firstAttribute="trailing" secondItem="PR0-KR-k1V" secondAttribute="trailing" constant="20" id="Gg6-el-Oga"/>
+                <constraint firstItem="PR0-KR-k1V" firstAttribute="top" secondItem="VWb-sK-bBh" secondAttribute="bottom" constant="40" id="aao-I7-Gdd"/>
+                <constraint firstItem="VWb-sK-bBh" firstAttribute="centerX" secondItem="qxj-E2-azI" secondAttribute="centerX" id="bbW-19-X9f"/>
                 <constraint firstAttribute="bottom" secondItem="Wtw-J8-9od" secondAttribute="bottom" id="csX-An-ys0"/>
                 <constraint firstAttribute="trailing" secondItem="dKa-Dc-pfc" secondAttribute="trailing" id="dCK-JK-9Bl"/>
                 <constraint firstItem="b77-DZ-g0o" firstAttribute="top" secondItem="dKa-Dc-pfc" secondAttribute="bottom" id="e4b-Cz-MwZ"/>
@@ -272,15 +298,16 @@
                 <constraint firstItem="dKa-Dc-pfc" firstAttribute="top" secondItem="qxj-E2-azI" secondAttribute="top" id="k29-hI-y9q"/>
                 <constraint firstItem="b77-DZ-g0o" firstAttribute="leading" secondItem="z1D-F4-dHe" secondAttribute="leading" id="lpC-K4-7og"/>
                 <constraint firstItem="dKa-Dc-pfc" firstAttribute="leading" secondItem="qxj-E2-azI" secondAttribute="leading" id="mF1-4I-PGt"/>
-                <constraint firstItem="PR0-KR-k1V" firstAttribute="top" secondItem="b77-DZ-g0o" secondAttribute="bottom" constant="120" id="oxp-1m-S0T"/>
                 <constraint firstItem="PR0-KR-k1V" firstAttribute="leading" secondItem="z1D-F4-dHe" secondAttribute="leading" constant="20" id="raE-mT-pma"/>
+                <constraint firstItem="VWb-sK-bBh" firstAttribute="top" secondItem="b77-DZ-g0o" secondAttribute="bottom" constant="60" id="uOo-VK-lHF"/>
                 <constraint firstItem="b77-DZ-g0o" firstAttribute="trailing" secondItem="z1D-F4-dHe" secondAttribute="trailing" id="xD6-9W-DPd"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="z1D-F4-dHe"/>
-            <point key="canvasLocation" x="1206" y="28"/>
+            <point key="canvasLocation" x="463" y="-62"/>
         </view>
     </objects>
     <resources>
         <image name="left-arrow.png" width="24" height="24"/>
+        <image name="sitmaticlogo.png" width="224" height="50"/>
     </resources>
 </document>

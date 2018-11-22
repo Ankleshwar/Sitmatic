@@ -79,8 +79,11 @@ class OrderProccessingThird: BaseViewController {
     
     @IBOutlet weak var lblQuestion: UILabel!
     
+    @IBOutlet weak var viewModel: UIView!
     
+    @IBOutlet weak var imgBanner: UIImageView!
     
+    @IBOutlet weak var viewCantainsQuestion: UIView!
     
     
     
@@ -102,6 +105,8 @@ class OrderProccessingThird: BaseViewController {
 //        self.txtAddress.layer.borderWidth = 1
 //        self.txtAddress.layer.borderColor = #colorLiteral(red: 0.8784313725, green: 0.8745098039, blue: 0.8745098039, alpha: 1).cgColor
 //        self.txtAddress.isEditable = false
+
+        self.imgBanner.image = UIImage(named: "banner.png");
        
     }
     
@@ -130,11 +135,11 @@ class OrderProccessingThird: BaseViewController {
     
     override func viewDidLayoutSubviews() {
         
-  
+        UIView().setShadow(self.viewModel)
         UIView().setShadow(self.viewContainerCall)
+        UIView().setShadow(self.viewCantainsQuestion)
+        UIView().setShadowImg(self.imgBanner)
 
-        //        self.viewContainerCall.layer.cornerRadius = 5.0
-        //        self.viewContainerCall.clipsToBounds = true
         
         if device.diagonal == 4{
             
@@ -302,7 +307,7 @@ class OrderProccessingThird: BaseViewController {
     
     @IBAction func clickToPrivious(_ sender: Any) {
         print(value)
-        
+         self.imgBanner.image = UIImage(named: "banner.png");
         
         if isFirstQue == true {
             self.navigationController?.popViewController(animated: true)
@@ -529,10 +534,12 @@ class OrderProccessingThird: BaseViewController {
                 
                 
                 if strSelected == "No"{
+                    self.imgBanner.image = UIImage(named: "Dreamweave.png");
                     setDataNo(strId: (arrQuestion?[value]["queId"] as? String)!)
                 }
                     
                 else{
+                    self.imgBanner.image = UIImage(named: "Flexx.png");
                     setdataYes(strId: (arrQuestion?[value]["queId"] as? String)!)
                 }
                 

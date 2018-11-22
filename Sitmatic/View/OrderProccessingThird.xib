@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -29,6 +29,7 @@
                 <outlet property="btnTryAgain" destination="IPq-BT-aer" id="wZ3-jp-una"/>
                 <outlet property="btnYes" destination="Yyd-zt-UaT" id="R4F-9i-3vL"/>
                 <outlet property="btnprevious" destination="7VT-UQ-ERe" id="XTX-ca-B8B"/>
+                <outlet property="imgBanner" destination="XCJ-b4-7tZ" id="d7m-LG-bkH"/>
                 <outlet property="imgCallHeight" destination="nt9-eK-h41" id="INK-hh-uKc"/>
                 <outlet property="imgCallWidth" destination="jL2-vm-mZk" id="eKm-iw-TeJ"/>
                 <outlet property="lblModeFinal" destination="UDb-UP-e3W" id="wrA-kn-hy9"/>
@@ -45,7 +46,9 @@
                 <outlet property="viewCall" destination="ixv-AE-SdF" id="bub-A0-sA5"/>
                 <outlet property="viewCallHeight" destination="6aW-va-tts" id="veF-gn-EjV"/>
                 <outlet property="viewCallTop" destination="oSC-ax-MQJ" id="2Wj-Tb-vHL"/>
+                <outlet property="viewCantainsQuestion" destination="b5K-x4-XH0" id="8ea-tO-303"/>
                 <outlet property="viewContainerCall" destination="7c9-bO-7bQ" id="Wsn-hX-7bA"/>
+                <outlet property="viewModel" destination="tuU-HE-HCc" id="liV-Tx-TfW"/>
                 <outlet property="viewScrollHeight" destination="wFf-YP-sLh" id="DYd-HR-YMv"/>
                 <outlet property="viewShowModel" destination="yjh-qU-2G6" id="EQR-rd-eXc"/>
                 <outlet property="viewSubTop" destination="Sjj-4x-aB9" id="F5D-Ul-dKX"/>
@@ -80,7 +83,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sch-S9-fyz">
                     <rect key="frame" x="0.0" y="66" width="320" height="452"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner.png" translatesAutoresizingMaskIntoConstraints="NO" id="XCJ-b4-7tZ">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image=" Dreamweave.png" translatesAutoresizingMaskIntoConstraints="NO" id="XCJ-b4-7tZ">
                             <rect key="frame" x="24" y="25" width="272" height="200"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="XCJ-b4-7tZ" secondAttribute="height" multiplier="34:25" id="xRI-AX-RKk"/>
@@ -105,7 +108,7 @@
                                         <action selector="clickToBtnYes:" destination="-1" eventType="touchUpInside" id="APT-m9-ta2"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WKJ-uZ-eXI">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WKJ-uZ-eXI">
                                     <rect key="frame" x="50" y="35" width="212" height="20"/>
                                     <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="17"/>
                                     <nil key="textColor"/>
@@ -122,7 +125,7 @@
                                         <action selector="clickToBtnNo:" destination="-1" eventType="touchUpInside" id="4I3-TS-10S"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cud-3A-0vP">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cud-3A-0vP">
                                     <rect key="frame" x="50" y="85" width="212" height="20"/>
                                     <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="17"/>
                                     <nil key="textColor"/>
@@ -261,7 +264,7 @@
                 <constraint firstItem="sch-S9-fyz" firstAttribute="trailing" secondItem="g85-t0-vLl" secondAttribute="trailing" id="xUk-M5-MoB"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="g85-t0-vLl"/>
-            <point key="canvasLocation" x="-825" y="-55"/>
+            <point key="canvasLocation" x="105" y="61"/>
         </view>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="yjh-qU-2G6">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -608,7 +611,8 @@
         </view>
     </objects>
     <resources>
-        <image name="banner.png" width="360" height="180"/>
+        <image name=" Dreamweave.png" width="1000" height="740"/>
+        <image name="banner.png" width="272" height="200"/>
         <image name="cancel.png" width="24" height="24"/>
         <image name="check.png" width="24" height="24"/>
         <image name="error-blue.png" width="100" height="100"/>

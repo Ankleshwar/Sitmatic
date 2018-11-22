@@ -29,7 +29,6 @@ class BasicInfoVC: BaseViewController,OrderProccessingDelegate {
         self.btnPrevious.isHidden = true
         textField(color:UIColor.black)
         self.setTopView(self.viewTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
-       
     }
     fileprivate func textField(color:UIColor) {
         self.txtName.layer.borderWidth = 0.7
@@ -148,6 +147,7 @@ extension BasicInfoVC: UITextFieldDelegate{
     func textFieldDidEndEditing(_ textField: UITextField) {
         self.moveTextField(textField: textField, moveDistance: -150, up: false)
     }
+
 
     
 }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -51,6 +51,7 @@
                 <outlet property="viewCallTop" destination="uXF-ag-CCi" id="b9p-X7-7r7"/>
                 <outlet property="viewContainer" destination="YnC-bN-KBJ" id="Rbr-Dq-w97"/>
                 <outlet property="viewContainerCall" destination="PPw-OB-MyG" id="7XY-20-bWZ"/>
+                <outlet property="viewModel" destination="3fc-al-LFn" id="CkU-ez-RVj"/>
                 <outlet property="viewQuestion" destination="XHo-hc-ISz" id="FcO-cP-ybc"/>
                 <outlet property="viewScrollHeight" destination="Yex-Wc-Lb2" id="0tc-h5-tU5"/>
                 <outlet property="viewSubTop" destination="MwQ-16-jWg" id="UfL-Wh-krr"/>
@@ -206,84 +207,6 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="JWQ-lj-Ona"/>
             <point key="canvasLocation" x="924.375" y="1409.1549295774648"/>
-        </view>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="vuO-B6-uRA">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9so-ZS-p5X">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V9q-ov-eyY">
-                    <rect key="frame" x="0.0" y="20" width="320" height="46"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CustomFit™ by Sitmatic" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9LC-ve-SWm">
-                            <rect key="frame" x="69" y="8" width="182" height="30"/>
-                            <constraints>
-                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="Gxc-Ip-hhx"/>
-                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="bjY-p1-DHN"/>
-                                <constraint firstAttribute="height" constant="30" id="sYd-3e-WXP"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" red="0.1960784314" green="0.65098039220000004" blue="0.88235294119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstItem="9LC-ve-SWm" firstAttribute="top" secondItem="V9q-ov-eyY" secondAttribute="top" constant="8" id="7qM-Xw-FFt"/>
-                        <constraint firstAttribute="height" constant="46" id="HLO-lX-1bo"/>
-                        <constraint firstItem="9LC-ve-SWm" firstAttribute="centerX" secondItem="V9q-ov-eyY" secondAttribute="centerX" id="Tdm-PC-OFa"/>
-                        <constraint firstAttribute="bottom" secondItem="9LC-ve-SWm" secondAttribute="bottom" constant="8" id="lyk-6P-0qJ"/>
-                    </constraints>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eRB-LO-IZO">
-                    <rect key="frame" x="0.0" y="66" width="320" height="452"/>
-                    <color key="backgroundColor" red="0.77647058820000003" green="0.91372549020000005" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner.png" translatesAutoresizingMaskIntoConstraints="NO" id="qoQ-Th-Xms">
-                    <rect key="frame" x="24" y="86" width="272" height="200"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="qoQ-Th-Xms" secondAttribute="height" multiplier="34:25" id="FNZ-y8-Xe4"/>
-                    </constraints>
-                </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n4Z-7i-381">
-                    <rect key="frame" x="124.5" y="523" width="71" height="40"/>
-                    <color key="backgroundColor" red="0.80784313730000001" green="0.12549019610000001" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="jGG-8W-tS2"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
-                    <state key="normal" title="Try again">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <connections>
-                        <action selector="clickToCallDone:" destination="-1" eventType="touchUpInside" id="ETc-dW-i2u"/>
-                    </connections>
-                </button>
-            </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-            <constraints>
-                <constraint firstItem="YYk-dR-HQi" firstAttribute="bottom" secondItem="n4Z-7i-381" secondAttribute="bottom" constant="5" id="026-9m-dq6"/>
-                <constraint firstItem="V9q-ov-eyY" firstAttribute="trailing" secondItem="YYk-dR-HQi" secondAttribute="trailing" id="6fy-ij-Zhl"/>
-                <constraint firstItem="eRB-LO-IZO" firstAttribute="leading" secondItem="YYk-dR-HQi" secondAttribute="leading" id="9ZH-uh-0ph"/>
-                <constraint firstItem="eRB-LO-IZO" firstAttribute="trailing" secondItem="YYk-dR-HQi" secondAttribute="trailing" id="LKh-Wm-O7O"/>
-                <constraint firstItem="n4Z-7i-381" firstAttribute="top" secondItem="eRB-LO-IZO" secondAttribute="bottom" constant="5" id="REE-u7-t72"/>
-                <constraint firstItem="V9q-ov-eyY" firstAttribute="leading" secondItem="YYk-dR-HQi" secondAttribute="leading" id="S4m-qp-NDR"/>
-                <constraint firstAttribute="trailing" secondItem="9so-ZS-p5X" secondAttribute="trailing" id="SQ8-d7-cfj"/>
-                <constraint firstItem="V9q-ov-eyY" firstAttribute="top" secondItem="9so-ZS-p5X" secondAttribute="bottom" id="VOr-H7-r1A"/>
-                <constraint firstItem="eRB-LO-IZO" firstAttribute="top" secondItem="V9q-ov-eyY" secondAttribute="bottom" id="XIl-dG-L6G"/>
-                <constraint firstItem="qoQ-Th-Xms" firstAttribute="centerX" secondItem="vuO-B6-uRA" secondAttribute="centerX" id="XdT-H6-lY4"/>
-                <constraint firstItem="V9q-ov-eyY" firstAttribute="top" secondItem="YYk-dR-HQi" secondAttribute="top" id="e5k-3X-qVk"/>
-                <constraint firstItem="qoQ-Th-Xms" firstAttribute="width" secondItem="vuO-B6-uRA" secondAttribute="width" multiplier="0.85" id="jDU-Eu-bXT"/>
-                <constraint firstItem="9so-ZS-p5X" firstAttribute="top" secondItem="vuO-B6-uRA" secondAttribute="top" id="pDr-q5-Ddr"/>
-                <constraint firstItem="n4Z-7i-381" firstAttribute="centerX" secondItem="vuO-B6-uRA" secondAttribute="centerX" id="trN-AM-F0o"/>
-                <constraint firstItem="qoQ-Th-Xms" firstAttribute="top" secondItem="V9q-ov-eyY" secondAttribute="bottom" constant="20" id="x1E-Oz-4ze"/>
-                <constraint firstItem="9so-ZS-p5X" firstAttribute="leading" secondItem="vuO-B6-uRA" secondAttribute="leading" id="ymC-jK-oRE"/>
-            </constraints>
-            <viewLayoutGuide key="safeArea" id="YYk-dR-HQi"/>
-            <point key="canvasLocation" x="926" y="1410"/>
         </view>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="W9y-L7-ho7">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>

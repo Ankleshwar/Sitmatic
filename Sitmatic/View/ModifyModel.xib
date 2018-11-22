@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -63,6 +63,7 @@
                 <outlet property="viewBacrestSize" destination="6IV-jg-DEs" id="X7H-xi-tss"/>
                 <outlet property="viewControl" destination="xWe-qs-hfP" id="Pmm-3K-OfV"/>
                 <outlet property="viewFirstCantainer" destination="1Zj-TK-W8c" id="uiw-rR-c08"/>
+                <outlet property="viewSeatDepth" destination="rMs-yr-sVv" id="O0C-OK-P9A"/>
                 <outlet property="viewSecondContainer" destination="0zC-T8-i2U" id="koB-da-MeI"/>
                 <outlet property="viewSub" destination="olN-JG-zvh" id="NFP-6O-WCe"/>
                 <outlet property="viewTopFirst" destination="xMa-8q-LZE" id="kvB-iv-Df7"/>
@@ -115,7 +116,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BV6-Gb-nzj">
                                     <rect key="frame" x="0.0" y="0.0" width="272" height="600"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SlP-Lk-fWi">
+                                        <view tag="11" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SlP-Lk-fWi">
                                             <rect key="frame" x="0.0" y="10" width="272" height="45"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="AN1-zZ-888">
@@ -157,7 +158,7 @@
                                                 <constraint firstItem="AN1-zZ-888" firstAttribute="leading" secondItem="SlP-Lk-fWi" secondAttribute="leading" constant="5" id="rdw-fR-Y0T"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xWe-qs-hfP">
+                                        <view tag="12" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xWe-qs-hfP">
                                             <rect key="frame" x="0.0" y="65" width="272" height="55.5"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="RkF-qd-18I">
@@ -199,7 +200,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="BgA-2d-IxC" secondAttribute="trailing" constant="5" id="vKZ-yh-Z66"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6IV-jg-DEs">
+                                        <view tag="13" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6IV-jg-DEs">
                                             <rect key="frame" x="0.0" y="130.5" width="272" height="45"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Jhy-RY-2SK">
@@ -241,7 +242,7 @@
                                                 <constraint firstItem="Q0c-Fp-4HV" firstAttribute="leading" secondItem="Jhy-RY-2SK" secondAttribute="trailing" constant="5" id="qKs-bj-dff"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="JKn-KZ-FRc">
+                                        <view tag="14" contentMode="scaleToFill" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="JKn-KZ-FRc">
                                             <rect key="frame" x="0.0" y="185.5" width="272" height="45"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="XR2-6X-wWN">
@@ -283,7 +284,7 @@
                                                 <constraint firstItem="Wig-ti-5Q1" firstAttribute="leading" secondItem="XR2-6X-wWN" secondAttribute="trailing" constant="5" id="zvS-Ug-W3m"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uI8-M1-LE8">
+                                        <view tag="15" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uI8-M1-LE8">
                                             <rect key="frame" x="0.0" y="240.5" width="272" height="45"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="EUf-gy-wHR">
@@ -326,7 +327,7 @@
                                                 <constraint firstAttribute="height" constant="45" id="zCy-bL-wr2"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cd3-iq-vjO">
+                                        <view tag="16" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cd3-iq-vjO">
                                             <rect key="frame" x="0.0" y="295.5" width="272" height="45"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="JXQ-no-r3l">
@@ -369,7 +370,7 @@
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="qeA-cZ-HEp"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cg0-2j-8L3">
+                                        <view tag="17" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cg0-2j-8L3">
                                             <rect key="frame" x="0.0" y="350.5" width="272" height="45"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="bFV-Lp-p5b">
@@ -558,7 +559,7 @@
                 <constraint firstItem="hKv-Qb-Bd7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="zMr-xw-n6D"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="2654" y="35"/>
+            <point key="canvasLocation" x="2417" y="674"/>
         </view>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="olN-JG-zvh">
             <rect key="frame" x="0.0" y="0.0" width="320" height="906"/>
@@ -606,7 +607,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TlC-9q-yBo">
                                     <rect key="frame" x="0.0" y="0.0" width="272" height="500"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rMs-yr-sVv">
+                                        <view tag="21" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rMs-yr-sVv">
                                             <rect key="frame" x="0.0" y="10" width="272" height="45"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="qCb-Rn-SrQ">
@@ -648,7 +649,7 @@
                                                 <constraint firstItem="q2p-s3-gJQ" firstAttribute="centerY" secondItem="qCb-Rn-SrQ" secondAttribute="centerY" id="zMP-ne-WtC"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="swX-Of-cBy">
+                                        <view tag="22" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="swX-Of-cBy">
                                             <rect key="frame" x="0.0" y="120" width="272" height="45"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ksH-Zy-jVG">
@@ -690,7 +691,7 @@
                                                 <constraint firstItem="ksH-Zy-jVG" firstAttribute="leading" secondItem="swX-Of-cBy" secondAttribute="leading" constant="5" id="YuG-7n-UJu"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3RQ-7x-yIa">
+                                        <view tag="23" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3RQ-7x-yIa">
                                             <rect key="frame" x="0.0" y="175" width="272" height="45"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Y8i-E7-yFw">
@@ -732,7 +733,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="Y8i-E7-yFw" secondAttribute="bottom" id="qB5-Ag-RdR"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5cf-jc-LZX">
+                                        <view tag="24" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5cf-jc-LZX">
                                             <rect key="frame" x="0.0" y="230" width="272" height="45"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="pDe-C8-eZi">
@@ -774,7 +775,7 @@
                                                 <constraint firstItem="BuZ-5e-c3l" firstAttribute="centerY" secondItem="pDe-C8-eZi" secondAttribute="centerY" id="nbV-nk-L8U"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HG0-OX-wlF">
+                                        <view tag="25" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HG0-OX-wlF">
                                             <rect key="frame" x="0.0" y="285" width="272" height="45"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="nmS-VP-bpv">
@@ -816,7 +817,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="UTa-J8-Haq" secondAttribute="trailing" constant="5" id="hWv-pQ-92h"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rrr-dC-zgY">
+                                        <view tag="26" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rrr-dC-zgY">
                                             <rect key="frame" x="0.0" y="340" width="272" height="45"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ctA-cK-xfw">
@@ -859,7 +860,7 @@
                                                 <constraint firstItem="ctA-cK-xfw" firstAttribute="leading" secondItem="rrr-dC-zgY" secondAttribute="leading" constant="5" id="zES-tc-dDj"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WlD-Cy-9sQ">
+                                        <view tag="27" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WlD-Cy-9sQ">
                                             <rect key="frame" x="0.0" y="65" width="272" height="45"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="BLg-tC-MVL">
@@ -901,7 +902,7 @@
                                                 <constraint firstItem="BLg-tC-MVL" firstAttribute="leading" secondItem="WlD-Cy-9sQ" secondAttribute="leading" constant="5" id="svg-CM-kft"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0D5-jJ-sSf">
+                                        <view tag="28" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0D5-jJ-sSf">
                                             <rect key="frame" x="0.0" y="395" width="272" height="45"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="xsg-rr-g0j">
@@ -1076,7 +1077,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="uPm-7C-f8g"/>
-            <point key="canvasLocation" x="748" y="452"/>
+            <point key="canvasLocation" x="2057" y="52"/>
         </view>
         <pickerView contentMode="scaleToFill" id="1g3-2D-eBI">
             <rect key="frame" x="0.0" y="0.0" width="375" height="162"/>
@@ -1092,10 +1093,10 @@
         </pickerView>
     </objects>
     <resources>
-        <image name="banner.png" width="360" height="180"/>
+        <image name="banner.png" width="272" height="200"/>
         <image name="cancel.png" width="24" height="24"/>
         <image name="next.png" width="24" height="24"/>
-        <image name="previous" width="24" height="24"/>
+        <image name="previous" width="11.520000457763672" height="11.520000457763672"/>
         <image name="previous.png" width="24" height="24"/>
     </resources>
 </document>

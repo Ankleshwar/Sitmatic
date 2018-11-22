@@ -78,6 +78,7 @@ class ModifyModel: BaseViewController {
     @IBOutlet weak var viewSecondContainer: UIView!
     
     
+    @IBOutlet weak var viewSeatDepth: UIView!
     
     
     
@@ -622,12 +623,35 @@ class ModifyModel: BaseViewController {
     
     
     override func viewDidLayoutSubviews() {
-        
+      
 //        UIView().setShadowImg(self.imgBanner)
         
         UIView().setShadow(self.viewFirstCantainer)
         UIView().setShadow(self.viewSecondContainer)
-        
+
+        if let viewone = self.view.viewWithTag(22),let viewTwo = self.view.viewWithTag(21),let viewThree = self.view.viewWithTag(23),let viewFour = self.view.viewWithTag(24),let viewFive = self.view.viewWithTag(25),let viewsix = self.view.viewWithTag(26),let viewSeven = self.view.viewWithTag(27),let viewEight = self.view.viewWithTag(28) {
+             UIView().setShadow(viewone);
+            UIView().setShadow(viewTwo);
+             UIView().setShadow(viewThree);
+             UIView().setShadow(viewFour);
+            UIView().setShadow(viewFive);
+             UIView().setShadow(viewsix);
+                             UIView().setShadow(viewSeven);
+             UIView().setShadow(viewEight);
+        }
+
+
+        if let viewone = self.view.viewWithTag(11),let viewTwo = self.view.viewWithTag(12),let viewThree = self.view.viewWithTag(13),let viewFour = self.view.viewWithTag(14),let viewFive = self.view.viewWithTag(15),let viewsix = self.view.viewWithTag(16),let viewSeven = self.view.viewWithTag(17) {
+            UIView().setShadow(viewone);
+            UIView().setShadow(viewTwo);
+            UIView().setShadow(viewThree);
+            UIView().setShadow(viewFour);
+            UIView().setShadow(viewFive);
+            UIView().setShadow(viewsix);
+            UIView().setShadow(viewSeven);
+          
+        }
+
 //        if device.diagonal == 4{
 //            self.btnVideoConstraintTopHeight.constant = 35.0
 //            self.imgConstraintTopHeight.constant = 25.0

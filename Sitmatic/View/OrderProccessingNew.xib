@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -50,6 +50,7 @@
                 <outlet property="viewContainer" destination="fMN-vG-gGy" id="ON2-Rn-PTo"/>
                 <outlet property="viewContainerCall" destination="B3k-aC-5Wv" id="LES-wv-QCy"/>
                 <outlet property="viewHeightSecond" destination="4eJ-Id-FcK" id="mhq-nw-FJ2"/>
+                <outlet property="viewModel" destination="IGq-Bl-fBC" id="6Gx-kP-owc"/>
                 <outlet property="viewQuestion" destination="q6r-BI-Gy0" id="u1D-8N-DhN"/>
                 <outlet property="viewScrollHeight" destination="WKJ-3I-Zh4" id="hst-wH-JqI"/>
                 <outlet property="viewSubTop" destination="1or-HF-vhm" id="FJf-fg-LJK"/>

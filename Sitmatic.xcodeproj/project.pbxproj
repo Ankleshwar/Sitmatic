@@ -114,8 +114,10 @@
 		3B01AB4820C6F06B00291522 /* SSignupVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B01AB4720C6F06B00291522 /* SSignupVC.xib */; };
 		3B0D728C215B4D38005BCD2C /* 01 Gender.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0D728B215B4D38005BCD2C /* 01 Gender.png */; };
 		3B0D728E215B4DA7005BCD2C /* Genderlarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0D728D215B4DA6005BCD2C /* Genderlarge.png */; };
-		3B14DCB221830E5000447471 /* banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B14DCB121830E4F00447471 /* banner.png */; };
 		3B1B2C2C21819789004A9868 /* user-icon26x26.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B1B2C2B21819789004A9868 /* user-icon26x26.png */; };
+		3B64C00F21A53E9F00F7DF77 /* Dreamweave.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B64C00E21A53E9F00F7DF77 /* Dreamweave.png */; };
+		3B64C01321A5581D00F7DF77 /* banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B64C01221A5581C00F7DF77 /* banner.png */; };
+		3B64C01521A56A6C00F7DF77 /* Flexx.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B64C01421A56A6C00F7DF77 /* Flexx.png */; };
 		3BCC14B42186F20E00C24FD8 /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BCC14B32186F20E00C24FD8 /* edit.png */; };
 		3BCC14B62186F24000C24FD8 /* left-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BCC14B52186F24000C24FD8 /* left-arrow.png */; };
 		3BECDE392154AFF9009CB3DC /* cancel (2).png in Resources */ = {isa = PBXBuildFile; fileRef = 3BECDE382154AFF9009CB3DC /* cancel (2).png */; };
@@ -274,8 +276,10 @@
 		3B01AB4720C6F06B00291522 /* SSignupVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SSignupVC.xib; sourceTree = "<group>"; };
 		3B0D728B215B4D38005BCD2C /* 01 Gender.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "01 Gender.png"; sourceTree = "<group>"; };
 		3B0D728D215B4DA6005BCD2C /* Genderlarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Genderlarge.png; sourceTree = "<group>"; };
-		3B14DCB121830E4F00447471 /* banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner.png; sourceTree = "<group>"; };
 		3B1B2C2B21819789004A9868 /* user-icon26x26.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user-icon26x26.png"; sourceTree = "<group>"; };
+		3B64C00E21A53E9F00F7DF77 /* Dreamweave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Dreamweave.png; sourceTree = "<group>"; };
+		3B64C01221A5581C00F7DF77 /* banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner.png; sourceTree = "<group>"; };
+		3B64C01421A56A6C00F7DF77 /* Flexx.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flexx.png; sourceTree = "<group>"; };
 		3BCC14B32186F20E00C24FD8 /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = edit.png; path = ../../../../Downloads/edit.png; sourceTree = "<group>"; };
 		3BCC14B52186F24000C24FD8 /* left-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left-arrow.png"; sourceTree = "<group>"; };
 		3BECDE382154AFF9009CB3DC /* cancel (2).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel (2).png"; sourceTree = "<group>"; };
@@ -497,8 +501,11 @@
 		3B01AB3A20C6DD7700291522 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				3B64C00E21A53E9F00F7DF77 /* Dreamweave.png */,
 				3BCC14B32186F20E00C24FD8 /* edit.png */,
+				3B64C01221A5581C00F7DF77 /* banner.png */,
 				3BFE26642181D51600B77FC1 /* slide3.png */,
+				3B64C01421A56A6C00F7DF77 /* Flexx.png */,
 				3BFE26622181C33D00B77FC1 /* sitmaticlogo.png */,
 				3B1B2C2B21819789004A9868 /* user-icon26x26.png */,
 				3B0D728D215B4DA6005BCD2C /* Genderlarge.png */,
@@ -517,7 +524,6 @@
 				1B597C1120FDE79F00180C7D /* checked.png */,
 				1B26854620FF6D54004A11B6 /* check.png */,
 				1B26854020FF4104004A11B6 /* tick.png */,
-				3B14DCB121830E4F00447471 /* banner.png */,
 				1B597C1320FDE79F00180C7D /* nouser copy.png */,
 				1B597C1020FDE79F00180C7D /* unchecked.png */,
 				1BECD14920F8D5DA004252D5 /* Simulator Screen Shot - iPhone 8 Plus - 2018-07-13 1.jpg */,
@@ -692,6 +698,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B2E011F20C79ED400B34645 /* SProfileVC.xib in Resources */,
+				3B64C00F21A53E9F00F7DF77 /* Dreamweave.png in Resources */,
 				3BFA16732154B52C0096CA94 /* AddressVC.xib in Resources */,
 				1B6DF8F720C7F26700280E84 /* QuestionPartOne.xib in Resources */,
 				1BECD14820F8B557004252D5 /* Roboto-Bold.ttf in Resources */,
@@ -711,8 +718,8 @@
 				1B2E013020C7B3F600B34645 /* 1242_2208.png in Resources */,
 				1BE313B720CE6B17004F1931 /* OrderProccessingSecond.xib in Resources */,
 				1B624C472101E65D00289118 /* Confused_Emoji100x100.png in Resources */,
+				3B64C01321A5581D00F7DF77 /* banner.png in Resources */,
 				1B2E013320C7B3F600B34645 /* 640_960.png in Resources */,
-				3B14DCB221830E5000447471 /* banner.png in Resources */,
 				1BEFEAA620CA46DD00400AF1 /* watermark.png in Resources */,
 				1B6DF8F020C7E4BC00280E84 /* Chair2.jpg in Resources */,
 				1B6DF8DE20C7DB2900280E84 /* slider1.png in Resources */,
@@ -754,6 +761,7 @@
 				3BECDE3D2154B009009CB3DC /* gallery.png in Resources */,
 				1B9ADD7F21217AEA0080CF9A /* 750_1334.jpg in Resources */,
 				1BB9C4C120C8F8E10028A48A /* OrderProccessing.xib in Resources */,
+				3B64C01521A56A6C00F7DF77 /* Flexx.png in Resources */,
 				1BECAEFE20D24DF50050AE31 /* SForgotPass.xib in Resources */,
 				1B6DF8F320C7E4BC00280E84 /* chair7.jpg in Resources */,
 				3BFE26652181D51900B77FC1 /* slide3.png in Resources */,

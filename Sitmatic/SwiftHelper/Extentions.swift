@@ -175,22 +175,40 @@ public extension UIView {
         layer.cornerRadius = 20
     }
     
-    func setShadowImg(_ view: UIView){
+    func setShadowImg(_ view: UIImageView){
         
-        view.layer.shadowColor = UIColor.darkGray.cgColor
-        view.layer.shadowOpacity = 1
-        view.layer.shadowOffset = CGSize.zero
-        view.layer.shadowRadius = 2
+//        view.layer.shadowColor = UIColor.darkGray.cgColor
+//        view.layer.shadowOpacity = 1
+//        view.layer.shadowOffset = CGSize.zero
+        view.layer.cornerRadius = 5.0
+        view.clipsToBounds = true
         
     }
     func setShadow(_ view: UIView){
         
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOpacity = 0.5
-        view.layer.shadowOffset = CGSize.zero
-        view.layer.shadowRadius = 4
+//        view.layer.shadowColor = UIColor.black.cgColor
+//        view.layer.shadowOpacity = 0.5
+//        view.layer.shadowOffset = CGSize.zero
+//        view.layer.shadowRadius = 4
         view.layer.cornerRadius = 5.0
         
+    }
+}
+
+
+extension String {
+    var capitalizeEachWord:String {
+        //break it into an array by delimiting the sentence using a space
+        var breakupSentence = self.components(separatedBy: " ")
+        var newSentence = ""
+
+        //Loop the array and concatinate the capitalized word into a variable.
+        for wordInSentence  in breakupSentence {
+           // newSentence = "\(newSentence) \(wordInSentence.capitalizedString)"
+        }
+
+        // send it back up.
+        return newSentence
     }
 }
 
