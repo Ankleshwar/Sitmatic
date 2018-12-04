@@ -202,9 +202,13 @@ protocol OrderProccessingSecondDelegate  {
     //                dicNext["queText"] = arrQuestion?[value]["queText"] as? String
     //                dicNext["queId"] = arrQuestion?[value]["queId"] as? String
                     strValueID = arrQuestion?[value]["queId"] as? String ?? ""
+                    if strValueID == "13"{
+                        self.btnVideo.isHidden = false
+                    }else{
+                        self.btnVideo.isHidden = true
+                    }
 
 
-                    self.btnVideo.isHidden = false
 
                    // self.arrQuestion?.remove(at: value)
 

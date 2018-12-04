@@ -32,6 +32,7 @@
                 <outlet property="imgBanner" destination="XCJ-b4-7tZ" id="d7m-LG-bkH"/>
                 <outlet property="imgCallHeight" destination="nt9-eK-h41" id="INK-hh-uKc"/>
                 <outlet property="imgCallWidth" destination="jL2-vm-mZk" id="eKm-iw-TeJ"/>
+                <outlet property="imgConstHeight" destination="lgn-k4-qWp" id="rZ2-c1-GRe"/>
                 <outlet property="lblModeFinal" destination="UDb-UP-e3W" id="wrA-kn-hy9"/>
                 <outlet property="lblModel" destination="yUr-sK-eF0" id="9dF-Rd-LES"/>
                 <outlet property="lblNo" destination="Cud-3A-0vP" id="tc9-OQ-e0V"/>
@@ -305,7 +306,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="682"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tuU-HE-HCc">
-                                            <rect key="frame" x="20" y="30" width="280" height="622"/>
+                                            <rect key="frame" x="20" y="30" width="280" height="552"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yUr-sK-eF0">
                                                     <rect key="frame" x="10" y="10" width="260" height="60"/>
@@ -400,7 +401,7 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="tuU-HE-HCc" secondAttribute="bottom" constant="30" id="2BX-Ve-5ay"/>
+                                        <constraint firstAttribute="bottom" secondItem="tuU-HE-HCc" secondAttribute="bottom" constant="100" id="2BX-Ve-5ay"/>
                                         <constraint firstItem="tuU-HE-HCc" firstAttribute="top" secondItem="FE6-56-jaP" secondAttribute="top" constant="30" id="Bw9-TB-cc1"/>
                                         <constraint firstAttribute="trailing" secondItem="tuU-HE-HCc" secondAttribute="trailing" constant="20" id="D0a-HB-7cc"/>
                                         <constraint firstItem="tuU-HE-HCc" firstAttribute="centerX" secondItem="FE6-56-jaP" secondAttribute="centerX" id="HmS-3u-h8g"/>

@@ -17,6 +17,9 @@ protocol ModifyModelDelegate {
 
 class ModifyModel: BaseViewController {
     @IBOutlet weak var viewControl: UIView!
+     @IBOutlet weak var imgConstraintTopHeight: NSLayoutConstraint!
+    @IBOutlet weak var imgSecondConstHeight: NSLayoutConstraint!
+    
     @IBOutlet weak var viewBacrestSize: UIView!
     @IBOutlet weak var viewBackrestSizeHeight: NSLayoutConstraint!
     var delegate: ModifyModelDelegate?
@@ -355,7 +358,7 @@ class ModifyModel: BaseViewController {
     func setSlectedValue(){
         
         self.lblMeshQue.text = arrQuesOfModifiy![0].question
-        self.lblControllQue.text = arrQuesOfModifiy![1].question
+        self.lblControllQue.text = " "+arrQuesOfModifiy![1].question
         self.lblbackrestsizeQue.text = arrQuesOfModifiy![2].question
         self.lblBackrestOption.text = arrQuesOfModifiy![3].question
         self.lblSeatsizeQue.text = arrQuesOfModifiy![4].question
@@ -652,23 +655,24 @@ class ModifyModel: BaseViewController {
           
         }
 
-//        if device.diagonal == 4{
-//            self.btnVideoConstraintTopHeight.constant = 35.0
-//            self.imgConstraintTopHeight.constant = 25.0
-//        }else   if device.diagonal == 4.7{
-//
-//            self.imgConstraintTopHeight.constant = 30.0
-//            self.btnVideoConstraintTopHeight.constant = 40.0
-//        }else   if device.diagonal == 5.5{
-//            self.imgConstraintTopHeight.constant = 35.0
-//            self.btnVideoConstraintTopHeight.constant = 45.0
-//        }
-//        else {
-//
-//            self.imgConstraintTopHeight.constant = 40.0
-//            self.btnVideoConstraintTopHeight.constant = 50.0
-//
-//        }
+        if device.diagonal == 4{
+            self.imgConstraintTopHeight.constant = 25.0
+            self.imgSecondConstHeight.constant = 25.0
+        }else   if device.diagonal == 4.7{
+             self.imgConstraintTopHeight.constant = 30.0
+            self.imgSecondConstHeight.constant = 30.0
+
+        }else   if device.diagonal == 5.5{
+            self.imgConstraintTopHeight.constant = 35.0
+            self.imgSecondConstHeight.constant = 35.0
+
+        }
+        else {
+            self.imgConstraintTopHeight.constant = 40.0
+            self.imgSecondConstHeight.constant = 40.0
+
+
+        }
 //
     }
     

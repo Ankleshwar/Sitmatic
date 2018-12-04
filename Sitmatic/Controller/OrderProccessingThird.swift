@@ -16,6 +16,7 @@ class OrderProccessingThird: BaseViewController {
 
     
     
+    @IBOutlet weak var imgConstHeight: NSLayoutConstraint!
     
     
     @IBOutlet weak var viewContainerCall: UIView!
@@ -142,27 +143,31 @@ class OrderProccessingThird: BaseViewController {
 
         
         if device.diagonal == 4{
+              self.imgConstHeight.constant = 25.0
             
         }else   if device.diagonal == 4.7{
             
-            
+            self.imgConstHeight.constant = 30.0
             self.imgCallWidth.constant = 80.0
             self.imgCallHeight.constant = 80.0
             
         }else   if device.diagonal == 5.5{
-           
+           self.imgConstHeight.constant = 35.0
             self.imgCallWidth.constant = 100.0
             self.imgCallHeight.constant = 100.0
             self.viewCallHeight.constant =  220.0
         }
         else {
             
-            
+            self.imgConstHeight.constant = 40.0
             self.imgCallWidth.constant = 80.0
             self.imgCallHeight.constant = 80.0
             self.viewCallHeight.constant =  250.0
             
         }
+
+
+  
         
     }
     
@@ -417,10 +422,10 @@ class OrderProccessingThird: BaseViewController {
                 print(index)
             }
             else{
-                self.arrQuestion?.append(["queId": "19","queText": "Please select color", "value": ["Flexx Black","Flexx Indigo","Flexx Charcoal","Flexx Maroon"]])
+                self.arrQuestion?.append(["queId": "19","queText": "Please select color", "value": ["Flexx Black","Flexx Indigo","Flexx Charcoal","Flexx Burgundy"]])
                 self.arrayPersnonID.append("19")
             }
-            self.arrIteam = ["Flexx Black","Flexx Indigo","Flexx Charcoal","Flexx Maroon"]
+            self.arrIteam = ["Flexx Black","Flexx Indigo","Flexx Charcoal","Flexx Burgundy"]
             self.pickerView.selectRow(0, inComponent: 0, animated: true)
             self.pickerView(pickerView, didSelectRow: 0, inComponent: 0)
 //            Timer.scheduledTimer(timeInterval: 0.3,
@@ -459,10 +464,10 @@ class OrderProccessingThird: BaseViewController {
                 print(index)
             }
             else{
-                self.arrQuestion?.append(["queId": "19","queText": "Please select color", "value": ["Dreamweave Black"," Dreamweave Navy","Dreamweave Charcoal","Dreamweave Aqua","Dreamweave Ember","Dreamweave Cologne","Dreamweave Napa","Dreamweave Tropicana"]])
+                self.arrQuestion?.append(["queId": "19","queText": "Please select color", "value": ["Dreamweave Black","Dreamweave Navy","Dreamweave Charcoal","Dreamweave Aqua","Dreamweave Ember","Dreamweave Cologne","Dreamweave Napa","Dreamweave Tropicana"]])
                 self.arrayPersnonID.append("19")
             }
-             self.arrIteam = ["Dreamweave Black"," Dreamweave Navy","Dreamweave Charcoal","Dreamweave Aqua","Dreamweave Ember","Dreamweave Cologne","Dreamweave Napa","Dreamweave Tropicana"]
+             self.arrIteam = ["Dreamweave Black","Dreamweave Navy","Dreamweave Charcoal","Dreamweave Aqua","Dreamweave Ember","Dreamweave Cologne","Dreamweave Napa","Dreamweave Tropicana"]
             self.pickerView.selectRow(0, inComponent: 0, animated: true)
             self.pickerView(pickerView, didSelectRow: 0, inComponent: 0)
 //            Timer.scheduledTimer(timeInterval: 0.3,
@@ -817,18 +822,18 @@ class OrderProccessingThird: BaseViewController {
         self.view.addSubview(self.viewShowModel)
         
         
-        self.tableViewHieght.constant = CGFloat((self.arrModelDescription?.count)! * 60 + 10 + 60)
+        self.tableViewHieght.constant = CGFloat((self.arrModelDescription?.count)! * 70 + 10 + 50)
 //self.tableViewHieght.constant = CGFloat(6 * 50 + 20)
         let modelName = UIDevice.modelName
           let frame = self.lblPrice.frame.origin.y+self.lblPrice.frame.height+50
         if modelName == "iPhone 5s" || modelName == "iPhone 5c" || modelName == "iPhone 5" || modelName == "iPhone SE" {
            
-             self.viewScrollHeight.constant =   CGFloat((self.arrModelDescription?.count)! * 60 + 10 + 60) + CGFloat(frame) +  CGFloat(20)
+             self.viewScrollHeight.constant =   CGFloat((self.arrModelDescription?.count)! * 70 + 10 + 70) + CGFloat(frame) +  CGFloat(20)
         }
         else{
          //   self.viewScrollHeight.constant =  CGFloat((self.arrModelDescription?.count)! * 50 )
             
-             self.viewScrollHeight.constant =   CGFloat((self.arrModelDescription?.count)! * 60 + 10 + 60) + CGFloat(frame) 
+             self.viewScrollHeight.constant =   CGFloat((self.arrModelDescription?.count)! * 70 + 10 + 50) + CGFloat(frame) 
         }
         
         //self.tableViewieght.constant = 3 * 50 + 20
@@ -1090,7 +1095,7 @@ extension OrderProccessingThird:UITableViewDelegate,UITableViewDataSource{
         if indexPath.section == 2{
             return 110.0
         }else{
-            return 60.0
+            return 70.0
         }
     }
 }

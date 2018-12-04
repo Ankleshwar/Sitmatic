@@ -36,7 +36,7 @@
                 <outlet property="imgBanner" destination="e5m-Zk-CDe" id="4Ta-1s-TFL"/>
                 <outlet property="imgCallHeight" destination="mBV-zc-7G2" id="AlS-Y0-J4Z"/>
                 <outlet property="imgCallWidth" destination="OWY-2C-3y5" id="hEH-ej-ghz"/>
-                <outlet property="imgConstraintTopHeight" destination="skn-Lh-EG4" id="eM4-tr-sw7"/>
+                <outlet property="imgConstraintTopHeight" destination="b91-b3-C2R" id="p7O-Hd-0bL"/>
                 <outlet property="lblModel" destination="k0H-cI-Por" id="HJG-qJ-TcF"/>
                 <outlet property="lblModelCode" destination="JOF-lv-Hcz" id="R0x-bS-fmB"/>
                 <outlet property="lblNo" destination="O5g-1y-zJW" id="H65-mR-PlB"/>
@@ -631,7 +631,7 @@
         </view>
     </objects>
     <resources>
-        <image name="banner.png" width="360" height="180"/>
+        <image name="banner.png" width="272" height="200"/>
         <image name="cancel.png" width="24" height="24"/>
         <image name="error-blue.png" width="100" height="100"/>
         <image name="info.png" width="28" height="28"/>
