@@ -35,7 +35,8 @@ protocol OrderProccessingSecondDelegate  {
         var isImageDataEmpty = false
         var arrImage = NSMutableArray()
 
-
+        @IBOutlet weak var imgCallBanner: UIImageView!
+        
 
         var sucessObj : SuccessData!
         var strValueID = ""
@@ -127,6 +128,10 @@ protocol OrderProccessingSecondDelegate  {
 
     //        self.setShadow(self.viewDetails)
 //            self.setShadow(self.viewModel)
+
+            imgCallBanner.kf.indicatorType = .activity
+            let urlbaner = URL(string: imgBaseUrl)
+            imgCallBanner.kf.setImage(with: urlbaner)
 
               self.setImageUrl(str:(arrQuestion?[value]["queId"] as! String) )
         }
@@ -317,7 +322,9 @@ protocol OrderProccessingSecondDelegate  {
                         }
 
                     }else{
-                         imgBanner.image = UIImage(named: "banner.png")
+                        imgBanner.kf.indicatorType = .activity
+                        let urlbaner = URL(string: imgBaseUrl)
+                        imgBanner.kf.setImage(with: urlbaner)
                         nextQues()
                         self.setImageUrl(str:(arrQuestion?[value]["queId"] as! String) )
                     }
@@ -335,6 +342,7 @@ protocol OrderProccessingSecondDelegate  {
 
         override func viewDidLayoutSubviews() {
 
+              UIView().setShadowImg(self.imgCallBanner)
             UIView().setShadowImg(self.imgBanner)
             UIView().setShadow(self.viewContainerCall)
             UIView().setShadow(self.viewContainer)
@@ -508,6 +516,7 @@ protocol OrderProccessingSecondDelegate  {
     //        self.navigationController?.pushViewController(vc, animated: true)
                 callGenrateModelApi(strData: strJson!)
         }
+        
         func setImageUrl(str:String){
             let Array = arrImage[0] as! [HomeData]
             if str == "13"{
@@ -530,7 +539,9 @@ protocol OrderProccessingSecondDelegate  {
                 imgBanner.kf.setImage(with: urlbaner)
             }
             else{
-                imgBanner.image = UIImage(named: "banner.png")
+                imgBanner.kf.indicatorType = .activity
+                let urlbaner = URL(string: imgBaseUrl)
+                imgBanner.kf.setImage(with: urlbaner)
             }
 
         }

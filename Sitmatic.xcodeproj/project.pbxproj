@@ -116,7 +116,6 @@
 		3B0D728E215B4DA7005BCD2C /* Genderlarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0D728D215B4DA6005BCD2C /* Genderlarge.png */; };
 		3B1B2C2C21819789004A9868 /* user-icon26x26.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B1B2C2B21819789004A9868 /* user-icon26x26.png */; };
 		3B64C00F21A53E9F00F7DF77 /* Dreamweave.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B64C00E21A53E9F00F7DF77 /* Dreamweave.png */; };
-		3B64C01321A5581D00F7DF77 /* banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B64C01221A5581C00F7DF77 /* banner.png */; };
 		3B64C01521A56A6C00F7DF77 /* Flexx.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B64C01421A56A6C00F7DF77 /* Flexx.png */; };
 		3BCC14B42186F20E00C24FD8 /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BCC14B32186F20E00C24FD8 /* edit.png */; };
 		3BCC14B62186F24000C24FD8 /* left-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BCC14B52186F24000C24FD8 /* left-arrow.png */; };
@@ -278,7 +277,6 @@
 		3B0D728D215B4DA6005BCD2C /* Genderlarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Genderlarge.png; sourceTree = "<group>"; };
 		3B1B2C2B21819789004A9868 /* user-icon26x26.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user-icon26x26.png"; sourceTree = "<group>"; };
 		3B64C00E21A53E9F00F7DF77 /* Dreamweave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Dreamweave.png; sourceTree = "<group>"; };
-		3B64C01221A5581C00F7DF77 /* banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner.png; sourceTree = "<group>"; };
 		3B64C01421A56A6C00F7DF77 /* Flexx.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flexx.png; sourceTree = "<group>"; };
 		3BCC14B32186F20E00C24FD8 /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = edit.png; path = ../../../../Downloads/edit.png; sourceTree = "<group>"; };
 		3BCC14B52186F24000C24FD8 /* left-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left-arrow.png"; sourceTree = "<group>"; };
@@ -503,7 +501,6 @@
 			children = (
 				3B64C00E21A53E9F00F7DF77 /* Dreamweave.png */,
 				3BCC14B32186F20E00C24FD8 /* edit.png */,
-				3B64C01221A5581C00F7DF77 /* banner.png */,
 				3BFE26642181D51600B77FC1 /* slide3.png */,
 				3B64C01421A56A6C00F7DF77 /* Flexx.png */,
 				3BFE26622181C33D00B77FC1 /* sitmaticlogo.png */,
@@ -718,7 +715,6 @@
 				1B2E013020C7B3F600B34645 /* 1242_2208.png in Resources */,
 				1BE313B720CE6B17004F1931 /* OrderProccessingSecond.xib in Resources */,
 				1B624C472101E65D00289118 /* Confused_Emoji100x100.png in Resources */,
-				3B64C01321A5581D00F7DF77 /* banner.png in Resources */,
 				1B2E013320C7B3F600B34645 /* 640_960.png in Resources */,
 				1BEFEAA620CA46DD00400AF1 /* watermark.png in Resources */,
 				1B6DF8F020C7E4BC00280E84 /* Chair2.jpg in Resources */,
@@ -1130,7 +1126,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5K4VV2JC5V;
 				INFOPLIST_FILE = Sitmatic/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1157,7 +1153,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5K4VV2JC5V;
 				INFOPLIST_FILE = Sitmatic/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

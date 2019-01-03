@@ -86,7 +86,7 @@ let arrFemale = [ "8.00", "19.00", "17.00", "30.00", "9.00", "15.00", "17.00"]
             self.setImageUrl(str:(arrQuestion[count]["questionId"] as? Int)!)
 
             if isImageDataEmpty == true{
-                imgBanner.image = UIImage(named: "banner.png")
+                imgBanner.image = UIImage(named: "banner")
             }
 
 

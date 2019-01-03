@@ -31,6 +31,7 @@ protocol OrderProccessingNewDelegate  {
         @IBOutlet weak var btnTryAgain: UIButton!
 
 
+        @IBOutlet weak var imgCallBanner: UIImageView!
         
 
 
@@ -136,6 +137,9 @@ protocol OrderProccessingNewDelegate  {
             self.tableView.layer.borderColor = UIColor.lightGray.cgColor
              self.setImageUrl()
 
+            imgCallBanner.kf.indicatorType = .activity
+            let urlbaner = URL(string: imgBaseUrl)
+            imgCallBanner.kf.setImage(with: urlbaner)
 
         }
 
@@ -143,6 +147,7 @@ protocol OrderProccessingNewDelegate  {
         override func viewDidLayoutSubviews() {
             UIView().setShadow(self.viewModel)
             UIView().setShadowImg(self.imgBanner)
+             UIView().setShadowImg(self.imgCallBanner)
             UIView().setShadow(self.viewContainerCall)
             UIView().setShadow(self.viewContainer)
             //        self.viewContainerCall.layer.cornerRadius = 5.0
@@ -699,12 +704,18 @@ extension OrderProccessingNew: UITextFieldDelegate{
     
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        
+         var countSize = Int()
   
-        
+        for i in 0..<arrIteam!.count {
+            let str = arrIteam?[i] as! String
+            if str == "30.00"{
+                countSize = i
+            }
+
+        }
        
         
-            let countSize = (self.arrIteam?.count)!/2
+
             self.pickerView.selectRow(countSize, inComponent: 0, animated: true)
             self.pickerView(pickerView, didSelectRow: countSize, inComponent: 0)
 

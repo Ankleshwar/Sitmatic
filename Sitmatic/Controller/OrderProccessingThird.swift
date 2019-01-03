@@ -14,6 +14,7 @@ import SVProgressHUD
 
 class OrderProccessingThird: BaseViewController {
 
+    @IBOutlet weak var imgCallBanner: UIImageView!
     
     
     @IBOutlet weak var imgConstHeight: NSLayoutConstraint!
@@ -107,8 +108,15 @@ class OrderProccessingThird: BaseViewController {
 //        self.txtAddress.layer.borderColor = #colorLiteral(red: 0.8784313725, green: 0.8745098039, blue: 0.8745098039, alpha: 1).cgColor
 //        self.txtAddress.isEditable = false
 
-        self.imgBanner.image = UIImage(named: "banner.png");
-       
+        //self.imgBanner.image = UIImage(named: "banner");
+
+        imgBanner.kf.indicatorType = .activity
+        let urlbaner = URL(string: imgBaseUrl)
+        imgBanner.kf.setImage(with: urlbaner)
+
+        imgCallBanner.kf.indicatorType = .activity
+        //let urlbaner = URL(string: imgBaseUrl)
+        imgCallBanner.kf.setImage(with: urlbaner)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -140,8 +148,8 @@ class OrderProccessingThird: BaseViewController {
         UIView().setShadow(self.viewContainerCall)
         UIView().setShadow(self.viewCantainsQuestion)
         UIView().setShadowImg(self.imgBanner)
+        UIView().setShadowImg(self.imgCallBanner)
 
-        
         if device.diagonal == 4{
               self.imgConstHeight.constant = 25.0
             
@@ -312,7 +320,10 @@ class OrderProccessingThird: BaseViewController {
     
     @IBAction func clickToPrivious(_ sender: Any) {
         print(value)
-         self.imgBanner.image = UIImage(named: "banner.png");
+        // self.imgBanner.image = UIImage(named: "banner");
+        imgBanner.kf.indicatorType = .activity
+        let urlbaner = URL(string: imgBaseUrl)
+        imgBanner.kf.setImage(with: urlbaner)
         
         if isFirstQue == true {
             self.navigationController?.popViewController(animated: true)
@@ -320,7 +331,7 @@ class OrderProccessingThird: BaseViewController {
         else{
             if (value == 0){
                 self.btnprevious.isHidden = true
-                
+
             }
             else{
                 
@@ -539,12 +550,20 @@ class OrderProccessingThird: BaseViewController {
                 
                 
                 if strSelected == "No"{
-                    self.imgBanner.image = UIImage(named: "Dreamweave.png");
+                 let strUrl  = UserDefaults.standard.string(forKey: "dreamweave")
+                    imgBanner.kf.indicatorType = .activity
+                    let urlbaner = URL(string: strUrl ?? "")
+                    imgBanner.kf.setImage(with: urlbaner)
+                   // self.imgBanner.image = UIImage(named: "Dreamweave.png");
                     setDataNo(strId: (arrQuestion?[value]["queId"] as? String)!)
                 }
                     
                 else{
-                    self.imgBanner.image = UIImage(named: "Flexx.png");
+                    let strUrl  = UserDefaults.standard.string(forKey: "flex")
+                    imgBanner.kf.indicatorType = .activity
+                    let urlbaner = URL(string: strUrl ?? "")
+                    imgBanner.kf.setImage(with: urlbaner)
+                    //self.imgBanner.image = UIImage(named: "Flexx.png");
                     setdataYes(strId: (arrQuestion?[value]["queId"] as? String)!)
                 }
                 

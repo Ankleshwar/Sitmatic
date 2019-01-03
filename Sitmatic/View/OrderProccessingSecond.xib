@@ -34,6 +34,7 @@
                 <outlet property="btnYesSub" destination="Yaw-iy-86b" id="OqL-XF-WkZ"/>
                 <outlet property="btnprevious" destination="cR1-t8-Xhz" id="1QW-Yd-OVd"/>
                 <outlet property="imgBanner" destination="e5m-Zk-CDe" id="4Ta-1s-TFL"/>
+                <outlet property="imgCallBanner" destination="BwJ-fD-to3" id="fet-bW-bsp"/>
                 <outlet property="imgCallHeight" destination="mBV-zc-7G2" id="AlS-Y0-J4Z"/>
                 <outlet property="imgCallWidth" destination="OWY-2C-3y5" id="hEH-ej-ghz"/>
                 <outlet property="imgConstraintTopHeight" destination="b91-b3-C2R" id="p7O-Hd-0bL"/>
@@ -95,20 +96,20 @@
                     <rect key="frame" x="0.0" y="66" width="320" height="442"/>
                     <color key="backgroundColor" red="0.77647058820000003" green="0.91372549020000005" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner.png" translatesAutoresizingMaskIntoConstraints="NO" id="BwJ-fD-to3">
-                    <rect key="frame" x="24" y="86" width="272" height="200"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner" translatesAutoresizingMaskIntoConstraints="NO" id="BwJ-fD-to3">
+                    <rect key="frame" x="24" y="86" width="272" height="152"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="BwJ-fD-to3" secondAttribute="height" multiplier="34:25" id="AaZ-Gs-u9L"/>
+                        <constraint firstAttribute="width" secondItem="BwJ-fD-to3" secondAttribute="height" multiplier="34:19" id="AaZ-Gs-u9L"/>
                     </constraints>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PPw-OB-MyG">
-                    <rect key="frame" x="24" y="306" width="272" height="195"/>
+                    <rect key="frame" x="24" y="263" width="272" height="250"/>
                     <subviews>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Vd-b7-h7D">
-                            <rect key="frame" x="0.0" y="0.0" width="272" height="195"/>
+                            <rect key="frame" x="0.0" y="0.0" width="272" height="250"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KL2-7v-UXB">
-                                    <rect key="frame" x="0.0" y="0.0" width="272" height="295"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="272" height="350"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="error-blue.png" translatesAutoresizingMaskIntoConstraints="NO" id="n1T-64-e7U">
                                             <rect key="frame" x="106" y="10" width="60" height="60"/>
@@ -158,7 +159,7 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="195" id="55Q-6s-24v"/>
+                        <constraint firstAttribute="height" constant="250" id="55Q-6s-24v"/>
                         <constraint firstItem="KL2-7v-UXB" firstAttribute="width" secondItem="PPw-OB-MyG" secondAttribute="width" id="FV7-Jw-1yd"/>
                         <constraint firstItem="7Vd-b7-h7D" firstAttribute="top" secondItem="PPw-OB-MyG" secondAttribute="top" id="hWS-vZ-1gt"/>
                         <constraint firstAttribute="trailing" secondItem="7Vd-b7-h7D" secondAttribute="trailing" id="mH0-rY-A2p"/>
@@ -184,7 +185,7 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="PPw-OB-MyG" firstAttribute="top" secondItem="BwJ-fD-to3" secondAttribute="bottom" constant="20" id="3B9-rv-lTh"/>
+                <constraint firstItem="PPw-OB-MyG" firstAttribute="top" secondItem="BwJ-fD-to3" secondAttribute="bottom" constant="25" id="3B9-rv-lTh"/>
                 <constraint firstAttribute="trailing" secondItem="i8H-Tj-eYN" secondAttribute="trailing" id="6RZ-TU-QVk"/>
                 <constraint firstItem="PPw-OB-MyG" firstAttribute="centerX" secondItem="jwA-rN-sOj" secondAttribute="centerX" id="85m-Wl-bfG"/>
                 <constraint firstItem="uXF-ag-CCi" firstAttribute="trailing" secondItem="JWQ-lj-Ona" secondAttribute="trailing" id="9Py-o4-pR4"/>
@@ -226,14 +227,14 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CSx-YP-E5p">
                     <rect key="frame" x="0.0" y="66" width="320" height="452"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slide3.png" translatesAutoresizingMaskIntoConstraints="NO" id="e5m-Zk-CDe">
-                            <rect key="frame" x="24" y="25" width="272" height="200"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e5m-Zk-CDe">
+                            <rect key="frame" x="24" y="25" width="272" height="152"/>
                             <constraints>
-                                <constraint firstAttribute="width" secondItem="e5m-Zk-CDe" secondAttribute="height" multiplier="34:25" id="OWe-9k-RCL"/>
+                                <constraint firstAttribute="width" secondItem="e5m-Zk-CDe" secondAttribute="height" multiplier="34:19" id="OWe-9k-RCL"/>
                             </constraints>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YnC-bN-KBJ">
-                            <rect key="frame" x="24" y="250" width="272" height="195"/>
+                            <rect key="frame" x="24" y="202" width="272" height="195"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0RA-CC-3kU">
                                     <rect key="frame" x="10" y="10" width="252" height="0.0"/>
@@ -631,13 +632,12 @@
         </view>
     </objects>
     <resources>
-        <image name="banner.png" width="272" height="200"/>
+        <image name="banner" width="3840" height="2160"/>
         <image name="cancel.png" width="24" height="24"/>
         <image name="error-blue.png" width="100" height="100"/>
         <image name="info.png" width="28" height="28"/>
         <image name="next.png" width="24" height="24"/>
         <image name="play-button.png" width="28" height="28"/>
         <image name="previous.png" width="24" height="24"/>
-        <image name="slide3.png" width="300" height="210"/>
     </resources>
 </document>

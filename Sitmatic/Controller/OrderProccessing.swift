@@ -913,6 +913,11 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
     
     func setImageUrl(str:String){
         let Array = arrImage[0] as! [HomeData]
+        let objeDeram = Array[16]
+        UserDefaults.standard.setValue(objeDeram.banner, forKey: "dreamweave")
+         let objeFlex = Array[17]
+         UserDefaults.standard.setValue(objeFlex.banner, forKey: "flex")
+            UserDefaults.standard.synchronize()
         if str == "1"{
             let obje = Array[0]
             

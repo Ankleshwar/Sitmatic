@@ -180,7 +180,7 @@ public extension UIView {
 //        view.layer.shadowColor = UIColor.darkGray.cgColor
 //        view.layer.shadowOpacity = 1
 //        view.layer.shadowOffset = CGSize.zero
-        view.layer.cornerRadius = 5.0
+        view.layer.cornerRadius = 8.0
         view.clipsToBounds = true
         
     }
@@ -190,7 +190,7 @@ public extension UIView {
 //        view.layer.shadowOpacity = 0.5
 //        view.layer.shadowOffset = CGSize.zero
 //        view.layer.shadowRadius = 4
-        view.layer.cornerRadius = 5.0
+        view.layer.cornerRadius = 7.0
         
     }
 }

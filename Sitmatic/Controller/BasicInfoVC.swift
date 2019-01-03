@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class BasicInfoVC: BaseViewController,OrderProccessingDelegate {
     func setData(arrData: [[String : String]]) {
@@ -29,6 +30,9 @@ class BasicInfoVC: BaseViewController,OrderProccessingDelegate {
         self.btnPrevious.isHidden = true
         textField(color:UIColor.black)
         self.setTopView(self.viewTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
+        imgBanner.kf.indicatorType = .activity
+        let urlbaner = URL(string: imgBaseUrl)
+        imgBanner.kf.setImage(with: urlbaner)
     }
     fileprivate func textField(color:UIColor) {
         self.txtName.layer.borderWidth = 0.7
@@ -44,7 +48,7 @@ class BasicInfoVC: BaseViewController,OrderProccessingDelegate {
 
         print("viewDidAppearCall")
         
-        
+
     }
     
     @objc func rightButtonClicked(_ sender: Any) {

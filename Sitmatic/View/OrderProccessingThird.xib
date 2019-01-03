@@ -30,6 +30,7 @@
                 <outlet property="btnYes" destination="Yyd-zt-UaT" id="R4F-9i-3vL"/>
                 <outlet property="btnprevious" destination="7VT-UQ-ERe" id="XTX-ca-B8B"/>
                 <outlet property="imgBanner" destination="XCJ-b4-7tZ" id="d7m-LG-bkH"/>
+                <outlet property="imgCallBanner" destination="B0y-yB-0c4" id="CVX-VV-ucc"/>
                 <outlet property="imgCallHeight" destination="nt9-eK-h41" id="INK-hh-uKc"/>
                 <outlet property="imgCallWidth" destination="jL2-vm-mZk" id="eKm-iw-TeJ"/>
                 <outlet property="imgConstHeight" destination="lgn-k4-qWp" id="rZ2-c1-GRe"/>
@@ -84,14 +85,14 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sch-S9-fyz">
                     <rect key="frame" x="0.0" y="66" width="320" height="452"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image=" Dreamweave.png" translatesAutoresizingMaskIntoConstraints="NO" id="XCJ-b4-7tZ">
-                            <rect key="frame" x="24" y="25" width="272" height="200"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image=" Dreamweave.png" translatesAutoresizingMaskIntoConstraints="NO" id="XCJ-b4-7tZ">
+                            <rect key="frame" x="24" y="25" width="272" height="152"/>
                             <constraints>
-                                <constraint firstAttribute="width" secondItem="XCJ-b4-7tZ" secondAttribute="height" multiplier="34:25" id="xRI-AX-RKk"/>
+                                <constraint firstAttribute="width" secondItem="XCJ-b4-7tZ" secondAttribute="height" multiplier="34:19" id="xRI-AX-RKk"/>
                             </constraints>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b5K-x4-XH0">
-                            <rect key="frame" x="24" y="250" width="272" height="190"/>
+                            <rect key="frame" x="24" y="202" width="272" height="190"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p2v-MB-9jH">
                                     <rect key="frame" x="10" y="10" width="252" height="0.0"/>
@@ -497,20 +498,20 @@
                     <rect key="frame" x="0.0" y="66" width="320" height="442"/>
                     <color key="backgroundColor" red="0.77647058820000003" green="0.91372549020000005" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner.png" translatesAutoresizingMaskIntoConstraints="NO" id="B0y-yB-0c4">
-                    <rect key="frame" x="24" y="86" width="272" height="200"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B0y-yB-0c4">
+                    <rect key="frame" x="24" y="86" width="272" height="152"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="B0y-yB-0c4" secondAttribute="height" multiplier="34:25" id="G1N-vU-qqc"/>
+                        <constraint firstAttribute="width" secondItem="B0y-yB-0c4" secondAttribute="height" multiplier="34:19" id="G1N-vU-qqc"/>
                     </constraints>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7c9-bO-7bQ">
-                    <rect key="frame" x="24" y="306" width="272" height="195"/>
+                    <rect key="frame" x="24" y="263" width="272" height="250"/>
                     <subviews>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mqa-s9-uwz">
-                            <rect key="frame" x="0.0" y="0.0" width="272" height="195"/>
+                            <rect key="frame" x="0.0" y="0.0" width="272" height="250"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="InZ-Ap-0Xx">
-                                    <rect key="frame" x="0.0" y="0.0" width="272" height="295"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="272" height="350"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="error-blue.png" translatesAutoresizingMaskIntoConstraints="NO" id="mYy-IN-Nqv">
                                             <rect key="frame" x="106" y="10" width="60" height="60"/>
@@ -561,7 +562,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="mqa-s9-uwz" firstAttribute="leading" secondItem="7c9-bO-7bQ" secondAttribute="leading" id="6Ne-p2-wuL"/>
-                        <constraint firstAttribute="height" constant="195" id="6aW-va-tts"/>
+                        <constraint firstAttribute="height" constant="250" id="6aW-va-tts"/>
                         <constraint firstAttribute="trailing" secondItem="mqa-s9-uwz" secondAttribute="trailing" id="Zy2-1J-yzE"/>
                         <constraint firstItem="InZ-Ap-0Xx" firstAttribute="width" secondItem="7c9-bO-7bQ" secondAttribute="width" id="fDW-Uf-HET"/>
                         <constraint firstItem="mqa-s9-uwz" firstAttribute="top" secondItem="7c9-bO-7bQ" secondAttribute="top" id="sf5-BH-mn7"/>
@@ -593,7 +594,7 @@
                 <constraint firstItem="c75-FR-cZo" firstAttribute="top" secondItem="oSC-ax-MQJ" secondAttribute="bottom" id="DK4-78-shD"/>
                 <constraint firstItem="oSC-ax-MQJ" firstAttribute="top" secondItem="oTZ-tO-q7C" secondAttribute="top" id="DVr-oF-Tpb"/>
                 <constraint firstItem="B0y-yB-0c4" firstAttribute="centerX" secondItem="ixv-AE-SdF" secondAttribute="centerX" id="HTg-WT-pHh"/>
-                <constraint firstItem="7c9-bO-7bQ" firstAttribute="top" secondItem="B0y-yB-0c4" secondAttribute="bottom" constant="20" id="Ime-LM-Zlo"/>
+                <constraint firstItem="7c9-bO-7bQ" firstAttribute="top" secondItem="B0y-yB-0c4" secondAttribute="bottom" constant="25" id="Ime-LM-Zlo"/>
                 <constraint firstItem="IPq-BT-aer" firstAttribute="centerX" secondItem="ixv-AE-SdF" secondAttribute="centerX" id="JCK-ZS-Ywv"/>
                 <constraint firstItem="oSC-ax-MQJ" firstAttribute="leading" secondItem="oTZ-tO-q7C" secondAttribute="leading" id="JRC-tB-Sk6"/>
                 <constraint firstItem="B0y-yB-0c4" firstAttribute="width" secondItem="ixv-AE-SdF" secondAttribute="width" multiplier="0.85" id="L9t-by-CpT"/>
@@ -613,7 +614,6 @@
     </objects>
     <resources>
         <image name=" Dreamweave.png" width="1000" height="740"/>
-        <image name="banner.png" width="272" height="200"/>
         <image name="cancel.png" width="24" height="24"/>
         <image name="check.png" width="24" height="24"/>
         <image name="error-blue.png" width="100" height="100"/>

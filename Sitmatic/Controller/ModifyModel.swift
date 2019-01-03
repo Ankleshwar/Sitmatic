@@ -16,6 +16,12 @@ protocol ModifyModelDelegate {
 
 
 class ModifyModel: BaseViewController {
+
+
+    @IBOutlet weak var imageBanner: UIImageView!
+    
+    @IBOutlet weak var imgBannerSecond: UIImageView!
+
     @IBOutlet weak var viewControl: UIView!
      @IBOutlet weak var imgConstraintTopHeight: NSLayoutConstraint!
     @IBOutlet weak var imgSecondConstHeight: NSLayoutConstraint!
@@ -619,6 +625,13 @@ class ModifyModel: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         self.pickerView.translatesAutoresizingMaskIntoConstraints = false
+
+        imageBanner.kf.indicatorType = .activity
+        let urlbaner = URL(string: imgBaseUrl)
+        imageBanner.kf.setImage(with: urlbaner)
+        imgBannerSecond.kf.indicatorType = .activity
+       
+        imgBannerSecond.kf.setImage(with: urlbaner)
         
         
     }
@@ -632,6 +645,8 @@ class ModifyModel: BaseViewController {
         UIView().setShadow(self.viewFirstCantainer)
         UIView().setShadow(self.viewSecondContainer)
 
+        UIView().setShadowImg(self.imageBanner)
+         UIView().setShadowImg(imgBannerSecond);
         if let viewone = self.view.viewWithTag(22),let viewTwo = self.view.viewWithTag(21),let viewThree = self.view.viewWithTag(23),let viewFour = self.view.viewWithTag(24),let viewFive = self.view.viewWithTag(25),let viewsix = self.view.viewWithTag(26),let viewSeven = self.view.viewWithTag(27),let viewEight = self.view.viewWithTag(28) {
              UIView().setShadow(viewone);
             UIView().setShadow(viewTwo);
