@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -44,7 +44,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rnJ-VX-aVs">
-                    <rect key="frame" x="20" y="111" width="280" height="367"/>
+                    <rect key="frame" x="20" y="111" width="280" height="377"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y2u-wI-wZb">
                             <rect key="frame" x="0.0" y="0.0" width="280" height="145.5"/>
@@ -57,7 +57,8 @@
                                     <string key="text">
 Welcome to GoodFit™ by Sitmatic!
 
-                        workstation personalized 
+                        workstation
+ personalized 
 We got your back!
 
 </string>
@@ -81,7 +82,7 @@ We got your back!
                             </constraints>
                         </view>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home" translatesAutoresizingMaskIntoConstraints="NO" id="9uc-O2-pVb">
-                            <rect key="frame" x="0.0" y="145.5" width="280" height="221.5"/>
+                            <rect key="frame" x="0.0" y="145.5" width="280" height="231.5"/>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -109,6 +110,12 @@ We got your back!
                         <action selector="clickToStartOrder:" destination="-1" eventType="touchUpInside" id="KHM-dB-xa0"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© Sitmatic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FW4-bL-33J">
+                    <rect key="frame" x="134.5" y="548" width="51.5" height="15"/>
+                    <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="11"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="0.77647058823529413" green="0.9137254901960784" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -117,21 +124,24 @@ We got your back!
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="rnJ-VX-aVs" secondAttribute="trailing" constant="20" id="7i8-OL-0jO"/>
                 <constraint firstItem="rnJ-VX-aVs" firstAttribute="top" secondItem="vNw-mo-Ifs" secondAttribute="bottom" constant="45" id="Bzt-Qa-qn5"/>
                 <constraint firstItem="K1H-UZ-3Vg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="JJf-o6-Onu"/>
+                <constraint firstItem="FW4-bL-33J" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="JUB-Hc-FVK"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ftz-ae-naX" secondAttribute="trailing" constant="40" id="SE0-JQ-B3G"/>
                 <constraint firstItem="K1H-UZ-3Vg" firstAttribute="bottom" secondItem="vNw-mo-Ifs" secondAttribute="bottom" id="U2i-bE-wVy"/>
                 <constraint firstItem="rnJ-VX-aVs" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="UND-rH-whh"/>
                 <constraint firstItem="K1H-UZ-3Vg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="W5N-54-Bhf"/>
                 <constraint firstItem="vNw-mo-Ifs" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="X26-lB-NS7"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ftz-ae-naX" secondAttribute="bottom" constant="25" id="XkK-7e-wa9"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="FW4-bL-33J" secondAttribute="bottom" constant="5" id="ogC-zp-90U"/>
                 <constraint firstItem="K1H-UZ-3Vg" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="pdu-NO-QUz"/>
                 <constraint firstItem="vNw-mo-Ifs" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="q26-dS-bOj"/>
-                <constraint firstItem="ftz-ae-naX" firstAttribute="top" secondItem="rnJ-VX-aVs" secondAttribute="bottom" constant="25" id="rga-qa-rHi"/>
+                <constraint firstItem="ftz-ae-naX" firstAttribute="top" secondItem="rnJ-VX-aVs" secondAttribute="bottom" constant="15" id="rga-qa-rHi"/>
+                <constraint firstItem="FW4-bL-33J" firstAttribute="top" secondItem="ftz-ae-naX" secondAttribute="bottom" constant="5" id="xw0-VU-vab"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="22.5" y="48.591549295774648"/>
         </view>
     </objects>
     <resources>
-        <image name="home" width="150" height="158"/>
+        <image name="home" width="21600" height="22752"/>
     </resources>
 </document>

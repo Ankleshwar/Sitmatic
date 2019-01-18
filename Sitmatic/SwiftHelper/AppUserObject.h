@@ -20,6 +20,7 @@
 @property (nonatomic, copy) NSString *ProfileId;
 @property (nonatomic, copy) NSString *userType;
 @property (nonatomic, copy) NSString *email;
+@property (nonatomic, copy) NSString *emailAlternate;
 @property (nonatomic, copy) NSString *password;
 @property (nonatomic, copy) NSString *device_id;
 @property (nonatomic, copy) NSString *Gender;

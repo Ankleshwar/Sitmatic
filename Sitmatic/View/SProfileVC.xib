@@ -276,7 +276,7 @@
                         <constraint firstAttribute="bottom" secondItem="A6I-PU-Oq3" secondAttribute="bottom" id="yjS-ea-jPl"/>
                     </constraints>
                 </scrollView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Good Fit™ v4.12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YRW-cv-yrt">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GoodFit™ v4.15" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YRW-cv-yrt">
                     <rect key="frame" x="110" y="806.5" width="100" height="14.5"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="100" id="emc-Qj-rmf"/>

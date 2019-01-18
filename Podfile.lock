@@ -28,6 +28,7 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.34.0):
     - FBSDKCoreKit (~> 4.34.0)
+  - IQKeyboardManagerSwift (6.0.4)
   - JWTDecode (2.1.1)
   - Kingfisher (4.7.0)
   - SVProgressHUD (2.2.5)
@@ -46,6 +47,7 @@ DEPENDENCIES:
   - FacebookCore
   - FacebookLogin
   - FacebookShare
+  - IQKeyboardManagerSwift
   - JWTDecode
   - Kingfisher
   - SVProgressHUD
@@ -69,6 +71,7 @@ SPEC REPOS:
     - FBSDKCoreKit
     - FBSDKLoginKit
     - FBSDKShareKit
+    - IQKeyboardManagerSwift
     - JWTDecode
     - Kingfisher
     - SVProgressHUD
@@ -91,6 +94,7 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: 0ff57f093b85c8c9d5aba697d3edf68a8960ce78
   FBSDKLoginKit: 8c78f57a145afb756e4755e69195ebe08a42466e
   FBSDKShareKit: 511d1dfc71204c0a8d69e6c5e3c964dcf0d4f3d9
+  IQKeyboardManagerSwift: 36dbe324b4f9793f5f41ba5227f3e7c76dfefd50
   JWTDecode: 83e8b381aafe27158d9f692cbdca2b12d61d460c
   Kingfisher: da6b005aa96d37698e3e4f1ccfe96a5b9bbf27d6
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
@@ -101,6 +105,6 @@ SPEC CHECKSUMS:
   Toaster: a6c9532de1ded8105e77376f7dffeb2e12b46dbb
   YALSideMenu: 4d6b90ea44dcdded18a99e46b676e4ad51d9c6bb
 
-PODFILE CHECKSUM: 4d2716f4a1b912013f1a14526407f7410aad0037
+PODFILE CHECKSUM: 8303f3f9a1086bb6b6a6393b32e0e45aadd34f6f
 
 COCOAPODS: 1.5.3

@@ -92,7 +92,7 @@ class OrderProccessingThird: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.txtColor.isHidden = true
-        self.btnTryAgain.layer.cornerRadius = 20.0
+       // self.btnTryAgain.layer.cornerRadius = 20.0
         self.btnTryAgain.clipsToBounds = true
         self.setTopView(self.viewTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
            self.setTopView(self.viewCallTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
@@ -517,7 +517,7 @@ class OrderProccessingThird: BaseViewController {
     fileprivate func textField(color:UIColor) {
         self.txtColor.layer.borderWidth = 1.0
         self.txtColor.layer.borderColor = color.cgColor
-        self.txtColor.layer.cornerRadius = 5.0
+        //self.txtColor.layer.cornerRadius = 5.0
     }
     
     

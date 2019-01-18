@@ -117,6 +117,7 @@
 		3B1B2C2C21819789004A9868 /* user-icon26x26.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B1B2C2B21819789004A9868 /* user-icon26x26.png */; };
 		3B64C00F21A53E9F00F7DF77 /* Dreamweave.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B64C00E21A53E9F00F7DF77 /* Dreamweave.png */; };
 		3B64C01521A56A6C00F7DF77 /* Flexx.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B64C01421A56A6C00F7DF77 /* Flexx.png */; };
+		3B99655821EF24D400A82B06 /* copyright.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B99655721EF24D400A82B06 /* copyright.png */; };
 		3BCC14B42186F20E00C24FD8 /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BCC14B32186F20E00C24FD8 /* edit.png */; };
 		3BCC14B62186F24000C24FD8 /* left-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BCC14B52186F24000C24FD8 /* left-arrow.png */; };
 		3BECDE392154AFF9009CB3DC /* cancel (2).png in Resources */ = {isa = PBXBuildFile; fileRef = 3BECDE382154AFF9009CB3DC /* cancel (2).png */; };
@@ -278,6 +279,7 @@
 		3B1B2C2B21819789004A9868 /* user-icon26x26.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user-icon26x26.png"; sourceTree = "<group>"; };
 		3B64C00E21A53E9F00F7DF77 /* Dreamweave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Dreamweave.png; sourceTree = "<group>"; };
 		3B64C01421A56A6C00F7DF77 /* Flexx.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flexx.png; sourceTree = "<group>"; };
+		3B99655721EF24D400A82B06 /* copyright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = copyright.png; sourceTree = "<group>"; };
 		3BCC14B32186F20E00C24FD8 /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = edit.png; path = ../../../../Downloads/edit.png; sourceTree = "<group>"; };
 		3BCC14B52186F24000C24FD8 /* left-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left-arrow.png"; sourceTree = "<group>"; };
 		3BECDE382154AFF9009CB3DC /* cancel (2).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel (2).png"; sourceTree = "<group>"; };
@@ -500,6 +502,7 @@
 			isa = PBXGroup;
 			children = (
 				3B64C00E21A53E9F00F7DF77 /* Dreamweave.png */,
+				3B99655721EF24D400A82B06 /* copyright.png */,
 				3BCC14B32186F20E00C24FD8 /* edit.png */,
 				3BFE26642181D51600B77FC1 /* slide3.png */,
 				3B64C01421A56A6C00F7DF77 /* Flexx.png */,
@@ -771,6 +774,7 @@
 				1B2E013520C7B68900B34645 /* 1125_2436.png in Resources */,
 				1BCEB5C420FC7A280042EFBD /* TableViewCell.xib in Resources */,
 				3B01AB1020C6D87300291522 /* SSLoginVC.xib in Resources */,
+				3B99655821EF24D400A82B06 /* copyright.png in Resources */,
 				3BFE26632181C33E00B77FC1 /* sitmaticlogo.png in Resources */,
 				1BECD14A20F8D5DA004252D5 /* Simulator Screen Shot - iPhone 8 Plus - 2018-07-13 1.jpg in Resources */,
 				3B01AB2720C6D98400291522 /* TopBar.xib in Resources */,
@@ -867,6 +871,7 @@
 				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/JWTDecode/JWTDecode.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
@@ -890,6 +895,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWTDecode.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",

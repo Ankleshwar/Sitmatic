@@ -97,20 +97,23 @@ import SVProgressHUD
                         
                         if let user = dicdata["successData"] as? [String : Any] {
                             self.appUserObject = AppUserObject.instance(from: dicdata)
-                            self.appUserObject?.userName = user["name"] as! String
-                            self.appUserObject?.access_token = user["token"] as! String
-                            self.appUserObject?.email = user["email"] as! String
-                            self.appUserObject?.mobile = user["mobile"] as! String
-                            self.appUserObject?.userImageUrl = user["image"] as! String
-                            self.appUserObject?.pincode = user["zipcode"] as! String
+                            self.appUserObject?.userName = user["name"] as? String
+                            self.appUserObject?.access_token = user["token"] as? String
+                            self.appUserObject?.email = user["email"] as? String
+                            self.appUserObject?.mobile = user["mobile"] as? String
+                            self.appUserObject?.userImageUrl = user["image"] as? String
+                            self.appUserObject?.pincode = user["zipcode"] as? String
                             let id = user["id"] as! Int
-                            self.appUserObject?.address = user["address"] as! String
+                            self.appUserObject?.address = user["address"] as? String
                             self.appUserObject?.userId = String(id)
                             UserDefaults.standard.set(true, forKey: "isLogin")
                             UserDefaults.standard.synchronize()
                             self.appUserObject?.saveToUserDefault()
+
                             let vc = SHomeVC(nibName: "SHomeVC", bundle: nil)
                             self.navigationController?.pushViewController(vc, animated: true)
+
+
                         }
                     }
                     else{

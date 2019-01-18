@@ -8,25 +8,53 @@
 
 import UIKit
 import Kingfisher
+import IQKeyboardManagerSwift
 
 class BasicInfoVC: BaseViewController,OrderProccessingDelegate {
     func setData(arrData: [[String : String]]) {
         self.arrDataSec = arrData
     }
+    @IBOutlet weak var scrollView: UIScrollView!
+    var myTextField = UITextField()
+    @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var imgBanner: UIImageView!
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var viewTop: UIView!
     @IBOutlet weak var imgConstraintTopHeight: NSLayoutConstraint!
     @IBOutlet weak var viewScroll: UIView!
-    
+    @IBOutlet weak var txtLocation: UITextField!
     @IBOutlet weak var txtName: UITextField!
     @IBOutlet weak var btnPrevious: UIButton!
     @IBOutlet weak var txtOrgName: UITextField!
   var arrDataSec: [[String: String]]  = Array()
+    lazy var inputToolbar: UIToolbar = {
+        var toolbar = UIToolbar()
+        toolbar.barStyle = .default
+        toolbar.isTranslucent = true
+        toolbar.sizeToFit()
+
+        var doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.inputToolbarDonePressed))
+        var flexibleSpaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        var fixedSpaceButton = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+
+        var nextButton  = UIBarButtonItem(image: UIImage(named: "previous.png"),  style: .plain, target: self, action: #selector(self.keyboardpreviousButton))
+        nextButton.width = 50.0
+        var previousButton  = UIBarButtonItem(image: UIImage(named: "next.png"), style: .plain, target: self, action: #selector(self.keyboardNextButton))
+
+        toolbar.setItems([fixedSpaceButton, nextButton, fixedSpaceButton, previousButton, flexibleSpaceButton, doneButton], animated: false)
+        toolbar.isUserInteractionEnabled = true
+
+        return toolbar
+    }()
+
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        IQKeyboardManager.shared.enable = true
          self.txtName.setLeftPaddingPoints(10)
         self.txtName.text = self.appUserObject?.userName
+        //self.txtEmail.text = self.appUserObject?.email
         self.btnPrevious.isHidden = true
         textField(color:UIColor.black)
         self.setTopView(self.viewTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
@@ -50,7 +78,52 @@ class BasicInfoVC: BaseViewController,OrderProccessingDelegate {
         
 
     }
-    
+
+  //  MARK: Textfield Next and Previous Method.
+
+    @objc func inputToolbarDonePressed(){
+        //self.scrollView.scrollsToTop = true
+        self.txtName.resignFirstResponder()
+        self.txtEmail.resignFirstResponder()
+        self.txtOrgName.resignFirstResponder()
+        self.txtLocation.resignFirstResponder()
+
+    }
+    @objc func keyboardNextButton(){
+
+        if myTextField == txtName {
+            self.txtEmail.becomeFirstResponder()
+        }else if myTextField == txtEmail {
+            self.txtOrgName.becomeFirstResponder()
+        }else if myTextField == txtOrgName {
+            self.txtLocation.becomeFirstResponder()
+        }
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>,
+                               with event: UIEvent?) {
+        self.view.endEditing(true)
+        self.txtName.resignFirstResponder()
+        self.txtEmail.resignFirstResponder()
+        self.txtOrgName.resignFirstResponder()
+        self.txtLocation.resignFirstResponder()
+
+    }
+    @objc func keyboardpreviousButton(){
+
+        if myTextField == txtName {
+            // self.txtConfirmPassword.becomeFirstResponder()
+        }else if myTextField == txtEmail {
+            self.txtName.becomeFirstResponder()
+        }else if myTextField == txtOrgName {
+            self.txtEmail.becomeFirstResponder()
+        }else if myTextField == txtLocation {
+            self.txtOrgName.becomeFirstResponder()
+        }
+    }
+
+
+
     @objc func rightButtonClicked(_ sender: Any) {
         let vc = SProfileVC(nibName: "SProfileVC", bundle: nil)
         
@@ -95,11 +168,14 @@ class BasicInfoVC: BaseViewController,OrderProccessingDelegate {
         
         if self.txtName.text?.count == 0{
             self.showToastForQue(message: "Please enter your name",y:frame + self.viewContainer.frame.origin.y+self.viewContainer.frame.size.height)
-        }else{
+        }
+        else{
             self.txtOrgName.resignFirstResponder()
             self.txtName.resignFirstResponder()
             self.appUserObject?.lastName = self.txtName.text
             self.appUserObject?.countryCode = self.txtOrgName.text
+            self.appUserObject?.locality = self.txtLocation.text
+            self.appUserObject?.emailAlternate = self.txtEmail.text
             self.appUserObject?.saveToUserDefault()
             let vc = OrderProccessing(nibName: "OrderProccessing", bundle: nil)
                 vc.arrAnswer = arrDataSec
@@ -142,15 +218,32 @@ extension BasicInfoVC: UITextFieldDelegate{
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.setLeftPaddingPoints(10)
-    
-          self.moveTextField(textField: textField, moveDistance: -150, up: true)
+            myTextField = textField
+        // self.moveTextField(textField: textField, moveDistance: -20, up: true)
     }
 
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        textField.inputAccessoryView = inputToolbar
 
- 
+        return true
+    }
+
     func textFieldDidEndEditing(_ textField: UITextField) {
-        self.moveTextField(textField: textField, moveDistance: -150, up: false)
+      //  self.moveTextField(textField: textField, moveDistance: -20, up: false)
+       // self.scrollView.scrollToBottom(animated: true)
+        if textField == txtName {
+            self.txtEmail.becomeFirstResponder()
+        }else if textField == txtEmail {
+            self.txtOrgName.becomeFirstResponder()
+        }else if textField == txtOrgName {
+            self.txtLocation.becomeFirstResponder()
+        }
+
     }
+ 
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//
+//    }
 
 
     

@@ -157,8 +157,17 @@ class SHomeVC: BaseViewController {
 //    }
     
     @IBAction func clickToStartOrder(_ sender: Any) {
-        let vc = BasicInfoVC(nibName: "BasicInfoVC", bundle: nil)
-        self.navigationController?.pushViewController(vc, animated: true)
+
+        if  (self.appUserObject?.address.count == 0 || self.appUserObject?.address == "Please select your address") {
+            let vc = SProfileVC(nibName: "SProfileVC", bundle: nil)
+            vc.isAddressFill = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        }else{
+            let vc = BasicInfoVC(nibName: "BasicInfoVC", bundle: nil)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+
+
 
         
     }

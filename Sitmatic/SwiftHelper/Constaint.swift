@@ -18,4 +18,5 @@ let ipadUDID = "EC29D957CB81BC65AD3CB848A7BFA990054CAD52"
 
 let googleOAuthClientKey = "686916443955-lif7lmv9724r7akg4l45938er2m3193f.apps.googleusercontent.com"
 
-let imgBaseUrl = "https://s3.amazonaws.com/sitmaticmodified/13+Arms27122018.jpg"
+let imgBaseUrl = "https://s3.amazonaws.com/sitmaticmodified/Arms_09012019.png"
+

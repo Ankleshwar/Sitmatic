@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import IQKeyboardManagerSwift
 
 class SSignupVC: BaseViewController {
 
@@ -101,7 +102,7 @@ class SSignupVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-   
+        IQKeyboardManager.shared.enable = true
          self.hideKeyboardWhenTappedAround()
     }
 
@@ -269,7 +270,7 @@ extension SSignupVC: UITextFieldDelegate{
     
     func textFieldDidEndEditing(_ textField: UITextField) {
       
-        self.scrollView.scrollToBottom(animated: true)
+       // self.scrollView.scrollToBottom(animated: true)
         if textField == txtName {
             self.txtEmail.becomeFirstResponder()
         }else if textField == txtEmail {

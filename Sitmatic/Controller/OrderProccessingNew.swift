@@ -461,7 +461,10 @@ protocol OrderProccessingNewDelegate  {
                        "user_id":(self.appUserObject?.userId)!,
                        "name": (self.appUserObject?.lastName)!,
                        "organization_name": self.appUserObject?.countryCode ?? "",
+                       "email": self.appUserObject?.emailAlternate ?? "",
+                       "location": self.appUserObject?.locality ?? ""
             ]
+
 
             print(dic)
             var  strName = (self.appUserObject?.access_token)!

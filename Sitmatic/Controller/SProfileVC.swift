@@ -22,6 +22,7 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
     @IBOutlet weak var btnEdit: UIButton!
     @IBOutlet weak var btnPhoto: UIButton!
     @IBOutlet weak var txtZip: UITextField!
+    var isAddressFill = false
     
     var imageUser = UIImage()
     var objeHome = SHomeVC()
@@ -176,6 +177,11 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
                     let url = URL(string: (self.appUserObject?.userImageUrl)!)
                     let imgholder = UIImageView()
                     imgholder.kf.setImage(with: url)
+
+                    if self.isAddressFill == true{
+                        let vc = BasicInfoVC(nibName: "BasicInfoVC", bundle: nil)
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
                     
                     SVProgressHUD.dismiss()
                     self.btnLogOut.isHidden = false

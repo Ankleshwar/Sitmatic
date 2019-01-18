@@ -633,7 +633,7 @@ protocol OrderProccessingSecondDelegate  {
             SVProgressHUD.dismiss()
             self.btnNext.isHidden = true
             self.btnCancle.isEnabled = true
-            let sendData = obj
+            _ = obj
 
 
         }
@@ -644,6 +644,8 @@ protocol OrderProccessingSecondDelegate  {
                        "user_id":(self.appUserObject?.userId)!,
                        "name": (self.appUserObject?.lastName)!,
                        "organization_name": self.appUserObject?.countryCode ?? "",
+                       "email": self.appUserObject?.emailAlternate ?? "",
+                       "location": self.appUserObject?.locality ?? ""
             ]
 
             print(dic)

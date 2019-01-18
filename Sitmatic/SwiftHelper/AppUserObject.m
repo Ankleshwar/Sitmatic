@@ -19,6 +19,7 @@
     if (self = [super init]) {
           self.token =[decoder decodeObjectForKey:@"token"];
         self.access_token = [decoder decodeObjectForKey:@"access_token"];
+        self.emailAlternate=[decoder decodeObjectForKey:@"emailAlternate"];
         self.ParlourId  =[decoder decodeObjectForKey:@"beautician_parlour_id"];
         self.countryCode=[decoder decodeObjectForKey:@"code"];
         self.userId = [decoder decodeObjectForKey:@"user_id"];
@@ -51,7 +52,8 @@
 }
 
 - (void)encodeWithCoder:(NSCoder *)encoder {
-      [encoder encodeObject:self.entityId forKey:@"entityId"];
+    [encoder encodeObject:self.emailAlternate forKey:@"emailAlternate"];
+    [encoder encodeObject:self.entityId forKey:@"entityId"];
     [encoder encodeObject:self.access_token forKey:@"access_token"];
     [encoder encodeObject:self.ParlourId forKey:@"beautician_parlour_id"];
     [encoder encodeObject:self.token forKey:@"token"];
@@ -135,6 +137,7 @@
     
    
  self.token = [authDict objectForKey:@"token"];
+ self.emailAlternate = [authDict objectForKey:@"emailAlternate"];
 
 
     
