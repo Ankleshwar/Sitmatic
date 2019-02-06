@@ -60,6 +60,8 @@ class SHomeVC: BaseViewController {
         lblDescription.text = text
         
         self.setTopView(self.viewTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
+        UserDefaults.standard.set([], forKey: "SelectedDataThirdScreen")
+        UserDefaults.standard.synchronize()
 
     }
     

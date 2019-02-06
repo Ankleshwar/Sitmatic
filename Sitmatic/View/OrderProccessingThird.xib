@@ -439,6 +439,20 @@
                         <action selector="clickToConfirmModel:" destination="-1" eventType="touchUpInside" id="Q8A-ih-NSM"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jNy-Wm-p5v">
+                    <rect key="frame" x="0.0" y="518" width="100" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="Iju-PR-j4d"/>
+                        <constraint firstAttribute="height" constant="50" id="TNg-eX-NNT"/>
+                    </constraints>
+                    <state key="normal" image="back.png">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="clickToBackSub:" destination="-1" eventType="touchUpInside" id="GUs-75-s2d"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
@@ -446,6 +460,7 @@
                 <constraint firstItem="DmW-dT-uqM" firstAttribute="height" secondItem="s09-0D-t1u" secondAttribute="height" id="3jR-Qq-Lvr"/>
                 <constraint firstItem="DmW-dT-uqM" firstAttribute="width" secondItem="s09-0D-t1u" secondAttribute="width" id="7MR-A9-FQo"/>
                 <constraint firstItem="noA-eh-X95" firstAttribute="leading" secondItem="yjh-qU-2G6" secondAttribute="leading" id="7TI-i3-LYV"/>
+                <constraint firstItem="jNy-Wm-p5v" firstAttribute="bottom" secondItem="7X2-qj-yR0" secondAttribute="bottom" id="8Nc-nO-icv"/>
                 <constraint firstItem="Sjj-4x-aB9" firstAttribute="top" secondItem="7X2-qj-yR0" secondAttribute="top" id="9h6-6K-lBL"/>
                 <constraint firstItem="7X2-qj-yR0" firstAttribute="trailing" secondItem="DmW-dT-uqM" secondAttribute="trailing" id="AR3-JJ-ESe"/>
                 <constraint firstItem="Sjj-4x-aB9" firstAttribute="trailing" secondItem="7X2-qj-yR0" secondAttribute="trailing" id="Aij-ef-MYX"/>
@@ -457,8 +472,11 @@
                 <constraint firstItem="s09-0D-t1u" firstAttribute="bottom" secondItem="7X2-qj-yR0" secondAttribute="bottom" id="blN-wA-KeS"/>
                 <constraint firstItem="DmW-dT-uqM" firstAttribute="centerY" secondItem="s09-0D-t1u" secondAttribute="centerY" id="cUS-gA-I6m"/>
                 <constraint firstItem="Sjj-4x-aB9" firstAttribute="top" secondItem="noA-eh-X95" secondAttribute="bottom" id="ccd-I9-v7x"/>
+                <constraint firstItem="jNy-Wm-p5v" firstAttribute="top" secondItem="yh4-JE-RKn" secondAttribute="bottom" id="eo9-hK-Jdi"/>
                 <constraint firstItem="yh4-JE-RKn" firstAttribute="top" secondItem="Sjj-4x-aB9" secondAttribute="bottom" id="mT1-WJ-gNy"/>
                 <constraint firstItem="noA-eh-X95" firstAttribute="top" secondItem="yjh-qU-2G6" secondAttribute="top" id="vb2-OO-nf1"/>
+                <constraint firstItem="jNy-Wm-p5v" firstAttribute="leading" secondItem="yjh-qU-2G6" secondAttribute="leading" id="vjR-tp-c76"/>
+                <constraint firstItem="s09-0D-t1u" firstAttribute="leading" secondItem="jNy-Wm-p5v" secondAttribute="trailing" constant="10" id="wJj-ic-3dP"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="7X2-qj-yR0"/>
             <point key="canvasLocation" x="3234" y="721"/>
@@ -475,7 +493,7 @@
                     <rect key="frame" x="0.0" y="20" width="320" height="46"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CustomFit™ by Sitmatic" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTT-Qe-lZh">
-                            <rect key="frame" x="69" y="8" width="182" height="30"/>
+                            <rect key="frame" x="67" y="8" width="186" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="cvU-Yg-bnX"/>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="uBW-1M-IIg"/>
@@ -527,7 +545,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j28-hF-ge0">
-                                            <rect key="frame" x="10" y="122" width="252" height="139.5"/>
+                                            <rect key="frame" x="10" y="122" width="252" height="139"/>
                                             <string key="text">Your requirement seems different from our standard model. For further assistance, please call us at 1(800)288-1492.
 
 
@@ -614,6 +632,7 @@
     </objects>
     <resources>
         <image name=" Dreamweave.png" width="1000" height="740"/>
+        <image name="back.png" width="24" height="24"/>
         <image name="cancel.png" width="24" height="24"/>
         <image name="check.png" width="24" height="24"/>
         <image name="error-blue.png" width="100" height="100"/>

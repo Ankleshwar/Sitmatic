@@ -56,17 +56,17 @@ class BasicInfoVC: BaseViewController,OrderProccessingDelegate {
         self.txtName.text = self.appUserObject?.userName
         //self.txtEmail.text = self.appUserObject?.email
         self.btnPrevious.isHidden = true
-        textField(color:UIColor.black)
+        //textField(color:UIColor.black)
         self.setTopView(self.viewTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
         imgBanner.kf.indicatorType = .activity
         let urlbaner = URL(string: imgBaseUrl)
         imgBanner.kf.setImage(with: urlbaner)
     }
-    fileprivate func textField(color:UIColor) {
-        self.txtName.layer.borderWidth = 0.7
-        self.txtName.layer.borderColor = color.cgColor
-        self.txtOrgName.layer.borderWidth = 0.7
-        self.txtOrgName.layer.borderColor = color.cgColor
+    fileprivate func textField(color:UIColor,txtxField:UITextField) {
+        txtxField.layer.borderWidth = 0.7
+        txtxField.layer.borderColor = color.cgColor
+//        self.txtOrgName.layer.borderWidth = 0.7
+//        self.txtOrgName.layer.borderColor = color.cgColor
         // self.txtField.layer.cornerRadius = 5.0
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -154,21 +154,29 @@ class BasicInfoVC: BaseViewController,OrderProccessingDelegate {
         }
         
     }
-    
+
+
     
     @IBAction func clickToNext(_ sender: Any) {
        
         
 //        print(self.viewScroll.frame.height)
         print(self.viewContainer.frame.origin.y+self.viewContainer.frame.size.height)
-       
+        let strname = self.txtEmail.text
+        let isValid = self.isValidEmail(testStr: strname!)
 
         let frame = self.viewScroll.frame.height-(self.viewContainer.frame.origin.y+self.viewContainer.frame.size.height)
         
         
         if self.txtName.text?.count == 0{
-            self.showToastForQue(message: "Please enter your name",y:frame + self.viewContainer.frame.origin.y+self.viewContainer.frame.size.height)
+           // self.showToast(message: "Please enter your name")
+            textField(color:UIColor.red,txtxField:self.txtName)
+        }else if strname!.count > 0 && isValid == false{
+              //self.showToast(message: "Please enter a valid email address")
+            textField(color:UIColor.red,txtxField:self.txtEmail)
+
         }
+
         else{
             self.txtOrgName.resignFirstResponder()
             self.txtName.resignFirstResponder()
@@ -217,8 +225,9 @@ extension BasicInfoVC: UITextFieldDelegate{
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.setLeftPaddingPoints(10)
+        textField.setLeftPaddingPoints(7)
             myTextField = textField
+        self.textField(color:UIColor.black,txtxField:textField)
         // self.moveTextField(textField: textField, moveDistance: -20, up: true)
     }
 

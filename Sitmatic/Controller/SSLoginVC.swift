@@ -10,7 +10,8 @@ import UIKit
 import SVProgressHUD
 
     class SSLoginVC: BaseViewController {
-
+        @IBOutlet weak var lblErrorHeight: NSLayoutConstraint!
+        
         @IBOutlet weak var txtEmail: UITextField!
         @IBOutlet weak var txtPassword: UITextField!
         @IBOutlet weak var btnForgot: UIButton!
@@ -32,10 +33,13 @@ import SVProgressHUD
             self.txtEmail.text = ""
             self.txtPassword.text = ""
             self.lblShowError.isHidden = true
+            txtEmail.setLeftPaddingPoints(7)
+            txtPassword.setLeftPaddingPoints(7)
         }
         
         override func viewDidLayoutSubviews() {
              UIView().setShadow(self.viewContainer)
+
             self.btnLogin.layer.masksToBounds = true;
             self.btnLogin.layer.cornerRadius = self.btnLogin.frame.height / 2.0
             self.btnLogin.layer.borderWidth = 1.0
@@ -46,19 +50,60 @@ import SVProgressHUD
             let strname = self.txtEmail.text
             let isValid = self.isValidEmail(testStr: strname!)
             if self.txtEmail.text?.count == 0{
-                self.showToast(message: "Please enter Email address")
+                self.showToastLocal(message: "Please enter your email address")
+                self.textField(color: UIColor.red, txtxField:self.txtEmail )
             }else if self.txtPassword.text?.count == 0 {
                 
-                self.showToast(message: "Please enter password ")
+                self.showToastLocal(message: "Please enter your password ")
+                self.textField(color: UIColor.red, txtxField:self.txtPassword )
                 
             }else if isValid == false{
-                self.showToast(message: "Please enter valid Email address")
+                self.showToastLocal(message: "Please enter a valid email address")
+                self.textField(color: UIColor.red, txtxField:self.txtEmail )
             }else{
                  self.view.isUserInteractionEnabled = false
                 callLoginApi()
             }
        
         }
+
+        fileprivate func textField(color:UIColor,txtxField:UITextField) {
+            txtxField.layer.borderWidth = 0.7
+            txtxField.layer.borderColor = color.cgColor
+
+        }
+
+        func showToastLocal(message : String) {
+
+
+           self.lblShowError.isHidden = false
+            self.lblErrorHeight.constant = 40
+            self.lblShowError.numberOfLines = 0
+            self.lblShowError.textColor = UIColor.red
+            self.lblShowError.textAlignment = .center;
+            self.lblShowError.font = UIFont(name: "Roboto", size: 16.0)
+            self.lblShowError.text = message
+            self.lblShowError.alpha = 1.0
+            self.lblShowError.layer.cornerRadius = 10;
+            self.lblShowError.clipsToBounds  =  true
+            //self.view.addSubview(self.lblShowError)
+            UIView.animate(withDuration: 2.0, delay: 0.5, options: .curveEaseOut, animations: {
+                self.lblShowError.alpha = 0.0
+            }, completion: {(isCompleted) in
+                //self.lblShowError.removeFromSuperview()
+                self.lblShowError.isHidden = true
+                self.lblErrorHeight.constant = 0
+
+            })
+        }
+
+
+
+
+
+
+
+
         
         @IBAction func clickToForgot(_ sender: Any) {
             if (sender as AnyObject).currentTitle == "Resend Verification Link" {
@@ -118,14 +163,23 @@ import SVProgressHUD
                     }
                     else{
                         let strError = dicdata["errorData"] as! String
-                        if strError == "Your account is not verified!!!"{
-                            self.showToast(message: dicdata["errorData"] as! String)
+                        if strError == "Your account is not verified!"{
+                            self.showToastLocal(message: dicdata["errorData"] as! String)
                             self.btnForgot.setButtonTitle("Resend Verification Link")
-                            self.btnForgot.setTitleColor(UIColor.red, for: .normal)
-                            self.lblShowError.isHidden = false
-                            self.lblShowError.text = dicdata["errorData"] as? String
+                            self.btnForgot.setTitleColor(UIColor.black, for: .normal)
+                            self.btnForgot.layer.masksToBounds = true;
+                            self.btnForgot.titleLabel?.font =  UIFont(name: "Roboto Regular", size: 16)
+                            self.btnForgot.layer.cornerRadius = self.btnLogin.frame.height / 2.0
+                            self.btnForgot.layer.borderWidth = 1.0
+                            self.btnForgot.layer.borderColor = UIColor.white.cgColor
+                            self.btnForgot.backgroundColor = #colorLiteral(red: 0.7754912972, green: 0.9129186273, blue: 0.9814837575, alpha: 1)
+                            //self.lblShowError.isHidden = false
+                           // self.lblErrorHeight.constant = 30
+                            //self.lblShowError.text = dicdata["errorData"] as? String
                         }else{
-                            self.showToast(message: dicdata["errorData"] as! String)
+                            self.showToastLocal(message: dicdata["errorData"] as? String ?? "")
+                             //self.lblShowError.text = dicdata["errorData"] as? String
+                          //  self.showToastLocal(message: dicdata["errorData"] as! String)
                         }
                     }
                     }
@@ -154,17 +208,17 @@ import SVProgressHUD
                         self.btnForgot.setButtonTitle("Forgot Password?")
                          self.lblShowError.isHidden = true
                         self.btnForgot.setTitleColor(UIColor.white, for: .normal)
-                        self.showToast(message: dicdata["successData"] as! String)
+                        self.showToastLocal(message: dicdata["successData"] as! String)
                     }
                     else{
                         print(dicdata)
                         let strError = dicdata["errorData"] as! String
                         if strError == "Your account is not verified!!!"{
-                            self.showToast(message: dicdata["errorData"] as! String)
+                            self.showToastLocal(message: dicdata["errorData"] as! String)
                             self.btnForgot.setButtonTitle("Resend Verification Link")
                             self.btnForgot.setTitleColor(UIColor.red, for: .normal)
                         }else{
-                            self.showToast(message: dicdata["errorData"] as! String)
+                            self.showToastLocal(message: dicdata["errorData"] as! String)
                         }
                     }
                 }
@@ -188,10 +242,13 @@ extension SSLoginVC: UITextFieldDelegate{
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.setLeftPaddingPoints(10)
+       // self.textField(color: UIColor.black, txtxField:textField )
+         self.textField(color:UIColor.black,txtxField:textField)
+
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        self.textField(color:UIColor.black,txtxField:textField)
        
     }
     

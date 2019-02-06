@@ -17,7 +17,9 @@ protocol ModifyModelDelegate {
 
 class ModifyModel: BaseViewController {
 
-
+    @IBOutlet weak var lblError: UILabel!
+    @IBOutlet weak var lblErrorSub: UILabel!
+    
     @IBOutlet weak var imageBanner: UIImageView!
     
     @IBOutlet weak var imgBannerSecond: UIImageView!
@@ -144,7 +146,8 @@ class ModifyModel: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+         self.lblError.isHidden = true
+        self.lblErrorSub.isHidden = true
         arrQuestion = (setDataWithLocalJson("ModifiModel") as NSArray as? Array<Dictionary<String, Any>>)!
         self.setTopView(self.viewTopFirst, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
         self.setTopView(self.viewTopSecond, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
@@ -177,7 +180,46 @@ class ModifyModel: BaseViewController {
         
         
     }
-    
+
+    func showToastLocal(message : String) {
+
+
+        self.lblError.isHidden = false
+       // self.lblError.constant = 40
+        self.lblError.numberOfLines = 0
+        self.lblError.textColor = UIColor.red
+        self.lblError.textAlignment = .center;
+        self.lblError.font = UIFont(name: "Roboto", size: 16.0)
+        self.lblError.text = message
+        self.lblError.alpha = 1.0
+        self.lblError.layer.cornerRadius = 10;
+        self.lblError.clipsToBounds  =  true
+
+        self.lblErrorSub.isHidden = false
+        // self.lblError.constant = 40
+        self.lblErrorSub.numberOfLines = 0
+        self.lblErrorSub.textColor = UIColor.red
+        self.lblErrorSub.textAlignment = .center;
+        self.lblErrorSub.font = UIFont(name: "Roboto", size: 16.0)
+        self.lblErrorSub.text = message
+        self.lblErrorSub.alpha = 1.0
+        self.lblErrorSub.layer.cornerRadius = 10;
+        self.lblErrorSub.clipsToBounds  =  true
+
+        //self.view.addSubview(self.lblShowError)
+        UIView.animate(withDuration: 2.0, delay: 0.5, options: .curveEaseOut, animations: {
+            self.lblError.alpha = 0.0
+            self.lblErrorSub.alpha = 0.0
+        }, completion: {(isCompleted) in
+            //self.lblShowError.removeFromSuperview()
+
+            self.lblError.isHidden = true
+            self.lblErrorSub.isHidden = true
+            //self.lblErrorHeight.constant = 0
+
+        })
+    }
+
     
     @objc func rightButtonClicked(_ sender: Any) {
         let vc = SProfileVC(nibName: "SProfileVC", bundle: nil)
@@ -276,9 +318,9 @@ class ModifyModel: BaseViewController {
     
         if index == 0{
             if successDataObject.backrestSize == "4"{
-                self.showToast(message: "Sorry, you cannot change your mesh.")
+                self.showToastLocal(message: "Sorry, you cannot change your mesh.")
             }else if isBackRestFour == true{
-                self.showToast(message: "Sorry, you cannot change your mesh")
+                self.showToastLocal(message: "Sorry, you cannot change your mesh")
             }else{
                   showPicker()
             }
@@ -286,7 +328,7 @@ class ModifyModel: BaseViewController {
             
          
             if isMesh == true{
-                self.showToast(message: "Sorry, you cannot change your backrest add ones")
+                self.showToastLocal(message: "Sorry, you cannot change your backrest add ones")
             }else{
                 if successDataObject.backrestSize == "4"{
                     self.arrIteam?.append("Headrest")
@@ -303,18 +345,18 @@ class ModifyModel: BaseViewController {
         }else if index == 4 {
             
               if successDataObject.backrestSize == "4"{
-                 self.showToast(message: "Sorry, you cannot change your seatsize")
+                 self.showToastLocal(message: "Sorry, you cannot change your seatsize")
               }else if isBackRestFour == true{
-                self.showToast(message: "Sorry, you cannot change your seat size")
+                self.showToastLocal(message: "Sorry, you cannot change your seat size")
               }else{
                 showPicker()
             }
         }else  if index == 2{
             if successDataObject.backrestSize == "4"{
-                self.showToast(message: "Sorry, you cannot change your backrest size.")
+                self.showToastLocal(message: "Sorry, you cannot change your backrest size.")
             }else {
                 if isMesh == true{
-                    self.showToast(message: "Sorry, you cannot change your backrest size.")
+                    self.showToastLocal(message: "Sorry, you cannot change your backrest size.")
                 }else{
                     showPicker()
                 }
@@ -383,7 +425,7 @@ class ModifyModel: BaseViewController {
             let  array = [dicSelected["backrestOptions"]] as! [String]
             let string = array.joined(separator: ",")
             if string == "" {
-                 self.lblBackrestPosition.text  = "Please select"
+                 self.lblBackrestPosition.text  = "No Change"
             }else{
                  self.lblBackrestPosition.text  = string + " " + "*"
             }
@@ -397,7 +439,7 @@ class ModifyModel: BaseViewController {
             let string = array.joined(separator: ",")
             
             if string == "" {
-                self.lblSeatOption.text  = "Please select"
+                self.lblSeatOption.text  = "No Change"
             }else{
                // self.lblSeatOption.text  = string + " " + "*"
                 self.lblSeatOption.text  = string
@@ -423,8 +465,8 @@ class ModifyModel: BaseViewController {
         } else if dicSelected["armrests"] != nil{
             
             
-            if (dicSelected["armrests"] as? String)! == "Please select" {
-                self.lblArmrests.text  = "Please select"
+            if (dicSelected["armrests"] as? String)! == "No Change" {
+                self.lblArmrests.text  = "No Change"
             }else{
                // self.lblArmrests.text = (dicSelected["armrests"] as? String)! + " " + "*"
                  self.lblArmrests.text = (dicSelected["armrests"] as? String)!
@@ -433,16 +475,16 @@ class ModifyModel: BaseViewController {
            
             
         }else{
-            self.lblArmrests.text = "Please select"
-            dicSelected["armrests"] = "Please select"
+            self.lblArmrests.text = "No Change"
+            dicSelected["armrests"] = "No Change"
         }
         if successDataObject.controlValue != "" {
             dicSelected["control"] = successDataObject.controlValue
             //self.lblCantrol.text = successDataObject.controlValue + " " + "*"
             self.lblCantrol.text = successDataObject.controlValue
         } else{
-            self.lblCantrol.text = "Please select"
-            dicSelected["control"] = "Please select"
+            self.lblCantrol.text = "No Change"
+            dicSelected["control"] = "No Change"
         }
         if successDataObject.caster != "" {
             dicSelected["casters"] = successDataObject.caster
@@ -450,8 +492,8 @@ class ModifyModel: BaseViewController {
             self.lblCasters.text = successDataObject.caster
         }else if dicSelected["casters"] as? String != nil {
             
-            if (dicSelected["casters"] as? String)! == "Please select" {
-                self.lblCasters.text  = "Please select"
+            if (dicSelected["casters"] as? String)! == "No Change" {
+                self.lblCasters.text  = "No Change"
             }else{
                 // self.lblCasters.text = (dicSelected["casters"] as? String)! + " " + "*"
                 self.lblCasters.text = (dicSelected["casters"] as? String)!
@@ -461,13 +503,13 @@ class ModifyModel: BaseViewController {
             
           
         }else{
-            self.lblCasters.text  = "Please select"
-            dicSelected["casters"] = "Please select"
+            self.lblCasters.text  = "No Change"
+            dicSelected["casters"] = "No Change"
         }
         
         if dicSelected["footrest"] as? String != nil {
-            if (dicSelected["footrest"] as? String)! == "Please select" {
-                self.lblFootrest.text  = "Please select"
+            if (dicSelected["footrest"] as? String)! == "No Change" {
+                self.lblFootrest.text  = "No Change"
             }else{
                 //self.lblFootrest.text = (dicSelected["footrest"] as? String)! + " " + "*"
                 self.lblFootrest.text = (dicSelected["footrest"] as? String)!
@@ -475,13 +517,13 @@ class ModifyModel: BaseViewController {
             
            
         }else{
-            self.lblFootrest.text = "Please select"
-            dicSelected["footrest"] = "Please select"
+            self.lblFootrest.text = "No Change"
+            dicSelected["footrest"] = "No Change"
         }
         if dicSelected["base"] as? String != nil {
             
-            if (dicSelected["base"] as? String)! == "Please select" {
-                self.lblBase.text  = "Please select"
+            if (dicSelected["base"] as? String)! == "No Change" {
+                self.lblBase.text  = "No Change"
             }else{
               //  self.lblBase.text = (dicSelected["base"] as? String)! + " " + "*"
                  self.lblBase.text = (dicSelected["base"] as? String)!
@@ -490,8 +532,8 @@ class ModifyModel: BaseViewController {
             
            
         }else{
-            self.lblBase.text = "Please select"
-            dicSelected["base"] = "Please select"
+            self.lblBase.text = "No Change"
+            dicSelected["base"] = "No Change"
         }
         
         if successDataObject.armrestCapValue != "" {
@@ -500,8 +542,8 @@ class ModifyModel: BaseViewController {
             self.lblArmcap.text = successDataObject.armrestCapValue
         } else if dicSelected["armcap"] as? String != nil {
             
-            if (dicSelected["armcap"] as? String)! == "Please select" {
-                self.lblArmcap.text  = "Please select"
+            if (dicSelected["armcap"] as? String)! == "No Change" {
+                self.lblArmcap.text  = "No Change"
             }else{
                  //self.lblArmcap.text = (dicSelected["armcap"] as? String)! + " " + "*"
                 self.lblArmcap.text = (dicSelected["armcap"] as? String)!
@@ -509,8 +551,8 @@ class ModifyModel: BaseViewController {
             
            
         }else{
-            self.lblArmcap.text = "Please select"
-            dicSelected["armcap"] = "Please select"
+            self.lblArmcap.text = "No Change"
+            dicSelected["armcap"] = "No Change"
         }
         
         if successDataObject.lowerLegLengthValue != "" {
@@ -519,8 +561,8 @@ class ModifyModel: BaseViewController {
              self.lblSeatHieght.text = successDataObject.lowerLegLengthValue
         } else if dicSelected["seatHieght"] != nil{
             
-            if (dicSelected["seatHieght"] as? String)! == "Please select" {
-                self.lblSeatHieght.text  = "Please select"
+            if (dicSelected["seatHieght"] as? String)! == "No Change" {
+                self.lblSeatHieght.text  = "No Change"
             }else{
                //  self.lblSeatHieght.text = (dicSelected["seatHieght"] as? String)! + " " + "*"
                 self.lblSeatHieght.text = (dicSelected["seatHieght"] as? String)!
@@ -530,8 +572,8 @@ class ModifyModel: BaseViewController {
           
             
         }else{
-            self.lblSeatHieght.text = "Please select"
-            dicSelected["seatHieght"] = "Please select"
+            self.lblSeatHieght.text = "No Change"
+            dicSelected["seatHieght"] = "No Change"
         }
                 if successDataObject.upperLegLengthValue != "" {
                     dicSelected["seatDepth"] = successDataObject.upperLegLengthValue
@@ -540,8 +582,8 @@ class ModifyModel: BaseViewController {
                     self.lblSeatDepth.text = dicSelected["seatDepth"] as? String
         
                 }else{
-                    self.lblSeatDepth.text = "Please select"
-                    dicSelected["seatDepth"] = "Please select"
+                    self.lblSeatDepth.text = "No Change"
+                    dicSelected["seatDepth"] = "No Change"
                 }
         if successDataObject.theighBredthValue != "" {
             dicSelected["seatSize"] = successDataObject.theighBredthValue
@@ -549,8 +591,8 @@ class ModifyModel: BaseViewController {
             self.lblSeatSize.text = successDataObject.theighBredthValue
         } else if dicSelected["seatSize"] != nil{
             
-            if (dicSelected["seatSize"] as? String)! == "Please select" {
-                self.lblSeatSize.text  = "Please select"
+            if (dicSelected["seatSize"] as? String)! == "No Change" {
+                self.lblSeatSize.text  = "No Change"
             }else{
                // self.lblSeatSize.text = (dicSelected["seatSize"] as? String)!  + " " + "*"
                 self.lblSeatSize.text = (dicSelected["seatSize"] as? String)!
@@ -559,8 +601,8 @@ class ModifyModel: BaseViewController {
            
             
         }else{
-            self.lblSeatSize.text = "Please select"
-            dicSelected["seatSize"] = "Please select"
+            self.lblSeatSize.text = "No Change"
+            dicSelected["seatSize"] = "No Change"
         }
         if successDataObject.backrestSizeValue != "" {
             dicSelected["backrestSize"] = successDataObject.backrestSizeValue
@@ -568,8 +610,8 @@ class ModifyModel: BaseViewController {
             self.lblbackRestSize.text = successDataObject.backrestSizeValue
         } else if dicSelected["backrestSize"] != nil{
             
-            if (dicSelected["backrestSize"] as? String)! == "Please select" {
-                self.lblbackRestSize.text  = "Please select"
+            if (dicSelected["backrestSize"] as? String)! == "No Change" {
+                self.lblbackRestSize.text  = "No Change"
             }else{
               //  self.lblbackRestSize.text = (dicSelected["backrestSize"] as? String)!  + " " + "*"
                  self.lblbackRestSize.text = (dicSelected["backrestSize"] as? String)!
@@ -578,14 +620,14 @@ class ModifyModel: BaseViewController {
             
             
         }else{
-            self.lblbackRestSize.text = "Please select"
-            dicSelected["backrestSize"] = "Please select"
+            self.lblbackRestSize.text = "No Change"
+            dicSelected["backrestSize"] = "No Change"
         }
                 if dicSelected["seatAngle"] as? String != nil {
                     self.lblSeatAngle.text = dicSelected["seatAngle"] as? String
                 }else{
-                    self.lblSeatAngle.text = "Please select"
-                    dicSelected["seatAngle"] = "Please select"
+                    self.lblSeatAngle.text = "No Change"
+                    dicSelected["seatAngle"] = "No Change"
                 }
         if successDataObject.elbowHeightValue != "" {
             dicSelected["armrestOption"] = successDataObject.elbowHeightValue
@@ -593,8 +635,8 @@ class ModifyModel: BaseViewController {
             self.lblArmrestOption.text = successDataObject.elbowHeightValue
         }else if dicSelected["armrestOption"] as? String != nil {
             
-            if (dicSelected["armrestOption"] as? String)! == "Please select" {
-                self.lblArmrestOption.text  = "Please select"
+            if (dicSelected["armrestOption"] as? String)! == "No Change" {
+                self.lblArmrestOption.text  = "No Change"
             }else{
                  //self.lblArmrestOption.text = (dicSelected["armrestOption"] as? String)!   + " " + "*"
                 self.lblArmrestOption.text = (dicSelected["armrestOption"] as? String)!
@@ -602,8 +644,8 @@ class ModifyModel: BaseViewController {
             
            
         }else{
-            self.lblArmrestOption.text = "Please select"
-            dicSelected["armrestOption"] = "Please select"
+            self.lblArmrestOption.text = "No Change"
+            dicSelected["armrestOption"] = "No Change"
         }
         
         
@@ -693,7 +735,7 @@ class ModifyModel: BaseViewController {
     
     
     @IBAction func clickToinfo(_ sender: Any) {
-        self.showToast(message: "Please Select Options from picker")
+        self.showToastLocal(message: "No Change Options from picker")
     }
     
     
@@ -737,12 +779,12 @@ class ModifyModel: BaseViewController {
     
     @objc func cancleTable(){
         if index == 3{
-            self.lblBackrestPosition.text  = "Please select"
-            dicSelected["backrestOptions"] = "Please select"
+            self.lblBackrestPosition.text  = "No Change"
+            dicSelected["backrestOptions"] = "No Change"
             self.tableView.isHidden = true
         }else if index == 5{
-            self.lblSeatOption.text  = "Please select"
-            dicSelected["seatOptions"] = "Please select"
+            self.lblSeatOption.text  = "No Change"
+            dicSelected["seatOptions"] = "No Change"
             self.tableView.isHidden = true
         }
     }
@@ -758,7 +800,7 @@ class ModifyModel: BaseViewController {
                 self.strValue = self.strValue.replacingOccurrences(of: "*", with: "",
                                                                    options: NSString.CompareOptions.literal, range:nil)
                 
-                if strValue == "Please select"{
+                if strValue == "No Change"{
                     self.lblbackRestSize.text  = strValue
                 }else{
                    // self.lblbackRestSize.text = strValue + " " + "*"
@@ -793,7 +835,7 @@ class ModifyModel: BaseViewController {
             }else{
                 self.strValue = self.strValue.replacingOccurrences(of: "*", with: "",
                                                                    options: NSString.CompareOptions.literal, range:nil)
-                if strValue == "Please select"{
+                if strValue == "No Change"{
                     self.lblSeatSize.text  = strValue
                 }else{
                    // self.lblSeatSize.text = strValue + " " + "*"
@@ -812,7 +854,7 @@ class ModifyModel: BaseViewController {
                 dicSelected["backrestOptions"] = string
                 
                 if string == ""{
-                    self.lblBackrestPosition.text  = "Please select"
+                    self.lblBackrestPosition.text  = "No Change"
                 }else{
                   //  self.lblBackrestPosition.text = string + " " + "*"
                      self.lblBackrestPosition.text = string
@@ -831,7 +873,7 @@ class ModifyModel: BaseViewController {
             dicSelected["seatOptions"] = string
             
             if string == ""{
-                self.lblSeatOption.text  = "Please select"
+                self.lblSeatOption.text  = "No Change"
             }else{
                // self.lblSeatOption.text = string + " " + "*"
                 self.lblSeatOption.text = string
@@ -850,7 +892,7 @@ class ModifyModel: BaseViewController {
             }else{
                 self.strValue = self.strValue.replacingOccurrences(of: "*", with: "",
                                                                    options: NSString.CompareOptions.literal, range:nil)
-                if strValue == "Please select"{
+                if strValue == "No Change"{
                     self.lblSeatHieght.text  = strValue
                 }else{
                   //  self.lblSeatHieght.text = strValue + " " + "*"
@@ -876,7 +918,7 @@ class ModifyModel: BaseViewController {
             }else{
                 self.strValue = self.strValue.replacingOccurrences(of: "*", with: "",
                                                                    options: NSString.CompareOptions.literal, range:nil)
-                if strValue == "Please select"{
+                if strValue == "No Change"{
                     self.lblArmrests.text  = strValue
                 }else{
                    // self.lblArmrests.text = strValue + " " + "*"
@@ -898,7 +940,7 @@ class ModifyModel: BaseViewController {
             }else{
                 self.strValue = self.strValue.replacingOccurrences(of: "*", with: "",
                                                                    options: NSString.CompareOptions.literal, range:nil)
-                if strValue == "Please select"{
+                if strValue == "No Change"{
                     self.lblArmcap.text  = strValue
                 }else{
                     self.lblArmcap.text = strValue + " " + "*"
@@ -909,7 +951,7 @@ class ModifyModel: BaseViewController {
             }
         }else if index == 10{
             
-            if strValue == "Please select"{
+            if strValue == "No Change"{
                 self.lblBase.text  = strValue
             }else{
                 self.lblBase.text = strValue
@@ -919,7 +961,7 @@ class ModifyModel: BaseViewController {
             dicSelected["base"] = strValue
         }else if index == 11{
             
-            if strValue == "Please select"{
+            if strValue == "No Change"{
                 self.lblFootrest.text  = strValue
             }else{
                  self.lblFootrest.text = strValue
@@ -931,7 +973,7 @@ class ModifyModel: BaseViewController {
             self.strValue = self.strValue.replacingOccurrences(of: "*", with: "",
                                                                options: NSString.CompareOptions.literal, range:nil)
             
-            if strValue == "Please select"{
+            if strValue == "No Change"{
                 self.lblCasters.text  = strValue
             }else{
                  self.lblCasters.text = strValue
@@ -974,7 +1016,7 @@ class ModifyModel: BaseViewController {
                 self.strValue = self.strValue.replacingOccurrences(of: "*", with: "",
                                                                    options: NSString.CompareOptions.literal, range:nil)
                 
-                if strValue == "Please select"{
+                if strValue == "No Change"{
                     self.lblCantrol.text  = strValue
                 }else{
                   // self.lblCantrol.text = strValue + " " + "*"
@@ -998,7 +1040,7 @@ class ModifyModel: BaseViewController {
                 self.strValue = self.strValue.replacingOccurrences(of: "*", with: "",
                                                                    options: NSString.CompareOptions.literal, range:nil)
                 
-                if strValue == "Please select"{
+                if strValue == "No Change"{
                      self.lblArmrestOption.text  = strValue
                 }else{
                   //self.lblArmrestOption.text  = strValue + " " + "*"
@@ -1012,7 +1054,7 @@ class ModifyModel: BaseViewController {
         } else if index == 13 {
             self.strValue = self.strValue.replacingOccurrences(of: "*", with: "",
                                                                options: NSString.CompareOptions.literal, range:nil)
-            if strValue == "Please select"{
+            if strValue == "No Change"{
                 self.lblSeatDepth.text  = strValue
             }else{
                 //self.lblSeatDepth.text  = strValue + " " + "*"
@@ -1020,7 +1062,7 @@ class ModifyModel: BaseViewController {
             }
             dicSelected["seatDepth"] = strValue
         } else if index == 14 {
-            if strValue == "Please select"{
+            if strValue == "No Change"{
                 self.lblSeatAngle.text  = strValue
             }else{
                // self.lblSeatAngle.text  = strValue + " " + "*"
@@ -1169,7 +1211,7 @@ class ModifyModel: BaseViewController {
             }
             
             if isMesh == true{
-                self.showToast(message: "Sorry, you cannot change your backrest add ones")
+                self.showToastLocal(message: "Sorry, you cannot change your backrest add ones")
             }else{
                self.setTableView()
             }
@@ -1182,9 +1224,9 @@ class ModifyModel: BaseViewController {
             self.setTableView()
         } else if index == 0 {
             if successDataObject.backrestSize == "4"{
-                self.showToast(message: "Sorry, you cannot change your mesh.")
+                self.showToastLocal(message: "Sorry, you cannot change your mesh.")
             }else if isBackRestFour == true{
-                self.showToast(message: "Sorry, you cannot change your mesh")
+                self.showToastLocal(message: "Sorry, you cannot change your mesh")
             }else {
                 
                 let indexArray = self.arrIteam?.index(where: { $0 == "(QT) Upholstered Back"})
@@ -1211,19 +1253,19 @@ class ModifyModel: BaseViewController {
         }else{
             if index == 2{
                 if successDataObject.backrestSize == "4"{
-                    self.showToast(message: "Sorry, you cannot change your backrest size.")
+                    self.showToastLocal(message: "Sorry, you cannot change your backrest size.")
                 }else {
                     if isMesh == true{
-                         self.showToast(message: "Sorry, you cannot change your backrest size.")
+                         self.showToastLocal(message: "Sorry, you cannot change your backrest size.")
                     }else{
                         showPicker()
                     }
                 }
             }else if index == 4{
                 if successDataObject.backrestSize == "4"{
-                    self.showToast(message: "Sorry, you cannot change your seat size")
+                    self.showToastLocal(message: "Sorry, you cannot change your seat size")
                 }else if isBackRestFour == true{
-                      self.showToast(message: "Sorry, you cannot change your seat size")
+                      self.showToastLocal(message: "Sorry, you cannot change your seat size")
                 }
                 else {
                     showPicker()

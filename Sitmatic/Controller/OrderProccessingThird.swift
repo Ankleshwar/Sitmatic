@@ -62,6 +62,7 @@ class OrderProccessingThird: BaseViewController {
     @IBOutlet weak var lblYes: UILabel!
     @IBOutlet weak var btnNo: UIButton!
     var isYesbtnTap : Bool!
+    var isButtonTap = false
     var strSelected : String!
     var dicData = Dictionary<String, String>()
     @IBOutlet weak var lblNo: UILabel!
@@ -74,7 +75,7 @@ class OrderProccessingThird: BaseViewController {
     var customViewAlert: UIView!
     @IBOutlet weak var btnNext: UIButton!
      var isPreviousClick : Bool!
-     var serverArrayThid: [[String: Any]]  = Array()
+     var serverArrayThid: [[String: String]]  = Array()
      var  value: Int = 0
     
     @IBOutlet weak var viewTop: UIView!
@@ -98,7 +99,7 @@ class OrderProccessingThird: BaseViewController {
            self.setTopView(self.viewCallTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
               self.setTopView(self.viewSubTop, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
         arrQuestion = setDataWithLocalJson("OrderProccessingThird") as NSArray as? Array<Dictionary<String, Any>>
-        setInitial()
+
         self.tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         self.tableView.separatorStyle = .none
         self.tableView.backgroundColor = UIColor.clear
@@ -117,7 +118,23 @@ class OrderProccessingThird: BaseViewController {
         imgCallBanner.kf.indicatorType = .activity
         //let urlbaner = URL(string: imgBaseUrl)
         imgCallBanner.kf.setImage(with: urlbaner)
+
+        if let array = UserDefaults.standard.array(forKey: "SelectedDataThirdScreen") as? [[String:String]] {
+
+            print(array)
+            self.serverArrayThid = array
+        }
+
+        setInitial()
+
     }
+
+
+    @IBAction func clickToBackSub(_ sender: Any) {
+        self.viewShowModel.removeFromSuperview()
+        self.txtColor.isEnabled = true
+    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         self.pickerView.translatesAutoresizingMaskIntoConstraints = false
@@ -190,14 +207,12 @@ class OrderProccessingThird: BaseViewController {
         self.txtColor.text = strValue
       dicAnsData["id"] = "19"
      dicAnsData["ans"] = strValue
+
+        self.serverArrayThid = self.serverArrayThid.filter { !$0.values.contains(dicAnsData["id"]!) }
         serverArrayThid.append(dicAnsData)
         self.view.endEditing(true)
         textField(color:UIColor.black)
-//        Timer.scheduledTimer(timeInterval: 0.3,
-//                             target: self,
-//                             selector: #selector(self.callApi),
-//                             userInfo: nil,
-//                             repeats: false)
+
     }
     
     
@@ -213,9 +228,40 @@ class OrderProccessingThird: BaseViewController {
         self.lblQuestion.text  =   quename
         // self.lblQuestionValueCount.text = strID + " " + "of 19 Questions"
         self.arrayPersnonID.append("17")
-        self.btnYes.setButtonImage("off.png")
-        self.btnNo.setButtonImage("off.png")
-        self.isYesbtnTap = false
+
+
+        var dicdata = [String : String]()
+
+        if serverArrayThid.count > 0{
+            let index = serverArrayThid.index(where: {$0["id"] == "18"})
+
+            if index != nil{
+                dicdata  = serverArrayThid[index!]
+                strSelected = dicdata["ans"]
+                if dicdata["ans"] == "No"{
+                    self.btnYes.setButtonImage("off.png")
+                    self.btnNo.setButtonImage("on.png")
+                    self.isYesbtnTap = true
+                }else{
+                    self.btnYes.setButtonImage("on.png")
+                    self.btnNo.setButtonImage("off.png")
+                    self.isYesbtnTap = true
+                }
+            } else{
+                self.btnYes.setButtonImage("off.png")
+                self.btnNo.setButtonImage("off.png")
+            }
+
+        }
+        else{
+            self.btnYes.setButtonImage("off.png")
+            self.btnNo.setButtonImage("off.png")
+            self.isYesbtnTap = false
+        }
+
+
+
+
        
         self.btnprevious.isHidden = false
         self.isFirstQue =  true
@@ -330,7 +376,11 @@ class OrderProccessingThird: BaseViewController {
         }
         else{
             if (value == 0){
-                self.btnprevious.isHidden = true
+                print(serverArrayThid)
+                UserDefaults.standard.set(serverArrayThid, forKey: "SelectedDataThirdScreen")
+                UserDefaults.standard.synchronize()
+                self.navigationController?.popViewController(animated: true)
+                self.dismiss(animated: true, completion: nil)
 
             }
             else{
@@ -455,12 +505,15 @@ class OrderProccessingThird: BaseViewController {
     }
     
     fileprivate func setDataNo(strId:String) {
+
+
         if strId == "17N"{
             dicAnsData["id"] = strId
             dicAnsData["ans"] = strSelected
             
             
-            
+            self.serverArrayThid = self.serverArrayThid.filter { !$0.values.contains(dicAnsData["id"]!) }
+           // serverArrayThid.append(dicAnsData)
             
             self.serverArrayThid.append(dicAnsData)
             callApi()
@@ -521,10 +574,34 @@ class OrderProccessingThird: BaseViewController {
     }
     
     
+    fileprivate func textFieldSetData() {
+        var dicdata = [String : String]()
+
+        if serverArrayThid.count > 0{
+            let index = serverArrayThid.index(where: {$0["id"] == "19"})
+
+            if index != nil && isButtonTap == false{
+                dicdata  = serverArrayThid[index!]
+                self.txtColor.text = dicdata["ans"]
+            }else{
+                self.txtColor.text = ""
+            }
+
+        }else{
+             self.txtColor.text = ""
+        }
+    }
+
     @IBAction func clickToNext(_ sender: Any) {
         
         
         textField(color:UIColor.black)
+
+
+
+
+
+
         
         if (arrQuestion?[value]["queId"] as? String)! == "19"{
             
@@ -617,7 +694,8 @@ class OrderProccessingThird: BaseViewController {
             
             
             
-           
+            self.serverArrayThid = self.serverArrayThid.filter { !$0.values.contains(dicAnsData["id"]!) }
+
             self.serverArrayThid.append(dicAnsData)
             
             
@@ -655,6 +733,7 @@ class OrderProccessingThird: BaseViewController {
         self.btnNo.setButtonImage("off.png")
         self.btnNext.isEnabled = true
         self.isYesbtnTap = true
+        self.isButtonTap = true
         self.strSelected = "Yes"
         let strId = arrQuestion?[value]["queId"] as? String
         self.isPreviousClick = false
@@ -737,7 +816,7 @@ class OrderProccessingThird: BaseViewController {
     
     @objc func callApi(){
         
-        self.btnprevious.isHidden =  true
+       // self.btnprevious.isHidden =  true
         self.btnNext.isEnabled = false
         self.btnCancle.isEnabled = false
         //serverArrayThid.append(dicServerSide)
@@ -770,7 +849,7 @@ class OrderProccessingThird: BaseViewController {
         print(strJson ?? "")
         
         
-        print(strJson)
+        //print(strJson)
         let dic = ["questions": strData,
                    "isModify": Modifie,
                    "data": strJson,
@@ -795,10 +874,10 @@ class OrderProccessingThird: BaseViewController {
                 SVProgressHUD.dismiss()
             }else{
                 
-                if let navVCsCount = self.navigationController?.viewControllers.count {
-                    self.navigationController?.viewControllers.removeSubrange(Range(0..<navVCsCount - 1))
-                }
-              
+//                if let navVCsCount = self.navigationController?.viewControllers.count {
+//                    self.navigationController?.viewControllers.removeSubrange(Range(0..<navVCsCount - 1))
+//                }
+
                 if jsondata["callDetected"] == "Yes"{
                     
                     self.viewCall.frame = self.view.bounds
@@ -910,6 +989,7 @@ class OrderProccessingThird: BaseViewController {
         self.isYesbtnTap = true
         self.isPreviousClick = false
         self.strSelected = "No"
+        self.isButtonTap = true
         let strId = arrQuestion?[value]["queId"] as? String
         
          setDataNo(strId: strId!)
@@ -940,7 +1020,7 @@ class OrderProccessingThird: BaseViewController {
         
         
         if (arrQuestion?[value]["queId"] as? String)! == "19"{
-            self.txtColor.text = ""
+            textFieldSetData()
             self.txtColor.isHidden = false
             self.btnYes.isHidden = true
             self.btnNo.isHidden = true
@@ -960,7 +1040,7 @@ class OrderProccessingThird: BaseViewController {
     func setPreviousData(valueindex : Int){
         
         if (arrQuestion?[value]["queId"] as? String)! == "19"{
-            self.txtColor.text = ""
+           textFieldSetData()
             self.txtColor.isHidden = false
             self.btnYes.isHidden = true
             self.btnNo.isHidden = true

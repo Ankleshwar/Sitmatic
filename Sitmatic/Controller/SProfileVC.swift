@@ -75,20 +75,48 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
         }
         
         if    (self.appUserObject?.address)! == "" {
-             self.txtAddress.text = "Please select your address"
+
         }
         else{
                 self.txtAddress.text = strAddress!
         }
         
  
+        if isAddressFill == true{
+            //self.txtAddress.text = ""
+            let dialogMessage = UIAlertController(title: "Oops!", message: "Seems like your address is blank. Please update your address to initiate evaluation.", preferredStyle: .alert)
 
+            // Create OK button with action handler
+            let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+                self.txtAddress.isEditable = true
+                self.btnPhoto.isEnabled = true
+                self.btnEdit.setButtonImage("ic_check_white")
+                self.btnLogOut.isHidden = true
+                self.btnEdit.isSelected = true
+                self.txtZip.isEnabled = true
+
+            })
+
+
+            //Add OK and Cancel button to dialog message
+            dialogMessage.addAction(ok)
+            //dialogMessage.addAction(cancel)
+
+            // Present dialog message to user
+            self.present(dialogMessage, animated: true, completion: nil)
+
+
+        }
        
 
         
     }
     
-    
+    fileprivate func textField(color:UIColor,txtxField:UITextView) {
+//        txtxField.layer.borderWidth = 0.7
+//        txtxField.layer.borderColor = color.cgColor
+
+    }
     
     
     
@@ -102,7 +130,8 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
            
             
             if self.txtAddress.text == "" {
-               self.showToastForQue(message: "Please select your address", y: 75)
+               self.showToast(message: "Please enter your address.")
+                self.textField(color:UIColor.red,txtxField:txtAddress)
                  self.btnEdit.setButtonImage("ic_check_white")
                  self.btnLogOut.isHidden = true
             }else{
@@ -335,6 +364,7 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
     
     func textViewDidBeginEditing(_ textView: UITextView)
     {
+        self.textField(color:UIColor.black,txtxField:textView)
         if (textView.text == "Please select your address")
         {
            textView.text = ""
@@ -350,8 +380,8 @@ class SProfileVC: BaseViewController, UIImagePickerControllerDelegate , UINaviga
     {
         if (textView.text == "")
         {
-            textView.text = "Please select your address"
-            textView.textColor = .lightGray
+//            textView.text = "Please select your address"
+//            textView.textColor = .lightGray
         }
         textView.resignFirstResponder()
     }

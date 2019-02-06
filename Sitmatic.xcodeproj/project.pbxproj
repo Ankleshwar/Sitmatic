@@ -118,7 +118,7 @@
 		3B64C00F21A53E9F00F7DF77 /* Dreamweave.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B64C00E21A53E9F00F7DF77 /* Dreamweave.png */; };
 		3B64C01521A56A6C00F7DF77 /* Flexx.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B64C01421A56A6C00F7DF77 /* Flexx.png */; };
 		3B99655821EF24D400A82B06 /* copyright.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B99655721EF24D400A82B06 /* copyright.png */; };
-		3BCC14B42186F20E00C24FD8 /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BCC14B32186F20E00C24FD8 /* edit.png */; };
+		3BC694AC220AE3F2005DE4BC /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BC694AB220AE3F1005DE4BC /* back.png */; };
 		3BCC14B62186F24000C24FD8 /* left-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BCC14B52186F24000C24FD8 /* left-arrow.png */; };
 		3BECDE392154AFF9009CB3DC /* cancel (2).png in Resources */ = {isa = PBXBuildFile; fileRef = 3BECDE382154AFF9009CB3DC /* cancel (2).png */; };
 		3BECDE3D2154B009009CB3DC /* gallery.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BECDE3B2154B009009CB3DC /* gallery.png */; };
@@ -280,7 +280,7 @@
 		3B64C00E21A53E9F00F7DF77 /* Dreamweave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Dreamweave.png; sourceTree = "<group>"; };
 		3B64C01421A56A6C00F7DF77 /* Flexx.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flexx.png; sourceTree = "<group>"; };
 		3B99655721EF24D400A82B06 /* copyright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = copyright.png; sourceTree = "<group>"; };
-		3BCC14B32186F20E00C24FD8 /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = edit.png; path = ../../../../Downloads/edit.png; sourceTree = "<group>"; };
+		3BC694AB220AE3F1005DE4BC /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		3BCC14B52186F24000C24FD8 /* left-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left-arrow.png"; sourceTree = "<group>"; };
 		3BECDE382154AFF9009CB3DC /* cancel (2).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel (2).png"; sourceTree = "<group>"; };
 		3BECDE3B2154B009009CB3DC /* gallery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gallery.png; sourceTree = "<group>"; };
@@ -503,7 +503,6 @@
 			children = (
 				3B64C00E21A53E9F00F7DF77 /* Dreamweave.png */,
 				3B99655721EF24D400A82B06 /* copyright.png */,
-				3BCC14B32186F20E00C24FD8 /* edit.png */,
 				3BFE26642181D51600B77FC1 /* slide3.png */,
 				3B64C01421A56A6C00F7DF77 /* Flexx.png */,
 				3BFE26622181C33D00B77FC1 /* sitmaticlogo.png */,
@@ -533,6 +532,7 @@
 				1B9E474E20F3356B0009E2EF /* red.png */,
 				1B7289E720EB6BCA00C5D395 /* info.png */,
 				1BEFEAA520CA46DC00400AF1 /* watermark.png */,
+				3BC694AB220AE3F1005DE4BC /* back.png */,
 				1BB9C4C720C960B00028A48A /* chair.png */,
 				1B6DF8ED20C7E4BC00280E84 /* Chair1.jpg */,
 				3BCC14B52186F24000C24FD8 /* left-arrow.png */,
@@ -728,7 +728,6 @@
 				3B01AB3F20C6DE3400291522 /* sitmaticsplash.png in Resources */,
 				1B9E474F20F3356B0009E2EF /* red.png in Resources */,
 				1BB6090F20F4C343000023D3 /* ConfirmationVC.xib in Resources */,
-				3BCC14B42186F20E00C24FD8 /* edit.png in Resources */,
 				1B6DF8E220C7E05C00280E84 /* orderbtn.png in Resources */,
 				3B01AB3E20C6DE3400291522 /* lbackground.jpg in Resources */,
 				1B7289E820EB6BCB00C5D395 /* info.png in Resources */,
@@ -754,6 +753,7 @@
 				1BB6091820F4CDF8000023D3 /* email.png in Resources */,
 				3B01AB4020C6DE3400291522 /* background.jpg in Resources */,
 				3B01AB4220C6E18400291522 /* sitmaticlogo222.png in Resources */,
+				3BC694AC220AE3F2005DE4BC /* back.png in Resources */,
 				1B2E012720C7AAE900B34645 /* male.png in Resources */,
 				1B2E012320C79EFD00B34645 /* SHomeVC.xib in Resources */,
 				3B0D728C215B4D38005BCD2C /* 01 Gender.png in Resources */,

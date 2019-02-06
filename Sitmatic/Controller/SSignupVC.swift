@@ -12,6 +12,9 @@ import IQKeyboardManagerSwift
 
 class SSignupVC: BaseViewController {
 
+
+  @IBOutlet weak var lblErrorHeight: NSLayoutConstraint!
+@IBOutlet weak var lblShowError: UILabel!
     @IBOutlet weak var txtName: UITextField!
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtMobile: UITextField!
@@ -71,7 +74,31 @@ class SSignupVC: BaseViewController {
             self.txtZip.becomeFirstResponder()
         }
     }
-    
+
+
+    func showToastLocal(message : String) {
+
+
+        self.lblShowError.isHidden = false
+        self.lblErrorHeight.constant = 20
+        self.lblShowError.textColor = UIColor.red
+        self.lblShowError.textAlignment = .center;
+        self.lblShowError.font = UIFont(name: "Roboto", size: 18.0)
+        self.lblShowError.text = message
+        self.lblShowError.alpha = 1.0
+        self.lblShowError.layer.cornerRadius = 10;
+        self.lblShowError.clipsToBounds  =  true
+        //self.view.addSubview(self.lblShowError)
+        UIView.animate(withDuration: 4.0, delay: 0.2, options: .curveEaseOut, animations: {
+            self.lblShowError.alpha = 0.0
+        }, completion: {(isCompleted) in
+            //self.lblShowError.removeFromSuperview()
+            self.lblShowError.isHidden = true
+            self.lblErrorHeight.constant = 0
+
+        })
+    }
+
     override func touchesBegan(_ touches: Set<UITouch>,
                                with event: UIEvent?) {
         self.view.endEditing(true)
@@ -104,6 +131,13 @@ class SSignupVC: BaseViewController {
         super.viewDidLoad()
         IQKeyboardManager.shared.enable = true
          self.hideKeyboardWhenTappedAround()
+        txtEmail.setLeftPaddingPoints(7)
+        txtPassword.setLeftPaddingPoints(7)
+        txtName.setLeftPaddingPoints(7)
+        txtMobile.setLeftPaddingPoints(7)
+        txtConfirmPassword.setLeftPaddingPoints(7)
+        txtPassword.setLeftPaddingPoints(7)
+        txtZip.setLeftPaddingPoints(7)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -148,7 +182,12 @@ class SSignupVC: BaseViewController {
         self.btnSignup.layer.borderWidth = 1.0
         self.btnSignup.layer.borderColor = UIColor.white.cgColor
     }
-    
+
+    fileprivate func textField(color:UIColor,txtxField:UITextField) {
+        txtxField.layer.borderWidth = 0.7
+        txtxField.layer.borderColor = color.cgColor
+
+    }
     
     @IBAction func clickToLogin(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -162,21 +201,28 @@ class SSignupVC: BaseViewController {
         let secondPassword = self.txtConfirmPassword.text
 
         if self.txtName.text?.count == 0 {
-            self.showToast(message: "Please enter your name")
+            self.showToastLocal(message: "Please enter your name")
+            self.textField(color: UIColor.red, txtxField:self.txtName )
         }else if self.txtEmail.text?.count == 0{
-             self.showToast(message: "Please enter your email address")
+             self.showToastLocal(message: "Please enter your email address")
+            self.textField(color: UIColor.red, txtxField:self.txtEmail )
         }
         else if isValid == false{
-            self.showToast(message: "Please enter valid email address")
+            self.showToastLocal(message: "Please enter a valid email address")
+            self.textField(color: UIColor.red, txtxField:self.txtEmail )
         }else if self.txtPassword.text?.count == 0{
-            self.showToast(message: "Please enter your password ")
+            self.showToastLocal(message: "Please enter your password ")
+            self.textField(color: UIColor.red, txtxField:self.txtPassword )
         }
         else if self.txtConfirmPassword.text?.count == 0{
-            self.showToast(message: "Please enter your confirm password ")
+            self.showToastLocal(message: "Please confirm your password ")
+            self.textField(color: UIColor.red, txtxField:self.txtConfirmPassword )
         }else if  (firstPassword!.isEqualToString(find: secondPassword!)) == false {
-             self.showToast(message: "Password mismatch  ")
+             self.showToastLocal(message: "Password mismatch")
+            self.textField(color: UIColor.red, txtxField:self.txtConfirmPassword )
         }  else if self.txtZip.text?.count == 0{
-             self.showToast(message: "Please enter your zipcode ")
+             self.showToastLocal(message: "Please enter your zipcode ")
+            self.textField(color: UIColor.red, txtxField:self.txtZip )
         }
         else{
 
@@ -230,7 +276,7 @@ class SSignupVC: BaseViewController {
                 let arry: NSArray = dicDataError!["email"] as! NSArray
                 let strName = arry[0] as! String
                 print(strName)
-                self.showToast(message: strName)
+                self.showToastLocal(message: strName)
                 
             }
             
@@ -256,15 +302,17 @@ extension SSignupVC: UITextFieldDelegate{
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.setLeftPaddingPoints(15)
+        textField.borderStyle = .line
+        textField.layer.borderColor = UIColor.red.cgColor
         self.myTextField = textField
-      //  self.moveTextField(textField: textField, moveDistance: -10, up: true)
+        self.textField(color:UIColor.black,txtxField:textField)
+
     }
     
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         textField.inputAccessoryView = inputToolbar
-        
+
         return true
     }
     
