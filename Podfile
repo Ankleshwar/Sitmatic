@@ -22,6 +22,8 @@ pod 'FacebookLogin'
 pod 'FacebookShare'
 pod "AMXFontAutoScale"
 pod 'IQKeyboardManagerSwift'
+pod 'Fabric'
+pod 'Crashlytics'
 
   # Pods for Sitmatic
 

@@ -11,6 +11,7 @@ import SVProgressHUD
 import DeviceKit
 
 
+
 class SHomeVC: BaseViewController {
     @IBOutlet weak var viewLableHeight: NSLayoutConstraint!
     
@@ -159,6 +160,10 @@ class SHomeVC: BaseViewController {
 //    }
     
     @IBAction func clickToStartOrder(_ sender: Any) {
+
+          
+
+
 
         if  (self.appUserObject?.address.count == 0 || self.appUserObject?.address == "Please select your address") {
             let vc = SProfileVC(nibName: "SProfileVC", bundle: nil)

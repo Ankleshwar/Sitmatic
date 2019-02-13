@@ -817,6 +817,7 @@ class OrderProccessingThird: BaseViewController {
     @objc func callApi(){
         
        // self.btnprevious.isHidden =  true
+         self.btnprevious.isEnabled = false
         self.btnNext.isEnabled = false
         self.btnCancle.isEnabled = false
         //serverArrayThid.append(dicServerSide)
@@ -871,12 +872,18 @@ class OrderProccessingThird: BaseViewController {
                 self.btnCancle.isEnabled = true
                 self.btnNext.isEnabled = true
                 self.txtColor.isEnabled = true
+                self.btnprevious.isEnabled = true
                 SVProgressHUD.dismiss()
             }else{
                 
 //                if let navVCsCount = self.navigationController?.viewControllers.count {
 //                    self.navigationController?.viewControllers.removeSubrange(Range(0..<navVCsCount - 1))
 //                }
+
+                self.btnCancle.isEnabled = true
+                self.btnNext.isEnabled = true
+                self.txtColor.isEnabled = true
+                self.btnprevious.isEnabled = true
 
                 if jsondata["callDetected"] == "Yes"{
                     

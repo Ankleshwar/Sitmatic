@@ -8,7 +8,10 @@ PODS:
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
   - CHIPageControl/Aleppo (0.1.5)
+  - Crashlytics (3.12.0):
+    - Fabric (~> 1.9.0)
   - DeviceKit (1.7.0)
+  - Fabric (1.9.0)
   - FacebookCore (0.3.1):
     - Bolts (~> 1.8)
     - FBSDKCoreKit (~> 4.33)
@@ -43,7 +46,9 @@ DEPENDENCIES:
   - Alamofire
   - AMXFontAutoScale
   - CHIPageControl/Aleppo
+  - Crashlytics
   - DeviceKit (~> 1.3)
+  - Fabric
   - FacebookCore
   - FacebookLogin
   - FacebookShare
@@ -64,7 +69,9 @@ SPEC REPOS:
     - AMXFontAutoScale
     - Bolts
     - CHIPageControl
+    - Crashlytics
     - DeviceKit
+    - Fabric
     - FacebookCore
     - FacebookLogin
     - FacebookShare
@@ -87,7 +94,9 @@ SPEC CHECKSUMS:
   AMXFontAutoScale: 142e4296a62cab27f9191971657483000655bc00
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   CHIPageControl: 79d19a8ee2e35fa3c1da6533adb5364c77b5cfea
+  Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   DeviceKit: 6a5bdeb103c03757bb94aef1ccb01e08bc8ef4ee
+  Fabric: f988e33c97f08930a413e08123064d2e5f68d655
   FacebookCore: 33078ef1d7d76b73f7e8c990dca7d3ea6db8d22f
   FacebookLogin: 6f15bf4fefd7a8865abbfa8fcd7f3dfd87aa275f
   FacebookShare: c9ee8e5399d961fda00ded9befccacfe04fccf93
@@ -105,6 +114,6 @@ SPEC CHECKSUMS:
   Toaster: a6c9532de1ded8105e77376f7dffeb2e12b46dbb
   YALSideMenu: 4d6b90ea44dcdded18a99e46b676e4ad51d9c6bb
 
-PODFILE CHECKSUM: 8303f3f9a1086bb6b6a6393b32e0e45aadd34f6f
+PODFILE CHECKSUM: b2d647f674bf9a9d0bbefd7410837a30cf31e168
 
 COCOAPODS: 1.5.3

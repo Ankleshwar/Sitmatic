@@ -2,7 +2,7 @@
     "StartOrderd":[
                    {"queId": "1","queText": "Please select your gender", "option1":"Male","option2":"Female"},
                   
-                   {"queId": "2","queText": "Do you wear reading glasses?", "option1":"Yes","option2":"No"},
+                   {"queId": "2","queText": "Do you wear bifocals?", "option1":"Yes","option2":"No"},
                    
                 ],
     

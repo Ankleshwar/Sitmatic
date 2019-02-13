@@ -160,6 +160,8 @@ class ModifyModel: BaseViewController {
         
         
         setSlectedValue()
+
+
         if self.strArmrest == "No"{
             self.viewArmrestCap.constant = 0
             self.btnArmrestCap.constant = 0
@@ -237,10 +239,10 @@ class ModifyModel: BaseViewController {
         if index == 0 {
             
         
-                let indexArray = self.arrIteam?.index(where: { $0 == "(QT) Upholstered Back"})
+                let indexArray = self.arrIteam?.index(where: { $0 == "(GU) GoodFit Upholstered Back"})
                 if indexArray != nil {
                     self.arrIteam?.remove(at: indexArray!)
-                    self.arrIteam?.append("(QT) Upholstered Back" + " " + "*")
+                    self.arrIteam?.append("(GU) GoodFit Upholstered Back" + " " + "*")
                 }
             
             }else if index == 2 {
@@ -450,12 +452,12 @@ class ModifyModel: BaseViewController {
             dicSelected["seatOptions"] = ""
         }
         if dicSelected["mesh"] as? String != nil {
-            //self.lblMesh.text = (dicSelected["mesh"] as? String)! + " " + "*"
+
             self.lblMesh.text = (dicSelected["mesh"] as? String)!
         }else{
-          //  self.lblMesh.text = "(QT) Upholstered Back" + " " + "*"
-            self.lblMesh.text = "(QT) Upholstered Back"
-            dicSelected["mesh"] = "(QT) Upholstered Back"
+
+            self.lblMesh.text = "(GU) GoodFit Upholstered Back"
+            dicSelected["mesh"] = "(GU) GoodFit Upholstered Back"
         }
         if let armrestUprightValue = successDataObject.armrestUprightValue  {
             dicSelected["armrests"] = successDataObject.armrestUprightValue
@@ -605,9 +607,15 @@ class ModifyModel: BaseViewController {
             dicSelected["seatSize"] = "No Change"
         }
         if successDataObject.backrestSizeValue != "" {
-            dicSelected["backrestSize"] = successDataObject.backrestSizeValue
-           // self.lblbackRestSize.text = successDataObject.backrestSizeValue + " " + "*"
-            self.lblbackRestSize.text = successDataObject.backrestSizeValue
+
+            if self.lblMesh.text == "(GM) GoodFit Mesh Back"{
+                self.lblbackRestSize.text = "(3) Upholstered High Back - 23”h x 19”w"
+                 dicSelected["backrestSize"] = "(3) Upholstered High Back - 23”h x 19”w"
+            }else{
+                 dicSelected["backrestSize"] = successDataObject.backrestSizeValue
+                self.lblbackRestSize.text = successDataObject.backrestSizeValue
+            }
+
         } else if dicSelected["backrestSize"] != nil{
             
             if (dicSelected["backrestSize"] as? String)! == "No Change" {
@@ -1229,10 +1237,10 @@ class ModifyModel: BaseViewController {
                 self.showToastLocal(message: "Sorry, you cannot change your mesh")
             }else {
                 
-                let indexArray = self.arrIteam?.index(where: { $0 == "(QT) Upholstered Back"})
+                let indexArray = self.arrIteam?.index(where: { $0 == "(GU) GoodFit Upholstered Back"})
                 if indexArray != nil {
                     self.arrIteam?.remove(at: indexArray!)
-                    self.arrIteam?.append("(QT) Upholstered Back" + " " + "*")
+                    self.arrIteam?.append("(GU) GoodFit Upholstered Back" + " " + "*")
                 }
                 showPicker()
 //                if isMesh == true{

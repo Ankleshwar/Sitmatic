@@ -140,7 +140,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
             else{
                 self.btnNext.isEnabled = true
                 self.isImageDataEmpty = false
-                print(jsondata)
+                ////print(jsondata)
                 self.arrImage.add(jsondata)
                 self.setImageUrl(str:(self.arrQuestion?[self.value]["queId"] as? String)! )
           
@@ -159,7 +159,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         self.lblNo.text = arrQuestion?[0]["option2"] as? String
         //self.lblQuestion.text  = arrQuestion?[0]["queText"] as? String
         
-        _ = arrQuestion?[value]["queId"] as! String
+        let strID = arrQuestion?[value]["queId"] as! String
         let quename = arrQuestion?[value]["queText"] as! String
         //self.lblQuestion.text  = strID + " " + quename
         self.lblQuestion.text  =   quename
@@ -185,11 +185,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         if (sender as AnyObject).tag == 1 {
       
             self.setImageUrl(str:(arrQuestion?[value]["queId"] as? String)! )
-//            let viewSubData = UIView(frame: CGRect(x: CGFloat(0), y: CGFloat(200), width: CGFloat(300), height: CGFloat(400)))
-//            viewSubData.addSubview(self.viewSub)
-//             viewSubData.backgroundColor = UIColor.clear
-//            viewSubData.tag = 500
-//            self.view.addSubview(viewSubData)
+
             
             }
         else if (sender as AnyObject).tag == 3 {
@@ -282,7 +278,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         }
         else{
             
-           print(strSelected)
+           ////print(strSelected)
             
             self.setNextButtonData(strId: (arrQuestion?[value]["queId"] as? String)!)
             self.setImageUrl(str:(self.arrQuestion?[self.value]["queId"] as? String)! )
@@ -318,7 +314,8 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
                 }
                 
                 
-            }else{
+            }
+            else{
                  dataForNo(strId)
                 if strId == "5Y"{
                     goToNext()
@@ -333,7 +330,8 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
            
             
             
-        }else{
+        }
+        else{
             
             if strId == "2" || strId == "3Y" || strId == "4Y"{
                
@@ -382,10 +380,10 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         self.btnNo.setButtonImage("on.png")
         self.isYesbtnTap = true
         self.isPreviousClick = false
-        self.strSelected = "No"
+        strSelected = "No"
          self.arrStartOrderData =  Array()
         let strId = arrQuestion?[value]["queId"] as? String
-        dataForNo(strId!)
+      //  dataForNo(strId!)
         
         
         
@@ -397,17 +395,6 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
     
     fileprivate func TimeInterval() {
         self.view.isUserInteractionEnabled = false
-//        Timer.scheduledTimer(timeInterval: 0.5,
-//                             target: self,
-//                             selector: #selector(nextQues),
-//                             userInfo: nil,
-//                             repeats: false)
-        
-        
-        
-        
-        
-        
         self.nextQues()
     }
     
@@ -423,7 +410,11 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
             dicAnsData["ans"] = dicLocal["selected"]
             self.serverArray = self.serverArray.filter { !$0.values.contains(strId!) }
             self.serverArray.append(dicAnsData)
-          
+            self.arrCurrent = self.arrCurrent.filter { !$0.values.contains(dicLocal["queId"]!)}
+            self.arrCurrent.append(dicLocal)
+
+
+
         }else{
             self.value -= 1
             TimeInterval()
@@ -447,7 +438,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
             if strId == "2" || strId == "3Y" || strId == "4Y"{
             
                 if let index = self.arrayPersnonID.index(of: "3") {
-                    print(index)
+                    ////print(index)
                     
                 }
                     
@@ -472,35 +463,24 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
 
                 }else{
                     var  dicLocal = [String : String]()
-//                  let count = value-1
-//                    dicLocal  = arrCurrent[count]
-////                    dicLocal = dicNext["data"] as! [String : String]
-//                    self.arrAnswer = self.arrAnswer.filter { !$0.values.contains(dicLocal["queId"]!) }
-//                                        self.arrAnswer.append(dicLocal)
-//
-//
-//                    let strId = dicLocal["queId"]
-//                    dicAnsData["id"] = dicLocal["queId"]
-//                    dicAnsData["ans"] = dicLocal["selected"]
-//                    self.serverArray = self.serverArray.filter { !$0.values.contains(strId!) }
-//                    self.serverArray.append(dicAnsData)
+
                     
                     
                     if strId == "1"{
-                        let index = arrCurrent.index(where: {$0["queId"] as! String == "2"})
+                        let index = arrCurrent.index(where: {$0["queId"] == "2"})
                         nextIndexData(index, &dicLocal)
                        
                         
                     }else if  strId == "2"{
-                        let index = arrCurrent.index(where: {$0["queId"] as! String == "3"})
+                        let index = arrCurrent.index(where: {$0["queId"]  == "3"})
                       nextIndexData(index, &dicLocal)
                         
                     }else if  strId == "3Y"{
-                        let index = arrCurrent.index(where: {$0["queId"] as! String == "3"})
+                        let index = arrCurrent.index(where: {$0["queId"]  == "3"})
                        nextIndexData(index, &dicLocal)
                         
                     }else if  strId == "4Y"{
-                        let index = arrCurrent.index(where: {$0["queId"] as! String == "3"})
+                        let index = arrCurrent.index(where: {$0["queId"]  == "3"})
                        nextIndexData(index, &dicLocal)
                         
                     }
@@ -530,7 +510,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
                     let strID = dicLocal["queId"]
                     let quename = dicLocal["queText"]
                     strSelected = dicLocal["selected"]
-                    self.lblQuestion.text  =   quename
+                    self.lblQuestion.text  =   quename!
                  //   self.lblQuestionValueCount.text = strID! + " " + "of 19 Questions"
                     isYesbtnTap = true
                     self.btnprevious.isHidden = false
@@ -558,13 +538,13 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         self.btnNo.setButtonImage("off.png")
         self.arrStartOrderData =  Array()
         self.isYesbtnTap = true
-        self.strSelected = "Yes"
+        strSelected = "Yes"
         let strId = arrQuestion?[value]["queId"] as? String
         
         self.isPreviousClick = false
         
     
-        dataForYes(strId!)
+       // dataForYes(strId!)
         
 }
     
@@ -594,7 +574,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
                 
                 
                 if let index = self.arrayPersnonID.index(of: "3Y") {
-                    print(index)
+                    ////print(index)
                 }
                 else{
                     self.arrQuestion?.append(["queId": "3Y","queText": "Did you have corrective eye surgery?", "option1":"Yes","option2":"No"])
@@ -606,7 +586,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
             if strId == "3Y"{
                 
                 if let index = self.arrayPersnonID.index(of: "4Y") {
-                    print(index)
+                    ////print(index)
                 }
                 else{
                     self.arrQuestion?.append(["queId": "4Y","queText": "Was it monovision correction? (Was one eye corrected for reading and the other corrected for distance?", "option1":"Yes","option2":"No"])
@@ -618,7 +598,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
             else if strId == "4Y"{
                 
                 if let index = self.arrayPersnonID.index(of: "5Y") {
-                    print(index)
+                    ////print(index)
                     
                 }
                 else{
@@ -640,37 +620,28 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
                 }else{
                     var  dicLocal = [String : String]()
                 
-                    let count = value-1
+                    _ = value-1
                   
                     
                     if strId == "1"{
-                        let index = arrCurrent.index(where: {$0["queId"] as! String == "2"})
+                        let index = arrCurrent.index(where: {$0["queId"]  == "2"})
                         
                         nextIndexData(index, &dicLocal)
                         
                     }else if  strId == "2"{
-                        let index = arrCurrent.index(where: {$0["queId"] as! String == "3Y"})
+                        let index = arrCurrent.index(where: {$0["queId"] == "3Y"})
                         nextIndexData(index, &dicLocal)
                         
                     }else if  strId == "3Y"{
-                        let index = arrCurrent.index(where: {$0["queId"] as! String == "4Y"})
+                        let index = arrCurrent.index(where: {$0["queId"]  == "4Y"})
                        nextIndexData(index, &dicLocal)
                         
                     }else if  strId == "4Y"{
-                        let index = arrCurrent.index(where: {$0["queId"] as! String == "5Y"})
+                        let index = arrCurrent.index(where: {$0["queId"]  == "5Y"})
                         nextIndexData(index, &dicLocal)
                         
                     }
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
+
                     
                     if  dicLocal["selected"] == "Yes"{
                         self.btnYes.setButtonImage("on.png")
@@ -680,14 +651,13 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
                         self.btnNo.setButtonImage("on.png")
                         
                     }
-                    
-                    
+
                     self.lblYes.text = dicLocal["option1"]
                     self.lblNo.text = dicLocal["option2"]
                     let strID = dicLocal["queId"]
                     let quename = dicLocal["queText"]
                     strSelected = dicLocal["selected"]
-                    self.lblQuestion.text  =   quename
+                    self.lblQuestion.text  =   quename!
                 //    self.lblQuestionValueCount.text = strID! + " " + "of 19 Questions"
                     isYesbtnTap = true
                     self.btnprevious.isHidden = false
@@ -737,7 +707,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
 
         self.arrCurrent = self.arrCurrent.filter { !$0.values.contains(strId!)}
         self.arrCurrent.append(dicData)
-        
+
        
         serverSideData()
         
@@ -749,6 +719,13 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
             self.value += 1
             coreNextDataSet(self.value)
         }
+
+        print("~~~~~~~~~~~~~~~~~arrAnswer~~~~~~~~~~~~~~~~~~~~~~~")
+        print(self.arrAnswer)
+
+        print("~~~~~~~~~~~~~~~~~arrCurrent~~~~~~~~~~~~~~~~~~~~~~~")
+        print(self.arrCurrent)
+
     }
     
 
@@ -796,10 +773,9 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         var strCheckValue = ""
         self.serverArray = serverArray.compactMap { $0 }
        
-         print("~~~~~~~~~~~~~~~~~\(self.value)~~~~~~~~~~~~~~~~~~~~~~~")
-     
-       
-      print(self.serverArray)
+         print("~~~~~~~~~~~~~~~~~ServerArray~~~~~~~~~~~~~~~~~~~~~~~")
+        print(self.serverArray)
+
         for dic in self.serverArray{
             if "1" == dic["id"]{
                 strCheckValue = dic["ans"] ?? ""
@@ -841,7 +817,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
     
     
     @IBAction func clickToPrivious(_ sender: Any) {
-        print("main value is\(value) ")
+        //print("main value is\(value) ")
         
         self.btnNo.isEnabled = true
         self.btnYes.isEnabled = true
@@ -892,17 +868,18 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         let indexServer = serverArray.index(where: {$0["id"]  == localIdForserverArray})
         if indexServer != nil {
             serverArray.remove(at: indexServer!)
+
         }
-        print(serverArray)
+        //print(serverArray)
         self.arrQuestion?.remove(at: value)
         self.arrayPersnonID.remove(at: value)
         value -= 1
         let localId = arrQuestion?[value]["queId"] as! String
         
 
-        let index = arrAnswer.index(where: {$0["queId"] as! String == localId})
+        let index = arrAnswer.index(where: {$0["queId"] == localId})
         
-        print(index)
+
         if index != nil {
             setPreviousData(valueindex: index!)
         }
@@ -956,7 +933,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
     func setPreviousData(valueindex : Int){
         
 
-        print(valueindex)
+        //print(valueindex)
     
         isback = false
         var dicdata  = arrAnswer[valueindex] 
@@ -967,7 +944,7 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         let quename = dicdata["queText"]
      
         self.lblQuestion.text  =   quename!
-       // self.lblQuestionValueCount.text = strID! + " " + "of 19 Questions"
+
        let   strSelectedValue = dicdata["selected"]
         
         self.btnYes.setButtonImage("off.png")
@@ -985,10 +962,12 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
             }
             self.btnYes.setButtonImage("on.png")
             self.btnNo.setButtonImage("off.png")
+            strSelected = "Yes"
         }
         else if strSelectedValue == "No"{
             self.btnYes.setButtonImage("off.png")
             self.btnNo.setButtonImage("on.png")
+            strSelected = "No"
         }
          self.setImageUrl(str:(arrQuestion?[value]["queId"] as? String)! )
         
@@ -1013,6 +992,12 @@ class OrderProccessing: BaseViewController , StartOrderdDelegate {
         self.isPreviousClick = true
         
         self.isYesbtnTap = true
+
+        print("~~~~~~~~~~~~~~~~~arrAnswerPrevious~~~~~~~~~~~~~~~~~~~~~~~")
+        print(self.arrAnswer)
+
+        print("~~~~~~~~~~~~~~~~~arrCurrentPrevious~~~~~~~~~~~~~~~~~~~~~~~")
+        print(self.arrCurrent)
     }
     
     

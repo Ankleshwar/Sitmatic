@@ -67,7 +67,7 @@ let arrFemale = [ "8.00", "19.00", "17.00", "30.00", "9.00", "15.00", "17.00"]
 
         override func viewDidLoad() {
             super.viewDidLoad()
-
+            txtField.setLeftPaddingPoints(5)
             self.setTopView(self.topView, on: self, andTitle: "GoodFit™ by Sitmatic", withButton: true, withButtonTitle: "", withButtonImage: "user.png", withoutBackButton: true)
             textField(color:UIColor.black)
             if isMale{
